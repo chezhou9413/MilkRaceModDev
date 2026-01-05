@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<AlienRace.AlienBackstoryDef Name="MilkGirlBackStory" Abstract="True">
+		<bodyTypeMale>Thin</bodyTypeMale><!-- 이 백스토리를 사용하는 여성의 체형 -->
+		<bodyTypeFemale>Thin</bodyTypeFemale><!-- 이 백스토리를 사용하는 남성의 체형 -->
+		<maleCommonality>0</maleCommonality>
+		<!--<forcedHediffs>
+			<li>DR_Heal_A</li>
+			<li>DR_Heal_B</li>
+			<li>DR_Heal_C</li>
+		</forcedHediffs>-->
+	</AlienRace.AlienBackstoryDef>
+
+
+	
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">
+		<defName>MilkGirl_CBS01</defName>
+		<title>平凡小镇的奶牛娘</title>
+		<titleShort>平凡小镇的奶牛娘</titleShort>
+		<baseDesc>[PAWN_nameDef]一个幼年的奶牛娘\n一个原本生活在平凡小镇的孩子，但被奶牛娘的掠夺队掳走，被迫加入了奶牛娘群体，并接受改造.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+		
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">
+		<defName>MilkGirl_CBS02</defName>
+		<title>叛逃的小奶牛娘</title>
+		<titleShort>叛逃小奶牛娘</titleShort>
+		<baseDesc>[PAWN_nameDef]来自一个叛逃团\n在[PAWN_nameDef]还不懂事的时候，就被一群大人带走了，很长一段时间内都过着颠沛流离的生活.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">	
+		<defName>MilkGirl_CBS03</defName>
+		<title>好斗的奶牛娘</title>
+		<titleShort>好斗奶牛娘</titleShort>
+		<baseDesc>[PAWN_nameDef]自小就非常争强好胜\n在[PAWN_nameDef]的童年记忆中，都在为了击败其他同龄人而努力，[PAWN_nameDef]也乐在其中.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">	
+		<defName>MilkGirl_CBS04</defName>
+		<title>早熟的奶牛娘</title>
+		<titleShort>早熟奶牛娘</titleShort>
+		<baseDesc>[PAWN_nameDef]成长速度异于常人，比同龄人快了几年，这让她很难交到朋友，整个童年几乎都是孤独的.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">	
+		<defName>MilkGirl_CBS05</defName>
+		<title>前儿童明星</title>
+		<titleShort>前儿童明星</titleShort>
+		<baseDesc>[PAWN_nameDef]曾经是一个闪耀世界的童星，但某一天她在众目睽睽之下被奶牛娘掠夺队们绑架了，关心她的人绝对不想知道她之后的经历.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">	
+		<defName>MilkGirl_CBS06</defName>
+		<title>改造工厂学徒</title>
+		<titleShort>改造工厂学徒</titleShort>
+		<baseDesc>[PAWN_nameDef]早早的进入了奶牛娘改造工厂工作，这个工厂里充斥着被绑架来的各式各样的人，[PAWN_nameDef]在工作的同时也了解到了一些有趣的故事.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+<!-- _______________________________________________________________________________ -->
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">
+		<defName>MilkGirl_ABS01</defName>
+		<title>掠夺队队员</title>
+		<titleShort>掠夺队队员</titleShort>
+		<baseDesc>[PAWN_nameDef]一个成年的奶牛娘\n一个成长于奶牛娘群体中的奶牛娘，她最终成为了一名掠夺队队员.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">
+		<defName>MilkGirl_ABS02</defName>
+		<title>行为校准师</title>
+		<titleShort>行为校准师</titleShort>
+		<baseDesc>将各式各样的人改造成奶牛娘是一个系统的工程，[PAWN_nameDef]负责将改造工厂中的奶牛娘预备役一一进行行为校准，简单的说，她是一名调教师.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">	
+		<defName>MilkGirl_ABS03</defName>
+		<title>改造失败者</title>
+		<titleShort>改造失败者</titleShort>
+		<baseDesc>[PAWN_nameDef]的改造被评估为不合格，原本按照规程她可能会被丢进仓库，成为再也看不见太阳的牲畜，但她最终设法逃出来了.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">	
+		<defName>MilkGirl_ABS04</defName>
+		<title>落单的奶牛娘</title>
+		<titleShort>落单奶牛娘</titleShort>
+		<baseDesc>[PAWN_nameDef]原本是掠夺队的一员，但在一场攻坚战斗后掠夺队失败而归，[PAWN_nameDef]在撤退时被落下，她最后被敌人俘获\n沦为了性奴隶与产奶机器.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">		
+		<defName>MilkGirl_ABS05</defName>
+		<title>落魄的军官</title>
+		<titleShort>落魄的军官</titleShort>
+		<baseDesc>[PAWN_nameDef]曾是一名名声赫赫的军官，但她在某次行动中粗心大意，被敌人伏击，掠夺队全军覆没，仅剩的幸存者也被充满怒意的敌人变卖为奴\n[PAWN_nameDef]正是其中一员.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">			
+		<defName>MilkGirl_ABS06</defName>
+		<title>叛逃奶牛娘</title>
+		<titleShort>叛逃奶牛娘</titleShort>
+		<baseDesc>[PAWN_nameDef]认为奶牛娘群体的存在与思想是一个错误，她开始组织一部分有相同想法的奶牛娘一起离开了奶牛娘聚落，前往了边缘世界.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">			
+		<defName>MilkGirl_ABS07</defName>
+		<title>药剂研究者</title>
+		<titleShort>药剂研究者</titleShort>
+		<baseDesc>[PAWN_nameDef]是一名专心研究药剂的研究者，为了试验药剂她对实验体做了很多残忍的事.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">			
+		<defName>MilkGirl_ABS08</defName>
+		<title>药剂实验体</title>
+		<titleShort>药剂实验体</titleShort>
+		<baseDesc>[PAWN_nameDef]虽然经过了奶牛娘化改造，但不被认为是奶牛娘群体中的一员，而是被当作实验体丢给了药剂研究所做实验，她的身体经过摧残已经出现了严重的精神问题与激素紊乱.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MilkGirlBackStory">			
+		<defName>MilkGirl_ABS09</defName>
+		<title>奶牛娘性奴</title>
+		<titleShort>奶牛娘性奴</titleShort>
+		<baseDesc>奶牛娘群体是极具侵略性的，一般人不会想多与她们有交集，但不妨碍有个别人群对奶牛娘个体本身起歹念，[PAWN_nameDef]便是其中一名受害者，她被一群奴隶商人雇佣的海盗掳走了，几经变卖颠沛流离.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		
+		<spawnCategories>
+			<li>MilkGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
+
+
+</Defs>

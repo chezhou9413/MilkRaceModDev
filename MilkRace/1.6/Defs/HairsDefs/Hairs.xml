@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>	
+	<HairDef Abstract="True" Name="BaseMilkGirlHair">
+		<hairGender>Female</hairGender>
+		<styleTags>
+			<li>MilkGirl_Hair</li>
+		</styleTags>
+	</HairDef>
+	<HairDef ParentName="BaseMilkGirlHair">
+		<defName>MilkGirl_Hair01</defName>
+		<label>奶牛娘短发</label>
+        <texPath>AlienRace/ag/Null/Null</texPath>
+	</HairDef>
+</Defs>

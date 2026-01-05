@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>[FT]Milk Girl 奶牛娘</name>
+	<author>fireturtle</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+	<description>
+	Milk Girl Pack
+	充满爱与和平的种族
+	这是一个测试mod日后才能有实际内容
+
+
+	</description>
+	<packageId>fireturtle.MilkGirlPack</packageId>
+</ModMetaData>
