@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>[FT]Muno Girl 奶牛娘</name>
+	<author>fireturtle</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+	<description>
+	Muno Girl Pack
+	充满爱与和平的种族
+	这是一个测试mod日后才能有实际内容
+
+
+	</description>
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+		</li>
+		<li>
+			<packageId>erdelf.HumanoidAlienRaces</packageId>
+			<displayName>Humanoid Alien Races 2.0</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=839005762</steamWorkshopUrl>
+		</li>
+		<li>
+			<packageId>Chezhou.ChezhouLib.lib</packageId>
+			<displayName>ChezhouLib</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3595247479</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<loadAfter>
+		<li>brrainz.harmony</li>
+		<li>erdelf.HumanoidAlienRaces</li>
+		<li>Chezhou.ChezhouLib.lib</li>
+	</loadAfter>
+	<packageId>fireturtle.MunoGirlPack</packageId>
+</ModMetaData>

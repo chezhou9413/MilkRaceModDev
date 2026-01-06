@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+	<PawnKindDef Name="MunoGirlBasePawnKind" Abstract="True">
+		<race>MunoRace</race>
+		<combatPower>30</combatPower>
+		<isFighter>true</isFighter>
+		<trader>false</trader>
+		<chemicalAddictionChance>0</chemicalAddictionChance>
+		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<forceNormalGearQuality>true</forceNormalGearQuality>
+		<initialWillRange>2~40</initialWillRange>
+		<initialResistanceRange>2~40</initialResistanceRange>
+		<maxGenerationAge>30</maxGenerationAge>
+		<useFactionXenotypes>false</useFactionXenotypes>
+	</PawnKindDef>
+
+	<!-- 玩家殖民者 -->
+	<PawnKindDef Name="MunoGirl_Colonist" ParentName="MunoGirlBasePawnKind">
+		<defName>MunoGirl_Colonist</defName>
+		<label>奶牛娘</label>
+		<defaultFactionType>PlayerColony</defaultFactionType>
+		<invNutrition>2.55</invNutrition>
+		<backstoryFiltersOverride>
+			<li>
+				<categories>
+					<li>MunoGirl</li>
+				</categories>
+			</li>
+		</backstoryFiltersOverride>
+		<!--<apparelTags>
+			<li>DR_Apparel</li>
+		</apparelTags>-->
+		<apparelMoney>1600~5000</apparelMoney>
+		<!-- <abilities>
+        <li>DR_FireBurst</li>
+		</abilities> -->
+	</PawnKindDef>
+</Defs>

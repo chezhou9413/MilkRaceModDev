@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <RulePackDef>
+        <defName>MunoRaceNamePack</defName>
+        <rulePack>
+            <rulesStrings>
+                <li>r_name->[firstName] [lastName]</li>
+                <li>r_name->[firstName] '[nickName]' [lastName]</li>
+                <li>firstName->奶牛娘</li>
+                <li>lastName->奶牛娘</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+</Defs>
+

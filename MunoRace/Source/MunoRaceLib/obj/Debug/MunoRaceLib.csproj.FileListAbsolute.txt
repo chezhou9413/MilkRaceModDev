@@ -1,0 +1,6 @@
+C:\Users\30978\Desktop\XUENIU\MunoRace\1.6\Assemblies\MunoRaceLib.dll
+C:\Users\30978\Desktop\XUENIU\MunoRace\1.6\Assemblies\MunoRaceLib.pdb
+C:\Users\30978\Desktop\XUENIU\MunoRace\Source\MunoRaceLib\obj\Debug\MunoRaceLib.csproj.AssemblyReference.cache
+C:\Users\30978\Desktop\XUENIU\MunoRace\Source\MunoRaceLib\obj\Debug\MunoRaceLib.csproj.CoreCompileInputs.cache
+C:\Users\30978\Desktop\XUENIU\MunoRace\Source\MunoRaceLib\obj\Debug\MunoRaceLib.dll
+C:\Users\30978\Desktop\XUENIU\MunoRace\Source\MunoRaceLib\obj\Debug\MunoRaceLib.pdb

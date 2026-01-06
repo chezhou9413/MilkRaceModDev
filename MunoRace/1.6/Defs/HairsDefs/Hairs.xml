@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>	
+	<HairDef Abstract="True" Name="BaseMunoGirlHair">
+		<hairGender>Female</hairGender>
+		<styleTags>
+			<li>MunoGirl_Hair</li>
+		</styleTags>
+	</HairDef>
+	<HairDef ParentName="BaseMunoGirlHair">
+		<defName>MunoGirl_Hair01</defName>
+		<label>奶牛娘短发</label>
+        <texPath>AlienRace/ag/Null/Null</texPath>
+	</HairDef>
+</Defs>
