@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 乳源质：Mulacte, Muno + Lacte (Milk in Latin) -->
+  <!-- 乳源质浓浆 -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>MunoRace_ConcentratedMulacte</defName>
+    <label>乳源质浓浆</label>
+    <description>高度浓缩的乳源质，一种黏性液体，能够提供可观的生物能，可以用于多种用途</description>
+    <possessionCount>20</possessionCount>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>AlienRace/MunoRace/Item/Resource/MunoRace_ConcentratedMulacte</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+			<graphicClass>Graphic_StackCount</graphicClass>
+      <drawSize>0.9</drawSize>
+    </graphicData>
+    <stackLimit>150</stackLimit>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <intricate>true</intricate> <!-- Not returned to player when product made of this is smelted. -->
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>2.3</MarketValue>
+      <Mass>0.05</Mass>
+      <Flammability>2.0</Flammability>
+      <DeteriorationRate>1.0</DeteriorationRate>
+      <Nutrition>0.5</Nutrition>
+      <FoodPoisonChanceFixedHuman>0</FoodPoisonChanceFixedHuman>
+    </statBases>
+    <thingCategories>
+      <li>Manufactured</li>
+      <li>AnimalProductRaw</li>
+    </thingCategories>
+    <comps>
+    </comps>
+    <ingestible>
+      <preferability>RawTasty</preferability>
+      <foodType>AnimalProduct, Fluid</foodType>
+      <babiesCanIngest>true</babiesCanIngest>
+    </ingestible>
+    <allowedArchonexusCount>100</allowedArchonexusCount>
+  </ThingDef>
+  
+
+</Defs>
