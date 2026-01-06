@@ -10,7 +10,7 @@
     <possessionCount>20</possessionCount>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>AlienRace/MunoRace/Item/Resource/MunoRace_ConcentratedMulacte</texPath>
+      <texPath>Item/Resource/MunoRace_ConcentratedMulacte</texPath>
       <graphicClass>Graphic_Single</graphicClass>
 			<graphicClass>Graphic_StackCount</graphicClass>
       <drawSize>0.9</drawSize>

@@ -7,7 +7,7 @@
     <label>缪诺乳</label>
     <description>从缪诺族身上获得的可食用液体，同时还有多种用途，但从哪里获得尚不可知</description>
     <graphicData>
-      <texPath>AlienRace/MunoRace/Item/Resource/MunoRace_MunoMilk</texPath>
+      <texPath>Item/Resource/MunoRace_MunoMilk</texPath>
 			<graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <socialPropernessMatters>true</socialPropernessMatters>
