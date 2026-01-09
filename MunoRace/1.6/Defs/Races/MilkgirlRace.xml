@@ -363,7 +363,7 @@
         </statBases>
         <comps>
             <li Class="MunoRaceLib.MunoComp.ThingCompProperties_Galactogen">
-                <maxGalactogen>50</maxGalactogen>
+                <maxGalactogen>120</maxGalactogen>
                 <minGalactogen>0</minGalactogen>
                 <houseGalactogen>2</houseGalactogen>
                 <GalactogenUIName>乳源质</GalactogenUIName>

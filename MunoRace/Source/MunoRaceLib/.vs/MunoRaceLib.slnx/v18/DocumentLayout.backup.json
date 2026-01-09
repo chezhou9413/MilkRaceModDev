@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|c:\\users\\30978\\desktop\\xueniu\\munorace\\source\\munoracelib\\munojobdriver\\jobdriver_spawnconcentratedmulacte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|solutionrelative:munojobdriver\\jobdriver_spawnconcentratedmulacte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\munojobdriver\\jobdriver_spawnmunomilk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|solutionrelative:munojobdriver\\jobdriver_spawnmunomilk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|c:\\users\\30978\\desktop\\xueniu\\munorace\\source\\munoracelib\\munocomp\\thingcomp_galactogen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|solutionrelative:munocomp\\thingcomp_galactogen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\patch\\patch_galactogenbar_getgizmos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|solutionrelative:patch\\patch_galactogenbar_getgizmos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|c:\\users\\30978\\desktop\\xueniu\\munorace\\source\\munoracelib\\munogizmo\\gizmo_galactogenbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\munogizmo\\gizmo_galactogenbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|solutionrelative:munogizmo\\gizmo_galactogenbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\munocomp\\thingcomp_galactogen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|solutionrelative:munocomp\\thingcomp_galactogen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\munojobgiver\\jobgiver_automunomilk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|solutionrelative:munojobgiver\\jobgiver_automunomilk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\munodefref\\munodefdataref.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|solutionrelative:munodefref\\munodefdataref.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A1615BB1-E041-4B10-8634-04FEE57415BD}|MunoRaceLib.csproj|C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\munomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,34 +42,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 280,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Gizmo_GalactogenBar.cs",
-              "DocumentMoniker": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoGizmo\\Gizmo_GalactogenBar.cs",
-              "RelativeDocumentMoniker": "MunoGizmo\\Gizmo_GalactogenBar.cs",
-              "ToolTip": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoGizmo\\Gizmo_GalactogenBar.cs",
-              "RelativeToolTip": "MunoGizmo\\Gizmo_GalactogenBar.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAAAEAAAABlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T12:09:05.508Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Patch_GalactogenBar_GetGizmos.cs",
-              "DocumentMoniker": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\Patch\\Patch_GalactogenBar_GetGizmos.cs",
-              "RelativeDocumentMoniker": "Patch\\Patch_GalactogenBar_GetGizmos.cs",
-              "ToolTip": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\Patch\\Patch_GalactogenBar_GetGizmos.cs",
-              "RelativeToolTip": "Patch\\Patch_GalactogenBar_GetGizmos.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAA+wB8AAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T12:27:10.858Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -62,13 +52,92 @@
               "RelativeDocumentMoniker": "MunoComp\\ThingComp_Galactogen.cs",
               "ToolTip": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoComp\\ThingComp_Galactogen.cs",
               "RelativeToolTip": "MunoComp\\ThingComp_Galactogen.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAiwAkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAuwH4AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T11:08:02.061Z"
+              "WhenOpened": "2026-01-06T11:08:02.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "JobGiver_AutoMunoMilk.cs",
+              "DocumentMoniker": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoJobGiver\\JobGiver_AutoMunoMilk.cs",
+              "RelativeDocumentMoniker": "MunoJobGiver\\JobGiver_AutoMunoMilk.cs",
+              "ToolTip": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoJobGiver\\JobGiver_AutoMunoMilk.cs",
+              "RelativeToolTip": "MunoJobGiver\\JobGiver_AutoMunoMilk.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAwCsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-08T06:39:04.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Gizmo_GalactogenBar.cs",
+              "DocumentMoniker": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoGizmo\\Gizmo_GalactogenBar.cs",
+              "RelativeDocumentMoniker": "MunoGizmo\\Gizmo_GalactogenBar.cs",
+              "ToolTip": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoGizmo\\Gizmo_GalactogenBar.cs",
+              "RelativeToolTip": "MunoGizmo\\Gizmo_GalactogenBar.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAUwCEAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T12:09:05.508Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "Patch_GalactogenBar_GetGizmos.cs",
+              "DocumentMoniker": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\Patch\\Patch_GalactogenBar_GetGizmos.cs",
+              "RelativeDocumentMoniker": "Patch\\Patch_GalactogenBar_GetGizmos.cs",
+              "ToolTip": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\Patch\\Patch_GalactogenBar_GetGizmos.cs",
+              "RelativeToolTip": "Patch\\Patch_GalactogenBar_GetGizmos.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAuwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T12:27:10.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JobDriver_SpawnConcentratedMulacte.cs",
+              "DocumentMoniker": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoJobDriver\\JobDriver_SpawnConcentratedMulacte.cs",
+              "RelativeDocumentMoniker": "MunoJobDriver\\JobDriver_SpawnConcentratedMulacte.cs",
+              "ToolTip": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoJobDriver\\JobDriver_SpawnConcentratedMulacte.cs",
+              "RelativeToolTip": "MunoJobDriver\\JobDriver_SpawnConcentratedMulacte.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAACgAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T08:15:17.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "JobDriver_SpawnMunoMilk.cs",
+              "DocumentMoniker": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoJobDriver\\JobDriver_SpawnMunoMilk.cs",
+              "RelativeDocumentMoniker": "MunoJobDriver\\JobDriver_SpawnMunoMilk.cs",
+              "ToolTip": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoJobDriver\\JobDriver_SpawnMunoMilk.cs",
+              "RelativeToolTip": "MunoJobDriver\\JobDriver_SpawnMunoMilk.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-08T06:13:23.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MunoDefDataRef.cs",
+              "DocumentMoniker": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoDefRef\\MunoDefDataRef.cs",
+              "RelativeDocumentMoniker": "MunoDefRef\\MunoDefDataRef.cs",
+              "ToolTip": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoDefRef\\MunoDefDataRef.cs",
+              "RelativeToolTip": "MunoDefRef\\MunoDefDataRef.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxEAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-08T06:19:07.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "MunoMain.cs",
               "DocumentMoniker": "C:\\Users\\30978\\Desktop\\XUENIU\\MunoRace\\Source\\MunoRaceLib\\MunoMain.cs",
               "RelativeDocumentMoniker": "MunoMain.cs",

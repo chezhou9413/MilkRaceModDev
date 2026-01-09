@@ -127,7 +127,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MunoComp\ThingComp_Galactogen.cs" />
+    <Compile Include="MunoDefRef\MunoDefDataRef.cs" />
     <Compile Include="MunoGizmo\Gizmo_GalactogenBar.cs" />
+    <Compile Include="MunoJobDriver\JobDriver_SpawnConcentratedMulacte.cs" />
+    <Compile Include="MunoJobDriver\JobDriver_SpawnMunoMilk.cs" />
+    <Compile Include="MunoJobGiver\JobGiver_AutoMunoMilk.cs" />
     <Compile Include="MunoMain.cs" />
     <Compile Include="Patch\Patch_GalactogenBar_GetGizmos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

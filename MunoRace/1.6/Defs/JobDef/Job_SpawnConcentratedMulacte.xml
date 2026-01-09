@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <JobDef>
+        <defName>JobDriver_SpawnConcentratedMulacte</defName>
+        <driverClass>MunoRaceLib.MunoJobDriver.JobDriver_SpawnConcentratedMulacte</driverClass>
+        <reportString>正在收集乳原质浓浆</reportString>
+        <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+    </JobDef>
+</Defs>
