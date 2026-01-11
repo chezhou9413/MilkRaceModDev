@@ -1,0 +1,17 @@
+<Defs>
+    <FleckDef ParentName="FleckBase">
+        <defName>Muno_Fleck_MilkSplatter</defName>
+        <graphicData>
+            <texPath>Fleck/MilkSplatter/SplatterA</texPath>
+            <graphicClass>Graphic_Fleck</graphicClass>
+            <shaderType>TransparentPostLight</shaderType>
+            <color>(255, 255, 255, 200)</color>
+            <drawSize>0.5</drawSize>
+        </graphicData>
+        <altitudeLayer>MoteOverhead</altitudeLayer>
+        <fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+        <fadeInTime>0.05</fadeInTime>
+        <solidTime>0.2</solidTime>
+        <fadeOutTime>0.4</fadeOutTime>
+    </FleckDef>
+</Defs>

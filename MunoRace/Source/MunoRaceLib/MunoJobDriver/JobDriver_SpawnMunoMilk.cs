@@ -1,5 +1,6 @@
 ﻿using MunoRaceLib.MunoComp;
 using MunoRaceLib.MunoDefRef;
+using MunoRaceLib.Tool;
 using RimWorld;
 using System.Collections.Generic;
 using Verse;
@@ -22,15 +23,27 @@ namespace MunoRaceLib.MunoJobDriver
             //设置执行位置在原地
             this.FailOnDespawnedOrNull(TargetIndex.A);
             Toil waitToil = Toils_General.Wait(DurationTicks);
-            //显示进度条
             waitToil.WithProgressBarToilDelay(TargetIndex.A);
-            //角色面向方向
             waitToil.handlingFacing = true;
+            waitToil.tickAction = () =>
+            {
+                if (pawn.IsHashIntervalTick(5))
+                {
+                    FilthGalactogenTool.SpawnMilkSplatter(pawn.Position.ToVector3Shifted(), pawn.Map, 4);
+                }
+                if (pawn.IsHashIntervalTick(30))
+                {
+                    if (Rand.Chance(0.4f))
+                    {
+                        FilthGalactogenTool.SpawnFilthGalactogen(pawn);
+                    }
+                }
+            };
             yield return waitToil;
             //产生物品
             Toil spawnToil = Toils_General.Do(() =>
             {
-            ThingComp_Galactogen galactogen = pawn.GetComp<ThingComp_Galactogen>();
+                ThingComp_Galactogen galactogen = pawn.GetComp<ThingComp_Galactogen>();
 
                 // 检查组件还在，且当前位置有效
                 if (galactogen != null && pawn.Map != null)

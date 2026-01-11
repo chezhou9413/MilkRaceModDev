@@ -133,8 +133,11 @@
     <Compile Include="MunoJobDriver\JobDriver_SpawnMunoMilk.cs" />
     <Compile Include="MunoJobGiver\JobGiver_AutoMunoMilk.cs" />
     <Compile Include="MunoMain.cs" />
+    <Compile Include="MunoThoughtWorker\ThoughtWorker_GalactogenOverflow.cs" />
+    <Compile Include="Patch\Patch_Pawn_PostApplyDamage.cs" />
     <Compile Include="Patch\Patch_GalactogenBar_GetGizmos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tool\FilthGalactogenTool.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

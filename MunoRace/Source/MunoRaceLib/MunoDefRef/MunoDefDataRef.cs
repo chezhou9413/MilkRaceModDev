@@ -16,5 +16,9 @@ namespace MunoRaceLib.MunoDefRef
 
         public static JobDef JobDriver_SpawnMunoMilk;
         public static JobDef JobDriver_SpawnConcentratedMulacte;
+
+        public static ThingDef Muno_Filth_Galactogen;
+
+        public static FleckDef Muno_Fleck_MilkSplatter;
     }
 }
