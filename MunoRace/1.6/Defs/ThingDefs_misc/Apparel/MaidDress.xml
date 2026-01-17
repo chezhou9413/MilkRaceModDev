@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!--基础父类-->
+
+	<ThingDef Name="MunoRace_ApparelBase" Abstract="True">
+    <thingClass>Apparel</thingClass>
+    <category>Item</category>
+    <selectable>True</selectable>
+    <pathCost>10</pathCost>
+    <useHitPoints>True</useHitPoints>
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+    </graphicData>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>2</DeteriorationRate>
+	  <Beauty>4</Beauty>
+		<SellPriceFactor>0.70</SellPriceFactor>		
+	</statBases>	
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li>
+        <compClass>CompColorable</compClass>
+      </li>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+    </comps>
+  	</ThingDef>
+  
+  	<!--工作台相关-->
+ 
+   	<ThingDef Name="MunoRace_Apparel" ParentName="MunoRace_ApparelBase" Abstract="True">
+    <recipeMaker>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <recipeUsers>
+        <li>MunoRace_WorkBench</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+    </recipeMaker>
+  	</ThingDef>
+    
+  	<!--以下为服装-->
+
+	<ThingDef ParentName="MunoRace_Apparel">
+  	<defName>MunoRace_Apparel_MaidDress</defName>
+    <label>女仆裙</label>
+    <description>一件女仆连身裙，穿着后看起来很像一名女仆.</description>
+	<possessionCount>1</possessionCount>
+    <recipeMaker>
+      <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
+      <displayPriority>215</displayPriority>   <!--显示等级-->
+    </recipeMaker>
+    <graphicData>
+   	<texPath>Apparel/MaidDress/MunoRace_Apparel_MaidDress</texPath> <!--物件的贴图路径-->
+	<graphicClass>Graphic_Single</graphicClass>
+	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
+	</graphicData>
+	<costStuffCount>80</costStuffCount> <!--制作材料 任意布料和皮革-->    
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+	<costList> <!--固定制作材料-->
+	  <Gold>2</Gold>
+   	</costList>
+	<statBases>  <!--工作量 防护 保温等-->   
+	 <MaxHitPoints>200</MaxHitPoints>
+	 <WorkToMake>10000</WorkToMake> <!--工作量-->   
+	 <Mass>1.5</Mass>
+      <StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor> <!--对护甲的材料系数-->
+	  <StuffEffectMultiplierInsulation_Cold>0.60</StuffEffectMultiplierInsulation_Cold> <!--对寒冷的材料系数-->     
+      <StuffEffectMultiplierInsulation_Heat>0.85</StuffEffectMultiplierInsulation_Heat> <!--对炎热的材料系数-->
+	  <EquipDelay>3</EquipDelay> <!--穿戴时间--> 
+	</statBases>
+	<generateCommonality>0.05</generateCommonality> <!--生成概率-->
+	 <equippedStatOffsets> <!--对小人的影响-->
+	   <SocialImpact>0.1</SocialImpact> <!--社交效果 可以不填 直接+百分比-->
+	   <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">0.05</SlaveSuppressionOffset> <!--压制奴隶系数 可以不填 直接+百分比-->
+    </equippedStatOffsets>
+	<thingCategories> <!--分类--> 
+	<li>Apparel</li>
+	</thingCategories>
+	<apparel>
+	 <bodyPartGroups> <!--覆盖部位--> 
+	  <li>Torso</li>
+      <li>Neck</li>  
+      <li>Shoulders</li>
+      <li>Arms</li>    
+      <li>Legs</li>
+	 </bodyPartGroups>
+	 <wornGraphicPath>Apparel/MaidDress/MunoRace_Apparel_MaidDress</wornGraphicPath> <!--穿着的贴图路径-->
+	 <layers>
+	  <li>Shell</li> <!--层级-->
+	 </layers>
+	 <tags> <!--标签-->
+	  <li>Outlander</li>
+	  <li>Spacer</li>
+	 </tags>
+	</apparel>  <!--不用颜色配置-->
+	
+	<!-- <tradeTags>
+      <li>BasicClothing</li>
+    </tradeTags> --> <!--贸易标签-->
+	</ThingDef>
+    
+</Defs>
+    

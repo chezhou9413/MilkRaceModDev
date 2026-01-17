@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+ <WorkGiverDef>
+    <defName>DoBillsMakeApparel</defName>
+    <label>make apparel</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Tailoring</workType>
+    <priorityInType>110</priorityInType>
+    <fixedBillGiverDefs>
+      <li>MunoRace_WorkBench</li>
+    </fixedBillGiverDefs>
+    <verb>tailor at</verb>
+    <gerund>tailoring at</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+  
+
+</Defs>
