@@ -1,0 +1,874 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+
+	<!-- 突击轻机枪 -->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>Gun_MunoLMG</defName>
+		<label>缪诺突击轻机枪</label>
+		<description>一款缪诺中常用的轻机枪，它结构可靠，操作简单，被大规模的使用，发射中口径弹药，具有良好的杀伤效果和足够的侵彻能力，</description>
+		<graphicData>
+			<texPath>Weapons/Gun_MunoLMG</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.0</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>35000</WorkToMake>
+			<Mass>7.5</Mass>
+			<AccuracyTouch>0.45</AccuracyTouch>
+			<AccuracyShort>0.79</AccuracyShort>
+			<AccuracyMedium>0.80</AccuracyMedium>
+			<AccuracyLong>0.62</AccuracyLong>
+			<RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>9</ComponentIndustrial>
+			<!--Plasteel>25</Plasteel-->	<!--玻璃钢-->
+			<!--ComponentSpacer>1</ComponentSpacer-->	<!--高级零部件-->
+			<!--Uranium>45</Uranium-->	<!--铀-->
+			<!--Chemfuel>75</Chemfuel-->	 <!--化合燃料-->
+			<!--Gold>3</Gold-->		<!--金，实际消耗x10-->
+			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
+		</costList>		
+		<recipeMaker>
+			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<skillRequirements>
+			<Crafting>6</Crafting>
+			</skillRequirements>
+			<recipeUsers>
+        		<li>MunoRace_WorkBench</li>
+      		</recipeUsers>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_MunoLMG</defaultProjectile>
+				<warmupTime>1.2</warmupTime>
+				<range>35</range>
+				<burstShotCount>12</burstShotCount>
+				<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+				<soundCast>Shot_Minigun</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>10</muzzleFlashScale>
+			</li>	
+		</verbs>
+		<comps>
+		</comps>		
+		<weaponTags Inherit="false">
+			<li>IndustrialGunAdvanced</li>
+			<!-- <li>Gun_MunoLMG</li> 依据pawnkind需求调整 -->
+		</weaponTags>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+	        </li>
+		</tools>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_MunoLMG</defName>
+		<label>缪诺轻机枪弹</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<speed>70</speed>
+			<stoppingPower>0.1</stoppingPower>
+			<armorPenetrationBase>0.39</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+
+    <!-- 电磁突击步枪 -->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>Gun_MunoAR</defName>
+		<label>缪诺突击步枪</label>
+		<description>一款中口径电磁突击步枪，对于缪诺们来说，后坐力可控，且拥有更高的精度和穿甲能力，代价是比较昂贵</description>
+		<graphicData>
+			<texPath>Weapons/Gun_MunoAR</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.0</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>45000</WorkToMake>
+			<Mass>5</Mass>
+			<AccuracyTouch>0.60</AccuracyTouch>
+			<AccuracyShort>0.80</AccuracyShort>
+			<AccuracyMedium>0.72</AccuracyMedium>
+			<AccuracyLong>0.61</AccuracyLong>
+			<RangedWeapon_Cooldown>1.3</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>7</ComponentIndustrial>
+			<!--Plasteel>25</Plasteel-->	<!--玻璃钢-->
+			<!--ComponentSpacer>1</ComponentSpacer-->	<!--高级零部件-->
+			<!--Uranium>45</Uranium-->	<!--铀-->
+			<!--Chemfuel>75</Chemfuel-->	 <!--化合燃料-->
+			<!--Gold>3</Gold-->		<!--金，实际消耗x10-->
+			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
+		</costList>		
+		<recipeMaker>
+			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<skillRequirements>
+			<Crafting>6</Crafting>
+			</skillRequirements>
+			<recipeUsers>
+        		<li>MunoRace_WorkBench</li>
+      		</recipeUsers>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_MunoAR</defaultProjectile>
+				<warmupTime>1.2</warmupTime>
+				<range>32</range>
+				<burstShotCount>3</burstShotCount>
+				<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+				<soundCast>Shot_AssaultRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>	
+		</verbs>
+		<comps>
+		</comps>		
+		<weaponTags Inherit="false">
+			<li>IndustrialGunAdvanced</li>
+			<!-- <li>Muno_AR</li> 依据pawnkind需求调整 -->
+		</weaponTags>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+	        </li>
+		</tools>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_MunoAR</defName>
+		<label>缪诺突击步枪弹</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<speed>70</speed>
+			<!--stoppingPower>1.0</stoppingPower-->
+			<armorPenetrationBase>0.26</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+
+	<!-- 大威力手枪 -->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>Gun_MunoHPP</defName>
+		<label>缪诺大威力手枪</label>
+		<description>一款紧凑的大口径的大威力手枪，停止力很强，但是精度不如人意</description>
+		<graphicData>
+			<texPath>Weapons/Gun_MunoHPP</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.0</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>8800</WorkToMake>
+			<Mass>2.5</Mass>
+			<AccuracyTouch>0.73</AccuracyTouch>
+			<AccuracyShort>0.79</AccuracyShort>
+			<AccuracyMedium>0.50</AccuracyMedium>
+			<AccuracyLong>0.20</AccuracyLong>
+			<RangedWeapon_Cooldown>1.0</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>75</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+			<!--Plasteel>25</Plasteel-->	<!--玻璃钢-->
+			<!--ComponentSpacer>1</ComponentSpacer-->	<!--高级零部件-->
+			<!--Uranium>45</Uranium-->	<!--铀-->
+			<!--Chemfuel>75</Chemfuel-->	 <!--化合燃料-->
+			<!--Gold>3</Gold-->		<!--金，实际消耗x10-->
+			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
+		</costList>		
+		<recipeMaker>
+			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<skillRequirements>
+			<Crafting>6</Crafting>
+			</skillRequirements>
+			<recipeUsers>
+        		<li>MunoRace_WorkBench</li>
+      		</recipeUsers>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_MunoHPP</defaultProjectile>
+				<warmupTime>1.1</warmupTime>
+				<range>23</range>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+				<soundCast>Shot_Revolver</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>12</muzzleFlashScale>
+			</li>	
+		</verbs>
+		<comps>
+		</comps>		
+		<weaponTags Inherit="false">
+			<li>IndustrialGunAdvanced</li>
+			<!-- <li>MunoGirl_HPP</li> 依据pawnkind需求调整 -->
+		</weaponTags>
+		<tools>
+			<li>
+				<label>grip</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+	        </li>
+		</tools>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_MunoHPP</defName>
+		<label>缪诺大威力手枪弹</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>17</damageAmountBase>
+			<speed>55</speed>
+			<stoppingPower>1.0</stoppingPower>
+			<armorPenetrationBase>0.16</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+	
+	<!-- 电磁手枪 -->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>Gun_MunoPO</defName>
+		<label>缪诺手枪</label>
+		<description>一款小口径电磁手枪，以手枪的角度来说，它穿甲能力很不错，但弹药杀伤能力不足</description>
+		<graphicData>
+			<texPath>Weapons/Gun_MunoPO</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.0</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>8800</WorkToMake>
+			<Mass>2</Mass>
+			<AccuracyTouch>0.88</AccuracyTouch>
+			<AccuracyShort>0.70</AccuracyShort>
+			<AccuracyMedium>0.40</AccuracyMedium>
+			<AccuracyLong>0.30</AccuracyLong>
+			<RangedWeapon_Cooldown>1.0</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>75</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+			<!--Plasteel>25</Plasteel-->	<!--玻璃钢-->
+			<!--ComponentSpacer>1</ComponentSpacer-->	<!--高级零部件-->
+			<!--Uranium>45</Uranium-->	<!--铀-->
+			<!--Chemfuel>75</Chemfuel-->	 <!--化合燃料-->
+			<!--Gold>3</Gold-->		<!--金，实际消耗x10-->
+			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
+		</costList>		
+		<recipeMaker>
+			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<skillRequirements>
+			<Crafting>6</Crafting>
+			</skillRequirements>
+			<recipeUsers>
+        		<li>MunoRace_WorkBench</li>
+      		</recipeUsers>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_MunoPO</defaultProjectile>
+				<warmupTime>0.2</warmupTime>
+				<range>23</range>
+				<burstShotCount>1</burstShotCount>
+				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+				<soundCast>Shot_Autopistol</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>8</muzzleFlashScale>
+			</li>	
+		</verbs>
+		<comps>
+		</comps>		
+		<weaponTags Inherit="false">
+			<li>IndustrialGunAdvanced</li>
+			<!-- <li>MunoGirl_PO</li> 依据pawnkind需求调整 -->
+		</weaponTags>
+		<tools>
+			<li>
+				<label>grip</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+	        </li>
+		</tools>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_MunoPO</defName>
+		<label>奶牛娘手枪弹</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<speed>60</speed>
+			<!--stoppingPower>1.0</stoppingPower-->
+			<armorPenetrationBase>0.37</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+
+	<!-- 电磁冲锋手枪 -->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>Gun_MunoMP</defName>
+		<label>缪诺冲锋手枪</label>
+		<description>一款射速极快的小口径冲锋手枪，快到能在1秒内清空弹匣，但极高射速带来的较低的操控性和精准度</description>
+		<graphicData>
+			<texPath>Weapons/Gun_MunoMP</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.0</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>10000</WorkToMake>
+			<Mass>2</Mass>
+			<AccuracyTouch>0.84</AccuracyTouch>
+			<AccuracyShort>0.64</AccuracyShort>
+			<AccuracyMedium>0.44</AccuracyMedium>
+			<AccuracyLong>0.14</AccuracyLong>
+			<RangedWeapon_Cooldown>1.0</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>90</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+			<!--Plasteel>25</Plasteel-->	<!--玻璃钢-->
+			<!--ComponentSpacer>1</ComponentSpacer-->	<!--高级零部件-->
+			<!--Uranium>45</Uranium-->	<!--铀-->
+			<!--Chemfuel>75</Chemfuel-->	 <!--化合燃料-->
+			<!--Gold>3</Gold-->		<!--金，实际消耗x10-->
+			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
+		</costList>		
+		<recipeMaker>
+			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<skillRequirements>
+			<Crafting>6</Crafting>
+			</skillRequirements>
+			<recipeUsers>
+        		<li>MunoRace_WorkBench</li>
+      		</recipeUsers>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_MunoMP</defaultProjectile>
+				<warmupTime>0.6</warmupTime>
+				<range>23</range>
+				<burstShotCount>4</burstShotCount>
+				<ticksBetweenBurstShots>3.2</ticksBetweenBurstShots>
+				<soundCast>Shot_Machinepistol</soundCast>
+				<soundCastTail>GunTail_Light</soundCastTail>
+				<muzzleFlashScale>8</muzzleFlashScale>
+			</li>	
+		</verbs>
+		<comps>
+		</comps>		
+		<weaponTags Inherit="false">
+			<li>IndustrialGunAdvanced</li>
+			<!-- <li>MunoGirl_MP</li> 依据pawnkind需求调整 -->
+		</weaponTags>
+		<tools>
+			<li>
+				<label>grip</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+	        </li>
+		</tools>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_MunoMP</defName>
+		<label>奶牛娘电磁手枪弹</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<speed>60</speed>
+			<!--stoppingPower>1.0</stoppingPower-->
+			<armorPenetrationBase>0.17</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+
+	<!-- 榴弹发射器 -->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>Gun_MunoMGL</defName>
+		<label>缪诺榴弹发射器</label>
+		<description>弹匣供弹的榴弹发射器，虽然使用的榴弹口径较小，但射速弥补了单发杀伤力不足的问题</description>
+        <graphicData>
+			<texPath>Weapons/Gun_MunoMGL</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.0</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>70000</WorkToMake>
+			<Mass>11.5</Mass>
+			<AccuracyTouch>0.43</AccuracyTouch>
+			<AccuracyShort>0.76</AccuracyShort>
+			<AccuracyMedium>0.60</AccuracyMedium>
+			<AccuracyLong>0.40</AccuracyLong>
+			<RangedWeapon_Cooldown>2.2</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>7</ComponentIndustrial>
+			<!--Plasteel>25</Plasteel-->	<!--玻璃钢-->
+			<!--ComponentSpacer>1</ComponentSpacer-->	<!--高级零部件-->
+			<!--Uranium>45</Uranium-->	<!--铀-->
+			<Chemfuel>75</Chemfuel>	 <!--化合燃料-->
+			<!--Gold>3</Gold-->		<!--金，实际消耗x10-->
+			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
+		</costList>		
+		<recipeMaker>
+			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<skillRequirements>
+			<Crafting>7</Crafting>
+			</skillRequirements>
+			<recipeUsers>
+        		<li>MunoRace_WorkBench</li>
+      		</recipeUsers>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_MunoMGL</defaultProjectile>
+				<warmupTime>1.8</warmupTime>
+				<range>25</range>
+				<burstShotCount>3</burstShotCount>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+                <forcedMissRadius>0.2</forcedMissRadius>
+				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>12</muzzleFlashScale>
+			</li>	
+		</verbs>
+		<comps>
+		</comps>		
+		<weaponTags Inherit="false">
+			<li>IndustrialGunAdvanced</li>
+			<!-- <li>MunoGirl_MGL</li> 依据pawnkind需求调整 -->
+		</weaponTags>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+	        </li>
+		</tools>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_MunoMGL</defName>
+		<label>奶牛娘榴弹</label>
+		<graphicData>
+			<texPath>Things/Projectile/Charge_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+        <projectile>
+          <damageDef>Bomb</damageDef>
+          <explosionRadius>1</explosionRadius>
+          <speed>75</speed>
+          <explosionDelay>1</explosionDelay>
+          <stoppingPower>1.0</stoppingPower>
+          <damageAmountBase>15</damageAmountBase>
+          <armorPenetrationBase>0.26</armorPenetrationBase>
+        </projectile>
+	</ThingDef>
+
+	<!-- 重机枪 -->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>Gun_MunoHMG</defName>
+		<label>缪诺重机枪</label>
+		<description>一款大口径重机枪，兼具大威力与高穿甲，但是非常笨重</description>
+		<graphicData>
+			<texPath>Weapons/Gun_MunoHMG</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.0</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<WorkToMake>70000</WorkToMake>
+			<Mass>21</Mass>
+			<AccuracyTouch>0.3</AccuracyTouch>
+			<AccuracyShort>0.66</AccuracyShort>
+			<AccuracyMedium>0.60</AccuracyMedium>
+			<AccuracyLong>0.51</AccuracyLong>
+			<RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>175</Steel>
+			<ComponentIndustrial>15</ComponentIndustrial>
+			<!--Plasteel>25</Plasteel-->	<!--玻璃钢-->
+			<!--ComponentSpacer>1</ComponentSpacer-->	<!--高级零部件-->
+			<!--Uranium>45</Uranium-->	<!--铀-->
+			<!--Chemfuel>75</Chemfuel-->	 <!--化合燃料-->
+			<!--Gold>3</Gold-->		<!--金，实际消耗x10-->
+			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
+		</costList>		
+		<recipeMaker>
+			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<skillRequirements>
+			<Crafting>6</Crafting>
+			</skillRequirements>
+			<recipeUsers>
+        		<li>MunoRace_WorkBench</li>
+      		</recipeUsers>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_MunoHMG</defaultProjectile>
+				<warmupTime>1.9</warmupTime>
+				<range>33</range>
+				<burstShotCount>9</burstShotCount>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<soundCast>Shot_Minigun</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>13</muzzleFlashScale>
+			</li>	
+		</verbs>
+		<comps>
+		</comps>		
+		<weaponTags Inherit="false">
+			<li>IndustrialGunAdvanced</li>
+			<!-- <li>MunoGirl_HMG</li> 依据pawnkind需求调整 -->
+		</weaponTags>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>2.0</cooldownTime>
+	        </li>
+		</tools>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_MunoHMG</defName>
+		<label>奶牛娘重机枪弹</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>16</damageAmountBase>
+			<speed>70</speed>
+			<stoppingPower>0.5</stoppingPower>
+			<armorPenetrationBase>0.29</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+
+	<!--激光步枪 LR-->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>Gun_MunoLR</defName>
+    <label>缪诺激光步枪</label>
+    <description>发射伽玛激光束的步枪，可以穿透几乎所有装甲，能够非常有效的对付各种有机体目标，但对高密度结构伤害有限</description>
+    <graphicData>
+      <texPath>Weapons/Gun_MunoLR</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <!--thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags-->
+    <weaponClasses>
+      <li>RangedHeavy</li>
+      <li>Ultratech</li>
+    </weaponClasses>
+    <statBases>
+      <WorkToMake>62000</WorkToMake>
+      <Mass>13</Mass>
+      <AccuracyTouch>0.65</AccuracyTouch>
+      <AccuracyShort>0.72</AccuracyShort>
+      <AccuracyMedium>0.65</AccuracyMedium>
+      <AccuracyLong>0.6</AccuracyLong>
+      <RangedWeapon_Cooldown>1.6</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Plasteel>40</Plasteel>
+      <Steel>30</Steel>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>BeamWeapons</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+      </skillRequirements>
+      <recipeUsers>
+        <li>MunoRace_WorkBench</li>
+      </recipeUsers>
+      <displayPriority>220</displayPriority>
+    </recipeMaker>
+    <techLevel>Spacer</techLevel>
+    <weaponTags>
+      <li>GunHeavy</li>
+      <li>WeaponBeamRepeater</li>
+    </weaponTags>
+    <equippedStatOffsets>
+    </equippedStatOffsets>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_MunoLR</defaultProjectile>
+        <warmupTime>1.2</warmupTime>
+        <range>26</range>
+        <burstShotCount>5</burstShotCount>
+        <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+        <soundCast>Shot_BeamRepeater</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <aimingChargeMote>Mote_MunoBeamRepeater_Charge_LR</aimingChargeMote>
+        <aimingChargeMoteOffset>1.07</aimingChargeMoteOffset>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>barrels</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>20</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+
+	  <li>
+		<label>stock</label>
+		<capacities>
+			<li>Blunt</li>
+		</capacities>
+		<power>20</power>
+		<cooldownTime>2</cooldownTime>
+	  </li>
+    </tools>
+  </ThingDef>
+ 
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_MunoLR</defName>
+    <label>奶牛娘激光</label>
+    <thingClass>Beam</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>BeamBypassShields</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <beamMoteDef>Mote_BeamRepeaterLaser</beamMoteDef>
+      <beamStartOffset>0.1</beamStartOffset>
+      <armorPenetrationBase>0.66</armorPenetrationBase>
+    </projectile>
+  </ThingDef>
+
+	<!--激光狙击枪 LSR-->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>Gun_MunoLSR</defName>
+    <label>缪诺激光狙击枪</label>
+    <description>既然实体弹药充满了不稳定性，为什么不使用激光呢，这把激光狙击枪就这么诞生了</description>
+    <graphicData>
+      <texPath>Weapons/Gun_MunoLSR</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <!--thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags-->
+    <weaponClasses>
+      <li>RangedHeavy</li>
+      <li>Ultratech</li>
+    </weaponClasses>
+    <statBases>
+      <WorkToMake>62000</WorkToMake>
+      <Mass>13</Mass>
+      <AccuracyTouch>0.60</AccuracyTouch>
+      <AccuracyShort>0.78</AccuracyShort>
+      <AccuracyMedium>0.89</AccuracyMedium>
+      <AccuracyLong>0.78</AccuracyLong>
+      <RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Plasteel>40</Plasteel>
+      <Steel>30</Steel>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>BeamWeapons</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+      </skillRequirements>
+      <recipeUsers>
+        	<li>MunoRace_WorkBench</li>
+      </recipeUsers>
+      <displayPriority>220</displayPriority>
+    </recipeMaker>
+    <techLevel>Spacer</techLevel>
+    <weaponTags>
+      <li>GunHeavy</li>
+      <li>WeaponBeamRepeater</li>
+    </weaponTags>
+    <equippedStatOffsets>
+    </equippedStatOffsets>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_MunoLSR</defaultProjectile>
+        <warmupTime>1.4</warmupTime>
+        <range>38</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>14</ticksBetweenBurstShots>
+        <soundCast>Shot_BeamRepeater</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>11</muzzleFlashScale>
+        <aimingChargeMote>Mote_MunoBeamRepeater_Charge_LSR</aimingChargeMote>
+        <aimingChargeMoteOffset>1.07</aimingChargeMoteOffset>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>barrels</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>20</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+
+	  <li>
+		<label>stock</label>
+		<capacities>
+			<li>Blunt</li>
+		</capacities>
+		<power>20</power>
+		<cooldownTime>2</cooldownTime>
+	  </li>
+    </tools>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_MunoLSR</defName>
+    <label>奶牛娘激光</label>
+    <thingClass>Beam</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>BeamBypassShields</damageDef>
+      <damageAmountBase>15</damageAmountBase>
+      <beamMoteDef>Mote_BeamRepeaterLaser</beamMoteDef>
+      <beamStartOffset>0.1</beamStartOffset>
+      <armorPenetrationBase>0.88</armorPenetrationBase>
+    </projectile>
+  </ThingDef>
+
+</Defs>

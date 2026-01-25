@@ -18,5 +18,21 @@
     <prioritizeSustains>true</prioritizeSustains>
   </WorkGiverDef>
   
+    <WorkGiverDef>
+    <defName>DoBillsMakeWeapons</defName>
+    <label>make weapons</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Smithing</workType>
+    <priorityInType>115</priorityInType>
+    <fixedBillGiverDefs>
+      <li>MunoRace_WorkBench</li>
+    </fixedBillGiverDefs>
+    <verb>smith at</verb>
+    <gerund>smithing at</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
 
 </Defs>
