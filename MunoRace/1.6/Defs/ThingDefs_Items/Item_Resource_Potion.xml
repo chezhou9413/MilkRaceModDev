@@ -24,6 +24,16 @@
     <thingCategories>
       <li>Manufactured</li>
     </thingCategories>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>服用强化药水</useLabel>
+        <useDuration>100</useDuration>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>MunoRaceLib.MunoComp.CompUseEffect_UpgradeGalactogen</compClass>
+      </li>
+    </comps>
   </ThingDef>
 
 

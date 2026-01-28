@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <StatDef>
+    <defName>Muno_MaxGalactogen</defName>
+    <label>乳源质容量</label>
+    <description>储存乳源质的最大容量。</description>
+    <category>PawnMisc</category>
+    <defaultBaseValue>0</defaultBaseValue> 
+    <hideAtValue>0</hideAtValue>
+  </StatDef>
+
+  <StatDef>
+    <defName>Muno_GalactogenRecovery</defName>
+    <label>乳源质恢复速度</label>
+    <description>每小时恢复的乳源质数量。</description>
+    <category>PawnMisc</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <hideAtValue>0</hideAtValue>
+  </StatDef>
+
+</Defs>

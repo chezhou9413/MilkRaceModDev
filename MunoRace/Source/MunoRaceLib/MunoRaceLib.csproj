@@ -126,6 +126,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MunoComp\CompUseEffect_UpgradeGalactogen.cs" />
     <Compile Include="MunoComp\ThingComp_Galactogen.cs" />
     <Compile Include="MunoDefRef\MunoDefDataRef.cs" />
     <Compile Include="MunoGizmo\Gizmo_GalactogenBar.cs" />

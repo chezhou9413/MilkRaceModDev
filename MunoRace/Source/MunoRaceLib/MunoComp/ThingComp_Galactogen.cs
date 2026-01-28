@@ -67,6 +67,9 @@ namespace MunoRaceLib.MunoComp
 
         private void CheckGalactogen()
         {
+            this.MaxGalactogen = Props.maxGalactogen + SelfPawn.GetStatValue(MunoDefDataRef.Muno_MaxGalactogen);
+            this.HouseGalactogen = Props.houseGalactogen + SelfPawn.GetStatValue(MunoDefDataRef.Muno_GalactogenRecovery);
+
             if (SelfPawn.needs != null && SelfPawn.needs.food != null)
             {
                 float curPct = SelfPawn.needs.food.CurLevelPercentage;   // 当前饱食度百分比 (0.0 - 1.0)

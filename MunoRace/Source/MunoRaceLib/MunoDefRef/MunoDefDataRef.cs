@@ -20,5 +20,10 @@ namespace MunoRaceLib.MunoDefRef
         public static ThingDef Muno_Filth_Galactogen;
 
         public static FleckDef Muno_Fleck_MilkSplatter;
+
+        public static StatDef Muno_MaxGalactogen;
+        public static StatDef Muno_GalactogenRecovery;
+
+        public static HediffDef Muno_GalactogenEnhancement;
     }
 }
