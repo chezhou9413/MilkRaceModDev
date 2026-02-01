@@ -97,6 +97,7 @@
       <li>Arms</li>    
       <li>Legs</li>
 	 </bodyPartGroups>
+
 	 <wornGraphicPath>Apparel/MaidDress/MunoRace_Apparel_MaidDress</wornGraphicPath> <!--穿着的贴图路径-->
 	 <layers>
 	  <li>Shell</li> <!--层级-->
@@ -107,6 +108,21 @@
 	 </tags>
 	</apparel>  <!--不用颜色配置-->
 	
+  <comps>
+     <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Forbiddable" />
+      <li>      
+          <compClass>CompColorable</compClass>
+      </li>            
+      <li Class="ChezhouLib.comp.ApparelAddBodyAddonCompProperties">            
+        <targetRaces>
+          <li>MunoRace</li>          
+        </targetRaces>                
+      </li>            
+  </comps>
+  
 	<!-- <tradeTags>
       <li>BasicClothing</li>
     </tradeTags> --> <!--贸易标签-->

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    
+  	<!--以下为服装-->
+
+	<ThingDef ParentName="MunoRace_Apparel">
+  	<defName>MunoRace_Apparel_Oldunderwear</defName>
+    <label>缪诺旧式内衣</label>
+    <description>缪诺中常见的旧式内衣，款式老旧，但总是大量供给给船队，让人不禁怀疑是不是某种利益交易.</description>
+	<possessionCount>1</possessionCount>
+    <recipeMaker>
+      <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
+      <displayPriority>215</displayPriority>   <!--显示等级-->
+    </recipeMaker>
+    <graphicData>
+   	<texPath>Apparel/Oldunderwear/MunoRace_Apparel_Oldunderwear</texPath> <!--物件的贴图路径-->
+	<graphicClass>Graphic_Single</graphicClass>
+	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
+	</graphicData>
+	<costStuffCount>80</costStuffCount> <!--制作材料 任意布料和皮革-->    
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+	<costList> <!--固定制作材料-->
+	  <Gold>2</Gold>
+   	</costList>
+	<statBases>  <!--工作量 防护 保温等-->   
+	 <MaxHitPoints>100</MaxHitPoints>
+	 <WorkToMake>10000</WorkToMake> <!--工作量-->   
+	 <Mass>1.5</Mass>
+      <StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor> <!--对护甲的材料系数-->
+	  <StuffEffectMultiplierInsulation_Cold>0.1</StuffEffectMultiplierInsulation_Cold> <!--对寒冷的材料系数-->     
+      <StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat> <!--对炎热的材料系数-->
+	  <EquipDelay>3</EquipDelay> <!--穿戴时间--> 
+	</statBases>
+	<generateCommonality>0.05</generateCommonality> <!--生成概率-->
+	 <equippedStatOffsets> <!--对小人的影响-->
+	   <SocialImpact>0.1</SocialImpact> <!--社交效果 可以不填 直接+百分比-->
+	   <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">0.05</SlaveSuppressionOffset> <!--压制奴隶系数 可以不填 直接+百分比-->
+    </equippedStatOffsets>
+	<thingCategories> <!--分类--> 
+	<li>Apparel</li>
+	</thingCategories>
+	<apparel>
+	 <bodyPartGroups> <!--覆盖部位--> 
+	  <li>Torso</li>
+      <li>Neck</li>  
+      <li>Shoulders</li>
+      <li>Arms</li>    
+      <li>Legs</li>
+	 </bodyPartGroups>
+	 <wornGraphicPath>Apparel/Oldunderwear/MunoRace_Apparel_Oldunderwear</wornGraphicPath> <!--穿着的贴图路径-->
+	 <layers>
+	  <li>Shell</li> <!--层级-->
+	 </layers>
+	 <tags> <!--标签-->
+	  <li>Outlander</li>
+	  <li>Spacer</li>
+	 </tags>
+	</apparel>  <!--不用颜色配置-->
+
+  <comps>
+     <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Forbiddable" />
+      <li>      
+          <compClass>CompColorable</compClass>
+      </li>            
+      <li Class="ChezhouLib.comp.ApparelAddBodyAddonCompProperties">            
+        <targetRaces>
+          <li>MunoRace</li>          
+        </targetRaces>                
+      </li>            
+  </comps>
+	
+	<!-- <tradeTags>
+      <li>BasicClothing</li>
+    </tradeTags> --> <!--贸易标签-->
+	</ThingDef>
+    
+</Defs>
+    

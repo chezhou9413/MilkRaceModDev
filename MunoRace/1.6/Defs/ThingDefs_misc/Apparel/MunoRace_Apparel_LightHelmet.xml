@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    
+  	<!--以下为服装-->
+
+    <ThingDef ParentName="MunoRace_Apparel">
+  	<defName>MunoRace_Apparel_LightHelmet</defName>
+    <label>缪诺轻型头盔</label>
+    <description>一种轻型的通用动力甲头盔，提供了全包围防护，内置了HUD系统，能够为使用者提供辅助</description>
+    <graphicData>
+   	<texPath>Apparel/HeadApparel/LightHelmet/MunoRace_Apparel_LightHelmet</texPath> <!--物件的贴图路径-->
+	<graphicClass>Graphic_Single</graphicClass>
+	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
+     <!-- <scale>0.6</scale> -->
+	</graphicData>
+	<costList> <!--固定制作材料-->
+	  <Gold>2</Gold>
+   	</costList>
+	<statBases>  <!--工作量 防护 保温等-->   
+	<MaxHitPoints>350</MaxHitPoints>
+	<WorkToMake>60000</WorkToMake>
+	<Mass>6</Mass>
+	<ArmorRating_Blunt>0.45</ArmorRating_Blunt> <!--写死钝击防护-->
+    <ArmorRating_Sharp>0.96</ArmorRating_Sharp> <!--写死利器防护-->
+	<ArmorRating_Heat>2.00</ArmorRating_Heat> <!--写死热能防护-->
+	<Insulation_Heat>10</Insulation_Heat> <!--写死抗热防护-->
+    <Insulation_Cold>68</Insulation_Cold> <!--写死抗寒防护-->
+	<ToxicResistance>1.00</ToxicResistance> <!--毒气防护-->
+    <EMPResistance>0.60</EMPResistance> <!--EMP抗性系数，例如0.60表示将EMP伤害影响变为60%-->
+	<MeleeHitChance>2</MeleeHitChance> <!--近战命中系数-->
+    <MeleeDodgeChance>0.85</MeleeDodgeChance> <!--近战躲避系数-->
+    <IncomingDamageFactor>0.75</IncomingDamageFactor> <!--承伤系数-->
+	<EquipDelay>3</EquipDelay> <!--穿戴时间--> 
+	</statBases>
+	<generateCommonality>0.05</generateCommonality> <!--生成概率-->
+	 <equippedStatOffsets> <!--对小人的影响-->
+	   <SocialImpact>0.2</SocialImpact> <!--社交效果-->
+    </equippedStatOffsets>
+	<thingCategories>
+	<li>Apparel</li>
+	</thingCategories>
+	<apparel>
+	 <bodyPartGroups>
+      <li>UpperHead</li>  
+	 </bodyPartGroups>
+	 <wornGraphicPath>AlienRace/MunoRace/Null/Null</wornGraphicPath> <!--穿着的贴图路径-->
+	 <layers>
+	  <li>Overhead</li>
+	 </layers>
+	 <tags>
+	  <li>Outlander</li>
+	  <li>Spacer</li>
+	 </tags>
+	  <drawData>    
+          <scale>0.6</scale>
+    </drawData>  
+	</apparel>
+
+    <comps>
+     <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Forbiddable" />
+      <li>      
+          <compClass>CompColorable</compClass>
+      </li>            
+      <li Class="ChezhouLib.comp.ApparelAddBodyAddonCompProperties">            
+        <targetRaces>
+          <li>MunoRace</li>          
+        </targetRaces> 
+		<bodyAddonHidden>
+                    <!-- <li>Ogryn_Hairback</li> -->
+                </bodyAddonHidden>
+                <bodyAddonDefs>
+                    <li>
+                        <name>MunoRace_Apparel_LightHelmet</name>
+                        <userCustomizable>true</userCustomizable>
+                        <linkVariantIndexWithPrevious>true</linkVariantIndexWithPrevious>
+                        <path>Apparel/HeadApparel/LightHelmet/MunoRace_Apparel_LightHelmet</path>
+                        <colorChannel>apparel</colorChannel>
+                        <inFrontOfBody>true</inFrontOfBody>
+                        <layerInvert>false</layerInvert>
+                        <drawSize>1.0</drawSize>
+                        <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+                        <alignWithHead>true</alignWithHead>
+                        <conditions>
+                            <BodyPart>
+                                <bodyPart>Head</bodyPart>
+                            </BodyPart>
+                            <Apparel />
+                            <Posture>
+                                <drawnStanding>true</drawnStanding>
+                                <drawnLaying>true</drawnLaying>
+                                <drawnInBed>true</drawnInBed>
+                            </Posture>
+                        </conditions>
+                        <offsets>
+                            <west>
+                                <layerOffset>0.16</layerOffset>
+                                <offset>(0, 0)</offset>
+                            </west>
+                            <south>
+                                <layerOffset>0.16</layerOffset>
+                                <offset>(0, 0)</offset>
+                            </south>
+                            <north>
+                                <layerOffset>0.16</layerOffset>
+                                <offset>(0, 0)</offset>
+                            </north>
+                            <east>
+                                <layerOffset>0.16</layerOffset>
+                                <offset>(0, 0)</offset>
+                            </east>
+                        </offsets>
+                    </li>
+                </bodyAddonDefs>			               
+      </li>            
+    </comps>
+	
+	<!-- <tradeTags>
+      <li>BasicClothing</li>
+    </tradeTags> --> <!--贸易标签-->
+
+	</ThingDef>
+   
+   
+
+
+    
+</Defs>
+    

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    
+  	<!--以下为服装-->
+
+    <ThingDef ParentName="MunoRace_Apparel">
+  	<defName>MunoRace_Apparel_Weddingveil</defName>
+    <label>缪诺婚礼头纱</label>
+    <description>装饰性头饰，成套穿戴很漂亮</description>
+    <graphicData>
+   	<texPath>Apparel/HeadApparel/Weddingveil/MunoRace_Apparel_Weddingveil</texPath> <!--物件的贴图路径-->
+	<graphicClass>Graphic_Single</graphicClass>
+	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
+	</graphicData>
+	<costStuffCount>80</costStuffCount> <!--制作材料 任意布料和皮革-->    
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+	<costList> <!--固定制作材料-->
+	  <Gold>2</Gold>
+   	</costList>
+	<statBases>  <!--工作量 防护 保温等-->   
+	 <MaxHitPoints>110</MaxHitPoints>
+	 <WorkToMake>20000</WorkToMake> <!--工作量-->   
+	 <Mass>0.5</Mass>
+      <StuffEffectMultiplierArmor>0.08</StuffEffectMultiplierArmor> <!--对护甲的材料系数-->
+	  <StuffEffectMultiplierInsulation_Cold>0.1</StuffEffectMultiplierInsulation_Cold> <!--对寒冷的材料系数-->     
+      <StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat> <!--对炎热的材料系数-->
+	  <EquipDelay>1</EquipDelay> <!--穿戴时间--> 
+	</statBases>
+	<generateCommonality>0.05</generateCommonality> <!--生成概率-->
+	 <equippedStatOffsets> <!--对小人的影响-->
+	   <SocialImpact>0.2</SocialImpact> <!--社交效果-->
+    </equippedStatOffsets>
+	<thingCategories>
+	<li>Apparel</li>
+	</thingCategories>
+	<apparel>
+	 <bodyPartGroups>
+      <li>UpperHead</li>  
+	 </bodyPartGroups>
+	 <wornGraphicPath>AlienRace/MunoRace/Null/Null</wornGraphicPath> <!--穿着的贴图路径-->
+	 <layers>
+	  <li>Overhead</li>
+	 </layers>
+	 <tags>
+	  <li>Outlander</li>
+	  <li>Spacer</li>
+	 </tags>
+     <drawData>
+          <scale>0.7</scale>
+      </drawData>
+	</apparel>
+
+   
+    <comps>
+     <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Forbiddable" />
+      <li>      
+          <compClass>CompColorable</compClass>
+      </li>            
+      <li Class="ChezhouLib.comp.ApparelAddBodyAddonCompProperties">            
+        <targetRaces>
+          <li>MunoRace</li>          
+        </targetRaces> 
+		<bodyAddonHidden>
+                    <!-- <li>Ogryn_Hairback</li> -->
+                </bodyAddonHidden>
+                <bodyAddonDefs>
+                    <li>
+                        <name>MunoRace_Apparel_Weddingveil</name>
+                        <userCustomizable>true</userCustomizable>
+                        <linkVariantIndexWithPrevious>true</linkVariantIndexWithPrevious>
+                        <path>Apparel/HeadApparel/Weddingveil/MunoRace_Apparel_Weddingveil</path>
+                        <colorChannel>apparel</colorChannel>
+                        <inFrontOfBody>true</inFrontOfBody>
+                        <layerInvert>false</layerInvert>
+                        <drawSize>1.0</drawSize>
+                        <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+                        <alignWithHead>true</alignWithHead>
+                        <conditions>
+                            <BodyPart>
+                                <bodyPart>Head</bodyPart>
+                            </BodyPart>
+                            <Apparel />
+                            <Posture>
+                                <drawnStanding>true</drawnStanding>
+                                <drawnLaying>true</drawnLaying>
+                                <drawnInBed>true</drawnInBed>
+                            </Posture>
+                        </conditions>
+                        <offsets>
+                            <west>
+                                <layerOffset>0.14</layerOffset>
+                                <offset>(0, 0)</offset>
+                            </west>
+                            <south>
+                                <layerOffset>0.14</layerOffset>
+                                <offset>(0, 0)</offset>
+                            </south>
+                            <north>
+                                <layerOffset>0.14</layerOffset>
+                                <offset>(0, 0)</offset>
+                            </north>
+                            <east>
+                                <layerOffset>0.14</layerOffset>
+                                <offset>(0, 0)</offset>
+                            </east>
+                        </offsets>
+                    </li>
+                </bodyAddonDefs>			               
+      </li>            
+    </comps>
+	
+	<!-- <tradeTags>
+      <li>BasicClothing</li>
+    </tradeTags> --> <!--贸易标签-->
+	</ThingDef>
+    
+</Defs>
+    

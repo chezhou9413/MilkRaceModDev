@@ -260,19 +260,19 @@
                             </conditions>
                             <offsets>
                                 <west>
-                                    <layerOffset>0.12</layerOffset>
+                                    <layerOffset>0.15</layerOffset>
                                     <offset>(0,0)</offset>
                                 </west>
                                 <south>
-                                    <layerOffset>0.12</layerOffset>
+                                    <layerOffset>0.15</layerOffset>
                                     <offset>(0,0)</offset>
                                 </south>
                                 <north>
-                                    <layerOffset>0.12</layerOffset>
+                                    <layerOffset>0.15</layerOffset>
                                     <offset>(0,0)</offset>
                                 </north>
                                 <east>
-                                    <layerOffset>0.12</layerOffset>
+                                    <layerOffset>0.15</layerOffset>
                                     <offset>(0,0)</offset>
                                 </east>
                             </offsets>

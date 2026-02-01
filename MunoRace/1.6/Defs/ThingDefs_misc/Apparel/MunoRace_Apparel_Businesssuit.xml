@@ -5,39 +5,35 @@
   	<!--以下为服装-->
 
 	<ThingDef ParentName="MunoRace_Apparel">
-  	<defName>MunoRace_Apparel_Tentaclefrenzyarmor</defName>
-    <label>狂乱触手甲</label>
-    <description>触手甲等活体材料被意外刺激进而狂乱的产物，活性材料会逐渐控制穿戴者的身体、思维，若没有及时脱下，穿戴者就会逐渐失去心智.</description>
+  	<defName>MunoRace_Apparel_Businesssuit</defName>
+    <label>缪诺商务西装</label>
+    <description>一种适合商务业务的套装，能让穿着者看起来很专业.</description>
 	<possessionCount>1</possessionCount>
     <recipeMaker>
       <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
       <displayPriority>215</displayPriority>   <!--显示等级-->
     </recipeMaker>
     <graphicData>
-   	<texPath>Apparel/Tentaclefrenzyarmor/MunoRace_Apparel_Tentaclefrenzyarmor</texPath> <!--物件的贴图路径-->
+   	<texPath>Apparel/Businesssuit/MunoRace_Apparel_Businesssuit</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
+	<costStuffCount>80</costStuffCount> <!--制作材料 任意布料和皮革-->    
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
 	<costList> <!--固定制作材料-->
-      <ComponentSpacer>4</ComponentSpacer>
-      <Plasteel>100</Plasteel>
-      <Uranium>20</Uranium>
+	  <Gold>2</Gold>
    	</costList>
 	<statBases>  <!--工作量 防护 保温等-->   
-	<MaxHitPoints>150</MaxHitPoints>
-	<WorkToMake>120</WorkToMake>
-	<Mass>1.5</Mass>
-	<ArmorRating_Blunt>0.45</ArmorRating_Blunt> <!--写死钝击防护-->
-    <ArmorRating_Sharp>1.06</ArmorRating_Sharp> <!--写死利器防护-->
-	<ArmorRating_Heat>2.00</ArmorRating_Heat> <!--写死热能防护-->
-	<Insulation_Heat>10</Insulation_Heat> <!--写死抗热防护-->
-    <Insulation_Cold>68</Insulation_Cold> <!--写死抗寒防护-->
-	<ToxicResistance>1.00</ToxicResistance> <!--毒气防护-->
-    <EMPResistance>0.60</EMPResistance> <!--EMP抗性系数，例如0.60表示将EMP伤害影响变为60%-->
-	<MeleeHitChance>2</MeleeHitChance> <!--近战命中系数-->
-    <MeleeDodgeChance>0.85</MeleeDodgeChance> <!--近战躲避系数-->
-    <IncomingDamageFactor>0.75</IncomingDamageFactor> <!--承伤系数-->
-	<EquipDelay>3</EquipDelay> <!--穿戴时间--> 
+	 <MaxHitPoints>100</MaxHitPoints>
+	 <WorkToMake>10000</WorkToMake> <!--工作量-->   
+	 <Mass>1.5</Mass>
+      <StuffEffectMultiplierArmor>0.18</StuffEffectMultiplierArmor> <!--对护甲的材料系数-->
+	  <StuffEffectMultiplierInsulation_Cold>0.2</StuffEffectMultiplierInsulation_Cold> <!--对寒冷的材料系数-->     
+      <StuffEffectMultiplierInsulation_Heat>0.2</StuffEffectMultiplierInsulation_Heat> <!--对炎热的材料系数-->
+	  <EquipDelay>3</EquipDelay> <!--穿戴时间--> 
 	</statBases>
 	<generateCommonality>0.05</generateCommonality> <!--生成概率-->
 	 <equippedStatOffsets> <!--对小人的影响-->
@@ -55,7 +51,7 @@
       <li>Arms</li>    
       <li>Legs</li>
 	 </bodyPartGroups>
-	 <wornGraphicPath>Apparel/Tentaclefrenzyarmor/MunoRace_Apparel_Tentaclefrenzyarmor</wornGraphicPath> <!--穿着的贴图路径-->
+	 <wornGraphicPath>Apparel/Businesssuit/MunoRace_Apparel_Businesssuit</wornGraphicPath> <!--穿着的贴图路径-->
 	 <layers>
 	  <li>Shell</li> <!--层级-->
 	 </layers>
@@ -64,6 +60,21 @@
 	  <li>Spacer</li>
 	 </tags>
 	</apparel>  <!--不用颜色配置-->
+
+  <comps>
+     <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Forbiddable" />
+      <li>      
+          <compClass>CompColorable</compClass>
+      </li>            
+      <li Class="ChezhouLib.comp.ApparelAddBodyAddonCompProperties">            
+        <targetRaces>
+          <li>MunoRace</li>          
+        </targetRaces>                
+      </li>            
+  </comps>
 	
 	<!-- <tradeTags>
       <li>BasicClothing</li>
