@@ -5,39 +5,30 @@
   	<!--以下为服装-->
 
 	<ThingDef ParentName="MunoRace_Apparel">
-  	<defName>MunoRace_Apparel_MaidArmours</defName>
-    <label>女仆装甲</label>
-    <description>设计形似女仆装的轻型装甲套装，相比常规缪诺动力甲缺少了一些辅助功能，但胜在美观与实用，深受缪诺们欢迎.</description>
+  	<defName>MunoRace_Apparel_Goldfoilunderwear</defName>
+    <label>金箔内衣</label>
+    <description>使用黄金制成的金箔内衣，华丽、精美且昂贵，但是不透气.</description>
 	<possessionCount>1</possessionCount>
     <recipeMaker>
       <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
       <displayPriority>215</displayPriority>   <!--显示等级-->
     </recipeMaker>
     <graphicData>
-   	<texPath>Apparel/MaidArmour/MunoRace_Apparel_MaidArmour</texPath> <!--物件的贴图路径-->
+   	<texPath>Apparel/Goldfoilunderwear/MunoRace_Apparel_Goldfoilunderwear</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
 	<costList> <!--固定制作材料-->
-      <ComponentSpacer>1</ComponentSpacer>
-      <Plasteel>100</Plasteel>
-      <Uranium>20</Uranium>
+	  <Gold>50</Gold>
    	</costList>
 	<statBases>  <!--工作量 防护 保温等-->   
-	<MaxHitPoints>150</MaxHitPoints>
-	<WorkToMake>120</WorkToMake>
-	<Mass>1.5</Mass>
-	<ArmorRating_Blunt>0.45</ArmorRating_Blunt> <!--写死钝击防护-->
-    <ArmorRating_Sharp>1.06</ArmorRating_Sharp> <!--写死利器防护-->
-	<ArmorRating_Heat>2.00</ArmorRating_Heat> <!--写死热能防护-->
-	<Insulation_Heat>10</Insulation_Heat> <!--写死抗热防护-->
-    <Insulation_Cold>68</Insulation_Cold> <!--写死抗寒防护-->
-	<ToxicResistance>1.00</ToxicResistance> <!--毒气防护-->
-    <EMPResistance>0.60</EMPResistance> <!--EMP抗性系数，例如0.60表示将EMP伤害影响变为60%-->
-	<MeleeHitChance>2</MeleeHitChance> <!--近战命中系数-->
-    <MeleeDodgeChance>0.85</MeleeDodgeChance> <!--近战躲避系数-->
-    <IncomingDamageFactor>0.75</IncomingDamageFactor> <!--承伤系数-->
-	<EquipDelay>3</EquipDelay> <!--穿戴时间--> 
+	 <MaxHitPoints>100</MaxHitPoints>
+	 <WorkToMake>10000</WorkToMake> <!--工作量-->   
+	 <Mass>1.5</Mass>
+      <StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor> <!--对护甲的材料系数-->
+	  <StuffEffectMultiplierInsulation_Cold>0.06</StuffEffectMultiplierInsulation_Cold> <!--对寒冷的材料系数-->     
+      <StuffEffectMultiplierInsulation_Heat>0.06</StuffEffectMultiplierInsulation_Heat> <!--对炎热的材料系数-->
+	  <EquipDelay>3</EquipDelay> <!--穿戴时间--> 
 	</statBases>
 	<generateCommonality>0.05</generateCommonality> <!--生成概率-->
 	 <equippedStatOffsets> <!--对小人的影响-->
@@ -55,7 +46,7 @@
       <li>Arms</li>    
       <li>Legs</li>
 	 </bodyPartGroups>
-	 <wornGraphicPath>Apparel/MaidArmour/MunoRace_Apparel_MaidArmour</wornGraphicPath> <!--穿着的贴图路径-->
+	 <wornGraphicPath>Apparel/Goldfoilunderwear/MunoRace_Apparel_Goldfoilunderwear</wornGraphicPath> <!--穿着的贴图路径-->
 	 <layers>
 	  <li>Shell</li> <!--层级-->
 	 </layers>
