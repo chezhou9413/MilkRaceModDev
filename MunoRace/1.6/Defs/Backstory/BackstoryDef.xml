@@ -16,9 +16,9 @@
 	
 	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">
 		<defName>MunoGirl_CBS01</defName>
-		<title>平凡小镇的奶牛娘</title>
-		<titleShort>平凡小镇的奶牛娘</titleShort>
-		<baseDesc>[PAWN_nameDef]一个幼年的奶牛娘\n一个原本生活在平凡小镇的孩子，但被奶牛娘的掠夺队掳走，被迫加入了奶牛娘群体，并接受改造.</baseDesc>
+		<title>平凡小镇的缪诺</title>
+		<titleShort>平凡缪诺</titleShort>
+		<baseDesc>[PAWN_nameDef]一个幼年的缪诺\n一个生活在平凡小镇的孩子.</baseDesc>
 		<slot>Childhood</slot><!-- 孩子的背景故事 -->
 
 		<spawnCategories>
@@ -30,11 +30,13 @@
 		
 	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">
 		<defName>MunoGirl_CBS02</defName>
-		<title>叛逃的小奶牛娘</title>
-		<titleShort>叛逃小奶牛娘</titleShort>
-		<baseDesc>[PAWN_nameDef]来自一个叛逃团\n在[PAWN_nameDef]还不懂事的时候，就被一群大人带走了，很长一段时间内都过着颠沛流离的生活.</baseDesc>
+		<title>漂泊的小缪诺</title>
+		<titleShort>漂泊小缪诺</titleShort>
+		<baseDesc>[PAWN_nameDef]来自一个叛逃团\n在[PAWN_pronoun]还不懂事的时候，就被一群大人带走了，离开了缪诺聚落，很长一段时间内都过着颠沛流离的生活.</baseDesc>
 		<slot>Childhood</slot><!-- 孩子的背景故事 -->
-
+		<skillGains>    
+          <Plants>2</Plants>
+        </skillGains> 
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
@@ -43,11 +45,13 @@
 
 	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">	
 		<defName>MunoGirl_CBS03</defName>
-		<title>好斗的奶牛娘</title>
-		<titleShort>好斗奶牛娘</titleShort>
-		<baseDesc>[PAWN_nameDef]自小就非常争强好胜\n在[PAWN_nameDef]的童年记忆中，都在为了击败其他同龄人而努力，[PAWN_nameDef]也乐在其中.</baseDesc>
+		<title>好斗的小缪诺</title>
+		<titleShort>好斗缪诺</titleShort>
+		<baseDesc>[PAWN_nameDef]自小就非常争强好胜\n在[PAWN_pronoun]的童年记忆中，都在为了击败其他同龄人而努力，[PAWN_pronoun]也乐在其中.</baseDesc>
 		<slot>Childhood</slot><!-- 孩子的背景故事 -->
-
+		<skillGains>    
+          <Melee>2</Melee>
+        </skillGains> 
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
@@ -56,11 +60,13 @@
 
 	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">	
 		<defName>MunoGirl_CBS04</defName>
-		<title>早熟的奶牛娘</title>
-		<titleShort>早熟奶牛娘</titleShort>
-		<baseDesc>[PAWN_nameDef]成长速度异于常人，比同龄人快了几年，这让她很难交到朋友，整个童年几乎都是孤独的.</baseDesc>
+		<title>早熟的缪诺</title>
+		<titleShort>早熟缪诺</titleShort>
+		<baseDesc>[PAWN_nameDef]成长速度异于常人，比同龄人快了几年，这让[PAWN_pronoun]很难交到朋友，整个童年几乎都是孤独的.</baseDesc>
 		<slot>Childhood</slot><!-- 孩子的背景故事 -->
-
+		<skillGains>    
+          <Social>-4</Social>
+        </skillGains> 
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
@@ -71,9 +77,13 @@
 		<defName>MunoGirl_CBS05</defName>
 		<title>前儿童明星</title>
 		<titleShort>前儿童明星</titleShort>
-		<baseDesc>[PAWN_nameDef]曾经是一个闪耀世界的童星，但某一天她在众目睽睽之下被奶牛娘掠夺队们绑架了，关心她的人绝对不想知道她之后的经历.</baseDesc>
+		<baseDesc>[PAWN_nameDef]曾经是一个缪诺核心世界的童星，但某一天[PAWN_pronoun]突然宣布退役，令众多粉丝伤透了心.</baseDesc>
 		<slot>Childhood</slot><!-- 孩子的背景故事 -->
-
+		<skillGains>    
+          <Social>4</Social>
+		  <Cooking>-2</Cooking>      
+          <Artistic>6</Artistic>		  
+        </skillGains> 
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
@@ -84,9 +94,119 @@
 		<defName>MunoGirl_CBS06</defName>
 		<title>改造工厂学徒</title>
 		<titleShort>改造工厂学徒</titleShort>
-		<baseDesc>[PAWN_nameDef]早早的进入了奶牛娘改造工厂工作，这个工厂里充斥着被绑架来的各式各样的人，[PAWN_nameDef]在工作的同时也了解到了一些有趣的故事.</baseDesc>
+		<baseDesc>[PAWN_nameDef]早早的进入了缪诺改造工厂工作，这个工厂里充斥着被绑架来的各式各样的人，[PAWN_pronoun]在工作的同时也了解到了一些有趣的故事.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+		<skillGains>    
+          <Intellectual>4</Intellectual>
+		  <Medicine>4</Medicine>      	  
+        </skillGains> 
+		<spawnCategories>
+			<li>MunoGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">	
+		<defName>MunoGirl_CBS07</defName>
+		<title>好学的小缪诺</title>
+		<titleShort>好学的孩子</titleShort>
+		<baseDesc>[PAWN_nameDef]聪慧透顶，非常热衷于学习各种新奇的知识.在[PAWN_nameDef]的同龄人之间，没有谁比[PAWN_pronoun]更了解如何对一个被绑架的个体进行改造和特化的知识了.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+		<skillGains>    
+          <Intellectual>8</Intellectual>     	  
+        </skillGains> 
+		<spawnCategories>
+			<li>MunoGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">	
+		<defName>MunoGirl_CBS08</defName>
+		<title>小实验体</title>
+		<titleShort>小实验体</titleShort>
+		<baseDesc>[PAWN_nameDef]自出生后不久就被关进了一处缪诺的秘密实验设施，[PAWN_nameDef]被用于接受各种化学品和药物的实验，有时也被用于测试精神控制装置，这使得[PAWN_pronoun]从小就饱受长期实验带来的健康问题.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+		<skillGains>    
+          <Medicine>2</Medicine>     	  
+        </skillGains> 
+		<spawnCategories>
+			<li>MunoGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">	
+		<defName>MunoGirl_CBS09</defName>
+		<title>小农工</title>
+		<titleShort>小农工</titleShort>
+		<baseDesc>[PAWN_nameDef]生活在一个非常庞大的农牧城镇，打小就要在一望无际的农田里给大人们打下手，不过所幸农场里永远不缺乏食物，这让[PAWN_nameDef]得以度过一个在心灵和胃袋上都很充实的童年.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+		<skillGains>    
+          <Plants>6</Plants>  
+		  <Animals>4</Animals>   	  
+        </skillGains> 
+		<spawnCategories>
+			<li>MunoGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">	
+		<defName>MunoGirl_CBS10</defName>
+		<title>原鼠族</title>
+		<titleShort>原鼠族</titleShort>
+		<baseDesc>[PAWN_nameDef]在改造前是一个中世纪鼠族王国的普通居民，在被改造后，[PAWN_nameDef]获得了前所未有的身高和罩杯.</baseDesc>
 		<slot>Childhood</slot><!-- 孩子的背景故事 -->
 
+		<spawnCategories>
+			<li>MunoGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">	
+		<defName>MunoGirl_CBS11</defName>
+		<title>预备技术员</title>
+		<titleShort>预备技术员</titleShort>
+		<baseDesc>[PAWN_nameDef]天资聪慧，被选拔加入了缪诺的预备技术学校学习各种缪诺装备的研发和制造技术。[PAWN_nameDef]在各种独特的科技产物中找到了很多乐趣，并且很享受偷偷“使用”这些装备带来的“快乐”.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+		<skillGains>    
+          <Construction>4</Construction>  
+		  <Intellectual>4</Intellectual>   
+		  <Crafting>6</Crafting>	  
+        </skillGains> 
+		<spawnCategories>
+			<li>MunoGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">	
+		<defName>MunoGirl_CBS12</defName>
+		<title>慢脑子</title>
+		<titleShort>慢脑子</titleShort>
+		<baseDesc>[PAWN_nameDef]的智商并不算很高，也缺乏足够的力量和耐力来弥补，这使得[PAWN_nameDef]错失了加入突袭队或技术预备役的机会，只能慢慢等待长大接受分配了.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+		<skillGains>     
+		  <Intellectual>-4</Intellectual>   
+		  <Crafting>-3</Crafting>	  
+        </skillGains> 
+		<spawnCategories>
+			<li>MunoGirl</li>
+		</spawnCategories>
+		
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">	
+		<defName>MunoGirl_CBS13</defName>
+		<title>部落民</title>
+		<titleShort>部落民</titleShort>
+		<baseDesc>[PAWN_nameDef]原本是某个生活在荒野之间的部落的小孩，在缪诺突袭队碾平了部落的每一个帐篷后，[PAWN_nameDef]被带走接受了改造，不过这也给了[PAWN_nameDef]机会去接触那些从未将有机会接触过的各种新奇事物.</baseDesc>
+		<slot>Childhood</slot><!-- 孩子的背景故事 -->
+		<skillGains>     
+		  <Animals>6</Animals>   	  
+        </skillGains> 
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
@@ -96,11 +216,14 @@
 <!-- _______________________________________________________________________________ -->
 	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">
 		<defName>MunoGirl_ABS01</defName>
-		<title>掠夺队队员</title>
-		<titleShort>掠夺队队员</titleShort>
-		<baseDesc>[PAWN_nameDef]一个成年的奶牛娘\n一个成长于奶牛娘群体中的奶牛娘，她最终成为了一名掠夺队队员.</baseDesc>
+		<title>突袭队队员</title>
+		<titleShort>突袭队队员</titleShort>
+		<baseDesc>[PAWN_nameDef]一个成年的缪诺\n一个成长于某个缪诺聚落中的，经过了一段训练时光，[PAWN_pronoun]最终成为了一名突袭队队员.</baseDesc>
 		<slot>Adulthood</slot><!-- 成人的背景故事 -->
-		
+		<skillGains>    
+          <Shooting>8</Shooting>
+          <Melee>2</Melee>
+        </skillGains> 		
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
@@ -110,9 +233,12 @@
 		<defName>MunoGirl_ABS02</defName>
 		<title>行为校准师</title>
 		<titleShort>行为校准师</titleShort>
-		<baseDesc>将各式各样的人改造成奶牛娘是一个系统的工程，[PAWN_nameDef]负责将改造工厂中的奶牛娘预备役一一进行行为校准，简单的说，她是一名调教师.</baseDesc>
+		<baseDesc>将各式各样的人改造成缪诺是一个系统的工程，[PAWN_pronoun]负责将改造工厂中的缪诺预备役一一进行行为校准，简单的说，[PAWN_nameDef]是一名调教师.</baseDesc>
 		<slot>Adulthood</slot><!-- 成人的背景故事 -->
-		
+		<skillGains>    
+          <Social>3</Social>
+          <Medicine>8</Medicine>
+        </skillGains> 
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
@@ -122,9 +248,11 @@
 		<defName>MunoGirl_ABS03</defName>
 		<title>改造失败者</title>
 		<titleShort>改造失败者</titleShort>
-		<baseDesc>[PAWN_nameDef]的改造被评估为不合格，原本按照规程她可能会被丢进仓库，成为再也看不见太阳的牲畜，但她最终设法逃出来了.</baseDesc>
+		<baseDesc>[PAWN_nameDef]的改造被评估为不合格，原本按照规程[PAWN_pronoun]可能会被丢进仓库，成为再也看不见太阳的牲畜，但[PAWN_pronoun]最终设法逃出来了.</baseDesc>
 		<slot>Adulthood</slot><!-- 成人的背景故事 -->
-		
+		<skillGains>    
+          <Social>-5</Social>
+        </skillGains> 		
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
@@ -132,11 +260,13 @@
 
 	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">	
 		<defName>MunoGirl_ABS04</defName>
-		<title>落单的奶牛娘</title>
-		<titleShort>落单奶牛娘</titleShort>
-		<baseDesc>[PAWN_nameDef]原本是掠夺队的一员，但在一场攻坚战斗后掠夺队失败而归，[PAWN_nameDef]在撤退时被落下，她最后被敌人俘获\n沦为了性奴隶与产奶机器.</baseDesc>
+		<title>落单的缪诺</title>
+		<titleShort>落单缪诺</titleShort>
+		<baseDesc>[PAWN_nameDef]原本是突袭队的一员，但在一场攻坚战斗后突袭队失败而归，在撤退时被落下，[PAWN_pronoun]最后被敌人俘获\n沦为了性奴隶与产奶机器.</baseDesc>
 		<slot>Adulthood</slot><!-- 成人的背景故事 -->
-		
+		<skillGains>    
+          <Shooting>3</Shooting>
+        </skillGains> 			
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
@@ -146,9 +276,12 @@
 		<defName>MunoGirl_ABS05</defName>
 		<title>落魄的军官</title>
 		<titleShort>落魄的军官</titleShort>
-		<baseDesc>[PAWN_nameDef]曾是一名名声赫赫的军官，但她在某次行动中粗心大意，被敌人伏击，掠夺队全军覆没，仅剩的幸存者也被充满怒意的敌人变卖为奴\n[PAWN_nameDef]正是其中一员.</baseDesc>
+		<baseDesc>[PAWN_nameDef]曾是一名名声赫赫的军官，但她在某次行动中粗心大意，被敌人伏击，突袭队全军覆没，仅剩的幸存者也被充满怒意的敌人变卖为奴\n[PAWN_pronoun]正是其中一员.</baseDesc>
 		<slot>Adulthood</slot><!-- 成人的背景故事 -->
-		
+		<skillGains>    
+          <Shooting>3</Shooting>
+		  <Social>6</Social>
+        </skillGains> 		
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
@@ -156,9 +289,9 @@
 
 	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">			
 		<defName>MunoGirl_ABS06</defName>
-		<title>叛逃奶牛娘</title>
-		<titleShort>叛逃奶牛娘</titleShort>
-		<baseDesc>[PAWN_nameDef]认为奶牛娘群体的存在与思想是一个错误，她开始组织一部分有相同想法的奶牛娘一起离开了奶牛娘聚落，前往了边缘世界.</baseDesc>
+		<title>叛逃缪诺</title>
+		<titleShort>叛逃缪诺</titleShort>
+		<baseDesc>[PAWN_nameDef]认为缪诺群体的存在与思想是一个错误，她开始组织一部分有相同想法的缪诺一起离开了缪诺聚落，前往了边缘世界.</baseDesc>
 		<slot>Adulthood</slot><!-- 成人的背景故事 -->
 		
 		<spawnCategories>
@@ -172,7 +305,15 @@
 		<titleShort>药剂研究者</titleShort>
 		<baseDesc>[PAWN_nameDef]是一名专心研究药剂的研究者，为了试验药剂她对实验体做了很多残忍的事.</baseDesc>
 		<slot>Adulthood</slot><!-- 成人的背景故事 -->
-		
+        <requiredWorkTags>
+          <li>Intellectual</li>
+          <li>Crafting</li>
+        </requiredWorkTags>
+		<skillGains>    
+          <Intellectual>6</Intellectual>
+		  <Medicine>6</Medicine>
+		  <Crafting>4</Crafting>		  
+        </skillGains> 		
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
@@ -182,9 +323,13 @@
 		<defName>MunoGirl_ABS08</defName>
 		<title>药剂实验体</title>
 		<titleShort>药剂实验体</titleShort>
-		<baseDesc>[PAWN_nameDef]虽然经过了奶牛娘化改造，但不被认为是奶牛娘群体中的一员，而是被当作实验体丢给了药剂研究所做实验，她的身体经过摧残已经出现了严重的精神问题与激素紊乱.</baseDesc>
+		<baseDesc>[PAWN_nameDef]虽然经过了缪诺化改造，但不被认为是缪诺群体中的一员，而是被当作实验体丢给了药剂研究所做实验，她的身体经过摧残已经出现了严重的精神问题与激素紊乱.</baseDesc>
 		<slot>Adulthood</slot><!-- 成人的背景故事 -->
-		
+		<workDisables>    
+          <li>Social</li>
+          <li>Caring</li>
+          <li>Hauling</li>
+        </workDisables>
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
@@ -192,15 +337,87 @@
 
 	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">			
 		<defName>MunoGirl_ABS09</defName>
-		<title>奶牛娘性奴</title>
-		<titleShort>奶牛娘性奴</titleShort>
-		<baseDesc>奶牛娘群体是极具侵略性的，一般人不会想多与她们有交集，但不妨碍有个别人群对奶牛娘个体本身起歹念，[PAWN_nameDef]便是其中一名受害者，她被一群奴隶商人雇佣的海盗掳走了，几经变卖颠沛流离.</baseDesc>
+		<title>文职官员</title>
+		<titleShort>文官</titleShort>
+		<baseDesc>[PAWN_nameDef]在被改造之前曾是某个小国兢兢业业的文官，在被改造成为缪诺后也被委任继续文职工作，成为了一个每天窝在办公室格子间里的社畜.</baseDesc>
 		<slot>Adulthood</slot><!-- 成人的背景故事 -->
-		
+		<skillGains>    
+          <Social>6</Social>	
+          <Intellectual>2</Intellectual>		    
+        </skillGains> 		
 		<spawnCategories>
 			<li>MunoGirl</li>
 		</spawnCategories>
 	</AlienRace.AlienBackstoryDef>
 
+	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">			
+		<defName>MunoGirl_ABS10</defName>
+		<title>治安官</title>
+		<titleShort>治安官</titleShort>
+		<baseDesc>[PAWN_nameDef]是一名负责维护社会安全的治安官。[PAWN_pronoun]的日常工作就是巡视城镇中的每一个角落，发现潜在的生产安全问题，逮捕试图逃脱的被改造者，和打击任何试图背叛缪诺聚落的举措.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		<skillGains>    
+          <Shooting>8</Shooting>
+          <Melee>2</Melee>	  
+          <Social>2</Social>			  
+        </skillGains> 			
+		<spawnCategories>
+			<li>MunoGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">			
+		<defName>MunoGirl_ABS11</defName>
+		<title>侦察兵</title>
+		<titleShort>侦察兵</titleShort>
+		<baseDesc>作为突袭队的一员，[PAWN_nameDef]主要负责绑架前的侦察活动，[PAWN_pronoun]会潜入目标据点附近观察对方的建筑分布和防御设施，以便突袭队能以最快的速度侵入并带走最多的目标.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		<skillGains>    
+          <Shooting>4</Shooting>
+          <Melee>2</Melee>	  			  
+        </skillGains> 			
+		<spawnCategories>
+			<li>MunoGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">			
+		<defName>MunoGirl_ABS12</defName>
+		<title>缪诺间谍</title>
+		<titleShort>间谍</titleShort>
+		<baseDesc>[PAWN_nameDef]常年漂泊在外，这倒不是因为[PAWN_pronoun]和缪诺群体不合群，而是因为[PAWN_nameDef]专门负责刺探其他聚落和种族的情报，用于发现合适的同化目标并预防敌人的袭击。唯一的麻烦是她的外貌有点太显眼了，使得[PAWN_pronoun]的情报工作有时候会需要一些特殊手段.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		<requiredWorkTags>    
+          <li>Violent</li>
+		  <li>Social</li>
+        </requiredWorkTags>
+		<skillGains>    
+          <Shooting>2</Shooting>
+          <Melee>2</Melee>	  
+          <Social>6</Social>			  
+        </skillGains> 	
+		<spawnCategories>
+			<li>MunoGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
+
+	<AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">			
+		<defName>MunoGirl_ABS13</defName>
+		<title>缪诺电工</title>
+		<titleShort>电工</titleShort>
+		<baseDesc>[PAWN_nameDef]精通强电弱电系统，平日负责走街串巷的维修电路系统和装宽带，有时候[PAWN_pronoun]也会借用一下雇主家的电缆，来电击一下自己缓解长期连轴转工作而无法发泄的欲望.</baseDesc>
+		<slot>Adulthood</slot><!-- 成人的背景故事 -->
+		<requiredWorkTags>    
+          <li>Constructing</li>
+		  <li>Crafting</li>
+        </requiredWorkTags>
+		<skillGains>    
+         <Construction>5</Construction>
+         <Crafting>2</Crafting>
+        </skillGains>
+		<spawnCategories>
+			<li>MunoGirl</li>
+		</spawnCategories>
+	</AlienRace.AlienBackstoryDef>
 
 </Defs>

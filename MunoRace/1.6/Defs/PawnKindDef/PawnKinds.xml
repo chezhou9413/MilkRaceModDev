@@ -19,7 +19,7 @@
 	<!-- 玩家殖民者 -->
 	<PawnKindDef Name="MunoGirl_Colonist" ParentName="MunoGirlBasePawnKind">
 		<defName>MunoGirl_Colonist</defName>
-		<label>奶牛娘</label>
+		<label>缪诺</label>
 		<defaultFactionType>PlayerColony</defaultFactionType>
 		<invNutrition>2.55</invNutrition>
 		<backstoryFiltersOverride>
