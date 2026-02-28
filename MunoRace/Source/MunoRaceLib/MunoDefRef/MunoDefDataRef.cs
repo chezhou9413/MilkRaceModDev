@@ -25,5 +25,7 @@ namespace MunoRaceLib.MunoDefRef
         public static StatDef Muno_GalactogenRecovery;
 
         public static HediffDef Muno_GalactogenEnhancement;
+
+        public static JobDef JobDef_RefuelGalactogenArmor;
     }
 }

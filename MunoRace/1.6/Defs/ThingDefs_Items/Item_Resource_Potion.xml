@@ -31,7 +31,7 @@
         <useDuration>100</useDuration>
       </li>
       <li Class="CompProperties_UseEffect">
-        <compClass>MunoRaceLib.MunoComp.CompUseEffect_UpgradeGalactogen</compClass>
+        <compClass>MunoRaceLib.MunoComp.HediffComp_UpgradeGalactogen</compClass>
       </li>
     </comps>
   </ThingDef>

@@ -4,7 +4,7 @@ using Verse;
 
 namespace MunoRaceLib.MunoComp
 {
-    public class CompUseEffect_UpgradeGalactogen : CompUseEffect
+    public class HediffComp_UpgradeGalactogen : CompUseEffect
     {
         public override void DoEffect(Pawn usedBy)
         {

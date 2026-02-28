@@ -126,8 +126,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MunoComp\CompUseEffect_UpgradeGalactogen.cs" />
+    <Compile Include="MunoComp\HediffComp_UpgradeGalactogen.cs" />
+    <Compile Include="MunoComp\HediffComp_GalactogenDrain.cs" />
     <Compile Include="MunoComp\ThingComp_Galactogen.cs" />
+    <Compile Include="MunoComp\ThingComp_GalactogenArmor.cs" />
     <Compile Include="MunoDefRef\MunoDefDataRef.cs" />
     <Compile Include="MunoGizmo\Gizmo_GalactogenBar.cs" />
     <Compile Include="MunoJobDriver\JobDriver_SpawnConcentratedMulacte.cs" />
@@ -135,8 +137,11 @@
     <Compile Include="MunoJobGiver\JobGiver_AutoMunoMilk.cs" />
     <Compile Include="MunoMain.cs" />
     <Compile Include="MunoThoughtWorker\ThoughtWorker_GalactogenOverflow.cs" />
+    <Compile Include="MunoJobDriver\JobDriver_RefuelGalactogenArmor.cs" />
+    <Compile Include="MunoWorker\WorkGiver_RefuelGalactogenArmor.cs" />
     <Compile Include="Patch\Patch_Pawn_PostApplyDamage.cs" />
     <Compile Include="Patch\Patch_GalactogenBar_GetGizmos.cs" />
+    <Compile Include="Patch\Pawn_GetGizmos_GalactogenArmor_Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tool\FilthGalactogenTool.cs" />
   </ItemGroup>
