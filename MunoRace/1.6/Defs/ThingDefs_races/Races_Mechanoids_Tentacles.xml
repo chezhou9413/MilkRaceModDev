@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="LightMechanoid">
+		<defName>Muno_Mech_Tentacles</defName>
+		<label>触手个体</label>
+		<description>由狂乱触手甲活性材料孕育的触手个体，尽管个体的战斗力不强，但依旧可以给敌人进行缠人的骚扰，同时这些个体内部的供能物质有限而又没有摄入口，几小时后便会饿死.</description>
+		<statBases>
+			<ArmorRating_Blunt>1.0</ArmorRating_Blunt>
+			<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+			<MoveSpeed>2.1</MoveSpeed>
+		</statBases>
+		<race>
+			<body>MechanoidTentacles</body>
+			<mechEnabledWorkTypes>
+				<li>Hauling</li>
+			</mechEnabledWorkTypes>
+			<lifeStageAges>
+				<li>
+					<def>MechanoidFullyFormed</def>
+					<minAge>0</minAge>
+					<soundWounded>Pawn_Tortoise_Wounded</soundWounded>
+					<soundDeath>Pawn_Tortoise_Death</soundDeath>
+					<soundCall>Pawn_Tortoise_Call</soundCall>
+					<soundAngry>Pawn_Tortoise_Angry</soundAngry>
+				</li>
+				<li>
+					<def>MechanoidFullyFormed</def>
+					<minAge>100</minAge>
+					<soundWounded>Pawn_Tortoise_Wounded</soundWounded>
+					<soundDeath>Pawn_Tortoise_Death</soundDeath>
+					<soundCall>Pawn_Tortoise_Call</soundCall>
+					<soundAngry>Pawn_Tortoise_Angry</soundAngry>
+				</li>
+			</lifeStageAges>
+		</race>
+		<tools>
+			<li>
+				<label>TentacleBlade</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>2.6</cooldownTime>
+				<!-- <linkedBodyPartsGroup>TentacleBladeAttackTool</linkedBodyPartsGroup> -->
+			</li>
+		</tools>
+	</ThingDef>
+
+	<PawnKindDef ParentName="LightMechanoidKind">
+		<defName>Muno_Mech_Tentacles</defName>
+		<label>触手个体</label>
+		<race>Muno_Mech_Tentacles</race>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Mechanoid/Muno_Mech_Tentacles</texPath>
+					<!-- <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Lifturtle</maskPath> -->
+					<shaderType>CutoutWithOverlay</shaderType>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>1.1</drawSize>
+				</bodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Mechanoid/Muno_Mech_Tentacles</texPath>
+					<!-- <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Lifturtle</maskPath> -->
+					<shaderType>CutoutWithOverlay</shaderType>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>1.1</drawSize>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+</Defs>

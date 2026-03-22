@@ -58,7 +58,7 @@
 		<comps>
 		</comps>		
 		<weaponTags Inherit="false">
-			<li>IndustrialGunAdvanced</li>
+			<li>MunoGunMiddle</li>
 			<!-- <li>Gun_MunoLMG</li> 依据pawnkind需求调整 -->
 		</weaponTags>
 		<tools>
@@ -153,7 +153,7 @@
 		<comps>
 		</comps>		
 		<weaponTags Inherit="false">
-			<li>IndustrialGunAdvanced</li>
+			<li>MunoGunMiddle</li>
 			<!-- <li>Muno_AR</li> 依据pawnkind需求调整 -->
 		</weaponTags>
 		<tools>
@@ -248,7 +248,7 @@
 		<comps>
 		</comps>		
 		<weaponTags Inherit="false">
-			<li>IndustrialGunAdvanced</li>
+			<li>MunoGunMiddle</li>
 			<!-- <li>MunoGirl_HPP</li> 依据pawnkind需求调整 -->
 		</weaponTags>
 		<tools>
@@ -343,7 +343,7 @@
 		<comps>
 		</comps>		
 		<weaponTags Inherit="false">
-			<li>IndustrialGunAdvanced</li>
+			<li>MunoGunMiddle</li>
 			<!-- <li>MunoGirl_PO</li> 依据pawnkind需求调整 -->
 		</weaponTags>
 		<tools>
@@ -438,7 +438,7 @@
 		<comps>
 		</comps>		
 		<weaponTags Inherit="false">
-			<li>IndustrialGunAdvanced</li>
+			<li>MunoGunMiddle</li>
 			<!-- <li>MunoGirl_MP</li> 依据pawnkind需求调整 -->
 		</weaponTags>
 		<tools>
@@ -534,7 +534,7 @@
 		<comps>
 		</comps>		
 		<weaponTags Inherit="false">
-			<li>IndustrialGunAdvanced</li>
+			<li>MunoGunAdvanced</li>
 			<!-- <li>MunoGirl_MGL</li> 依据pawnkind需求调整 -->
 		</weaponTags>
 		<tools>
@@ -632,7 +632,7 @@
 		<comps>
 		</comps>		
 		<weaponTags Inherit="false">
-			<li>IndustrialGunAdvanced</li>
+			<li>MunoGunAdvanced</li>
 			<!-- <li>MunoGirl_HMG</li> 依据pawnkind需求调整 -->
 		</weaponTags>
 		<tools>
@@ -727,7 +727,7 @@
 		<comps>
 		</comps>		
 		<weaponTags Inherit="false">
-			<li>IndustrialGunAdvanced</li>
+			<li>MunoGunAdvanced</li>
 			<!-- <li>Muno_AC</li> 依据pawnkind需求调整 -->
 		</weaponTags>
 		<tools>
@@ -823,7 +823,7 @@
 		<comps>
 		</comps>		
 		<weaponTags Inherit="false">
-			<li>IndustrialGunAdvanced</li>
+			<li>MunoGunAdvanced</li>
 			<!-- <li>MunoGirl_MGL</li> 依据pawnkind需求调整 -->
 		</weaponTags>
 		<tools>
@@ -908,7 +908,7 @@
     </recipeMaker>
     <techLevel>Spacer</techLevel>
     <weaponTags>
-      <li>GunHeavy</li>
+      <li>MunoGunMiddle</li>
       <li>WeaponBeamRepeater</li>
     </weaponTags>
     <equippedStatOffsets>
@@ -1009,7 +1009,7 @@
     </recipeMaker>
     <techLevel>Spacer</techLevel>
     <weaponTags>
-      <li>GunHeavy</li>
+      <li>MunoGunAdvanced</li>
       <li>WeaponBeamRepeater</li>
     </weaponTags>
     <equippedStatOffsets>
@@ -1110,7 +1110,7 @@
     </recipeMaker>
     <techLevel>Spacer</techLevel>
     <weaponTags>
-      <li>GunHeavy</li>
+      <li>MunoGunMiddle</li>
       <li>WeaponBeamRepeater</li>
     </weaponTags>
     <equippedStatOffsets>
@@ -1211,7 +1211,7 @@
     </recipeMaker>
     <techLevel>Spacer</techLevel>
     <weaponTags>
-      <li>GunHeavy</li>
+      <li>MunoGunAdvanced</li>
       <li>WeaponBeamRepeater</li>
     </weaponTags>
     <equippedStatOffsets>

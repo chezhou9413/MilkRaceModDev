@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<BodyDef>
+		<defName>MechanoidTentacles</defName>
+		<label>mechanoid turtle</label>
+		<corePart>
+			<def>MechanoidTentaclesBodies</def>
+			<height>Middle</height>
+			<depth>Outside</depth>
+			<groups />
+			<parts>
+				<li>
+					<def>MechanicalThorax</def>
+					<coverage>0.06</coverage>
+					<height>Bottom</height>
+					<groups />
+				</li>
+				<li>
+					<def>MechanicalSpine</def>
+					<coverage>0.03</coverage>
+					<depth>Inside</depth>
+				</li>
+				<li>
+					<def>Reactor</def>
+					<coverage>0.06</coverage>
+					<depth>Inside</depth>
+				</li>
+				<li>
+					<def>FluidReprocessor</def>
+					<coverage>0.06</coverage>
+					<depth>Inside</depth>
+				</li>
+				<li>
+					<def>FluidReprocessor</def>
+					<coverage>0.06</coverage>
+					<depth>Inside</depth>
+				</li>
+				<li>
+					<def>MechanicalHead</def>
+					<coverage>0.17</coverage>
+					<groups>
+						<li>HeadAttackTool</li>
+					</groups>
+					<parts>
+						<li>
+							<def>ArtificialBrain</def>
+							<coverage>0.18</coverage>
+							<depth>Inside</depth>
+						</li>
+						<li>
+							<def>SightSensor</def>
+							<customLabel>left sight sensor</customLabel>
+							<coverage>0.15</coverage>
+							<groups />
+						</li>
+						<li>
+							<def>SightSensor</def>
+							<customLabel>right sight sensor</customLabel>
+							<coverage>0.15</coverage>
+							<groups />
+						</li>
+						<li>
+							<def>SmellSensor</def>
+							<coverage>0.15</coverage>
+							<groups />
+						</li>
+						<li>
+							<def>TentacleBlade</def>
+							<coverage>0.20</coverage>
+							<!-- <groups>
+								<li>TentacleBladeAttackTool</li>
+							</groups> -->
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>MechanicalLeg</def>
+					<customLabel>front left leg</customLabel>
+					<coverage>0.05</coverage>
+					<height>Bottom</height>
+					<groups />
+				</li>
+				<li>
+					<def>MechanicalLeg</def>
+					<customLabel>front right leg</customLabel>
+					<coverage>0.05</coverage>
+					<height>Bottom</height>
+					<groups />
+				</li>
+				<li>
+					<def>MechanicalLeg</def>
+					<customLabel>rear left leg</customLabel>
+					<coverage>0.05</coverage>
+					<height>Bottom</height>
+					<groups />
+				</li>
+				<li>
+					<def>MechanicalLeg</def>
+					<customLabel>rear right leg</customLabel>
+					<coverage>0.05</coverage>
+					<height>Bottom</height>
+					<groups />
+				</li>
+			</parts>
+		</corePart>
+	</BodyDef>
+
+	<BodyPartDef>
+		<defName>MechanoidTentaclesBodies</defName>
+		<label>Tentacles Bodies</label>
+		<labelShort>shell</labelShort>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<hitPoints>50</hitPoints>
+	</BodyPartDef>
+
+	<BodyPartDef>
+		<defName>TentacleBlade</defName>
+		<label>Tentacle Blade</label>
+		<labelShort>beak</labelShort>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<hitPoints>20</hitPoints>
+		<tags>
+			<li>EatingSource</li>
+			<li>TalkingSource</li>
+			<li>ManipulationLimbCore</li>
+		</tags>
+	</BodyPartDef>
+
+	<BodyPartDef>
+		<defName>MechanicalSpine</defName>
+		<label>central cord bundle</label>
+		<labelShort>spine</labelShort>
+		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+		<skinCovered>false</skinCovered>
+		<solid>true</solid>
+		<alive>false</alive>
+		<bleedRate>0</bleedRate>
+		<hitPoints>20</hitPoints>
+		<tags>
+			<li>Spine</li>
+		</tags>
+	</BodyPartDef>
+</Defs>

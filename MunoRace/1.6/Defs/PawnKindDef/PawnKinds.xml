@@ -18,7 +18,7 @@
 
 	<!-- 玩家殖民者 -->
 	<PawnKindDef Name="MunoGirl_Colonist" ParentName="MunoGirlBasePawnKind">
-		<defName>MunoGirl_Colonist</defName>
+		<defName>MunoRace_Colonist</defName>
 		<label>缪诺</label>
 		<defaultFactionType>PlayerColony</defaultFactionType>
 		<invNutrition>2.55</invNutrition>
@@ -37,4 +37,128 @@
         <li>DR_FireBurst</li>
 		</abilities> -->
 	</PawnKindDef>
+
+    <!-- 势力殖民者 -->
+	  <PawnKindDef ParentName="MunoGirlBasePawnKind" Name="MunoRace_VillagerBase">
+    <defName>MunoRace_Villager</defName>
+    <label>务农缪诺</label>
+    <combatPower>45</combatPower>
+    <itemQuality>Poor</itemQuality>
+    <isFighter>false</isFighter>
+    <gearHealthRange>0.2~2.0</gearHealthRange>
+    <weaponTags>
+      <li>Gun</li>
+      <li>MedievalMeleeBasic</li>
+    </weaponTags>
+    <weaponMoney>65~250</weaponMoney>
+    <apparelMoney>200~400</apparelMoney>
+    <apparelAllowHeadgearChance>0.4</apparelAllowHeadgearChance>
+    <techHediffsChance>0.06</techHediffsChance>
+    <techHediffsMoney>50~600</techHediffsMoney>
+    <techHediffsTags>
+      <li>Poor</li>
+      <li>Simple</li>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <initialWillRange>0~1</initialWillRange>
+    <initialResistanceRange>10~17</initialResistanceRange>
+  </PawnKindDef>
+
+    <PawnKindDef ParentName="MunoGirlBasePawnKind" Name="MunoRace_GuardBase">
+    <defName>MunoRace_Guard</defName>
+    <label>缪诺聚落守卫</label>
+    <combatPower>60</combatPower>
+    <isFighter>true</isFighter>
+    <gearHealthRange>0.6~2</gearHealthRange>
+    <apparelTags>
+      <li>MunoGunAdvanced</li>
+      <li>MunoGunMiddle</li>
+    </apparelTags>
+    <apparelMoney>400~600</apparelMoney>
+    <apparelAllowHeadgearChance>0.4</apparelAllowHeadgearChance>
+    <weaponTags>
+      <li>Gun</li>
+    </weaponTags>
+    <weaponMoney>250~400</weaponMoney>
+    <techHediffsChance>0.04</techHediffsChance>
+    <techHediffsMoney>200~700</techHediffsMoney>
+    <techHediffsTags>
+      <li>Poor</li>
+      <li>Simple</li>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <initialWillRange>1~3</initialWillRange>
+    <initialResistanceRange>15~24</initialResistanceRange>
+  </PawnKindDef>
+
+    <PawnKindDef ParentName="MunoGirlBasePawnKind" Name="MunoRace_TraderBase">
+    <defName>MunoRace_Trader</defName>
+    <label>缪诺聚落贸易者</label>
+    <trader>true</trader>
+    <combatPower>45</combatPower>
+    <isFighter>false</isFighter>
+    <gearHealthRange>1~1</gearHealthRange>
+    <itemQuality>Normal</itemQuality>
+    <weaponTags>
+      <li>MunoGunMiddle</li>
+    </weaponTags>
+    <weaponMoney>300~400</weaponMoney>
+    <apparelMoney>400~600</apparelMoney>
+    <apparelTags>
+      <li>IndustrialMilitaryBasic</li>
+      <li>IndustrialMilitaryAdvanced</li>
+      <li>BeltDefensePop</li>
+    </apparelTags>
+    <apparelRequired>
+      <li>Apparel_BowlerHat</li>
+    </apparelRequired>
+    <techHediffsChance>0.15</techHediffsChance>
+    <techHediffsMoney>600~1500</techHediffsMoney>
+    <techHediffsTags>
+      <li>Poor</li>
+      <li>Simple</li>
+      <li>Advanced</li>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <initialWillRange>2~4</initialWillRange>
+    <initialResistanceRange>12~20</initialResistanceRange>
+    <xenotypeSet>
+      <xenotypeChances>
+        <Highmate MayRequire="Ludeon.RimWorld.Biotech">0.04</Highmate>
+      </xenotypeChances>
+    </xenotypeSet>
+  </PawnKindDef>
+
+    <PawnKindDef ParentName="MunoGirlBasePawnKind" Name="MunoRace_CouncilmanBase">
+    <defName>MunoRace_Manager</defName>
+    <label>缪诺聚落管理者</label>
+    <labelPlural>town councilmen</labelPlural>
+    <combatPower>40</combatPower>
+    <factionLeader>true</factionLeader>
+    <minGenerationAge>30</minGenerationAge>
+    <isFighter>false</isFighter>
+    <gearHealthRange>1~1</gearHealthRange>
+    <itemQuality>Good</itemQuality>
+    <weaponMoney>300~600</weaponMoney>
+    <weaponTags>
+      <li>MunoGunMiddle</li>
+    </weaponTags>
+    <apparelMoney>700~1200</apparelMoney>
+    <apparelTags>
+      <li>IndustrialMilitaryBasic</li>
+      <li>BeltDefensePop</li>
+    </apparelTags>
+    <apparelRequired>
+      <li>Apparel_BowlerHat</li>
+    </apparelRequired>
+    <techHediffsChance>0.15</techHediffsChance>
+    <techHediffsMoney>600~1500</techHediffsMoney>
+    <techHediffsTags>
+      <li>Simple</li>
+      <li>Advanced</li>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <initialWillRange>3~5</initialWillRange>
+    <initialResistanceRange>7~11</initialResistanceRange>
+  </PawnKindDef>
 </Defs>
