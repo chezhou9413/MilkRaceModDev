@@ -150,6 +150,17 @@
 		<classicIdeo>true</classicIdeo>
 		<maxConfigurableAtWorldCreation>9999</maxConfigurableAtWorldCreation>
 		<configurationListOrderPriority>15</configurationListOrderPriority>
+		<royalTitleTags MayRequire="Ludeon.RimWorld.Royalty" Inherit="False">
+            <li>Muno_Title</li>
+        </royalTitleTags>
+		<royalTitleInheritanceWorkerClass>RoyalTitleInheritanceWorker</royalTitleInheritanceWorkerClass>
+        <royalTitleInheritanceRelations>
+            <li>Child</li>
+            <li>Spouse</li>
+            <li>Sibling</li>
+            <li>HalfSibling</li>
+            <li>Parent</li>
+        </royalTitleInheritanceRelations>
 	</FactionDef>
 
 </Defs>
