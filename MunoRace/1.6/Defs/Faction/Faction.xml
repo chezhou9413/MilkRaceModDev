@@ -4,7 +4,7 @@
 	<FactionDef ParentName="FactionBase">
 		<defName>MunoColony_Faction</defName>
 		<label>缪诺聚落</label>
-		<description>一群在这里在这颗星球上建立聚落的缪诺们，她们仍然与家园世界保持来往，技术与人员没有像这颗星球的外来者一样流失，使用各种先进的技术装备来执行家园世界给予她们的任务。\n\n她们关与完成任务有关的各种实际问题。\n\n如果这个星球上存在愿意协助她们的人或者团体，她们也乐意合作。</description>
+		<description>一群在这里在这颗星球上建立聚落的缪诺们，她们仍然与家园世界保持来往，技术与人员没有像这颗星球的外来者一样流失，使用各种先进的技术装备来执行家园世界给予她们的任务。\n\n她们关心与完成任务有关的各种实际问题。\n\n如果这个星球上存在愿意协助她们的人或者团体，她们也非常乐意合作。</description>
 		<pawnSingular>Muno</pawnSingular>
 		<pawnsPlural>Munos</pawnsPlural>
 		<categoryTag>Outlander</categoryTag>

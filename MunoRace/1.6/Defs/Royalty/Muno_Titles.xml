@@ -13,7 +13,7 @@
     <RoyalTitleDef ParentName="BaseMunoTitle">
     <defName>Muno_JuniorAssistant</defName>
     <label>初级协助者</label>
-    <description>在边缘世界与缪诺进行一些简单协助工作的人会获得这头衔.</description>
+    <description>在边缘世界与缪诺进行一些简单协助工作的人会获得这头衔。</description>
     <seniority>0</seniority>
     <favorCost>1</favorCost>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
@@ -24,7 +24,7 @@
     <RoyalTitleDef ParentName="BaseMunoTitle">
     <defName>Muno_Assistant</defName>
     <label>协助者</label>
-    <description>在证明了自身存在价值后，更进一步协助缪诺们执行各种任务后，会获得这头衔.</description>
+    <description>在证明了自身存在价值后，更进一步协助缪诺们执行各种任务后，会获得这头衔。</description>
     <seniority>10</seniority>
     <favorCost>5</favorCost>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
@@ -36,9 +36,43 @@
     <RoyalTitleDef ParentName="BaseMunoTitle">
     <defName>Muno_SeniorAssistant</defName>
     <label>高级协助者</label>
-    <description>进行了一系列协助工作，取得缪诺们的初步信任后，会获得这头衔.</description>
+    <description>进行了一系列协助工作，取得缪诺们的初步信任后，会获得这头衔。</description>
     <seniority>50</seniority>
     <favorCost>10</favorCost>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <permitPointsAwarded>1</permitPointsAwarded>
+    <commonality>1</commonality>
+  </RoyalTitleDef>
+
+    <RoyalTitleDef ParentName="BaseMunoTitle">
+    <defName>Muno_JuniorCollaborator</defName>
+    <label>初级合作者</label>
+    <description>当缪诺们信任某人时，就会正式开始与该人进行互惠的合作，同时便会获得这头衔。</description>
+    <seniority>75</seniority>
+    <favorCost>12</favorCost>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    </RoyalTitleDef>
+
+    <RoyalTitleDef ParentName="BaseMunoTitle">
+    <defName>Muno_ImportantCollaborator</defName>
+    <label>重要合作者</label>
+    <description>在与缪诺的合作中发挥重要作用，为缪诺提供有价值贡献的人会获得这头衔。</description>
+    <seniority>100</seniority>
+    <favorCost>15</favorCost>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    <permitPointsAwarded>1</permitPointsAwarded>
+    </RoyalTitleDef>
+
+    <RoyalTitleDef ParentName="BaseMunoTitle">
+    <defName>Muno_SeniorCollaborator</defName>
+    <label>全面合作者</label>
+    <description>与缪诺建立深度合作关系，在多个重要项目中表现卓越的人会获得这头衔。</description>
+    <seniority>200</seniority>
+    <favorCost>20</favorCost>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <permitPointsAwarded>1</permitPointsAwarded>
     <commonality>1</commonality>

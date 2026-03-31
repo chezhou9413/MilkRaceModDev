@@ -675,7 +675,7 @@
 	<ThingDef ParentName="BaseHumanMakeableGun">
 		<defName>Gun_MunoAC</defName>
 		<label>缪诺机炮</label>
-		<description>一款大口径双管机枪，可以提供更强的火力，而且弹药灵活性更高，但是非常笨重</description>
+		<description>一款大口径双管机枪，可以提供更强的火力，而且极具弹药灵活性，唯一问题是非常笨重</description>
 		<graphicData>
 			<texPath>Weapons/Gun_AC</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -717,8 +717,9 @@
 				<defaultProjectile>Bullet_MunoAC</defaultProjectile>
 				<warmupTime>1.9</warmupTime>
 				<range>33</range>
-				<burstShotCount>9</burstShotCount>
+				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<forcedMissRadius>0.2</forcedMissRadius>
 				<soundCast>Shot_Minigun</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>13</muzzleFlashScale>
@@ -754,16 +755,19 @@
 		<defName>Bullet_MunoAC</defName>
 		<label>奶牛娘机炮弹</label>
 		<graphicData>
-			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<texPath>Weapons/Gun_AC_proj</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>Bullet</damageDef>
-			<damageAmountBase>16</damageAmountBase>
-			<speed>70</speed>
-			<stoppingPower>0.5</stoppingPower>
-			<armorPenetrationBase>0.29</armorPenetrationBase>
-		</projectile>
+          <damageDef>Bomb</damageDef>
+          <explosionRadius>1</explosionRadius>
+          <speed>75</speed>
+          <explosionDelay>1</explosionDelay>
+          <stoppingPower>1.0</stoppingPower>
+          <damageAmountBase>15</damageAmountBase>
+          <armorPenetrationBase>0.26</armorPenetrationBase>
+        </projectile>
 	</ThingDef>
 
 	<!-- 火箭榴弹发射器 -->
@@ -848,7 +852,7 @@
 	</ThingDef>
 	<ThingDef ParentName="BaseBullet">
 		<defName>Bullet_MunoRGL</defName>
-		<label>奶牛娘榴弹</label>
+		<label>奶牛娘火箭榴弹</label>
 		<graphicData>
 			<texPath>Weapons/Gun_MilkRGL_proj</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
