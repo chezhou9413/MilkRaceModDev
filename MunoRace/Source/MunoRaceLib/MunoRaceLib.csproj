@@ -128,8 +128,15 @@
   <ItemGroup>
     <Compile Include="MunoComp\HediffComp_UpgradeGalactogen.cs" />
     <Compile Include="MunoComp\HediffComp_GalactogenDrain.cs" />
+    <Compile Include="MunoComp\HediffComp_TentacleArmorEffects.cs" />
+    <Compile Include="MunoComp\HediffComp_TentacleMinionLifetime.cs" />
+    <Compile Include="MunoComp\Comp_TentacleMinionController.cs" />
+    <Compile Include="MunoComp\Comp_GalactogenStorageArmor.cs" />
+    <Compile Include="MunoComp\Comp_HeavyArmorEffect.cs" />
+    <Compile Include="MunoComp\Comp_TentacleArmorEffect.cs" />
+    <Compile Include="MunoComp\Comp_FrenzyTentacleArmorEffect.cs" />
     <Compile Include="MunoComp\ThingComp_Galactogen.cs" />
-    <Compile Include="MunoComp\ThingComp_GalactogenArmor.cs" />
+    <Compile Include="MunoComp\CompProperties_TentacleArmorData.cs" />
     <Compile Include="MunoDefRef\MunoDefDataRef.cs" />
     <Compile Include="MunoGizmo\Gizmo_GalactogenBar.cs" />
     <Compile Include="MunoJobDriver\JobDriver_SpawnConcentratedMulacte.cs" />

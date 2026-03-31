@@ -8,6 +8,7 @@
     <label>触手动力甲</label>
     <description>一件使用了某种神秘活体材料的动力甲，能给使用者提供助力，但长时间穿着会导致依赖.</description>
 	<possessionCount>1</possessionCount>
+    <tickerType>Normal</tickerType>
     <recipeMaker>
       <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
       <displayPriority>215</displayPriority>   <!--显示等级-->
@@ -76,6 +77,15 @@
         <targetRaces>
           <li>MunoRace</li>          
         </targetRaces>                
+      </li>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_TentacleArmorData" />
+      <li Class="MunoRaceLib.MunoComp.CompProperties_GalactogenStorageArmor">
+        <slotCapacity>1</slotCapacity>
+      </li>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_TentacleArmorEffect">
+        <passiveNerveHediff>Muno_TentacleNervePassive</passiveNerveHediff>
+        <activeBioLiningHediff>Muno_TentacleBioLiningActive</activeBioLiningHediff>
+        <transformedArmorDef>MunoRace_Apparel_Tentaclefrenzyarmor</transformedArmorDef>
       </li>            
   </comps>
 	

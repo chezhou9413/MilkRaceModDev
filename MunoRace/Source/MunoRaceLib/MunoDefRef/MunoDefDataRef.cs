@@ -25,6 +25,21 @@ namespace MunoRaceLib.MunoDefRef
         public static StatDef Muno_GalactogenRecovery;
 
         public static HediffDef Muno_GalactogenEnhancement;
+        public static HediffDef Muno_TentacleNervePassive;
+        public static HediffDef Muno_TentacleBioLiningActive;
+        public static HediffDef Muno_TentacleNerveActive;
+        public static HediffDef Muno_TentacleBioLiningPassive;
+        public static HediffDef Muno_TentacleWithdrawal;
+        public static HediffDef Muno_TentacleMinionLifetime;
+
+        public static ThoughtDef Muno_TentacleBioLiningPleasure;
+        public static ThoughtDef Muno_TentacleBioLiningPleasureStrong;
+        public static ThoughtDef Muno_TentacleWithdrawalThought;
+
+        public static ThingDef MunoRace_Apparel_Tentaclearmor;
+        public static ThingDef MunoRace_Apparel_Tentaclefrenzyarmor;
+
+        public static PawnKindDef Muno_Mech_Tentacles;
 
         public static JobDef JobDef_RefuelGalactogenArmor;
     }

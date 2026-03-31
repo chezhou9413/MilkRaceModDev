@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThoughtDef>
+    <defName>Muno_TentacleBioLiningPleasure</defName>
+    <validWhileDespawned>false</validWhileDespawned>
+    <durationDays>0.3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>生物内衬共鸣</label>
+        <description>活化后的内衬让我感到安心而愉悦。</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Muno_TentacleBioLiningPleasureStrong</defName>
+    <validWhileDespawned>false</validWhileDespawned>
+    <durationDays>0.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>失控内衬支配</label>
+        <description>失控触手甲的内衬持续刺激着我的情绪，让我难以摆脱那种高涨感。</description>
+        <baseMoodEffect>18</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Muno_TentacleWithdrawalThought</defName>
+    <validWhileDespawned>false</validWhileDespawned>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>触手甲戒断</label>
+        <description>我失去了那件已经与身体融为一体的触手甲，剧烈的空虚感与痛苦几乎压垮了我。</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

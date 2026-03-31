@@ -9,6 +9,7 @@
     <label>狂乱触手甲</label>
     <description>触手甲等活体材料被意外刺激进而狂乱的产物，活性材料会逐渐控制穿戴者的身体、思维，若没有及时脱下，穿戴者就会逐渐失去心智.</description>
 	<possessionCount>1</possessionCount>
+    <tickerType>Normal</tickerType>
     <recipeMaker>
       <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
       <displayPriority>215</displayPriority>   <!--显示等级-->
@@ -77,6 +78,20 @@
         <targetRaces>
           <li>MunoRace</li>          
         </targetRaces>                
+      </li>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_TentacleArmorData" />
+      <li Class="MunoRaceLib.MunoComp.CompProperties_GalactogenStorageArmor">
+        <slotCapacity>1</slotCapacity>
+      </li>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_FrenzyTentacleArmorEffect">
+        <passiveNerveHediff>Muno_TentacleNervePassive</passiveNerveHediff>
+        <activeNerveHediff>Muno_TentacleNerveActive</activeNerveHediff>
+        <passiveBioLiningHediff>Muno_TentacleBioLiningPassive</passiveBioLiningHediff>
+        <withdrawalHediff>Muno_TentacleWithdrawal</withdrawalHediff>
+        <minionPawnKind>Muno_Mech_Tentacles</minionPawnKind>
+        <minionSpawnCount>4</minionSpawnCount>
+        <dependencyTicks>180000</dependencyTicks>
+        <passiveRepairPerHour>8</passiveRepairPerHour>
       </li>            
   </comps>
 	

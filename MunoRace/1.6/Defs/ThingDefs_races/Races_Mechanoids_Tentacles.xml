@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ThingDef ParentName="LightMechanoid">
+	<ThingDef ParentName="AnimalThingBase">
 		<defName>Muno_Mech_Tentacles</defName>
 		<label>触手个体</label>
 		<description>由狂乱触手甲活性材料孕育的触手个体，尽管个体的战斗力不强，但依旧可以给敌人进行缠人的骚扰，同时这些个体内部的供能物质有限而又没有摄入口，几小时后便会饿死.</description>
@@ -8,30 +8,31 @@
 			<ArmorRating_Blunt>1.0</ArmorRating_Blunt>
 			<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
 			<MoveSpeed>2.1</MoveSpeed>
+			<MarketValue>0</MarketValue>
+			<Wildness>0</Wildness>
 		</statBases>
 		<race>
 			<body>MechanoidTentacles</body>
-			<mechEnabledWorkTypes>
-				<li>Hauling</li>
-			</mechEnabledWorkTypes>
+			<baseBodySize>0.28</baseBodySize>
+			<baseHungerRate>0.4</baseHungerRate>
+			<baseHealthScale>0.45</baseHealthScale>
+			<trainability>Intermediate</trainability>
+			<lifeExpectancy>2</lifeExpectancy>
+			<fleshType>Insectoid</fleshType>
+			<thinkTreeMain>Animal</thinkTreeMain>
 			<lifeStageAges>
 				<li>
-					<def>MechanoidFullyFormed</def>
+					<def>EusocialInsectAdult</def>
 					<minAge>0</minAge>
-					<soundWounded>Pawn_Tortoise_Wounded</soundWounded>
-					<soundDeath>Pawn_Tortoise_Death</soundDeath>
-					<soundCall>Pawn_Tortoise_Call</soundCall>
-					<soundAngry>Pawn_Tortoise_Angry</soundAngry>
-				</li>
-				<li>
-					<def>MechanoidFullyFormed</def>
-					<minAge>100</minAge>
-					<soundWounded>Pawn_Tortoise_Wounded</soundWounded>
-					<soundDeath>Pawn_Tortoise_Death</soundDeath>
-					<soundCall>Pawn_Tortoise_Call</soundCall>
-					<soundAngry>Pawn_Tortoise_Angry</soundAngry>
+					<soundWounded>Pawn_Megascarab_Wounded</soundWounded>
+					<soundDeath>Pawn_Megascarab_Death</soundDeath>
+					<soundCall>Pawn_Megascarab_Call</soundCall>
+					<soundAngry>Pawn_Megascarab_Angry</soundAngry>
 				</li>
 			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
 		</race>
 		<tools>
 			<li>
@@ -44,27 +45,24 @@
 				<!-- <linkedBodyPartsGroup>TentacleBladeAttackTool</linkedBodyPartsGroup> -->
 			</li>
 		</tools>
+		<comps>
+			<li Class="MunoRaceLib.MunoComp.CompProperties_TentacleMinionController">
+				<lifetimeTicks>90000</lifetimeTicks>
+				<enemySearchRadius>40</enemySearchRadius>
+			</li>
+		</comps>
 	</ThingDef>
 
-	<PawnKindDef ParentName="LightMechanoidKind">
+	<PawnKindDef ParentName="AnimalKindBase">
 		<defName>Muno_Mech_Tentacles</defName>
 		<label>触手个体</label>
 		<race>Muno_Mech_Tentacles</race>
+		<combatPower>45</combatPower>
+		<ecoSystemWeight>0</ecoSystemWeight>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
 					<texPath>Mechanoid/Muno_Mech_Tentacles</texPath>
-					<!-- <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Lifturtle</maskPath> -->
-					<shaderType>CutoutWithOverlay</shaderType>
-					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>1.1</drawSize>
-				</bodyGraphicData>
-			</li>
-			<li>
-				<bodyGraphicData>
-					<texPath>Mechanoid/Muno_Mech_Tentacles</texPath>
-					<!-- <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Lifturtle</maskPath> -->
-					<shaderType>CutoutWithOverlay</shaderType>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<drawSize>1.1</drawSize>
 				</bodyGraphicData>

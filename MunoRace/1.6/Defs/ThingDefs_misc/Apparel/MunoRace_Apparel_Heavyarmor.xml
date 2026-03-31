@@ -79,13 +79,15 @@
 				</targetRaces>
 			</li>
 
-			<li Class="MunoRaceLib.MunoComp.ThingCompProperties_GalactogenArmor">
+			<li Class="MunoRaceLib.MunoComp.CompProperties_GalactogenStorageArmor">
 				<jumpConcentratedCost>1</jumpConcentratedCost>
 				<jumpRange>9.9</jumpRange>
 				<jumpMinRange>5.9</jumpMinRange>
-				<motionBoostHediff>Muno_MotionBoost</motionBoostHediff>
 				<soundLandingDefName>Longjump_Land</soundLandingDefName>
 				<slotCapacity>5</slotCapacity>
+			</li>
+			<li Class="MunoRaceLib.MunoComp.CompProperties_HeavyArmorEffect">
+				<motionBoostHediff>Muno_MotionBoost</motionBoostHediff>
 			</li>
 		</comps>
 
