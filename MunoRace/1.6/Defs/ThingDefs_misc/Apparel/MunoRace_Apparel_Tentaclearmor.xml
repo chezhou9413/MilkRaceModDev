@@ -85,7 +85,6 @@
       <li Class="MunoRaceLib.MunoComp.CompProperties_TentacleArmorEffect">
         <passiveNerveHediff>Muno_TentacleNervePassive</passiveNerveHediff>
         <activeBioLiningHediff>Muno_TentacleBioLiningActive</activeBioLiningHediff>
-        <transformedArmorDef>MunoRace_Apparel_Tentaclefrenzyarmor</transformedArmorDef>
       </li>            
   </comps>
 	

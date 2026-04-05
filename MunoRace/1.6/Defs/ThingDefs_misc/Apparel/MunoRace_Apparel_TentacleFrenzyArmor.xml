@@ -8,13 +8,9 @@
   	<defName>MunoRace_Apparel_Tentaclefrenzyarmor</defName>
     <label>狂乱触手甲</label>
     <description>触手甲等活体材料被意外刺激进而狂乱的产物，活性材料会逐渐控制穿戴者的身体、思维，若没有及时脱下，穿戴者就会逐渐失去心智.</description>
-	<possessionCount>1</possessionCount>
+	<possessionCount>0</possessionCount>
     <tickerType>Normal</tickerType>
-    <recipeMaker>
-      <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
-      <displayPriority>215</displayPriority>   <!--显示等级-->
-    </recipeMaker>
-    <graphicData>
+	<graphicData>
    	<texPath>Apparel/Tentaclefrenzyarmor/MunoRace_Apparel_Tentaclefrenzyarmor</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
@@ -40,7 +36,7 @@
     <IncomingDamageFactor>0.75</IncomingDamageFactor> <!--承伤系数-->
 	<EquipDelay>3</EquipDelay> <!--穿戴时间--> 
 	</statBases>
-	<generateCommonality>0.05</generateCommonality> <!--生成概率-->
+	<generateCommonality>0</generateCommonality> <!--生成概率-->
 	 <equippedStatOffsets> <!--对小人的影响-->
 	   <SocialImpact>0.1</SocialImpact> <!--社交效果 可以不填 直接+百分比-->
 	   <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">0.05</SlaveSuppressionOffset> <!--压制奴隶系数 可以不填 直接+百分比-->
@@ -84,9 +80,8 @@
         <slotCapacity>1</slotCapacity>
       </li>
       <li Class="MunoRaceLib.MunoComp.CompProperties_FrenzyTentacleArmorEffect">
-        <passiveNerveHediff>Muno_TentacleNervePassive</passiveNerveHediff>
-        <activeNerveHediff>Muno_TentacleNerveActive</activeNerveHediff>
-        <passiveBioLiningHediff>Muno_TentacleBioLiningPassive</passiveBioLiningHediff>
+        <passiveNerveHediff>Muno_TentacleNerveActive</passiveNerveHediff>
+        <activeBioLiningHediff>Muno_TentacleBioLiningPassive</activeBioLiningHediff>
         <withdrawalHediff>Muno_TentacleWithdrawal</withdrawalHediff>
         <minionPawnKind>Muno_Mech_Tentacles</minionPawnKind>
         <minionSpawnCount>4</minionSpawnCount>

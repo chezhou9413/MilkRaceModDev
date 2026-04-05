@@ -130,6 +130,7 @@
     <Compile Include="MunoComp\HediffComp_GalactogenDrain.cs" />
     <Compile Include="MunoComp\HediffComp_TentacleArmorEffects.cs" />
     <Compile Include="MunoComp\HediffComp_TentacleMinionLifetime.cs" />
+    <Compile Include="MunoComp\CompUseEffect_TentacleArmorDisabler.cs" />
     <Compile Include="MunoComp\Comp_TentacleMinionController.cs" />
     <Compile Include="MunoComp\Comp_GalactogenStorageArmor.cs" />
     <Compile Include="MunoComp\Comp_HeavyArmorEffect.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="MunoJobDriver\JobDriver_RefuelGalactogenArmor.cs" />
     <Compile Include="MunoWorker\WorkGiver_RefuelGalactogenArmor.cs" />
     <Compile Include="Patch\Patch_Pawn_PostApplyDamage.cs" />
+    <Compile Include="Patch\Patch_PawnApparelTracker_TryDrop.cs" />
     <Compile Include="Patch\Patch_GalactogenBar_GetGizmos.cs" />
     <Compile Include="Patch\Pawn_GetGizmos_GalactogenArmor_Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

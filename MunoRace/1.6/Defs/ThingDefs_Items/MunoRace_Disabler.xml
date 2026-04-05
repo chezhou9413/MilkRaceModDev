@@ -24,16 +24,16 @@
     <thingCategories>
       <li>Manufactured</li>
     </thingCategories>
-    <!-- <comps>
+    <comps>
       <li Class="CompProperties_Usable">
         <useJob>UseItem</useJob>
-        <useLabel>服用强化药水</useLabel>
+        <useLabel>解除触手动力甲限制</useLabel>
         <useDuration>100</useDuration>
       </li>
       <li Class="CompProperties_UseEffect">
-        <compClass>MunoRaceLib.MunoComp.HediffComp_UpgradeGalactogen</compClass>
+        <compClass>MunoRaceLib.MunoComp.CompUseEffect_TentacleArmorDisabler</compClass>
       </li>
-    </comps> -->
+    </comps>
   </ThingDef>
 
 

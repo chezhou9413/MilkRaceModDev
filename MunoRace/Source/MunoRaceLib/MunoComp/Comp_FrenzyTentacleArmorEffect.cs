@@ -9,9 +9,10 @@ namespace MunoRaceLib.MunoComp
 {
     public class CompProperties_FrenzyTentacleArmorEffect : CompProperties
     {
+        public const int ActiveBioLiningDurationTicks = 60000;
+
         public HediffDef passiveNerveHediff;
-        public HediffDef activeNerveHediff;
-        public HediffDef passiveBioLiningHediff;
+        public HediffDef activeBioLiningHediff;
         public HediffDef withdrawalHediff;
         public PawnKindDef minionPawnKind;
         public int minionSpawnCount = 4;
@@ -40,7 +41,6 @@ namespace MunoRaceLib.MunoComp
         {
             base.Notify_Equipped(pawn);
             EnsureBoundHediff(pawn, Props.passiveNerveHediff, true);
-            EnsureBoundHediff(pawn, Props.passiveBioLiningHediff, true);
             RemoveWithdrawal(pawn);
         }
 
@@ -48,8 +48,7 @@ namespace MunoRaceLib.MunoComp
         {
             base.Notify_Unequipped(pawn);
             RemoveBoundHediff(pawn, Props.passiveNerveHediff);
-            RemoveBoundHediff(pawn, Props.passiveBioLiningHediff);
-            RemoveBoundHediff(pawn, Props.activeNerveHediff);
+            RemoveBoundHediff(pawn, Props.activeBioLiningHediff);
 
             if (Data != null && Data.dependencyTriggered)
             {
@@ -72,7 +71,7 @@ namespace MunoRaceLib.MunoComp
             }
 
             EnsureBoundHediff(wearer, Props.passiveNerveHediff, true);
-            EnsureBoundHediff(wearer, Props.passiveBioLiningHediff, true);
+            NormalizeActiveBioLining(wearer);
             HandleDependency(wearer);
 
             if (parent.IsHashIntervalTick(2500))
@@ -101,8 +100,8 @@ namespace MunoRaceLib.MunoComp
 
             yield return new Command_Action
             {
-                defaultLabel = "活化触手神经",
-                defaultDesc = "消耗槽内 1 个乳源质浓浆，4 小时内使操作能力 +25%，视觉能力 +20%。",
+                defaultLabel = "激活生物内衬(狂乱)",
+                defaultDesc = "主动技能：消耗槽内 1 个乳源质浓浆，4 小时内提升利器/钝器防护各 40%，心情 +18，意识 +15%。",
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/DesirePower", true),
                 Disabled = storageComp == null || !storageComp.HasEnough(1) || pawn.Downed,
                 disabledReason = pawn.Downed ? "小人已倒下" : (storageComp != null && storageComp.HasEnough(1) ? string.Empty : "装甲浓浆槽不足"),
@@ -110,10 +109,11 @@ namespace MunoRaceLib.MunoComp
                 {
                     if (storageComp != null && storageComp.TryConsumeForAbility(pawn, 1))
                     {
-                        ActivateTimedHediff(pawn, Props.activeNerveHediff, 60000);
+                        ActivateTimedHediff(pawn, Props.activeBioLiningHediff, CompProperties_FrenzyTentacleArmorEffect.ActiveBioLiningDurationTicks);
                     }
                 }
             };
+
         }
 
         private void HandleDependency(Pawn wearer)
@@ -143,6 +143,32 @@ namespace MunoRaceLib.MunoComp
             if (disappears != null)
             {
                 disappears.ticksToDisappear = durationTicks;
+            }
+        }
+
+        private void NormalizeActiveBioLining(Pawn pawn)
+        {
+            if (Props.activeBioLiningHediff == null)
+            {
+                return;
+            }
+
+            Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(Props.activeBioLiningHediff);
+            if (hediff == null)
+            {
+                return;
+            }
+
+            HediffComp_Disappears disappears = hediff.TryGetComp<HediffComp_Disappears>();
+            if (disappears == null)
+            {
+                pawn.health.RemoveHediff(hediff);
+                return;
+            }
+
+            if (disappears.ticksToDisappear > CompProperties_FrenzyTentacleArmorEffect.ActiveBioLiningDurationTicks)
+            {
+                disappears.ticksToDisappear = CompProperties_FrenzyTentacleArmorEffect.ActiveBioLiningDurationTicks;
             }
         }
 

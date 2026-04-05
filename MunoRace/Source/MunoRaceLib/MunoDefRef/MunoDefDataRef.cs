@@ -36,8 +36,10 @@ namespace MunoRaceLib.MunoDefRef
         public static ThoughtDef Muno_TentacleBioLiningPleasureStrong;
         public static ThoughtDef Muno_TentacleWithdrawalThought;
 
+        public static ThingDef MunoRace_Disabler;
         public static ThingDef MunoRace_Apparel_Tentaclearmor;
         public static ThingDef MunoRace_Apparel_Tentaclefrenzyarmor;
+        public static ThingDef MunoRace_Apparel_TentaclefrenzyarmorHead;
 
         public static PawnKindDef Muno_Mech_Tentacles;
 

@@ -33,7 +33,7 @@
   <HediffDef>
     <defName>Muno_TentacleBioLiningActive</defName>
     <label>激活生物内衬</label>
-    <description>生物内衬被主动激活后，短时间内提升防护、心情与意识。</description>
+    <description>主动激活生物内衬后，提高利器、钝器防护各 30%，心情 +12，意识 +10%。消耗 1 个乳源质浓浆，持续 4 小时。</description>
     <hediffClass>HediffWithComps</hediffClass>
     <isBad>false</isBad>
     <defaultLabelColor>(0.95, 0.55, 0.75)</defaultLabelColor>
@@ -64,7 +64,7 @@
   <HediffDef>
     <defName>Muno_TentacleNerveActive</defName>
     <label>活化触手神经(狂乱)</label>
-    <description>失控触手甲强行刺激神经系统，短时间内显著提高操作与视觉能力。</description>
+    <description>狂乱触手甲持续强化神经系统，提高操作能力 +45%、视觉能力 +40%，每小时消耗 4 点乳源质。</description>
     <hediffClass>HediffWithComps</hediffClass>
     <isBad>false</isBad>
     <defaultLabelColor>(0.9, 0.25, 0.6)</defaultLabelColor>
@@ -73,18 +73,19 @@
         <capMods>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>0.25</offset>
+            <offset>0.45</offset>
           </li>
           <li>
             <capacity>Sight</capacity>
-            <offset>0.2</offset>
+            <offset>0.4</offset>
           </li>
         </capMods>
       </li>
     </stages>
     <comps>
-      <li Class="Verse.HediffCompProperties_Disappears">
-        <disappearsAfterTicks>60000</disappearsAfterTicks>
+      <li Class="Verse.HediffCompProperties_RemoveIfApparelDropped" />
+      <li Class="MunoRaceLib.MunoComp.HediffCompProperties_GalactogenDrain">
+        <drainPerHour>4</drainPerHour>
       </li>
     </comps>
   </HediffDef>
@@ -92,7 +93,7 @@
   <HediffDef>
     <defName>Muno_TentacleBioLiningPassive</defName>
     <label>激活生物内衬(失控)</label>
-    <description>失控触手甲的内衬长期处于亢奋状态，持续提高防护、心情与意识，但每小时消耗 4 点乳源质。</description>
+    <description>主动激活狂乱触手甲的生物内衬后，提高利器、钝器防护各 40%，心情 +18，意识 +15%。消耗 1 个乳源质浓浆，持续 4 小时。</description>
     <hediffClass>HediffWithComps</hediffClass>
     <isBad>false</isBad>
     <defaultLabelColor>(1.0, 0.3, 0.5)</defaultLabelColor>
@@ -111,9 +112,8 @@
       </li>
     </stages>
     <comps>
-      <li Class="Verse.HediffCompProperties_RemoveIfApparelDropped" />
-      <li Class="MunoRaceLib.MunoComp.HediffCompProperties_GalactogenDrain">
-        <drainPerHour>4</drainPerHour>
+      <li Class="Verse.HediffCompProperties_Disappears">
+        <disappearsAfterTicks>60000</disappearsAfterTicks>
       </li>
       <li Class="MunoRaceLib.MunoComp.HediffCompProperties_TentacleArmorMemory">
         <thoughtDef>Muno_TentacleBioLiningPleasureStrong</thoughtDef>

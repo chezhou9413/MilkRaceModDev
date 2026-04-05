@@ -8,6 +8,7 @@
   	<defName>MunoRace_Apparel_TentaclefrenzyarmorHead</defName>
     <label>狂乱触手甲头部</label>
     <description>包裹了使用者头部的狂乱触手甲的一部分，通过某种神经链接，能让被覆盖五官的使用者仍然能感知周围，前提是使用者还有意识的话</description>
+    <possessionCount>0</possessionCount>
     <graphicData>
    	<texPath>Apparel/HeadApparel/TentaclefrenzyarmorHead/MunoRace_Apparel_TentaclefrenzyarmorHead</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
@@ -32,7 +33,7 @@
     <IncomingDamageFactor>0.75</IncomingDamageFactor> <!--承伤系数-->
 	<EquipDelay>3</EquipDelay> <!--穿戴时间--> 
 	</statBases>
-	<generateCommonality>0.05</generateCommonality> <!--生成概率-->
+	<generateCommonality>0</generateCommonality> <!--生成概率-->
 	 <equippedStatOffsets> <!--对小人的影响-->
 	   <SocialImpact>0.2</SocialImpact> <!--社交效果-->
     </equippedStatOffsets>
