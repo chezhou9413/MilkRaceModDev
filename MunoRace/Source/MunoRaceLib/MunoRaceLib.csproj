@@ -126,6 +126,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MunoComp\CompTargetEffect_MunoHealGun.cs" />
+    <Compile Include="MunoComp\Verb_CastTargetEffect_MunoHealProjectile.cs" />
     <Compile Include="MunoComp\HediffComp_UpgradeGalactogen.cs" />
     <Compile Include="MunoComp\HediffComp_GalactogenDrain.cs" />
     <Compile Include="MunoComp\HediffComp_TentacleArmorEffects.cs" />

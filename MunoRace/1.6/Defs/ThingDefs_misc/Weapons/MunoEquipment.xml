@@ -4,7 +4,7 @@
     <ThingDef ParentName="ApparelNoQualityBase">
     <defName>Apparel_Gun_MunoHG</defName>
     <label>缪诺治疗枪</label>
-    <description>一种轻便的个人装备，内部含有纳米转化机构，能将乳源质转化为能够止血，消毒，治疗的治疗弹，能够给稍远处的伤员提供应急治疗。</description>
+    <description>一种占用装备位的便携治疗器，内部可以储存3份乳源质浓浆。每次发射会消耗1份浓浆形成治疗弹，对射程内目标出血最严重的3个伤口进行应急处理。</description>
     <graphicData>
       <texPath>Weapons/Gun_MunoHG</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -39,7 +39,7 @@
       <layers>
         <li>Belt</li>
       </layers>
-      <wornGraphicPath>Things/Item/Artifact/PsychicShockLance/PsychicShockLance</wornGraphicPath><!-- 暂时用原版替代 -->
+      <wornGraphicPath>Weapons/Gun_MunoHG</wornGraphicPath>
       <wornGraphicData>
         <renderUtilityAsPack>true</renderUtilityAsPack>
         <north>
@@ -91,48 +91,62 @@
     <relicChance>3</relicChance>
     <verbs>
       <li>
-        <verbClass>Verb_CastTargetEffectLances</verbClass>
-        <label>psychic shock lance</label>
+        <verbClass>MunoRaceLib.MunoComp.Verb_CastTargetEffect_MunoHealProjectile</verbClass>
+        <label>muno heal gun</label>
         <hasStandardCommand>true</hasStandardCommand>
         <targetable>true</targetable>
         <onlyManualCast>True</onlyManualCast>
+        <defaultProjectile>Bullet_MunoHealGun</defaultProjectile>
         <range>41.9</range>
         <warmupTime>2.2</warmupTime>
-        <invalidTargetPawn>psychic shock immune</invalidTargetPawn>
         <targetParams>
           <canTargetBuildings>false</canTargetBuildings>
-          <neverTargetIncapacitated>true</neverTargetIncapacitated>
+          <canTargetSelf>true</canTargetSelf>
         </targetParams>
-        <soundCast>PsychicShockLanceCast</soundCast>
-        <soundAiming>PsychicArtifactWarmupSustained</soundAiming>
+        <soundCast>TechMedicineUsed</soundCast>
       </li>
     </verbs>
     <comps>
       <li Class="CompProperties_ApparelReloadable">
-        <maxCharges>2</maxCharges>
-        <destroyOnEmpty>true</destroyOnEmpty>
+        <maxCharges>3</maxCharges>
+        <ammoDef>MunoRace_ConcentratedMulacte</ammoDef>
+        <ammoCountPerCharge>1</ammoCountPerCharge>
+        <destroyOnEmpty>false</destroyOnEmpty>
         <hotKey>Misc4</hotKey>
-        <chargeNoun>charge</chargeNoun>
+        <chargeNoun>治疗弹</chargeNoun>
         <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
       </li>
-      <li>
-        <compClass>CompTargetEffect_PsychicShock</compClass>
-      </li>
-      <li Class="CompProperties_TargetEffect_BrainDamageChance">
-        <brainDamageChance>0.3</brainDamageChance>
-      </li>
-      <li Class="CompProperties_TargetEffect_GoodwillImpact">
-        <goodwillImpact>-200</goodwillImpact>
+      <li Class="CompProperties_TargetEffect_MunoHealGun">
+        <maxWoundsPerShot>3</maxWoundsPerShot>
+        <tendQuality>0.8</tendQuality>
+        <maxTendQuality>1.0</maxTendQuality>
       </li>
       <li Class="CompProperties_TargetEffect_FleckOnTarget">
-        <fleckDef>PsycastPsychicEffect</fleckDef>
-      </li>
-      <li Class="CompProperties_TargetEffect_FleckConnecting">
-        <fleckDef>PsycastPsychicLine</fleckDef>
+        <fleckDef>HealingCross</fleckDef>
       </li>
       <li Class="CompProperties_Styleable"></li>
     </comps>
     <allowedArchonexusCount>1</allowedArchonexusCount>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_MunoHealGun</defName>
+    <label>缪诺治疗弹</label>
+    <thingClass>MunoRaceLib.MunoComp.Projectile_MunoHealing</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.2,1.0,0.35)</color>
+      <drawSize>0.45</drawSize>
+    </graphicData>
+    <projectile>
+      <speed>28</speed>
+      <damageDef>Smoke</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <stoppingPower>0</stoppingPower>
+      <armorPenetrationBase>0</armorPenetrationBase>
+      <shadowSize>0.25</shadowSize>
+    </projectile>
   </ThingDef>
 
 </Defs>
