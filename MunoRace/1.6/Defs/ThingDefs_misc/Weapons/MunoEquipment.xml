@@ -4,7 +4,7 @@
     <ThingDef ParentName="ApparelNoQualityBase">
     <defName>Apparel_Gun_MunoHG</defName>
     <label>缪诺治疗枪</label>
-    <description>一种占用装备位的便携治疗器，内部可以储存3份乳源质浓浆。每次发射会消耗1份浓浆形成治疗弹，对射程内目标出血最严重的3个伤口进行应急处理。</description>
+    <description>一种便携治疗枪，内置纳米转换器，可以自动把浓缩乳源质转换为一种治疗剂，可以进行应急治疗处理。</description>
     <graphicData>
       <texPath>Weapons/Gun_MunoHG</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -43,15 +43,16 @@
       <wornGraphicData>
         <renderUtilityAsPack>true</renderUtilityAsPack>
         <north>
-          <scale>(0.7,0.7)</scale>
+          <offset>(0.2,-0.1)</offset>
+          <scale>(0.3,0.3)</scale>
         </north>
         <south>
-          <offset>(0,0.4)</offset>
-          <scale>(0.7,0.7)</scale>
+          <offset>(-0.2,-0.1)</offset>
+          <scale>(0.3,0.3)</scale>
         </south>
         <east>
-          <offset>(-0.35,0)</offset>
-          <scale>(0.85,0.85)</scale>
+          <offset>(-0.2,-0.1)</offset>
+          <scale>(0.3,0.3)</scale>
           <thin>
             <offset>(0,0.1)</offset>
           </thin>
@@ -66,8 +67,8 @@
           </male>
         </east>
         <west>
-          <offset>(0.35,0)</offset>
-          <scale>(0.85,0.85)</scale>
+          <offset>(0.2,-0.1)</offset>
+          <scale>(0.3,0.3)</scale>
           <thin>
             <offset>(0,0.1)</offset>
           </thin>
@@ -83,6 +84,22 @@
         </west>
       </wornGraphicData>
     </apparel>
+
+    <comps>
+     <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Forbiddable" />
+      <li>      
+          <compClass>CompColorable</compClass>
+      </li>            
+      <li Class="ChezhouLib.comp.ApparelAddBodyAddonCompProperties">            
+        <targetRaces>
+          <li>MunoRace</li>          
+        </targetRaces>                
+      </li>            
+     </comps>
+    
     <resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <smeltable>false</smeltable>
@@ -134,10 +151,10 @@
     <label>缪诺治疗弹</label>
     <thingClass>MunoRaceLib.MunoComp.Projectile_MunoHealing</thingClass>
     <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <texPath>Weapons/Gun_MunoHG_proj</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <color>(0.2,1.0,0.35)</color>
-      <drawSize>0.45</drawSize>
+      <!-- <color>(0.2,1.0,0.35)</color> -->
+      <drawSize>0.65</drawSize>
     </graphicData>
     <projectile>
       <speed>28</speed>
