@@ -4,3 +4,9 @@ C:\Users\30978\Desktop\XUENIU\MunoRace\Source\MunoRaceLib\obj\Debug\MunoRaceLib.
 C:\Users\30978\Desktop\XUENIU\MunoRace\Source\MunoRaceLib\obj\Debug\MunoRaceLib.csproj.CoreCompileInputs.cache
 C:\Users\30978\Desktop\XUENIU\MunoRace\Source\MunoRaceLib\obj\Debug\MunoRaceLib.dll
 C:\Users\30978\Desktop\XUENIU\MunoRace\Source\MunoRaceLib\obj\Debug\MunoRaceLib.pdb
+E:\RimModDev\MunoRace\MunoRace\MunoRace\Source\MunoRaceLib\obj\Debug\MunoRaceLib.csproj.AssemblyReference.cache
+E:\RimModDev\MunoRace\MunoRace\MunoRace\Source\MunoRaceLib\obj\Debug\MunoRaceLib.csproj.CoreCompileInputs.cache
+E:\RimModDev\MunoRace\MunoRace\MunoRace\Source\MunoRaceLib\obj\Debug\MunoRaceLib.dll
+E:\RimModDev\MunoRace\MunoRace\MunoRace\Source\MunoRaceLib\obj\Debug\MunoRaceLib.pdb
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.6\Assemblies\MunoRaceLib.dll
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.6\Assemblies\MunoRaceLib.pdb

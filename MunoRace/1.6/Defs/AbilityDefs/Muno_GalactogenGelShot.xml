@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <AbilityDef>
+    <defName>Muno_GalactogenGelShot</defName>
+    <label>化合粘胶弹</label>
+    <description>消耗 1 份乳源质浓浆，发射 3 枚白色曲线粘胶弹。粘胶爆炸会减速敌人并扑灭火焰。</description>
+    <abilityClass>MunoRaceLib.MunoComp.Ability_GalactogenGelShot</abilityClass>
+    <gizmoClass>MunoRaceLib.MunoComp.Command_AbilityGalactogenGelShot</gizmoClass>
+    <iconPath>Weapons/Gun_AC_Gel_proj</iconPath>
+    <jobDef>JobDef_GalactogenGelShot</jobDef>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <targetRequired>true</targetRequired>
+    <hostile>true</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+      </targetParams>
+      <range>33</range>
+      <warmupTime>0.6</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <soundCast>Shot_ChargeBlaster</soundCast>
+      <soundCastTail>GunTail_Medium</soundCastTail>
+    </verbProperties>
+    <comps>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_AbilityGalactogenGelShot">
+        <cost>1</cost>
+        <burstCount>3</burstCount>
+        <ticksBetweenShots>30</ticksBetweenShots>
+        <forcedMissRadius>1.5</forcedMissRadius>
+      </li>
+    </comps>
+  </AbilityDef>
+</Defs>

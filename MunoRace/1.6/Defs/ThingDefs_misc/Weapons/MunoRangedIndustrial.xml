@@ -726,6 +726,9 @@
 			</li>	
 		</verbs>
 		<comps>
+			<li Class="MunoRaceLib.MunoComp.CompProperties_GalactogenStorageWeapon">
+				<slotCapacity>3</slotCapacity>
+			</li>
 		</comps>		
 		<weaponTags Inherit="false">
 			<li>MunoGunAdvanced</li>
@@ -767,6 +770,29 @@
           <stoppingPower>1.0</stoppingPower>
           <damageAmountBase>15</damageAmountBase>
           <armorPenetrationBase>0.26</armorPenetrationBase>
+        </projectile>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_MunoAC_Gel</defName>
+		<label>化合粘胶弹</label>
+		<graphicData>
+			<texPath>Weapons/Gun_AC_Gel_proj</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.15</drawSize>
+		</graphicData>
+		<thingClass>MunoRaceLib.MunoComp.Projectile_GalactogenGel</thingClass>
+		<projectile>
+          <damageDef>Extinguish</damageDef>
+          <explosionRadius>3</explosionRadius>
+          <speed>54</speed>
+          <explosionDelay>1</explosionDelay>
+          <stoppingPower>1.0</stoppingPower>
+          <damageAmountBase>0</damageAmountBase>
+          <armorPenetrationBase>0</armorPenetrationBase>
+          <filth>Filth_FireFoam</filth>
+          <filthCount>1</filthCount>
+          <landedEffecter>ExtinguisherPuffSmall</landedEffecter>
+          <soundImpact>Foam_Impact</soundImpact>
         </projectile>
 	</ThingDef>
 

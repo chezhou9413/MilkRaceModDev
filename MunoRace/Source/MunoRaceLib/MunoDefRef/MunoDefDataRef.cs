@@ -9,13 +9,20 @@ using Verse;
 namespace MunoRaceLib.MunoDefRef
 {
     [DefOf]
+    /// <summary>
+    /// 集中缓存本模组常用 Def，供 C# 逻辑安全引用 XML 定义。
+    /// </summary>
     public static class MunoDefDataRef
     {
         public static ThingDef MunoRace_MunoMilk;
         public static ThingDef MunoRace_ConcentratedMulacte;
+        public static ThingDef Bullet_MunoAC_Gel;
+
+        public static AbilityDef Muno_GalactogenGelShot;
 
         public static JobDef JobDriver_SpawnMunoMilk;
         public static JobDef JobDriver_SpawnConcentratedMulacte;
+        public static JobDef JobDef_GalactogenGelShot;
 
         public static ThingDef Muno_Filth_Galactogen;
 
@@ -31,6 +38,7 @@ namespace MunoRaceLib.MunoDefRef
         public static HediffDef Muno_TentacleBioLiningPassive;
         public static HediffDef Muno_TentacleWithdrawal;
         public static HediffDef Muno_TentacleMinionLifetime;
+        public static HediffDef Muno_GelSlowdown;
 
         public static ThoughtDef Muno_TentacleBioLiningPleasure;
         public static ThoughtDef Muno_TentacleBioLiningPleasureStrong;
@@ -44,5 +52,6 @@ namespace MunoRaceLib.MunoDefRef
         public static PawnKindDef Muno_Mech_Tentacles;
 
         public static JobDef JobDef_RefuelGalactogenArmor;
+        public static JobDef JobDef_RefuelGalactogenWeapon;
     }
 }

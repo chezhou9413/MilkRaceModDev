@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <HediffDef>
+    <defName>Muno_GelSlowdown</defName>
+    <label>化合粘胶附着</label>
+    <description>化合粘胶附着在身体表面，显著限制目标的移动。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.4, 0.8, 1.0)</defaultLabelColor>
+    <stages>
+      <li>
+        <label>附着</label>
+        <statFactors>
+          <MoveSpeed>0.4</MoveSpeed>
+        </statFactors>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600~600</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+</Defs>

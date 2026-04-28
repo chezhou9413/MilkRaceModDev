@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <WorkGiverDef>
+        <defName>Muno_RefuelGalactogenWeapon</defName>
+        <label>装填武器浓浆</label>
+        <giverClass>MunoRaceLib.MunoWorker.WorkGiver_RefuelGalactogenWeapon</giverClass>
+        <workType>Hauling</workType>
+        <priorityInType>69</priorityInType>
+        <verb>装填</verb>
+        <gerund>装填武器浓浆</gerund>
+        <canBeDoneWhileDrafted>false</canBeDoneWhileDrafted>
+    </WorkGiverDef>
+</Defs>
