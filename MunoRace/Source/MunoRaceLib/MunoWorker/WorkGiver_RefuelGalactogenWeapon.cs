@@ -1,20 +1,19 @@
 using MunoRaceLib.MunoComp;
 using MunoRaceLib.MunoDefRef;
 using RimWorld;
-using System.Linq;
 using Verse;
 using Verse.AI;
 
 namespace MunoRaceLib.MunoWorker
 {
     /// <summary>
-    /// 为装备了可储存浓浆武器的小人寻找自动装填乳源质浓浆的搬运工作。
+    /// 为装备了可储存浓浆武器的小人寻找可用浓浆，并支持自动或右键强制装填。
     /// </summary>
     public class WorkGiver_RefuelGalactogenWeapon : WorkGiver_Scanner
     {
         public override ThingRequest PotentialWorkThingRequest
         {
-            get { return ThingRequest.ForGroup(ThingRequestGroup.Pawn); }
+            get { return ThingRequest.ForDef(MunoDefDataRef.MunoRace_ConcentratedMulacte); }
         }
 
         public override PathEndMode PathEndMode
@@ -23,11 +22,11 @@ namespace MunoRaceLib.MunoWorker
         }
 
         /// <summary>
-        /// 判断目标小人当前主武器是否需要装填，且地图上是否存在可用浓浆。
+        /// 判断目标浓浆是否能被当前小人用于装填主武器。
         /// </summary>
         public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
-            if (t != pawn || pawn.Downed || pawn.Drafted)
+            if (pawn == null || t == null || t.def != MunoDefDataRef.MunoRace_ConcentratedMulacte || pawn.Downed || (!forced && pawn.Drafted))
             {
                 return false;
             }
@@ -38,34 +37,21 @@ namespace MunoRaceLib.MunoWorker
                 return false;
             }
 
-            return HasAvailableFuel(pawn);
+            return !t.IsForbidden(pawn) && pawn.CanReserveAndReach(t, PathEndMode.ClosestTouch, Danger.Deadly);
         }
 
         /// <summary>
-        /// 创建将最近可用浓浆装入当前主武器的工作。
+        /// 创建将指定浓浆装入当前主武器的工作。
         /// </summary>
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
             Comp_GalactogenStorageWeapon comp = GetWeaponComp(pawn);
-            if (comp == null)
+            if (comp == null || t == null || t.def != MunoDefDataRef.MunoRace_ConcentratedMulacte)
             {
                 return null;
             }
 
-            Thing fuel = GenClosest.ClosestThingReachable(
-                pawn.Position,
-                pawn.Map,
-                ThingRequest.ForDef(MunoDefDataRef.MunoRace_ConcentratedMulacte),
-                PathEndMode.ClosestTouch,
-                TraverseParms.For(pawn),
-                validator: x => !x.IsForbidden(pawn) && pawn.CanReserve(x)
-            );
-            if (fuel == null)
-            {
-                return null;
-            }
-
-            Job job = JobMaker.MakeJob(MunoDefDataRef.JobDef_RefuelGalactogenWeapon, pawn, fuel);
+            Job job = JobMaker.MakeJob(MunoDefDataRef.JobDef_RefuelGalactogenWeapon, pawn, t);
             job.count = comp.SlotCapacity - comp.SlotCount;
             return job;
         }
@@ -79,14 +65,5 @@ namespace MunoRaceLib.MunoWorker
             return primary?.GetComp<Comp_GalactogenStorageWeapon>();
         }
 
-        /// <summary>
-        /// 检查地图中是否存在小人可预留、可到达的乳源质浓浆。
-        /// </summary>
-        private bool HasAvailableFuel(Pawn pawn)
-        {
-            return pawn.Map.listerThings
-                .ThingsOfDef(MunoDefDataRef.MunoRace_ConcentratedMulacte)
-                .Any(x => !x.IsForbidden(pawn) && pawn.CanReserve(x));
-        }
     }
 }

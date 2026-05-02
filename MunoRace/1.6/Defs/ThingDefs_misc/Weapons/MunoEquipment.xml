@@ -97,7 +97,25 @@
         <targetRaces>
           <li>MunoRace</li>          
         </targetRaces>                
-      </li>            
+      </li>
+      <li Class="CompProperties_ApparelReloadable">
+        <maxCharges>3</maxCharges>
+        <ammoDef>MunoRace_ConcentratedMulacte</ammoDef>
+        <ammoCountPerCharge>1</ammoCountPerCharge>
+        <destroyOnEmpty>false</destroyOnEmpty>
+        <hotKey>Misc4</hotKey>
+        <chargeNoun>治疗弹</chargeNoun>
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+      <li Class="CompProperties_TargetEffect_MunoHealGun">
+        <maxWoundsPerShot>3</maxWoundsPerShot>
+        <tendQuality>0.8</tendQuality>
+        <maxTendQuality>1.0</maxTendQuality>
+      </li>
+      <li Class="CompProperties_TargetEffect_FleckOnTarget">
+        <fleckDef>HealingCross</fleckDef>
+      </li>
+      <li Class="CompProperties_Styleable"></li>
      </comps>
     
     <resourceReadoutPriority>Middle</resourceReadoutPriority>
@@ -123,26 +141,6 @@
         <soundCast>TechMedicineUsed</soundCast>
       </li>
     </verbs>
-    <comps>
-      <li Class="CompProperties_ApparelReloadable">
-        <maxCharges>3</maxCharges>
-        <ammoDef>MunoRace_ConcentratedMulacte</ammoDef>
-        <ammoCountPerCharge>1</ammoCountPerCharge>
-        <destroyOnEmpty>false</destroyOnEmpty>
-        <hotKey>Misc4</hotKey>
-        <chargeNoun>治疗弹</chargeNoun>
-        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
-      </li>
-      <li Class="CompProperties_TargetEffect_MunoHealGun">
-        <maxWoundsPerShot>3</maxWoundsPerShot>
-        <tendQuality>0.8</tendQuality>
-        <maxTendQuality>1.0</maxTendQuality>
-      </li>
-      <li Class="CompProperties_TargetEffect_FleckOnTarget">
-        <fleckDef>HealingCross</fleckDef>
-      </li>
-      <li Class="CompProperties_Styleable"></li>
-    </comps>
     <allowedArchonexusCount>1</allowedArchonexusCount>
   </ThingDef>
 

@@ -8,6 +8,6 @@
         <priorityInType>69</priorityInType>
         <verb>装填</verb>
         <gerund>装填武器浓浆</gerund>
-        <canBeDoneWhileDrafted>false</canBeDoneWhileDrafted>
+        <canBeDoneWhileDrafted>true</canBeDoneWhileDrafted>
     </WorkGiverDef>
 </Defs>

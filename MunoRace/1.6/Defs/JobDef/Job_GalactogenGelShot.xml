@@ -4,6 +4,7 @@
     <defName>JobDef_GalactogenGelShot</defName>
     <driverClass>MunoRaceLib.MunoJobDriver.JobDriver_GalactogenGelShot</driverClass>
     <reportString>正在发射化合粘胶弹。</reportString>
+    <abilityCasting>true</abilityCasting>
     <casualInterruptible>false</casualInterruptible>
     <playerInterruptible>true</playerInterruptible>
   </JobDef>

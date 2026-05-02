@@ -126,16 +126,27 @@ namespace MunoRaceLib.MunoComp
         }
 
         /// <summary>
-        /// 在爆炸半径内执行灭火、敌人减速和粘胶飞溅。
+        /// 在爆炸半径内执行灭火、敌人减速、粘胶飞溅和原版视觉爆炸。
         /// </summary>
         private void ExplodeGel()
         {
             Map map = Map;
-            IntVec3 center = Position;
+            IntVec3 center = destination.ToIntVec3();
+            if (map == null)
+            {
+                Destroy();
+                return;
+            }
+
+            if (!center.IsValid || !center.InBounds(map))
+            {
+                center = Position;
+            }
             float radius = def.projectile.explosionRadius;
             Thing instigator = launcher;
 
             Destroy();
+            SpawnFirefoamExplosionVisual(center, map, radius, instigator);
             FilthGalactogenTool.SpawnMilkSplatter(center.ToVector3Shifted(), map, 14);
             SpawnFirefoamLikeImpact(center, map);
 
@@ -148,8 +159,54 @@ namespace MunoRaceLib.MunoComp
 
                 ExtinguishFiresAt(cell, map, instigator);
                 SpawnFirefoamFilthAt(cell, map);
-                SlowHostilePawnsAt(cell, map, instigator);
             }
+
+            SlowPawnsInRadius(center, map, radius);
+        }
+
+        /// <summary>
+        /// 调用原版爆炸表现管线，只播放灭火泡沫式视觉和音效，不额外造成伤害或生成污物。
+        /// </summary>
+        private void SpawnFirefoamExplosionVisual(IntVec3 center, Map map, float radius, Thing instigator)
+        {
+            if (map == null)
+            {
+                return;
+            }
+
+            GenExplosion.DoExplosion(
+                center,
+                map,
+                radius,
+                DamageDefOf.Extinguish,
+                instigator,
+                0,
+                0f,
+                SoundDefOf.Explosion_FirefoamPopper,
+                equipmentDef,
+                def,
+                intendedTarget.Thing,
+                null,
+                0f,
+                1,
+                null,
+                null,
+                255,
+                applyDamageToExplosionCellsNeighbors: false,
+                null,
+                0f,
+                1,
+                0f,
+                damageFalloff: false,
+                origin.AngleToFlat(destination),
+                null,
+                null,
+                doVisualEffects: true,
+                DamageDefOf.Extinguish.expolosionPropagationSpeed,
+                0f,
+                doSoundEffects: true,
+                null,
+                1f);
         }
 
         /// <summary>
@@ -206,15 +263,20 @@ namespace MunoRaceLib.MunoComp
         }
 
         /// <summary>
-        /// 给指定格子上的敌对 Pawn 添加或刷新化合粘胶减速状态。
+        /// 给爆炸半径内的所有 Pawn 添加或刷新化合粘胶减速状态。
         /// </summary>
-        private void SlowHostilePawnsAt(IntVec3 cell, Map map, Thing instigator)
+        private void SlowPawnsInRadius(IntVec3 center, Map map, float radius)
         {
-            List<Thing> things = cell.GetThingList(map);
-            for (int i = 0; i < things.Count; i++)
+            if (map == null)
             {
-                Pawn pawn = things[i] as Pawn;
-                if (pawn == null || pawn.Dead || !IsHostileTarget(pawn, instigator))
+                return;
+            }
+
+            IReadOnlyList<Pawn> pawns = map.mapPawns.AllPawnsSpawned;
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                Pawn pawn = pawns[i];
+                if (pawn == null || pawn.Dead || !pawn.Position.InHorDistOf(center, radius))
                 {
                     continue;
                 }
@@ -230,17 +292,5 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
-        /// <summary>
-        /// 判断 Pawn 是否应被粘胶弹视作敌对目标。
-        /// </summary>
-        private bool IsHostileTarget(Pawn pawn, Thing instigator)
-        {
-            if (instigator == null)
-            {
-                return pawn.Faction != Faction.OfPlayer;
-            }
-
-            return pawn.HostileTo(instigator);
-        }
     }
 }
