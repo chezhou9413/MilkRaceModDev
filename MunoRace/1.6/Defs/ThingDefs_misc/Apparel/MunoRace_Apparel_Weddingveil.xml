@@ -96,19 +96,19 @@
                         <offsets>
                             <west>
                                 <layerOffset>0.14</layerOffset>
-                                <offset>(0, 0)</offset>
+                                <offset>(0, 0.04)</offset>
                             </west>
                             <south>
                                 <layerOffset>0.14</layerOffset>
-                                <offset>(0, 0)</offset>
+                                <offset>(0, 0.04)</offset>
                             </south>
                             <north>
                                 <layerOffset>0.14</layerOffset>
-                                <offset>(0, 0)</offset>
+                                <offset>(0, 0.04)</offset>
                             </north>
                             <east>
                                 <layerOffset>0.14</layerOffset>
-                                <offset>(0, 0)</offset>
+                                <offset>(0, 0.04)</offset>
                             </east>
                         </offsets>
                     </li>
