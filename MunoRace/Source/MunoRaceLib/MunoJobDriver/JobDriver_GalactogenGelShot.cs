@@ -92,14 +92,13 @@ namespace MunoRaceLib.MunoJobDriver
         }
 
         /// <summary>
-        /// 发射一枚带随机散布和高抛贝塞尔曲线的化合粘胶弹。
+        /// 发射一枚带随机散布的化合粘胶弹，并保持原版直线弹道表现。
         /// </summary>
         private void FireOneGelShot(int shotIndex)
         {
             LocalTargetInfo target = job.GetTarget(TargetIndex.A);
             IntVec3 destination = RandomBurstDestination(target.Cell);
             Projectile_GalactogenGel projectile = (Projectile_GalactogenGel)GenSpawn.Spawn(MunoDefDataRef.Bullet_MunoAC_Gel, pawn.Position, pawn.Map);
-            projectile.ConfigureCurve(shotIndex - 1, Rand.Range(1.35f, 1.9f));
             projectile.Launch(pawn, pawn.DrawPos, destination, target, ProjectileHitFlags.IntendedTarget | ProjectileHitFlags.NonTargetWorld, false, pawn.equipment?.Primary);
             if (job.ability.def.verbProperties.soundCast != null)
             {

@@ -50,8 +50,11 @@ namespace MunoRaceLib.MunoDefRef
         public static ThingDef MunoRace_Apparel_TentaclefrenzyarmorHead;
 
         public static PawnKindDef Muno_Mech_Tentacles;
+        public static PawnKindDef MunoRace_Colonist;
 
         public static JobDef JobDef_RefuelGalactogenArmor;
         public static JobDef JobDef_RefuelGalactogenWeapon;
+
+        public static FactionDef MunoColony_Faction;
     }
 }

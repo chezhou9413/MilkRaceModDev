@@ -9,41 +9,11 @@ using Verse.Sound;
 namespace MunoRaceLib.MunoComp
 {
     /// <summary>
-    /// 实现化合粘胶弹的无伤害爆炸、范围减速、灭火与四散特效。
+    /// 实现化合粘胶弹的无伤害爆炸、范围减速、灭火与飞行拖尾特效。
     /// </summary>
     public class Projectile_GalactogenGel : Projectile_Explosive
     {
         private int ticksToDetonation;
-        private int curveIndex;
-        private float curveHeight = 1.6f;
-
-        /// <summary>
-        /// 设置本枚粘胶弹的曲线偏移参数，使三发弹道彼此分离。
-        /// </summary>
-        public void ConfigureCurve(int curveIndex, float curveHeight)
-        {
-            this.curveIndex = curveIndex;
-            this.curveHeight = curveHeight;
-        }
-
-        /// <summary>
-        /// 返回沿二次贝塞尔曲线移动的弹丸精确位置。
-        /// </summary>
-        public override Vector3 ExactPosition
-        {
-            get
-            {
-                float t = Mathf.Clamp01(1f - (float)ticksToImpact / StartingTicksToImpact);
-                Vector3 start = origin;
-                Vector3 end = destination;
-                Vector3 side = Vector3.Cross((end - start).Yto0().normalized, Vector3.up);
-                float travelDistance = (end - start).MagnitudeHorizontal();
-                Vector3 control = (start + end) * 0.5f + Vector3.up * (curveHeight + travelDistance * 0.035f) + side * curveIndex * 1.8f;
-                Vector3 first = Vector3.Lerp(start, control, t);
-                Vector3 second = Vector3.Lerp(control, end, t);
-                return Vector3.Lerp(first, second, t);
-            }
-        }
 
         /// <summary>
         /// 保存粘胶弹落地后的延迟引爆计时。
@@ -52,8 +22,6 @@ namespace MunoRaceLib.MunoComp
         {
             base.ExposeData();
             Scribe_Values.Look(ref ticksToDetonation, "ticksToDetonation", 0);
-            Scribe_Values.Look(ref curveIndex, "curveIndex", 0);
-            Scribe_Values.Look(ref curveHeight, "curveHeight", 1.6f);
         }
 
         /// <summary>
@@ -76,7 +44,7 @@ namespace MunoRaceLib.MunoComp
         }
 
         /// <summary>
-        /// 在飞行途中生成白色粘液拖尾。
+        /// 在飞行途中沿原版直线弹道生成白色粘液拖尾。
         /// </summary>
         private void ThrowGelTrail()
         {

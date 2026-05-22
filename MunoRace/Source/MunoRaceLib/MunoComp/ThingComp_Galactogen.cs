@@ -12,6 +12,9 @@ using Verse.AI;
 
 namespace MunoRaceLib.MunoComp
 {
+    /// <summary>
+    /// 定义乳源质组件的基础容量、恢复速度与界面文本配置。
+    /// </summary>
     public class ThingCompProperties_Galactogen : CompProperties
     {
         public float maxGalactogen = 50f;
@@ -19,11 +22,19 @@ namespace MunoRaceLib.MunoComp
         public float houseGalactogen = 2f;
         public string GalactogenUIName;
         public string GalactogenUIDes;
+
+        /// <summary>
+        /// 构造乳源质组件属性，并绑定实际组件类型。
+        /// </summary>
         public ThingCompProperties_Galactogen()
         {
             this.compClass = typeof(ThingComp_Galactogen);
         }
     }
+
+    /// <summary>
+    /// 保存缪诺角色的乳源质资源、自动收集阈值，并提供相关 Gizmo 与消耗接口。
+    /// </summary>
     public class ThingComp_Galactogen : ThingComp
     {
         public float MaxGalactogen = 50f;
@@ -34,6 +45,10 @@ namespace MunoRaceLib.MunoComp
         public Pawn SelfPawn => parent as Pawn;
         public ThingCompProperties_Galactogen Props => (ThingCompProperties_Galactogen)this.props;
         public bool autoCollectEnabled = true;
+
+        /// <summary>
+        /// 初始化乳源质组件的基础数值。
+        /// </summary>
         public override void Initialize(CompProperties props)
         {
             base.Initialize(props);
@@ -42,6 +57,9 @@ namespace MunoRaceLib.MunoComp
             this.HouseGalactogen = Props.houseGalactogen;
         }
 
+        /// <summary>
+        /// 按固定周期刷新乳源质自然增减逻辑。
+        /// </summary>
         public override void CompTick()
         {
             base.CompTick();
@@ -52,7 +70,9 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
-        //用于获取乳源制删除的实际数量
+        /// <summary>
+        /// 按指定数量移除乳源质，并返回本次实际扣除的数值。
+        /// </summary>
         public float ReMoveAutoGalactogen(float count)
         {
             float previousValue = CurrentGalactogen;
@@ -65,6 +85,9 @@ namespace MunoRaceLib.MunoComp
             return actualRemoved;
         }
 
+        /// <summary>
+        /// 根据饱食度与属性加成刷新乳源质的自然恢复或反向消耗。
+        /// </summary>
         private void CheckGalactogen()
         {
             this.MaxGalactogen = Props.maxGalactogen + SelfPawn.GetStatValue(MunoDefDataRef.Muno_MaxGalactogen);
@@ -86,6 +109,10 @@ namespace MunoRaceLib.MunoComp
                 }
             }
         }
+
+        /// <summary>
+        /// 直接增减当前乳源质，并保证结果始终落在允许区间内。
+        /// </summary>
         public void updateGalactogen(float value)
         {
             this.CurrentGalactogen += value;
@@ -99,11 +126,32 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
+        /// <summary>
+        /// 返回当前 Pawn 是否应该显示乳源质阈值滑条。
+        /// </summary>
+        private bool ShouldShowThresholdSlider()
+        {
+            if (SelfPawn == null || Find.Selector.NumSelected >= 2)
+            {
+                return false;
+            }
+
+            return SelfPawn.Faction == Faction.OfPlayer && SelfPawn.HostFaction == null && !SelfPawn.IsSlave;
+        }
+
+        /// <summary>
+        /// 生成乳源质相关命令与阈值滑条，供玩家直接操作。
+        /// </summary>
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
             foreach (Gizmo g in base.CompGetGizmosExtra())
             {
                 yield return g;
+            }
+
+            if (ShouldShowThresholdSlider())
+            {
+                yield return new MunoGizmo.Gizmo_GalactogenBar(SelfPawn);
             }
 
             // 创建切换按钮
@@ -135,6 +183,10 @@ namespace MunoRaceLib.MunoComp
                 }
             };
         }
+
+        /// <summary>
+        /// 负责存读乳源质当前状态与自动收集阈值。
+        /// </summary>
         public override void PostExposeData()
         {
             base.PostExposeData();

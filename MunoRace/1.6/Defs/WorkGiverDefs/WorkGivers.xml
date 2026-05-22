@@ -2,7 +2,7 @@
 <Defs>
 
  <WorkGiverDef>
-    <defName>DoBillsMakeApparel</defName>
+    <defName>Muno_DoBillsMakeApparel</defName>
     <label>make apparel</label>
     <giverClass>WorkGiver_DoBill</giverClass>
     <workType>Tailoring</workType>
@@ -18,8 +18,8 @@
     <prioritizeSustains>true</prioritizeSustains>
   </WorkGiverDef>
   
-    <WorkGiverDef>
-    <defName>DoBillsMakeWeapons</defName>
+  <WorkGiverDef>
+    <defName>Muno_DoBillsMakeWeapons</defName>
     <label>make weapons</label>
     <giverClass>WorkGiver_DoBill</giverClass>
     <workType>Smithing</workType>
