@@ -6,17 +6,26 @@ using Verse;
 
 namespace MunoRaceLib.MunoComp
 {
+    /// <summary>
+    /// 负责定义触手动力甲提供的被动神经强化与主动生物内衬效果参数。
+    /// </summary>
     public class CompProperties_TentacleArmorEffect : CompProperties
     {
         public HediffDef passiveNerveHediff;
         public HediffDef activeBioLiningHediff;
 
+        /// <summary>
+        /// 初始化触手动力甲效果组件的绑定类型。
+        /// </summary>
         public CompProperties_TentacleArmorEffect()
         {
             compClass = typeof(Comp_TentacleArmorEffect);
         }
     }
 
+    /// <summary>
+    /// 负责在触手动力甲穿脱与穿戴期间维护 Hediff，并提供对应的操作 Gizmo。
+    /// </summary>
     public class Comp_TentacleArmorEffect : ThingComp, IArmorGizmoProvider
     {
         private const int ActiveBioLiningDurationTicks = 60000;
@@ -26,12 +35,18 @@ namespace MunoRaceLib.MunoComp
             get { return (CompProperties_TentacleArmorEffect)props; }
         }
 
+        /// <summary>
+        /// 在装备穿上时补上被动神经强化效果。
+        /// </summary>
         public override void Notify_Equipped(Pawn pawn)
         {
             base.Notify_Equipped(pawn);
             EnsureBoundHediff(pawn, Props.passiveNerveHediff, true);
         }
 
+        /// <summary>
+        /// 在装备脱下时移除由装备提供的相关 Hediff。
+        /// </summary>
         public override void Notify_Unequipped(Pawn pawn)
         {
             base.Notify_Unequipped(pawn);
@@ -39,6 +54,9 @@ namespace MunoRaceLib.MunoComp
             RemoveBoundHediff(pawn, Props.activeBioLiningHediff);
         }
 
+        /// <summary>
+        /// 在穿戴期间持续校正被动与主动效果，避免读档或异常状态导致丢失。
+        /// </summary>
         public override void CompTick()
         {
             base.CompTick();
@@ -55,12 +73,23 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
+        /// <summary>
+        /// 为触手动力甲生成主动技能按钮，并在效果生效时显示剩余时间。
+        /// </summary>
         public IEnumerable<Gizmo> GetArmorGizmos(Pawn pawn, Comp_GalactogenStorageArmor storageComp)
         {
+            string label = TentacleArmorGizmoUtility.BuildTimedLabel(pawn, Props.activeBioLiningHediff, "激活生物内衬");
+            string desc = "主动技能：消耗槽内 1 个乳源质浓浆，4 小时内提升利器/钝器防护各 30%，心情 +12，意识 +10%。";
+            string remainingTime = TentacleArmorGizmoUtility.GetRemainingTimeText(pawn, Props.activeBioLiningHediff);
+            if (!remainingTime.NullOrEmpty())
+            {
+                desc += "\n当前剩余时间: " + remainingTime;
+            }
+
             yield return new Command_Action
             {
-                defaultLabel = "激活生物内衬",
-                defaultDesc = "主动技能：消耗槽内 1 个乳源质浓浆，4 小时内提升利器/钝器防护各 30%，心情 +12，意识 +10%。",
+                defaultLabel = label,
+                defaultDesc = desc,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/DesirePower", true),
                 Disabled = storageComp == null || !storageComp.HasEnough(1) || pawn.Downed,
                 disabledReason = pawn.Downed ? "小人已倒下" : (storageComp != null && storageComp.HasEnough(1) ? string.Empty : "装甲浓浆槽不足"),
@@ -75,6 +104,9 @@ namespace MunoRaceLib.MunoComp
 
         }
 
+        /// <summary>
+        /// 为指定 Hediff 创建或续期限时生效的生物内衬效果。
+        /// </summary>
         private void ActivateTimedHediff(Pawn pawn, HediffDef hediffDef, int durationTicks)
         {
             Hediff hediff = EnsureBoundHediff(pawn, hediffDef, false);
@@ -90,6 +122,9 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
+        /// <summary>
+        /// 修正主动效果的持续时间，防止异常叠加出超出预期的时长。
+        /// </summary>
         private void NormalizeActiveBioLining(Pawn pawn)
         {
             if (Props.activeBioLiningHediff == null)
@@ -116,6 +151,9 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
+        /// <summary>
+        /// 确保目标小人拥有指定 Hediff，并在需要时绑定当前装备以支持随脱卸移除。
+        /// </summary>
         private Hediff EnsureBoundHediff(Pawn pawn, HediffDef hediffDef, bool bindToApparel)
         {
             if (hediffDef == null)
@@ -141,6 +179,9 @@ namespace MunoRaceLib.MunoComp
             return hediff;
         }
 
+        /// <summary>
+        /// 从目标小人身上移除指定 Hediff。
+        /// </summary>
         private void RemoveBoundHediff(Pawn pawn, HediffDef hediffDef)
         {
             if (hediffDef == null)

@@ -140,13 +140,18 @@
     <Compile Include="MunoComp\Comp_HeavyArmorEffect.cs" />
     <Compile Include="MunoComp\Comp_TentacleArmorEffect.cs" />
     <Compile Include="MunoComp\Comp_FrenzyTentacleArmorEffect.cs" />
+    <Compile Include="MunoComp\TentacleArmorGizmoUtility.cs" />
     <Compile Include="MunoComp\ThingComp_Galactogen.cs" />
     <Compile Include="MunoComp\Projectile_GalactogenGel.cs" />
     <Compile Include="MunoComp\CompProperties_TentacleArmorData.cs" />
     <Compile Include="MunoDefRef\MunoDefDataRef.cs" />
     <Compile Include="MunoGizmo\Gizmo_GalactogenBar.cs" />
     <Compile Include="MunoWorld\Dialog_MunoHostageExchange.cs" />
+    <Compile Include="MunoWorld\MunoCommUIStyle.cs" />
     <Compile Include="MunoWorld\MunoHostageExchangeService.cs" />
+    <Compile Include="MunoWorld\MunoShuttleExchangeService.cs" />
+    <Compile Include="MunoWorld\MunoShuttleExchangeSession.cs" />
+    <Compile Include="MunoWorld\MunoWindowBase.cs" />
     <Compile Include="MunoJobDriver\JobDriver_GalactogenGelShot.cs" />
     <Compile Include="MunoJobDriver\JobDriver_SpawnConcentratedMulacte.cs" />
     <Compile Include="MunoJobDriver\JobDriver_SpawnMunoMilk.cs" />
@@ -159,6 +164,7 @@
     <Compile Include="MunoWorker\WorkGiver_RefuelGalactogenWeapon.cs" />
     <Compile Include="Patch\Patch_Pawn_PostApplyDamage.cs" />
     <Compile Include="Patch\Patch_PawnApparelTracker_TryDrop.cs" />
+    <Compile Include="Patch\Patch_Faction_TryOpenComms_MunoExchange.cs" />
     <Compile Include="Patch\Patch_Settlement_GetCaravanGizmos_MunoExchange.cs" />
     <Compile Include="Patch\Patch_SkyfallerFlyingPawn_RenderTree.cs" />
     <Compile Include="Patch\Pawn_GetGizmos_GalactogenArmor_Patch.cs" />

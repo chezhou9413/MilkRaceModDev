@@ -7,6 +7,9 @@ using Verse;
 
 namespace MunoRaceLib.MunoComp
 {
+    /// <summary>
+    /// 负责定义狂乱触手甲的被动强化、主动内衬、依赖与次级个体参数。
+    /// </summary>
     public class CompProperties_FrenzyTentacleArmorEffect : CompProperties
     {
         public const int ActiveBioLiningDurationTicks = 60000;
@@ -19,12 +22,18 @@ namespace MunoRaceLib.MunoComp
         public int dependencyTicks = 180000;
         public int passiveRepairPerHour = 8;
 
+        /// <summary>
+        /// 初始化狂乱触手甲效果组件的绑定类型。
+        /// </summary>
         public CompProperties_FrenzyTentacleArmorEffect()
         {
             compClass = typeof(Comp_FrenzyTentacleArmorEffect);
         }
     }
 
+    /// <summary>
+    /// 负责维护狂乱触手甲的强化、依赖、修复与主动技能按钮。
+    /// </summary>
     public class Comp_FrenzyTentacleArmorEffect : ThingComp, IArmorGizmoProvider
     {
         private CompProperties_FrenzyTentacleArmorEffect Props
@@ -37,6 +46,9 @@ namespace MunoRaceLib.MunoComp
             get { return parent.TryGetComp<Comp_TentacleArmorData>(); }
         }
 
+        /// <summary>
+        /// 在装备穿上时补上狂乱触手甲的被动强化并清除戒断。
+        /// </summary>
         public override void Notify_Equipped(Pawn pawn)
         {
             base.Notify_Equipped(pawn);
@@ -44,6 +56,9 @@ namespace MunoRaceLib.MunoComp
             RemoveWithdrawal(pawn);
         }
 
+        /// <summary>
+        /// 在装备脱下时移除装备效果，并在已形成依赖时施加戒断。
+        /// </summary>
         public override void Notify_Unequipped(Pawn pawn)
         {
             base.Notify_Unequipped(pawn);
@@ -56,6 +71,9 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
+        /// <summary>
+        /// 在穿戴期间持续维护 Hediff、依赖进度与装备自修复。
+        /// </summary>
         public override void CompTick()
         {
             base.CompTick();
@@ -80,6 +98,9 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
+        /// <summary>
+        /// 为狂乱触手甲生成分化与内衬激活按钮，并在内衬生效时显示剩余时间。
+        /// </summary>
         public IEnumerable<Gizmo> GetArmorGizmos(Pawn pawn, Comp_GalactogenStorageArmor storageComp)
         {
             yield return new Command_Action
@@ -98,10 +119,18 @@ namespace MunoRaceLib.MunoComp
                 }
             };
 
+            string label = TentacleArmorGizmoUtility.BuildTimedLabel(pawn, Props.activeBioLiningHediff, "激活生物内衬(狂乱)");
+            string desc = "主动技能：消耗槽内 1 个乳源质浓浆，4 小时内提升利器/钝器防护各 40%，心情 +18，意识 +15%。";
+            string remainingTime = TentacleArmorGizmoUtility.GetRemainingTimeText(pawn, Props.activeBioLiningHediff);
+            if (!remainingTime.NullOrEmpty())
+            {
+                desc += "\n当前剩余时间: " + remainingTime;
+            }
+
             yield return new Command_Action
             {
-                defaultLabel = "激活生物内衬(狂乱)",
-                defaultDesc = "主动技能：消耗槽内 1 个乳源质浓浆，4 小时内提升利器/钝器防护各 40%，心情 +18，意识 +15%。",
+                defaultLabel = label,
+                defaultDesc = desc,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/DesirePower", true),
                 Disabled = storageComp == null || !storageComp.HasEnough(1) || pawn.Downed,
                 disabledReason = pawn.Downed ? "小人已倒下" : (storageComp != null && storageComp.HasEnough(1) ? string.Empty : "装甲浓浆槽不足"),
@@ -116,6 +145,9 @@ namespace MunoRaceLib.MunoComp
 
         }
 
+        /// <summary>
+        /// 记录穿戴时长，并在超过阈值后触发强制依赖提示。
+        /// </summary>
         private void HandleDependency(Pawn wearer)
         {
             if (Data == null)
@@ -131,6 +163,9 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
+        /// <summary>
+        /// 为指定 Hediff 创建或续期限时生效的狂乱内衬效果。
+        /// </summary>
         private void ActivateTimedHediff(Pawn pawn, HediffDef hediffDef, int durationTicks)
         {
             Hediff hediff = EnsureBoundHediff(pawn, hediffDef, false);
@@ -146,6 +181,9 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
+        /// <summary>
+        /// 修正狂乱内衬的持续时间，防止异常叠加出超时长效果。
+        /// </summary>
         private void NormalizeActiveBioLining(Pawn pawn)
         {
             if (Props.activeBioLiningHediff == null)
@@ -172,6 +210,9 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
+        /// <summary>
+        /// 生成受控的触手次级个体，并为其附加限定寿命。
+        /// </summary>
         private void SpawnMinions(Pawn pawn)
         {
             for (int i = 0; i < Props.minionSpawnCount; i++)
@@ -198,6 +239,9 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
+        /// <summary>
+        /// 按配置为狂乱触手甲执行被动自我修复。
+        /// </summary>
         private void RepairDurability()
         {
             if (parent.HitPoints < parent.MaxHitPoints)
@@ -206,6 +250,9 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
+        /// <summary>
+        /// 清除目标小人身上的狂乱触手甲戒断效果。
+        /// </summary>
         private void RemoveWithdrawal(Pawn pawn)
         {
             if (Props.withdrawalHediff == null)
@@ -220,6 +267,9 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
+        /// <summary>
+        /// 确保目标小人拥有指定 Hediff，并在需要时绑定当前装备以支持随脱卸移除。
+        /// </summary>
         private Hediff EnsureBoundHediff(Pawn pawn, HediffDef hediffDef, bool bindToApparel)
         {
             if (hediffDef == null)
@@ -245,6 +295,9 @@ namespace MunoRaceLib.MunoComp
             return hediff;
         }
 
+        /// <summary>
+        /// 从目标小人身上移除指定 Hediff。
+        /// </summary>
         private void RemoveBoundHediff(Pawn pawn, HediffDef hediffDef)
         {
             if (hediffDef == null)

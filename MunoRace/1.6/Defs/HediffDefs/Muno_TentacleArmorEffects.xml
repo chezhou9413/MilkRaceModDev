@@ -54,6 +54,7 @@
     <comps>
       <li Class="Verse.HediffCompProperties_Disappears">
         <disappearsAfterTicks>60000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
       </li>
       <li Class="MunoRaceLib.MunoComp.HediffCompProperties_TentacleArmorMemory">
         <thoughtDef>Muno_TentacleBioLiningPleasure</thoughtDef>
@@ -114,6 +115,7 @@
     <comps>
       <li Class="Verse.HediffCompProperties_Disappears">
         <disappearsAfterTicks>60000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
       </li>
       <li Class="MunoRaceLib.MunoComp.HediffCompProperties_TentacleArmorMemory">
         <thoughtDef>Muno_TentacleBioLiningPleasureStrong</thoughtDef>

@@ -2,6 +2,7 @@ using MunoRaceLib.MunoDefRef;
 using RimWorld;
 using RimWorld.Planet;
 using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace MunoRaceLib.MunoWorld
@@ -62,6 +63,30 @@ namespace MunoRaceLib.MunoWorld
         }
 
         /// <summary>
+        /// 收集当前地图内所有允许上交给缪诺接收穿梭机的目标 Pawn。
+        /// </summary>
+        public static List<Pawn> GetExchangeCandidates(Map map)
+        {
+            List<Pawn> result = new List<Pawn>();
+            if (map == null)
+            {
+                return result;
+            }
+
+            IReadOnlyList<Pawn> pawns = map.mapPawns.AllPawnsSpawned;
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                Pawn pawn = pawns[i];
+                if (IsEligibleCandidateOnMap(pawn, map))
+                {
+                    result.Add(pawn);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// 判断指定 Pawn 是否符合当前交换候选条件。
         /// </summary>
         public static bool IsEligibleCandidate(Pawn pawn)
@@ -77,6 +102,19 @@ namespace MunoRaceLib.MunoWorld
             }
 
             return IsEligibleColonist(pawn) || pawn.IsPrisonerOfColony || pawn.IsSlaveOfColony;
+        }
+
+        /// <summary>
+        /// 判断指定 Pawn 是否符合当前地图内缪诺接收流程的候选条件。
+        /// </summary>
+        public static bool IsEligibleCandidateOnMap(Pawn pawn, Map map)
+        {
+            if (!IsEligibleCandidate(pawn))
+            {
+                return false;
+            }
+
+            return pawn.Map == map;
         }
 
         /// <summary>
@@ -170,17 +208,14 @@ namespace MunoRaceLib.MunoWorld
             Pawn generatedPawn = null;
             try
             {
-                generatedPawn = GenerateMunoColonist();
-                if (generatedPawn == null)
+                if (!TryGenerateRewardPawn(out generatedPawn, out failReason))
                 {
-                    failReason = "未能生成新的缪诺成员。";
                     return false;
                 }
 
-                AddGeneratedPawnToCaravan(caravan, generatedPawn);
-                if (!IsJoinedPawnValid(generatedPawn))
+                if (!TryAddRewardPawnToCaravan(caravan, generatedPawn, out failReason))
                 {
-                    throw new System.InvalidOperationException("新缪诺成员加入远行队后仍未恢复为玩家殖民者状态。");
+                    return false;
                 }
 
                 TransferPawnToMunoFaction(caravan, settlement.Faction, offeredPawn);
@@ -228,7 +263,83 @@ namespace MunoRaceLib.MunoWorld
         }
 
         /// <summary>
-        /// 生成一个可直接加入玩家远行队的缪诺殖民者。
+        /// 生成一个可作为交换奖励发放的缪诺殖民者。
+        /// </summary>
+        public static bool TryGenerateRewardPawn(out Pawn pawn, out string failReason)
+        {
+            failReason = null;
+            pawn = null;
+            if (MunoDefDataRef.MunoRace_Colonist == null)
+            {
+                failReason = "缪诺殖民者模板缺失，无法生成奖励成员。";
+                return false;
+            }
+
+            pawn = GenerateMunoColonist();
+            if (pawn == null)
+            {
+                failReason = "未能生成新的缪诺成员。";
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 将奖励缪诺成员安全加入远行队，并校验其最终状态是否正确。
+        /// </summary>
+        public static bool TryAddRewardPawnToCaravan(Caravan caravan, Pawn pawn, out string failReason)
+        {
+            failReason = null;
+            if (caravan == null || pawn == null)
+            {
+                failReason = "远行队或奖励成员无效，无法完成加入。";
+                return false;
+            }
+
+            AddGeneratedPawnToCaravan(caravan, pawn);
+            if (!IsJoinedPawnValid(pawn))
+            {
+                failReason = "新缪诺成员加入远行队后未能恢复为玩家殖民者状态。";
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 将奖励缪诺成员安全放入当前地图，并尝试在目标附近为其寻找可站立位置。
+        /// </summary>
+        public static bool TryAddRewardPawnToMap(Map map, Pawn pawn, out string failReason)
+        {
+            failReason = null;
+            if (map == null || pawn == null)
+            {
+                failReason = "地图或奖励成员无效，无法完成加入。";
+                return false;
+            }
+
+            NormalizeJoinedPawnState(pawn);
+            IntVec3 dropCell;
+            if (!CellFinder.TryFindRandomSpawnCellForPawnNear(map.Center, map, out dropCell))
+            {
+                failReason = "未能为缪诺奖励成员找到合适的落点。";
+                return false;
+            }
+
+            GenSpawn.Spawn(pawn, dropCell, map, WipeMode.Vanish);
+            NormalizeJoinedPawnState(pawn);
+            if (!IsJoinedPawnValid(pawn))
+            {
+                failReason = "新缪诺成员加入殖民地后未能恢复为玩家殖民者状态。";
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 生成一个可直接加入玩家阵营的缪诺殖民者。
         /// </summary>
         private static Pawn GenerateMunoColonist()
         {

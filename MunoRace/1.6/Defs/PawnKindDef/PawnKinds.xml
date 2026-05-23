@@ -103,7 +103,7 @@
     <weaponTags>
       <li>MunoGunMiddle</li>
     </weaponTags>
-    <weaponMoney>300~1400</weaponMoney>
+    <weaponMoney>505~1400</weaponMoney>
     <apparelMoney>400~1600</apparelMoney>
     <apparelTags>
       <li>IndustrialMilitaryBasic</li>
@@ -140,7 +140,7 @@
     <isFighter>false</isFighter>
     <gearHealthRange>1~1</gearHealthRange>
     <itemQuality>Good</itemQuality>
-    <weaponMoney>300~1600</weaponMoney>
+    <weaponMoney>505~1600</weaponMoney>
     <weaponTags>
       <li>MunoGunMiddle</li>
     </weaponTags>
