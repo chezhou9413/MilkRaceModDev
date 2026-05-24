@@ -18,10 +18,14 @@ namespace MunoRaceLib.MunoWorld
         private const float CandidateRowGap = 8f;
         private static readonly Texture2D PortraitTexture = ContentFinder<Texture2D>.Get("UI/MunoCommPortrait", false) ?? BaseContent.BadTex;
         private static readonly Texture2D MunoLogo = ContentFinder<Texture2D>.Get("UI/MunoLogo", true);
+        private static float portraitOffsetX = -16.19f;
+        private static float portraitOffsetY = 0.400f;
+        private static float portraitScale = 1.033f;
 
         private readonly Pawn negotiator;
         private readonly Map map;
         private Vector2 candidateScrollPosition;
+        private Vector2 leftInfoScrollPosition;
         private Pawn selectedPawn;
 
         /// <summary>
@@ -97,7 +101,7 @@ namespace MunoRaceLib.MunoWorld
         {
             MunoCommUIStyle.DrawPanel(rect);
 
-            float portraitHeight = 440f;
+            float portraitHeight = 404f;
             Rect portraitRect = new Rect(rect.x + 10f, rect.y + 10f, rect.width - 20f, portraitHeight);
             MunoCommUIStyle.DrawLightPanel(portraitRect);
             DrawPortrait(portraitRect.ContractedBy(4f));
@@ -106,25 +110,29 @@ namespace MunoRaceLib.MunoWorld
             MunoCommUIStyle.DrawPanel(infoRect);
 
             Rect inner = infoRect.ContractedBy(10f);
+            Rect viewRect = new Rect(0f, 0f, inner.width - 16f, CalculateLeftInfoContentHeight(inner.width - 16f));
+            Widgets.BeginScrollView(inner, ref leftInfoScrollPosition, viewRect);
+
             Text.Font = GameFont.Small;
             GUI.color = MunoCommUIStyle.AccentSoftColor;
             float titleHeight = Text.LineHeight;
-            Widgets.Label(new Rect(inner.x, inner.y, inner.width, titleHeight), "通讯状态");
+            Widgets.Label(new Rect(0f, 0f, viewRect.width, titleHeight), "通讯状态");
             GUI.color = MunoCommUIStyle.TextColor;
-            float infoY = inner.y + titleHeight + 6f;
+            float infoY = titleHeight + 6f;
             string statusDesc = "缪诺联络官已确认信号。请选择一名目标，缪诺接收穿梭机将在殖民地内降落并执行人口接收。";
-            float statusHeight = Text.CalcHeight(statusDesc, inner.width);
-            Widgets.Label(new Rect(inner.x, infoY, inner.width, statusHeight), statusDesc);
+            float statusHeight = Text.CalcHeight(statusDesc, viewRect.width);
+            Widgets.Label(new Rect(0f, infoY, viewRect.width, statusHeight), statusDesc);
 
             GUI.color = MunoCommUIStyle.AccentSoftColor;
             float rulesTitleY = infoY + statusHeight + 10f;
-            Widgets.Label(new Rect(inner.x, rulesTitleY, inner.width, titleHeight), "当前规则");
+            Widgets.Label(new Rect(0f, rulesTitleY, viewRect.width, titleHeight), "当前规则");
             GUI.color = MunoCommUIStyle.TextColor;
             string rulesDesc = "每次仅接收 1 名合法目标。\n可接收对象：殖民者、囚犯、奴隶。\n接收完成后，固定有 1 名缪诺成员加入殖民地。";
             float rulesY = rulesTitleY + titleHeight + 6f;
-            float rulesHeight = Text.CalcHeight(rulesDesc, inner.width);
-            Widgets.Label(new Rect(inner.x, rulesY, inner.width, rulesHeight), rulesDesc);
+            float rulesHeight = Text.CalcHeight(rulesDesc, viewRect.width);
+            Widgets.Label(new Rect(0f, rulesY, viewRect.width, rulesHeight), rulesDesc);
 
+            Widgets.EndScrollView();
             GUI.color = Color.white;
         }
 
@@ -335,14 +343,28 @@ namespace MunoRaceLib.MunoWorld
             GUI.BeginGroup(rect);
             Widgets.DrawBoxSolid(new Rect(0f, 0f, rect.width, rect.height), new Color(0.77f, 0.80f, 0.80f));
 
-            float scale = Mathf.Max(rect.width / PortraitTexture.width, rect.height / PortraitTexture.height) * 0.92f;
+            float scale = Mathf.Max(rect.width / PortraitTexture.width, rect.height / PortraitTexture.height) * portraitScale;
             float drawWidth = PortraitTexture.width * scale;
             float drawHeight = PortraitTexture.height * scale;
-            float drawX = (rect.width - drawWidth) * 0.5f + 8f;
-            float drawY = (rect.height - drawHeight) * 0.18f;
+            float drawX = (rect.width - drawWidth) * 0.5f + portraitOffsetX;
+            float drawY = (rect.height - drawHeight) * portraitOffsetY;
 
             GUI.DrawTexture(new Rect(drawX, drawY, drawWidth, drawHeight), PortraitTexture, ScaleMode.StretchToFill, true);
             GUI.EndGroup();
+        }
+
+        /// <summary>
+        /// 计算左下信息区完整正文所需高度，供滚动面板安全容纳所有中文文案。
+        /// </summary>
+        private static float CalculateLeftInfoContentHeight(float width)
+        {
+            Text.Font = GameFont.Small;
+            float lineHeight = Text.LineHeight;
+            string statusDesc = "缪诺联络官已确认信号。请选择一名目标，缪诺接收穿梭机将在殖民地内降落并执行人口接收。";
+            string rulesDesc = "每次仅接收 1 名合法目标。\n可接收对象：殖民者、囚犯、奴隶。\n接收完成后，固定有 1 名缪诺成员加入殖民地。";
+            float statusHeight = Text.CalcHeight(statusDesc, width);
+            float rulesHeight = Text.CalcHeight(rulesDesc, width);
+            return lineHeight + 6f + statusHeight + 10f + lineHeight + 6f + rulesHeight + 4f;
         }
 
         /// <summary>

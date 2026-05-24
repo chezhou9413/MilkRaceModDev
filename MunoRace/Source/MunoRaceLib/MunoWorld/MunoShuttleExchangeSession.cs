@@ -15,6 +15,8 @@ namespace MunoRaceLib.MunoWorld
         private Map map;
         private bool rewardGranted;
         private bool finished;
+        private bool launchTriggered;
+        private bool targetLoaded;
         private string failReason;
 
         /// <summary>
@@ -71,11 +73,22 @@ namespace MunoRaceLib.MunoWorld
                 return;
             }
 
+            CompTransporter transporter = shuttle.TryGetComp<CompTransporter>();
+            bool pawnLoaded = transporter != null && transporter.innerContainer.Contains(selectedPawn);
+            if (pawnLoaded)
+            {
+                targetLoaded = true;
+            }
+
             if (shuttle.Destroyed)
             {
                 if (rewardGranted)
                 {
                     ClearSession();
+                }
+                else if (launchTriggered && targetLoaded)
+                {
+                    GrantReward();
                 }
                 else
                 {
@@ -84,15 +97,33 @@ namespace MunoRaceLib.MunoWorld
                 return;
             }
 
-            CompTransporter transporter = shuttle.TryGetComp<CompTransporter>();
             if (transporter == null)
             {
-                MarkFailed("缪诺接收穿梭机缺少运输组件，本次流程已中止。");
+                if (launchTriggered && targetLoaded)
+                {
+                    GrantReward();
+                }
+                else
+                {
+                    MarkFailed("缪诺接收穿梭机缺少运输组件，本次流程已中止。");
+                }
                 return;
             }
 
-            bool pawnLoaded = transporter.innerContainer.Contains(selectedPawn);
             bool shuttleGoneFromMap = shuttle.MapHeld == null;
+            if (pawnLoaded && !launchTriggered)
+            {
+                if (TryLaunchShuttleNow())
+                {
+                    launchTriggered = true;
+                }
+                else
+                {
+                    MarkFailed("缪诺接收穿梭机未能进入离场流程，本次接收已中止。");
+                    return;
+                }
+            }
+
             if (!rewardGranted && pawnLoaded && shuttleGoneFromMap)
             {
                 GrantReward();
@@ -116,6 +147,8 @@ namespace MunoRaceLib.MunoWorld
             map = newMap;
             rewardGranted = false;
             finished = false;
+            launchTriggered = false;
+            targetLoaded = false;
             failReason = null;
         }
 
@@ -148,6 +181,8 @@ namespace MunoRaceLib.MunoWorld
             map = null;
             rewardGranted = false;
             finished = true;
+            launchTriggered = false;
+            targetLoaded = false;
             failReason = null;
         }
 
@@ -163,6 +198,8 @@ namespace MunoRaceLib.MunoWorld
             Scribe_References.Look(ref map, "munoExchangeMap");
             Scribe_Values.Look(ref rewardGranted, "munoExchangeRewardGranted", false);
             Scribe_Values.Look(ref finished, "munoExchangeFinished", true);
+            Scribe_Values.Look(ref launchTriggered, "munoExchangeLaunchTriggered", false);
+            Scribe_Values.Look(ref targetLoaded, "munoExchangeTargetLoaded", false);
             Scribe_Values.Look(ref failReason, "munoExchangeFailReason");
         }
 
@@ -197,6 +234,22 @@ namespace MunoRaceLib.MunoWorld
             rewardGranted = true;
             finished = true;
             Messages.Message("缪诺已成功接收目标，一名新的缪诺成员已加入殖民地。", rewardPawn, MessageTypeDefOf.PositiveEvent, false);
+        }
+
+        /// <summary>
+        /// 在唯一目标完成装载后立即强制穿梭机离场，避免外部模组修改等待 Job 后无法自动进入起飞阶段。
+        /// </summary>
+        private bool TryLaunchShuttleNow()
+        {
+            CompShuttle shuttleComp = shuttle.TryGetComp<CompShuttle>();
+            if (shuttleComp?.shipParent == null)
+            {
+                return false;
+            }
+
+            TransportShip shipParent = shuttleComp.shipParent;
+            shipParent.ForceJob(ShipJobDefOf.FlyAway);
+            return true;
         }
     }
 }

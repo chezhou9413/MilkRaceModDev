@@ -54,7 +54,7 @@ namespace MunoRaceLib.MunoWorld
                 owningFaction: Find.FactionManager.FirstFactionOfDef(MunoDefDataRef.MunoColony_Faction),
                 requiredPawns: Gen.YieldSingle(targetPawn),
                 requiredItems: null,
-                acceptColonists: true,
+                acceptColonists: false,
                 onlyAcceptColonists: false,
                 onlyAcceptHealthy: false,
                 requireColonistCount: 0,
@@ -64,13 +64,13 @@ namespace MunoRaceLib.MunoWorld
                 stayAfterDroppedEverythingOnArrival: true,
                 missionShuttleTarget: negotiator.Map.Parent,
                 missionShuttleHome: negotiator.Map.Parent,
-                maxColonistCount: 0,
+                maxColonistCount: -1,
                 shuttleDef: ThingDefOf.Shuttle,
                 permitShuttle: false,
                 hideControls: true,
-                allowSlaves: true,
+                allowSlaves: false,
                 requireAllColonistsOnMap: false,
-                acceptColonyPrisoners: true);
+                acceptColonyPrisoners: false);
 
             if (shuttle == null)
             {
@@ -89,20 +89,34 @@ namespace MunoRaceLib.MunoWorld
 
             shuttleComp.requiredPawns.Clear();
             shuttleComp.requiredPawns.Add(targetPawn);
-            shuttleComp.acceptColonists = true;
-            shuttleComp.allowSlaves = true;
-            shuttleComp.acceptColonyPrisoners = true;
+            shuttleComp.acceptColonists = false;
+            shuttleComp.allowSlaves = false;
+            shuttleComp.acceptColonyPrisoners = false;
             shuttleComp.requiredColonistCount = 0;
-            shuttleComp.maxColonistCount = 0;
+            shuttleComp.maxColonistCount = -1;
 
-            TransportShip transportShip = TransportShipMaker.MakeTransportShip(TransportShipDefOf.Ship_Shuttle, null, shuttle);
-            transportShip.ArriveAt(landingCell, negotiator.Map.Parent);
+            // 只把本次选中的目标加入待装列表，确保原版“抬运到穿梭机”菜单只接受该 Pawn。
+            TransporterUtility.InitiateLoading(Gen.YieldSingle(transporter));
+            TransferableOneWay transferable = new TransferableOneWay();
+            transferable.things.Add(targetPawn);
+            transporter.AddToTheToLoadList(transferable, 1);
+
+            TransportShip transportShip = shuttleComp.shipParent ?? TransportShipMaker.MakeTransportShip(TransportShipDefOf.Ship_Shuttle, null, shuttle);
             ShipJob_WaitForever waitJob = (ShipJob_WaitForever)ShipJobMaker.MakeShipJob(ShipJobDefOf.WaitForever);
             waitJob.leaveImmediatelyWhenSatisfied = true;
             waitJob.showGizmos = false;
             waitJob.sendAwayIfAnyDespawnedDownedOrDead = new System.Collections.Generic.List<Thing> { targetPawn };
-            transportShip.AddJob(waitJob);
-            transportShip.AddJob(ShipJobDefOf.FlyAway);
+            transportShip.ForceJob(waitJob);
+
+            if (!TrySpawnIncomingShuttle(shuttle, negotiator.Map, landingCell, out failReason))
+            {
+                transportShip.EndCurrentJob();
+                if (!shuttle.Destroyed)
+                {
+                    shuttle.Destroy(DestroyMode.Vanish);
+                }
+                return false;
+            }
 
             CurrentSession().StartSession(negotiator, targetPawn, shuttle, negotiator.Map);
             return true;
@@ -122,6 +136,34 @@ namespace MunoRaceLib.MunoWorld
         private static bool TryFindLandingCell(Map map, IntVec3 near, out IntVec3 landingCell)
         {
             return CellFinder.TryFindRandomCellNear(near, map, (int)LandingSearchRadius, cell => RoyalTitlePermitWorker_CallShuttle.ShuttleCanLandHere(cell, map).Accepted, out landingCell);
+        }
+
+        /// <summary>
+        /// 以原版穿梭机入场天降物的方式让穿梭机降落，避开与运输船到达 Job 冲突的外部补丁链。
+        /// </summary>
+        private static bool TrySpawnIncomingShuttle(Thing shuttle, Map map, IntVec3 landingCell, out string failReason)
+        {
+            failReason = null;
+            if (shuttle == null || map == null)
+            {
+                failReason = "穿梭机或地图无效，无法执行缪诺接收流程。";
+                return false;
+            }
+
+            Thing skyfaller = SkyfallerMaker.MakeSkyfaller(ThingDefOf.ShuttleIncoming, shuttle);
+            if (skyfaller == null)
+            {
+                failReason = "未能生成缪诺接收穿梭机的降落天降物。";
+                return false;
+            }
+
+            if (!GenPlace.TryPlaceThing(skyfaller, landingCell, map, ThingPlaceMode.Near))
+            {
+                failReason = "未能把缪诺接收穿梭机放入目标降落区域。";
+                return false;
+            }
+
+            return true;
         }
     }
 }

@@ -327,11 +327,19 @@ namespace MunoRaceLib.MunoWorld
                 return false;
             }
 
-            GenSpawn.Spawn(pawn, dropCell, map, WipeMode.Vanish);
+            ActiveTransporterInfo podInfo = new ActiveTransporterInfo();
+            podInfo.innerContainer.TryAdd(pawn);
+            podInfo.openDelay = 110;
+            podInfo.leaveSlag = false;
+            podInfo.despawnPodBeforeSpawningThing = true;
+            podInfo.spawnWipeMode = WipeMode.Vanish;
+            podInfo.moveItemsAsideBeforeSpawning = true;
+            DropPodUtility.MakeDropPodAt(dropCell, map, podInfo, Faction.OfPlayer);
+
             NormalizeJoinedPawnState(pawn);
-            if (!IsJoinedPawnValid(pawn))
+            if (pawn.Faction != Faction.OfPlayer)
             {
-                failReason = "新缪诺成员加入殖民地后未能恢复为玩家殖民者状态。";
+                failReason = "新缪诺成员未能正确绑定到玩家阵营的空投仓。";
                 return false;
             }
 
