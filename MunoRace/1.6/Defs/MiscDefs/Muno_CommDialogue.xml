@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <MunoRaceLib.MunoWorld.MunoCommDialogueDef>
+    <defName>Muno_CommDialogue</defName>
+    <label>缪诺通讯文本</label>
+    <greetings>
+      <li>缪诺通讯链路已经接通。\n\n这里是缪诺聚落管理终端，请选择本次通讯事项。</li>
+      <li>信号稳定，缪诺方面正在监听。\n\n若你愿意推进双方关系，请选择对应的联络事项。</li>
+      <li>这里是缪诺聚落通讯节点。\n\n我们愿意与你讨论进一步合作，也愿意倾听你的请求。</li>
+    </greetings>
+    <greetingLines>
+      <li>
+        <text>缪诺通讯链路已经接通。\n\n这里是缪诺聚落管理终端，请选择本次通讯事项。</text>
+        <portraitTexPath>UI/MunoCommHomePortrait</portraitTexPath>
+      </li>
+    </greetingLines>
+    <managerPrompts>
+      <li>和亲事项已经登记在案。\n\n请选择一位愿意前往殖民地的缪诺公主，我们会立刻安排穿梭机送达。</li>
+      <li>我们准备了三位候选人。\n\n请谨慎选择，她将以和亲公主的身份加入你的殖民地。</li>
+      <li>若你接受本次和亲，请在候选人中作出选择。\n\n如果现在并不合适，也可以拒绝本次安排。</li>
+    </managerPrompts>
+    <managerPromptLines>
+      <li>
+        <text>和亲事项已经登记在案。\n\n请选择一位愿意前往殖民地的缪诺公主，我们会立刻安排穿梭机送达。</text>
+        <portraitTexPath>UI/MunoMarriagePortrait</portraitTexPath>
+      </li>
+    </managerPromptLines>
+    <noRequestReplies>
+      <li>当前没有和亲请求。\n\n请等待缪诺方面主动发来新的和亲请求。</li>
+      <li>和亲事项管理人查阅了记录。\n\n目前没有可供处理的新请求。</li>
+      <li>抱歉，当前没有新的和亲候选名单。\n\n若缪诺方面有意推进关系，我们会先发送正式通知。</li>
+    </noRequestReplies>
+    <noRequestReplyLines>
+      <li>
+        <text>当前没有和亲请求。\n\n请等待缪诺方面主动发来新的和亲请求。</text>
+        <portraitTexPath>UI/MunoMarriagePortrait</portraitTexPath>
+      </li>
+    </noRequestReplyLines>
+    <requestLetters>
+      <li>缪诺方面发来正式和亲请求。\n\n她们希望你在 {DAYS} 天内使用通讯台联系缪诺势力，确认是否接受一名和亲公主。若逾期未联系，本次请求将视为拒绝。</li>
+      <li>缪诺聚落提交了一份和亲提议。\n\n请在 {DAYS} 天内通过通讯台回应和亲事项管理人。超过期限后，缪诺会将沉默记录为拒绝。</li>
+      <li>缪诺方面认为双方关系已经足够稳定，愿意安排一名和亲公主前往你的殖民地。\n\n请在 {DAYS} 天内联络缪诺并作出选择。</li>
+    </requestLetters>
+    <expiredRejectReplies>
+      <li>缪诺和亲请求已经过期。\n\n由于你没有在期限内通过通讯台回复，缪诺方面将本次安排记录为拒绝。</li>
+      <li>和亲请求的回复期限已经结束。\n\n缪诺方面撤回了本年度候选名单，并等待下一次合适的时机。</li>
+    </expiredRejectReplies>
+    <acceptReplies>
+      <li>我们也希望如此。\n\n你的选择已经登记。和亲公主会在一到三天内带着嫁妆抵达，请妥善迎接她。</li>
+      <li>你的选择已经记录。\n\n愿她能在你的殖民地获得安定，也愿双方关系因此更加稳固。送达穿梭机将于近期启程。</li>
+      <li>缪诺方面接受你的决定。\n\n穿梭机正在准备，和亲公主会随一份嫁妆共同抵达。</li>
+    </acceptReplies>
+    <acceptReplyLines>
+      <li>
+        <text>我们也希望如此。\n\n你的选择已经登记。和亲公主会在一到三天内带着嫁妆抵达，请妥善迎接她。</text>
+        <portraitTexPath>UI/MunoMarriagePortrait</portraitTexPath>
+      </li>
+    </acceptReplyLines>
+    <rejectReplies>
+      <li>真是遗憾……希望以后我们能达成一致。</li>
+      <li>我们尊重你的决定。\n\n本年度和亲事项将就此结束。</li>
+      <li>拒绝记录已经归档。\n\n希望这不会妨碍双方未来继续沟通。</li>
+    </rejectReplies>
+    <rejectReplyLines>
+      <li>
+        <text>真是遗憾……希望以后我们能达成一致。</text>
+        <portraitTexPath>UI/MunoMarriagePortrait</portraitTexPath>
+      </li>
+    </rejectReplyLines>
+    <deliveryReplies>
+      <li>缪诺和亲穿梭机已经抵达。\n\n和亲公主 {PAWN} 与随行嫁妆已经交付，请妥善安置她。</li>
+      <li>送达流程完成。\n\n{PAWN} 已经抵达你的殖民地，缪诺方面同时交付了一份嫁妆。</li>
+      <li>缪诺方面发来确认讯息。\n\n{PAWN} 已经被送达。她们希望她能在这里获得稳定的位置。</li>
+    </deliveryReplies>
+  </MunoRaceLib.MunoWorld.MunoCommDialogueDef>
+</Defs>

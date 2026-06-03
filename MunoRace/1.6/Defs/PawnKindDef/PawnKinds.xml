@@ -38,6 +38,18 @@
 		</abilities> -->
 	</PawnKindDef>
 
+	<!-- 和亲公主 -->
+	<PawnKindDef ParentName="MunoGirl_Colonist">
+		<defName>MunoRace_MarriagePrincess</defName>
+		<label>缪诺和亲公主</label>
+		<defaultFactionType>MunoColony_Faction</defaultFactionType>
+		<isFighter>false</isFighter>
+		<combatPower>35</combatPower>
+		<minGenerationAge>18</minGenerationAge>
+		<maxGenerationAge>28</maxGenerationAge>
+		<apparelMoney>1600~3600</apparelMoney>
+	</PawnKindDef>
+
     <!-- 势力殖民者 -->
 	  <PawnKindDef ParentName="MunoGirlBasePawnKind" Name="MunoRace_VillagerBase">
     <defName>MunoRace_Villager</defName>

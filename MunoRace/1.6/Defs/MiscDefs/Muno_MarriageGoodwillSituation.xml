@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <GoodwillSituationDef>
+    <defName>Muno_MarriagePrincessAbused</defName>
+    <label>缪诺和亲公主遭受虐待</label>
+    <workerClass>MunoRaceLib.MunoWorld.MunoMarriageGoodwillSituationWorker</workerClass>
+  </GoodwillSituationDef>
+</Defs>

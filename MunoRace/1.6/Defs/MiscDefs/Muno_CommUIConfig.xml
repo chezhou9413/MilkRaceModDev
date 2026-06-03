@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <MunoRaceLib.MunoWorld.MunoCommUIConfigDef>
+    <defName>Muno_CommUIConfig</defName>
+    <label>缪诺通讯 UI 配置</label>
+    <homePortrait>
+      <texPath>UI/MunoCommHomePortrait</texPath>
+      <frameInset>10</frameInset>
+      <imageInset>14</imageInset>
+      <imageOffsetX>0</imageOffsetX>
+      <imageOffsetY>0</imageOffsetY>
+      <imageScale>1</imageScale>
+      <cover>false</cover>
+    </homePortrait>
+    <marriagePortrait>
+      <texPath>UI/MunoMarriagePortrait</texPath>
+      <frameInset>8</frameInset>
+      <imageInset>8</imageInset>
+      <imageOffsetX>0</imageOffsetX>
+      <imageOffsetY>0</imageOffsetY>
+      <imageScale>1.08</imageScale>
+      <cover>false</cover>
+    </marriagePortrait>
+  </MunoRaceLib.MunoWorld.MunoCommUIConfigDef>
+</Defs>

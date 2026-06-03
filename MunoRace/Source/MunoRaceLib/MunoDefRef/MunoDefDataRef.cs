@@ -51,6 +51,7 @@ namespace MunoRaceLib.MunoDefRef
 
         public static PawnKindDef Muno_Mech_Tentacles;
         public static PawnKindDef MunoRace_Colonist;
+        public static PawnKindDef MunoRace_MarriagePrincess;
 
         public static JobDef JobDef_RefuelGalactogenArmor;
         public static JobDef JobDef_RefuelGalactogenWeapon;

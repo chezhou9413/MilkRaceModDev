@@ -12,7 +12,6 @@ namespace MunoRaceLib.MunoWorld
     [StaticConstructorOnStartup]
     public class Dialog_MunoHostageExchange : MunoWindowBase
     {
-        private const float HeaderHeight = 42f;
         private const float LeftPanelWidth = 280f;
         private const float CandidateRowHeight = 68f;
         private const float CandidateRowGap = 8f;
@@ -27,6 +26,18 @@ namespace MunoRaceLib.MunoWorld
         private Vector2 candidateScrollPosition;
         private Vector2 leftInfoScrollPosition;
         private Pawn selectedPawn;
+        private CommPage currentPage;
+        private float pageOpenTime;
+        private MunoTypewriterTextState typewriter = new MunoTypewriterTextState();
+
+        /// <summary>
+        /// 表示缪诺通讯窗口当前显示的页面。
+        /// </summary>
+        private enum CommPage
+        {
+            MainMenu,
+            Exchange
+        }
 
         /// <summary>
         /// 构建一个绑定当前通讯发起者与地图环境的缪诺交换终端窗口。
@@ -35,6 +46,8 @@ namespace MunoRaceLib.MunoWorld
         {
             this.negotiator = negotiator;
             map = negotiator?.Map;
+            pageOpenTime = Time.realtimeSinceStartup;
+            typewriter.SetText(MunoCommDialogueUtility.RandomGreeting());
         }
 
         /// <summary>
@@ -45,22 +58,95 @@ namespace MunoRaceLib.MunoWorld
             List<Pawn> pawns = caravan?.PawnsListForReading;
             negotiator = pawns != null && pawns.Count > 0 ? pawns[0] : null;
             map = negotiator?.Map;
+            pageOpenTime = Time.realtimeSinceStartup;
+            typewriter.SetText(MunoCommDialogueUtility.RandomGreeting());
         }
 
         /// <summary>
         /// 返回缪诺通讯交换终端窗口的固定初始尺寸。
         /// </summary>
-        public override Vector2 InitialSize => new Vector2(1080f, 720f);
+        public override Vector2 InitialSize => new Vector2(1024f, 680f);
 
         /// <summary>
-        /// 绘制整套缪诺通讯交换终端界面，包括立绘、说明与候选目标列表。
+        /// 按当前页面绘制缪诺通讯终端界面。
         /// </summary>
         public override void DoWindowContents(Rect inRect)
         {
-            MunoCommUIStyle.DrawBackground(inRect);
-            DrawHeader(inRect);
+            if (currentPage == CommPage.MainMenu)
+            {
+                MunoCommUIStyle.DrawBackground(inRect);
+                if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺接收链路", MunoLogo))
+                {
+                    Close();
+                    return;
+                }
 
-            Rect leftRect = new Rect(inRect.x + 14f, inRect.y + 56f, LeftPanelWidth, inRect.height - 70f);
+                DrawMainMenuPage(new Rect(inRect.x, inRect.y + 54f, inRect.width, inRect.height - 54f));
+                return;
+            }
+
+            MunoCommUIStyle.DrawBackground(inRect);
+            DrawExchangePage(inRect);
+        }
+
+        /// <summary>
+        /// 绘制首页入口布局，包括联络员立绘、缪诺招待链路、可选管理员入口与断开通讯按钮。
+        /// </summary>
+        private void DrawMainMenuPage(Rect inRect)
+        {
+            MunoCommMainMenuAction action = MunoCommMainMenuView.Draw(inRect, "人口交换管理员", pageOpenTime, typewriter);
+            if (action == MunoCommMainMenuAction.OpenExchange)
+            {
+                if (CompleteTextIfNeeded())
+                {
+                    return;
+                }
+
+                SetPage(CommPage.Exchange);
+                return;
+            }
+
+            if (action == MunoCommMainMenuAction.Close)
+            {
+                if (CompleteTextIfNeeded())
+                {
+                    return;
+                }
+
+                Close();
+            }
+        }
+
+        /// <summary>
+        /// 在文本尚未完整显示时立即展开全文，并返回是否已拦截本次操作。
+        /// </summary>
+        private bool CompleteTextIfNeeded()
+        {
+            if (typewriter.Completed)
+            {
+                return false;
+            }
+
+            typewriter.Complete();
+            return true;
+        }
+
+        /// <summary>
+        /// 绘制原有交换流程页面，包括标题栏、立绘、说明与候选目标列表。
+        /// </summary>
+        private void DrawExchangePage(Rect inRect)
+        {
+            if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺接收链路", MunoLogo))
+            {
+                Close();
+                return;
+            }
+
+            Rect animatedRect = MunoCommUIStyle.ApplyEntryAnimation(inRect, pageOpenTime);
+            Color oldGuiColor = GUI.color;
+            GUI.color = new Color(oldGuiColor.r, oldGuiColor.g, oldGuiColor.b, oldGuiColor.a * MunoCommUIStyle.EntryAlpha(pageOpenTime));
+
+            Rect leftRect = new Rect(animatedRect.x + 14f, animatedRect.y + 56f, LeftPanelWidth, animatedRect.height - 70f);
             Rect rightRect = new Rect(leftRect.xMax + 14f, leftRect.y, inRect.width - leftRect.width - 28f, leftRect.height);
             Rect topRightRect = new Rect(rightRect.x, rightRect.y, rightRect.width, 208f);
             Rect bottomRightRect = new Rect(rightRect.x, topRightRect.yMax + 12f, rightRect.width, rightRect.height - topRightRect.height - 12f);
@@ -68,30 +154,16 @@ namespace MunoRaceLib.MunoWorld
             DrawLeftPanel(leftRect);
             DrawMissionPanel(topRightRect);
             DrawCandidatePanel(bottomRightRect);
+            GUI.color = oldGuiColor;
         }
 
         /// <summary>
-        /// 绘制窗口顶部标题栏、徽记与关闭按钮。
+        /// 切换通讯页面并重置页面进入动效计时。
         /// </summary>
-        private void DrawHeader(Rect inRect)
+        private void SetPage(CommPage page)
         {
-            Rect headerRect = new Rect(inRect.x + 12f, inRect.y + 10f, inRect.width - 24f, HeaderHeight);
-            MunoCommUIStyle.DrawPanel(headerRect);
-
-            Rect logoRect = new Rect(headerRect.x + 10f, headerRect.y + 6f, 30f, 30f);
-            GUI.DrawTexture(logoRect, MunoLogo);
-
-            Text.Font = GameFont.Medium;
-            GUI.color = MunoCommUIStyle.GoldColor;
-            Widgets.Label(new Rect(logoRect.xMax + 10f, headerRect.y + 6f, 520f, 30f), "缪诺接收链路");
-            GUI.color = Color.white;
-            Text.Font = GameFont.Small;
-
-            Rect closeRect = new Rect(headerRect.xMax - 34f, headerRect.y + 6f, 28f, 28f);
-            if (Widgets.ButtonImage(closeRect, MunoCommUIStyle.CloseXSmall))
-            {
-                Close();
-            }
+            currentPage = page;
+            pageOpenTime = Time.realtimeSinceStartup;
         }
 
         /// <summary>
