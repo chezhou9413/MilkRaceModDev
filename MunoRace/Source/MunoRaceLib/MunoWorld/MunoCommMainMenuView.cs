@@ -11,6 +11,7 @@ namespace MunoRaceLib.MunoWorld
     {
         None,
         OpenExchange,
+        OpenLogistics,
         ForceRefreshMarriage,
         Close
     }
@@ -170,7 +171,7 @@ namespace MunoRaceLib.MunoWorld
 
             if (MunoCommUIStyle.DrawButton(new Rect(inner.x, buttonY + 54f, buttonWidth, buttonHeight), "后勤管理员"))
             {
-                Messages.Message("后勤管理员通讯暂未开放。", MessageTypeDefOf.NeutralEvent, false);
+                return MunoCommMainMenuAction.OpenLogistics;
             }
 
             if (MunoCommUIStyle.DrawButton(new Rect(inner.x, buttonY + 108f, buttonWidth, buttonHeight), managerButtonLabel))

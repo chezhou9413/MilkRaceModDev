@@ -129,6 +129,7 @@
     <Compile Include="MunoComp\CompTargetEffect_MunoHealGun.cs" />
     <Compile Include="MunoComp\Verb_CastTargetEffect_MunoHealProjectile.cs" />
     <Compile Include="MunoComp\Ability_GalactogenGelShot.cs" />
+    <Compile Include="MunoComp\Comp_MolecularCuisine.cs" />
     <Compile Include="MunoComp\HediffComp_UpgradeGalactogen.cs" />
     <Compile Include="MunoComp\HediffComp_GalactogenDrain.cs" />
     <Compile Include="MunoComp\HediffComp_TentacleArmorEffects.cs" />
@@ -161,7 +162,12 @@
     <Compile Include="MunoWorld\MunoMarriageGoodwillSituationWorker.cs" />
     <Compile Include="MunoWorld\MunoMarriageRequestUtility.cs" />
     <Compile Include="MunoWorld\MunoMarriageShuttleDeliveryService.cs" />
+    <Compile Include="MunoWorld\MunoLogisticsCuisineComponent.cs" />
+    <Compile Include="MunoWorld\MunoLogisticsCuisineEffectUtility.cs" />
     <Compile Include="MunoWorld\MunoCommMainMenuView.cs" />
+    <Compile Include="MunoWorld\MunoLogisticsCuisinePageView.cs" />
+    <Compile Include="MunoWorld\MunoLogisticsCuisineState.cs" />
+    <Compile Include="MunoWorld\MunoLogisticsCuisineText.cs" />
     <Compile Include="MunoWorld\MunoCommUIStyle.cs" />
     <Compile Include="MunoWorld\MunoTypewriterTextState.cs" />
     <Compile Include="MunoWorld\MunoHostageExchangeService.cs" />

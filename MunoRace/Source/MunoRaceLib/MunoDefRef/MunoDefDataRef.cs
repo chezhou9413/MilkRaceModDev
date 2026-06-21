@@ -16,6 +16,7 @@ namespace MunoRaceLib.MunoDefRef
     {
         public static ThingDef MunoRace_MunoMilk;
         public static ThingDef MunoRace_ConcentratedMulacte;
+        public static ThingDef MunoRace_MolecularCuisine;
         public static ThingDef Bullet_MunoAC_Gel;
 
         public static AbilityDef Muno_GalactogenGelShot;
@@ -39,10 +40,15 @@ namespace MunoRaceLib.MunoDefRef
         public static HediffDef Muno_TentacleWithdrawal;
         public static HediffDef Muno_TentacleMinionLifetime;
         public static HediffDef Muno_GelSlowdown;
+        public static HediffDef Muno_MolecularCuisineConsciousnessUp;
+        public static HediffDef Muno_MolecularCuisineConsciousnessDown;
+        public static HediffDef Muno_MolecularCuisineConsciousnessPermanent;
 
         public static ThoughtDef Muno_TentacleBioLiningPleasure;
         public static ThoughtDef Muno_TentacleBioLiningPleasureStrong;
         public static ThoughtDef Muno_TentacleWithdrawalThought;
+        public static ThoughtDef Muno_MolecularCuisineDelicious;
+        public static ThoughtDef Muno_MolecularCuisineAwful;
 
         public static ThingDef MunoRace_Disabler;
         public static ThingDef MunoRace_Apparel_Tentaclearmor;

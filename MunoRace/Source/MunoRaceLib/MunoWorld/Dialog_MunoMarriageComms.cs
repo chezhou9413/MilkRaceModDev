@@ -21,6 +21,8 @@ namespace MunoRaceLib.MunoWorld
         private string replyText;
         private string currentPortraitTexPath;
         private float pageOpenTime;
+        private bool logisticsCuisineReplied;
+        private MunoLogisticsCuisineState logisticsCuisineState;
         private MunoTypewriterTextState typewriter = new MunoTypewriterTextState();
 
         /// <summary>
@@ -30,6 +32,7 @@ namespace MunoRaceLib.MunoWorld
         {
             Greeting,
             MarriageManager,
+            LogisticsCuisine,
             Reply
         }
 
@@ -81,10 +84,17 @@ namespace MunoRaceLib.MunoWorld
             Rect leftRect = new Rect(animatedRect.x + 18f, animatedRect.y + 72f, leftPanelWidth, animatedRect.height - 90f);
             Rect rightRect = new Rect(leftRect.xMax + 18f, leftRect.y, animatedRect.width - leftRect.width - 54f, leftRect.height);
 
-            DrawContactPanel(leftRect, currentPortraitTexPath);
+            DrawContactPanel(leftRect, currentPortraitTexPath, currentPage == CommPage.LogisticsCuisine ? "后勤管理员" : "和亲管理员");
             if (currentPage == CommPage.MarriageManager)
             {
                 DrawMarriageManagerPage(rightRect);
+                GUI.color = oldGuiColor;
+                return;
+            }
+
+            if (currentPage == CommPage.LogisticsCuisine)
+            {
+                DrawLogisticsCuisinePage(rightRect);
                 GUI.color = oldGuiColor;
                 return;
             }
@@ -96,7 +106,7 @@ namespace MunoRaceLib.MunoWorld
         /// <summary>
         /// 绘制左侧联系人立绘和身份文本。
         /// </summary>
-        private static void DrawContactPanel(Rect rect, string portraitTexPath)
+        private static void DrawContactPanel(Rect rect, string portraitTexPath, string contactLabel)
         {
             MunoCommPortraitLayout layout = MunoCommUIConfigUtility.WithPortraitPath(MunoCommUIConfigUtility.MarriagePortrait(), portraitTexPath);
             Rect portraitRect = MunoCommUIConfigUtility.PanelRect(rect, layout, 0f, 0f, rect.width, PortraitHeight);
@@ -109,7 +119,7 @@ namespace MunoRaceLib.MunoWorld
             Text.Font = GameFont.Medium;
             Text.Anchor = TextAnchor.MiddleCenter;
             GUI.color = MunoCommUIStyle.TextColor;
-            Widgets.Label(labelRect, "和亲管理员");
+            Widgets.Label(labelRect, contactLabel);
             Text.Font = oldFont;
             Text.Anchor = oldAnchor;
             GUI.color = oldColor;
@@ -145,6 +155,19 @@ namespace MunoRaceLib.MunoWorld
                 return;
             }
 
+            if (action == MunoCommMainMenuAction.OpenLogistics)
+            {
+                if (CompleteTextIfNeeded())
+                {
+                    return;
+                }
+
+                logisticsCuisineReplied = false;
+                logisticsCuisineState = MunoLogisticsCuisineComponent.Current()?.State ?? MunoLogisticsCuisineState.Available;
+                SetPage(CommPage.LogisticsCuisine, MunoLogisticsCuisinePageView.DialogueForState(logisticsCuisineState));
+                return;
+            }
+
             if (action == MunoCommMainMenuAction.Close)
             {
                 if (CompleteTextIfNeeded())
@@ -154,6 +177,77 @@ namespace MunoRaceLib.MunoWorld
 
                 Close();
             }
+        }
+
+        //绘制后勤管理员料理试吃页面。
+        private void DrawLogisticsCuisinePage(Rect rect)
+        {
+            MunoLogisticsCuisineComponent component = MunoLogisticsCuisineComponent.Current();
+            if (!logisticsCuisineReplied && component != null)
+            {
+                logisticsCuisineState = component.State;
+            }
+
+            MunoLogisticsCuisinePageView.PageAction action = MunoLogisticsCuisinePageView.Draw(rect, typewriter, logisticsCuisineState, logisticsCuisineReplied);
+            if (action == MunoLogisticsCuisinePageView.PageAction.None)
+            {
+                return;
+            }
+
+            if (CompleteTextIfNeeded())
+            {
+                return;
+            }
+
+            if (action == MunoLogisticsCuisinePageView.PageAction.RequestCuisine)
+            {
+                logisticsCuisineReplied = true;
+                string replyText = "后勤管理员暂时无法送达分子料理。";
+                if (component != null)
+                {
+                    component.TryRequestCuisine(negotiator, out replyText);
+                }
+
+                logisticsCuisineState = component?.State ?? logisticsCuisineState;
+                SetPage(CommPage.LogisticsCuisine, replyText);
+                return;
+            }
+
+            if (action == MunoLogisticsCuisinePageView.PageAction.RefuseCuisine)
+            {
+                logisticsCuisineReplied = true;
+                SetPage(CommPage.LogisticsCuisine, MunoLogisticsCuisineText.RejectReplyText);
+                return;
+            }
+
+            if (action == MunoLogisticsCuisinePageView.PageAction.FeedbackDelicious)
+            {
+                ApplyLogisticsFeedback(component, MunoLogisticsCuisineFeedback.Delicious);
+                return;
+            }
+
+            if (action == MunoLogisticsCuisinePageView.PageAction.FeedbackOrdinary)
+            {
+                ApplyLogisticsFeedback(component, MunoLogisticsCuisineFeedback.Ordinary);
+                return;
+            }
+
+            if (action == MunoLogisticsCuisinePageView.PageAction.FeedbackAwful)
+            {
+                ApplyLogisticsFeedback(component, MunoLogisticsCuisineFeedback.Awful);
+                return;
+            }
+
+            Close();
+        }
+
+        //应用玩家对后勤分子料理的反馈并显示管理员回复。
+        private void ApplyLogisticsFeedback(MunoLogisticsCuisineComponent component, MunoLogisticsCuisineFeedback feedback)
+        {
+            logisticsCuisineReplied = true;
+            string replyText = component?.ApplyFeedback(feedback, negotiator) ?? MunoLogisticsCuisineText.AwaitingTasteText;
+            logisticsCuisineState = component?.State ?? logisticsCuisineState;
+            SetPage(CommPage.LogisticsCuisine, replyText);
         }
 
         /// <summary>
@@ -307,6 +401,7 @@ namespace MunoRaceLib.MunoWorld
 
                     SetPage(CommPage.Greeting, MunoCommDialogueUtility.RandomGreetingLine());
                     replyText = null;
+                    logisticsCuisineReplied = false;
                     return;
                 }
             }
