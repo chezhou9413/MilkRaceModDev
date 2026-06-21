@@ -49,7 +49,7 @@
 				<warmupTime>1.2</warmupTime>
 				<range>35</range>
 				<burstShotCount>12</burstShotCount>
-				<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
 				<soundCast>Shot_Minigun</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>10</muzzleFlashScale>
@@ -580,7 +580,7 @@
         <graphicData>
 			<texPath>Weapons/Gun_MunoMGL</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>2.4</drawSize>
+			<drawSize>2.0</drawSize>
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
@@ -679,7 +679,7 @@
 		<graphicData>
 			<texPath>Weapons/Gun_MunoHMG</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>2.4</drawSize>
+			<drawSize>2.0</drawSize>
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
@@ -718,7 +718,7 @@
 				<warmupTime>1.9</warmupTime>
 				<range>33</range>
 				<burstShotCount>9</burstShotCount>
-				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
 				<soundCast>Shot_Minigun</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>13</muzzleFlashScale>
@@ -774,7 +774,7 @@
 		<graphicData>
 			<texPath>Weapons/Gun_AC</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>2.4</drawSize>
+			<drawSize>2.0</drawSize>
 		</graphicData>
 		<soundInteract>Interact_Rifle</soundInteract>
 		<statBases>
@@ -1302,7 +1302,7 @@
     <graphicData>
       <texPath>Weapons/Gun_LC</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-	  <drawSize>2.4</drawSize>
+	  <drawSize>2.0</drawSize>
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>
     <!--thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags-->

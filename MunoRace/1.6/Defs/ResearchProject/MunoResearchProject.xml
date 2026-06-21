@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ResearchTabDef>
+    <defName>Muno_Tab</defName>
+    <label>缪诺Muno</label>
+    <generalTitle>缪诺科研项目</generalTitle>
+    <generalDescription>缪诺具有颇为先进的科技，凭借这些可以缪诺能够进行跨星系的行动.</generalDescription>
+  </ResearchTabDef>
+
+    <ResearchProjectDef Name="Muno_BaseTech" Abstract="True">
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <techLevel>Industrial</techLevel>
+    <tab>Muno_Tab</tab>
+  </ResearchProjectDef>
+  
+
+    <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_Basicfirearms</defName>
+    <label>缪诺初级枪械</label>
+    <description>制造在缪诺民间广泛使用的初级枪械，结构简单可靠，适合射击运动、狩猎与个人防卫</description>
+    <baseCost>500</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Machining</li>
+    </prerequisites>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>2.50</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->各种在缪诺群体中使用的初级枪械，适用于射击运动，打猎活动等</li>
+
+        <li>subject_story->包含各种武器技术的初级枪械</li>
+        <li>subject_story->在缪诺中的初级武备，基本上是给新手使用的武器</li>
+
+        <li>subject_gerund->制造缪诺民用枪械</li>
+
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_Advancedfirearms</defName>
+    <label>缪诺进阶枪械</label>
+    <description>各种拥有相对复杂机构的缪诺枪械,性能更优异</description>
+    <baseCost>500</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Muno_Basicfirearms</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>2.50</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->缪诺进阶枪械技术</li>
+        <li>subject->使用了各种技术的枪械，拥有更强的性能</li>
+
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+      <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_Laserweapon</defName>
+    <label>缪诺激光武器</label>
+    <description>制造使用多种波段的定向能量武器。激光武器精度极高且无弹道延迟，但结构精密、维护成本高昂</description>
+    <baseCost>500</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Muno_Basicfirearms</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>3.20</researchViewY>
+    <generalRules>
+      <rulesStrings>
+       <li>subject->缪诺激光武器</li>
+        <li>subject->定向能量武器技术</li>
+        <li>subject->相对于充满随机性的传统实弹，激光至少瞄准了就能打中，尽管激光武器还是略显娇贵，但缪诺们还是大规模列装了各种激光武器.</li>
+
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+      <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_Militaryfirearms</defName>
+    <label>缪诺军用制式枪械</label>
+    <description>各种在缪诺军事化组织中使用的军用枪械</description>
+    <baseCost>500</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Muno_Advancedfirearms</li>
+    </prerequisites>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>2.50</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->缪诺军用制式枪械</li>
+        <li>subject->各种在缪诺军事化组织中使用的军用枪械，相对于其他族群来说，这些枪械有些笨重以及火力过剩</li>
+
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+
+    <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_Heavyfirepower</defName>
+    <label>缪诺重火力武器</label>
+    <description>一些在缪诺军队组织中使用的重火力武器</description>
+    <baseCost>500</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Muno_Militaryfirearms</li>
+    </prerequisites>
+    <researchViewX>3.00</researchViewX>
+    <researchViewY>2.50</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->缪诺重火力武器</li>
+        <li>subject->重火力对于军队来说总是必须的，这些武器正是缪诺军队的火力核心</li>
+
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+</Defs>
