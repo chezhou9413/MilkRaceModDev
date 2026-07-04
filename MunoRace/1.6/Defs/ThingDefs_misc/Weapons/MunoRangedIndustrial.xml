@@ -96,6 +96,272 @@
 			<armorPenetrationBase>0.39</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
+	
+	<!-- 练习步枪 -->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>Gun_Muno_PR</defName>
+    <label>缪诺练习步枪</label>
+    <description>一款专为射击训练设计的轻型步枪，使用小口径弹药，后坐力低，易于操控。虽然威力有限，但精度可靠，是新手熟悉枪械的理想选择。</description>
+    <graphicData>
+        <texPath>Weapons/Gun_Muno_PR</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+        <drawSize>1.4</drawSize>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+        <WorkToMake>20000</WorkToMake>
+        <Mass>3.5</Mass>
+        <AccuracyTouch>0.70</AccuracyTouch>
+        <AccuracyShort>0.85</AccuracyShort>
+        <AccuracyMedium>0.75</AccuracyMedium>
+        <AccuracyLong>0.55</AccuracyLong>
+        <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+        <Steel>80</Steel>
+        <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <recipeMaker>
+        <researchPrerequisite>Gunsmithing</researchPrerequisite>
+        <skillRequirements>
+            <Crafting>3</Crafting>
+        </skillRequirements>
+        <recipeUsers>
+            <li>MunoRace_WorkBench</li>
+        </recipeUsers>
+    </recipeMaker>
+    <verbs>
+        <li>
+            <verbClass>Verb_Shoot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Bullet_Muno_PR</defaultProjectile>
+            <warmupTime>0.7</warmupTime>
+            <range>31</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Shot_AssaultRifle</soundCast>
+            <soundCastTail>GunTail_Light</soundCastTail>
+            <muzzleFlashScale>6</muzzleFlashScale>
+        </li>
+    </verbs>
+    <comps>
+    </comps>
+    <weaponTags Inherit="false">
+        <li>MunoGunBasic</li>
+    </weaponTags>
+    <tools>
+        <li>
+            <label>stock</label>
+            <capacities>
+                <li>Blunt</li>
+            </capacities>
+            <power>9</power>
+            <cooldownTime>1.5</cooldownTime>
+        </li>
+        <li>
+            <label>barrel</label>
+            <capacities>
+                <li>Blunt</li>
+                <li>Poke</li>
+            </capacities>
+            <power>9</power>
+            <cooldownTime>1.5</cooldownTime>
+        </li>
+    </tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Muno_PR</defName>
+    <label>小口径练习弹</label>
+    <graphicData>
+        <texPath>Things/Projectile/Bullet_Small</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+        <damageDef>Bullet</damageDef>
+        <damageAmountBase>11</damageAmountBase>
+        <speed>55</speed>
+        <stoppingPower>0.3</stoppingPower>
+        <armorPenetrationBase>0.10</armorPenetrationBase>
+    </projectile>
+	</ThingDef>
+
+	<!-- 简易射手 -->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>Gun_SSR</defName>
+    <label>缪诺简易射手步枪</label>
+    <description>在练习步枪基础上简单改进而成的精确射手武器，换装了望远瞄具。结构简单可靠，适合具备一定射击基础的士兵在中远距离执行精准打击任务。</description>
+    <graphicData>
+        <texPath>Weapons/Gun_SSR</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+        <drawSize>1.4</drawSize>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+        <WorkToMake>55000</WorkToMake>
+        <Mass>4.0</Mass>
+        <AccuracyTouch>0.45</AccuracyTouch>
+        <AccuracyShort>0.80</AccuracyShort>
+        <AccuracyMedium>0.88</AccuracyMedium>
+        <AccuracyLong>0.82</AccuracyLong>
+        <RangedWeapon_Cooldown>1.3</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+        <Steel>140</Steel>
+        <ComponentIndustrial>14</ComponentIndustrial>
+        <Plasteel>5</Plasteel>
+    </costList>
+    <recipeMaker>
+        <researchPrerequisite>Gunsmithing</researchPrerequisite>
+        <skillRequirements>
+            <Crafting>5</Crafting>
+        </skillRequirements>
+        <recipeUsers>
+            <li>MunoRace_WorkBench</li>
+        </recipeUsers>
+    </recipeMaker>
+    <verbs>
+        <li>
+            <verbClass>Verb_Shoot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Bullet_SSR</defaultProjectile>
+            <warmupTime>1.2</warmupTime>
+            <range>37</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Shot_BoltActionRifle</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>9</muzzleFlashScale>
+        </li>
+    </verbs>
+    <comps>
+    </comps>
+    <weaponTags Inherit="false">
+        <li>MunoGunBasic</li>
+    </weaponTags>
+    <tools>
+        <li>
+            <label>stock</label>
+            <capacities>
+                <li>Blunt</li>
+            </capacities>
+            <power>13</power>
+            <cooldownTime>2.0</cooldownTime>
+        </li>
+        <li>
+            <label>barrel</label>
+            <capacities>
+                <li>Blunt</li>
+                <li>Poke</li>
+            </capacities>
+            <power>13</power>
+            <cooldownTime>2.0</cooldownTime>
+        </li>
+    </tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+    <defName>Bullet_SSR</defName>
+    <label>小口径狙击弹</label>
+    <graphicData>
+        <texPath>Things/Projectile/Bullet_Small</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+        <damageDef>Bullet</damageDef>
+        <damageAmountBase>11</damageAmountBase>
+        <speed>70</speed>
+        <stoppingPower>0.7</stoppingPower>
+        <armorPenetrationBase>0.10</armorPenetrationBase>
+    </projectile>
+	</ThingDef>
+
+	!-- 精准射手步枪 -->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>Gun_SR</defName>
+    <label>缪诺精准射手步枪</label>
+    <description>军用规格的半自动精确射手步枪，搭配全威力弹药和高倍率电子光学瞄具。在保持精准度的同时提供半自动射击能力，是缪诺军械库中平衡射速与精度的枪械。</description>
+    <graphicData>
+        <texPath>Weapons/Gun_SR</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+        <drawSize>1.4</drawSize>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+        <WorkToMake>90000</WorkToMake>
+        <Mass>5.5</Mass>
+        <AccuracyTouch>0.55</AccuracyTouch>
+        <AccuracyShort>0.85</AccuracyShort>
+        <AccuracyMedium>0.90</AccuracyMedium>
+        <AccuracyLong>0.85</AccuracyLong>
+        <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+        <Steel>200</Steel>
+        <ComponentIndustrial>20</ComponentIndustrial>
+        <Plasteel>12</Plasteel>
+    </costList>
+    <recipeMaker>
+        <researchPrerequisite>Gunsmithing</researchPrerequisite>
+        <skillRequirements>
+            <Crafting>6</Crafting>
+        </skillRequirements>
+        <recipeUsers>
+            <li>MunoRace_WorkBench</li>
+        </recipeUsers>
+    </recipeMaker>
+    <verbs>
+        <li>
+            <verbClass>Verb_Shoot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Bullet_SR</defaultProjectile>
+            <warmupTime>1.0</warmupTime>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Shot_BoltActionRifle</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>10</muzzleFlashScale>
+        </li>
+    </verbs>
+    <comps>
+    </comps>
+    <weaponTags Inherit="false">
+        <li>MunoGunAdvanced</li>
+    </weaponTags>
+    <tools>
+        <li>
+            <label>stock</label>
+            <capacities>
+                <li>Blunt</li>
+            </capacities>
+            <power>15</power>
+            <cooldownTime>1.8</cooldownTime>
+        </li>
+        <li>
+            <label>barrel</label>
+            <capacities>
+                <li>Blunt</li>
+                <li>Poke</li>
+            </capacities>
+            <power>15</power>
+            <cooldownTime>1.8</cooldownTime>
+        </li>
+    </tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+    <defName>Bullet_SR</defName>
+    <label>全威力弹</label>
+    <graphicData>
+        <texPath>Things/Projectile/Bullet_Small</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+        <damageDef>Bullet</damageDef>
+        <damageAmountBase>18</damageAmountBase>
+        <speed>75</speed>
+        <stoppingPower>0.8</stoppingPower>
+        <armorPenetrationBase>0.22</armorPenetrationBase>
+    </projectile>
+	</ThingDef>
 
     <!-- 电磁突击步枪 -->
 	<ThingDef ParentName="BaseHumanMakeableGun">
@@ -765,7 +1031,98 @@
 			<armorPenetrationBase>0.29</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
+	
+		<!-- 电磁反器材步枪 -->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>Gun_MunoRAMR</defName>
+    <label>缪诺电磁反器材步枪</label>
+    <description>一款电磁驱动的反器材步枪，发射高速钨芯弹丸，拥有极高的穿甲能力和毁灭性的单发伤害。但极其沉重，开火前需要长时间充能，近身几乎无法瞄准。</description>
+    <graphicData>
+        <texPath>Weapons/Gun_MunoRAMR</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+        <drawSize>1.4</drawSize>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+        <WorkToMake>180000</WorkToMake>
+        <Mass>28</Mass>
+        <AccuracyTouch>0.20</AccuracyTouch>
+        <AccuracyShort>0.75</AccuracyShort>
+        <AccuracyMedium>0.85</AccuracyMedium>
+        <AccuracyLong>0.90</AccuracyLong>
+        <RangedWeapon_Cooldown>1.75</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+        <Steel>400</Steel>
+        <Plasteel>30</Plasteel>
+        <ComponentIndustrial>50</ComponentIndustrial>
+        <ComponentSpacer>2</ComponentSpacer>
+        <Uranium>20</Uranium>
+    </costList>
+    <recipeMaker>
+        <researchPrerequisite>GasOperation</researchPrerequisite>
+        <skillRequirements>
+            <Crafting>8</Crafting>
+        </skillRequirements>
+        <recipeUsers>
+            <li>MunoRace_WorkBench</li>
+        </recipeUsers>
+    </recipeMaker>
+    <verbs>
+        <li>
+            <verbClass>Verb_Shoot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Bullet_MunoRAMR</defaultProjectile>
+            <warmupTime>2.5</warmupTime>
+            <range>45</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Shot_SniperRifle</soundCast>
+            <soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>16</muzzleFlashScale>
+        </li>
+    </verbs>
+    <comps>
+    </comps>
+    <weaponTags Inherit="false">
+        <li>MunoGunAdvanced</li>
+    </weaponTags>
+    <tools>
+        <li>
+            <label>stock</label>
+            <capacities>
+                <li>Blunt</li>
+            </capacities>
+            <power>22</power>
+            <cooldownTime>2.5</cooldownTime>
+        </li>
+        <li>
+            <label>barrel</label>
+            <capacities>
+                <li>Blunt</li>
+                <li>Poke</li>
+            </capacities>
+            <power>22</power>
+            <cooldownTime>2.5</cooldownTime>
+        </li>
+    </tools>
+	</ThingDef>
 
+	<ThingDef ParentName="BaseBullet">
+    <defName>Bullet_MunoRAMR</defName>
+    <label>钨芯电磁弹</label>
+    <graphicData>
+        <texPath>Things/Projectile/Bullet_Small</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+        <damageDef>Bullet</damageDef>
+        <damageAmountBase>65</damageAmountBase>
+        <speed>120</speed>
+        <stoppingPower>1.5</stoppingPower>
+        <armorPenetrationBase>0.75</armorPenetrationBase>
+    </projectile>
+	</ThingDef>
+	
 	<!-- 机炮 -->
 	<ThingDef ParentName="BaseHumanMakeableGun">
 		<defName>Gun_MunoAC</defName>
