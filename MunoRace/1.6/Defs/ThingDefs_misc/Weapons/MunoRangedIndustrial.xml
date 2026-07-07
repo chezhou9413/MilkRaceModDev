@@ -501,7 +501,7 @@
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Bullet_MunoAR</defaultProjectile>
+				<defaultProjectile>Bullet_MunoSR</defaultProjectile>
 				<warmupTime>1.2</warmupTime>
 				<range>32</range>
 				<burstShotCount>3</burstShotCount>
@@ -510,8 +510,38 @@
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>	
+			<li>
+				<verbClass>MunoRaceLib.MunoComp.Verb_MunoStrategicGrenade</verbClass>
+				<label>发射战略榴弹</label>
+				<hasStandardCommand>false</hasStandardCommand>
+				<defaultProjectile>Bullet_MunoSR_Grenade</defaultProjectile>
+				<warmupTime>1.6</warmupTime>
+				<range>25</range>
+				<forcedMissRadius>1.2</forcedMissRadius>
+				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>10</muzzleFlashScale>
+			</li>
 		</verbs>
-		<comps>
+		<comps Inherit="False">
+			<li Class="CompProperties_EquippableAbility">
+				<abilityDef>Muno_StrategicGrenadeShot</abilityDef>
+			</li>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Styleable"/>
+			<li Class="CompProperties_Biocodable"/>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>NamerArtWeaponGun</nameMaker>
+				<descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+			<li Class="MunoRaceLib.MunoComp.CompProperties_StrategicGrenadeStorageWeapon">
+				<ammoCapacity>5</ammoCapacity>
+				<steelPerGrenade>1</steelPerGrenade>
+			</li>
 		</comps>		
 		<weaponTags Inherit="false">
 			<li>MunoGunMiddle</li>
@@ -550,6 +580,24 @@
 			<speed>70</speed>
 			<!--stoppingPower>1.0</stoppingPower-->
 			<armorPenetrationBase>0.26</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_MunoSR_Grenade</defName>
+		<label>缪诺战略榴弹</label>
+		<graphicData>
+			<texPath>Weapons/Gun_MilkGL_proj</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<explosionRadius>3</explosionRadius>
+			<speed>55</speed>
+			<explosionDelay>1</explosionDelay>
+			<stoppingPower>1.0</stoppingPower>
+			<damageAmountBase>30</damageAmountBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
 
@@ -1410,7 +1458,63 @@
         <aimingChargeMote>Mote_MunoBeamRepeater_Charge_LR</aimingChargeMote>
         <aimingChargeMoteOffset>1.07</aimingChargeMoteOffset>
       </li>
+      <li>
+        <verbClass>MunoRaceLib.MunoComp.Verb_MunoLaserSweep</verbClass>
+        <label>激光增幅横扫</label>
+        <hasStandardCommand>false</hasStandardCommand>
+        <warmupTime>1.4</warmupTime>
+        <range>26</range>
+        <minRange>3</minRange>
+        <beamFullWidthRange>7</beamFullWidthRange>
+        <burstShotCount>5</burstShotCount>
+        <showBurstShotStats>false</showBurstShotStats>
+        <beamWidth>6</beamWidth>
+        <ticksBetweenBurstShots>22</ticksBetweenBurstShots>
+        <beamDamageDef>Muno_LaserSweepBeam_LR</beamDamageDef>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>10</muzzleFlashScale>
+        <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+        <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+        <beamFleckChancePerTick>0.32</beamFleckChancePerTick>
+        <beamMoteDef>Mote_GraserBeamBase</beamMoteDef>
+        <beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
+        <beamChanceToStartFire>0.85</beamChanceToStartFire>
+        <beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+        <beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+        <beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+        <beamStartOffset>0.8</beamStartOffset>
+        <beamMaxDeviation>1.5</beamMaxDeviation>
+        <beamCurvature>0.6</beamCurvature>
+        <beamLineFleckChanceCurve>
+          <points>
+            <li>(0, 0)</li>
+            <li>(0.65, 0.4)</li>
+            <li>(1, 0.75)</li>
+          </points>
+        </beamLineFleckChanceCurve>
+      </li>
     </verbs>
+    <comps Inherit="False">
+      <li Class="CompProperties_EquippableAbility">
+        <abilityDef>Muno_LaserSweep_LR</abilityDef>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Styleable"/>
+      <li Class="CompProperties_Biocodable"/>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_GalactogenStorageWeapon">
+        <slotCapacity>3</slotCapacity>
+        <showGelShot>false</showGelShot>
+        <slotLabel>激光增幅浓浆槽</slotLabel>
+      </li>
+    </comps>
     <tools>
       <li>
         <label>barrels</label>
@@ -1511,7 +1615,63 @@
         <aimingChargeMote>Mote_MunoBeamRepeater_Charge_LSR</aimingChargeMote>
         <aimingChargeMoteOffset>1.07</aimingChargeMoteOffset>
       </li>
+      <li>
+        <verbClass>MunoRaceLib.MunoComp.Verb_MunoLaserSweep</verbClass>
+        <label>激光增幅横扫</label>
+        <hasStandardCommand>false</hasStandardCommand>
+        <warmupTime>1.6</warmupTime>
+        <range>38</range>
+        <minRange>4</minRange>
+        <beamFullWidthRange>8</beamFullWidthRange>
+        <burstShotCount>5</burstShotCount>
+        <showBurstShotStats>false</showBurstShotStats>
+        <beamWidth>6</beamWidth>
+        <ticksBetweenBurstShots>22</ticksBetweenBurstShots>
+        <beamDamageDef>Muno_LaserSweepBeam_LSR</beamDamageDef>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>11</muzzleFlashScale>
+        <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+        <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+        <beamFleckChancePerTick>0.32</beamFleckChancePerTick>
+        <beamMoteDef>Mote_GraserBeamBase</beamMoteDef>
+        <beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
+        <beamChanceToStartFire>0.85</beamChanceToStartFire>
+        <beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+        <beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+        <beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+        <beamStartOffset>0.8</beamStartOffset>
+        <beamMaxDeviation>1.5</beamMaxDeviation>
+        <beamCurvature>0.6</beamCurvature>
+        <beamLineFleckChanceCurve>
+          <points>
+            <li>(0, 0)</li>
+            <li>(0.65, 0.4)</li>
+            <li>(1, 0.75)</li>
+          </points>
+        </beamLineFleckChanceCurve>
+      </li>
     </verbs>
+    <comps Inherit="False">
+      <li Class="CompProperties_EquippableAbility">
+        <abilityDef>Muno_LaserSweep_LSR</abilityDef>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Styleable"/>
+      <li Class="CompProperties_Biocodable"/>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_GalactogenStorageWeapon">
+        <slotCapacity>3</slotCapacity>
+        <showGelShot>false</showGelShot>
+        <slotLabel>激光增幅浓浆槽</slotLabel>
+      </li>
+    </comps>
     <tools>
       <li>
         <label>barrels</label>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <AbilityDef>
+    <defName>Muno_StrategicGrenadeShot</defName>
+    <label>发射战略榴弹</label>
+    <description>消耗 1 发战略榴弹，使用缪诺战略步枪下挂榴弹发射器攻击目标。</description>
+    <abilityClass>MunoRaceLib.MunoComp.Ability_MunoStrategicGrenadeShot</abilityClass>
+    <gizmoClass>MunoRaceLib.MunoComp.Command_AbilityMunoStrategicGrenadeShot</gizmoClass>
+    <iconPath>Weapons/Gun_MilkGL_proj</iconPath>
+    <jobDef>JobDef_MunoStrategicGrenadeShot</jobDef>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <targetRequired>true</targetRequired>
+    <hostile>true</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+      </targetParams>
+      <range>25</range>
+      <warmupTime>1.6</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <soundCast>ChargeLance_Fire</soundCast>
+      <soundCastTail>GunTail_Medium</soundCastTail>
+    </verbProperties>
+    <comps>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_AbilityMunoStrategicGrenadeShot">
+        <cost>1</cost>
+        <forcedMissRadius>1.2</forcedMissRadius>
+      </li>
+    </comps>
+  </AbilityDef>
+</Defs>

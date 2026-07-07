@@ -1,21 +1,19 @@
 using MunoRaceLib.MunoDefRef;
 using RimWorld;
 using RimWorld.QuestGen;
+using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
 namespace MunoRaceLib.MunoWorld
 {
-    /// <summary>
-    /// 负责发起缪诺穿梭机接收流程，并把选中目标绑定到真实穿梭机任务中。
-    /// </summary>
+    //负责发起缪诺穿梭机接收流程，并把选中目标绑定到真实穿梭机任务中。
+
     public static class MunoShuttleExchangeService
     {
         private const float LandingSearchRadius = 10f;
+        //启动一轮缪诺穿梭机交换流程，并在当前地图生成只接收指定目标的穿梭机。
 
-        /// <summary>
-        /// 启动一轮缪诺穿梭机交换流程，并在当前地图生成只接收指定目标的穿梭机。
-        /// </summary>
         public static bool TryStartExchange(Pawn negotiator, Pawn targetPawn, out string failReason)
         {
             failReason = null;
@@ -90,12 +88,12 @@ namespace MunoRaceLib.MunoWorld
             shuttleComp.requiredPawns.Clear();
             shuttleComp.requiredPawns.Add(targetPawn);
             shuttleComp.acceptColonists = false;
+            shuttleComp.onlyAcceptColonists = false;
             shuttleComp.allowSlaves = false;
             shuttleComp.acceptColonyPrisoners = false;
             shuttleComp.requiredColonistCount = 0;
             shuttleComp.maxColonistCount = -1;
 
-            // 只把本次选中的目标加入待装列表，确保原版“抬运到穿梭机”菜单只接受该 Pawn。
             TransporterUtility.InitiateLoading(Gen.YieldSingle(transporter));
             TransferableOneWay transferable = new TransferableOneWay();
             transferable.things.Add(targetPawn);
@@ -105,7 +103,7 @@ namespace MunoRaceLib.MunoWorld
             ShipJob_WaitForever waitJob = (ShipJob_WaitForever)ShipJobMaker.MakeShipJob(ShipJobDefOf.WaitForever);
             waitJob.leaveImmediatelyWhenSatisfied = true;
             waitJob.showGizmos = false;
-            waitJob.sendAwayIfAnyDespawnedDownedOrDead = new System.Collections.Generic.List<Thing> { targetPawn };
+            waitJob.sendAwayIfAnyDespawnedDownedOrDead = new List<Thing> { targetPawn };
             transportShip.ForceJob(waitJob);
 
             if (!TrySpawnIncomingShuttle(shuttle, negotiator.Map, landingCell, out failReason))
@@ -121,26 +119,20 @@ namespace MunoRaceLib.MunoWorld
             CurrentSession().StartSession(negotiator, targetPawn, shuttle, negotiator.Map);
             return true;
         }
+        //返回当前存档中的缪诺穿梭机交换会话组件。
 
-        /// <summary>
-        /// 返回当前存档中的缪诺穿梭机交换会话组件。
-        /// </summary>
         public static MunoShuttleExchangeSession CurrentSession()
         {
             return Current.Game.GetComponent<MunoShuttleExchangeSession>();
         }
+        //在谈判者附近寻找一块可供原版穿梭机安全降落的位置。
 
-        /// <summary>
-        /// 在谈判者附近寻找一块可供原版穿梭机安全降落的位置。
-        /// </summary>
         private static bool TryFindLandingCell(Map map, IntVec3 near, out IntVec3 landingCell)
         {
             return CellFinder.TryFindRandomCellNear(near, map, (int)LandingSearchRadius, cell => RoyalTitlePermitWorker_CallShuttle.ShuttleCanLandHere(cell, map).Accepted, out landingCell);
         }
+        //以原版穿梭机入场天降物的方式让穿梭机降落，避开与运输船到达 Job 冲突的外部补丁链。
 
-        /// <summary>
-        /// 以原版穿梭机入场天降物的方式让穿梭机降落，避开与运输船到达 Job 冲突的外部补丁链。
-        /// </summary>
         private static bool TrySpawnIncomingShuttle(Thing shuttle, Map map, IntVec3 landingCell, out string failReason)
         {
             failReason = null;

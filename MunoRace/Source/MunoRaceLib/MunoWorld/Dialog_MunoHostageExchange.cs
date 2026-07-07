@@ -6,9 +6,8 @@ using RimWorld.Planet;
 
 namespace MunoRaceLib.MunoWorld
 {
-    /// <summary>
-    /// 负责显示缪诺通讯交换终端界面，并发起穿梭机人口接收流程。
-    /// </summary>
+    //负责显示缪诺通讯交换终端界面，并发起穿梭机人口接收流程。
+
     [StaticConstructorOnStartup]
     public class Dialog_MunoHostageExchange : MunoWindowBase
     {
@@ -25,23 +24,21 @@ namespace MunoRaceLib.MunoWorld
         private readonly Map map;
         private Vector2 candidateScrollPosition;
         private Vector2 leftInfoScrollPosition;
+        private Vector2 missionScrollPosition;
+        private Vector2 selectedDetailScrollPosition;
         private Pawn selectedPawn;
         private CommPage currentPage;
         private float pageOpenTime;
         private MunoTypewriterTextState typewriter = new MunoTypewriterTextState();
+        //表示缪诺通讯窗口当前显示的页面。
 
-        /// <summary>
-        /// 表示缪诺通讯窗口当前显示的页面。
-        /// </summary>
         private enum CommPage
         {
             MainMenu,
             Exchange
         }
+        //构建一个绑定当前通讯发起者与地图环境的缪诺交换终端窗口。
 
-        /// <summary>
-        /// 构建一个绑定当前通讯发起者与地图环境的缪诺交换终端窗口。
-        /// </summary>
         public Dialog_MunoHostageExchange(Pawn negotiator)
         {
             this.negotiator = negotiator;
@@ -49,10 +46,16 @@ namespace MunoRaceLib.MunoWorld
             pageOpenTime = Time.realtimeSinceStartup;
             typewriter.SetText(MunoCommDialogueUtility.RandomGreeting());
         }
+        //构建人口接收窗口，并按需要直接进入接收流程页。
+        public Dialog_MunoHostageExchange(Pawn negotiator, bool startAtExchange) : this(negotiator)
+        {
+            if (startAtExchange)
+            {
+                SetPage(CommPage.Exchange);
+            }
+        }
+        //为兼容旧的据点交换入口，允许从远行队场景直接构建同一窗口。
 
-        /// <summary>
-        /// 为兼容旧的据点交换入口，允许从远行队场景直接构建同一窗口。
-        /// </summary>
         public Dialog_MunoHostageExchange(Settlement settlement, Caravan caravan)
         {
             List<Pawn> pawns = caravan?.PawnsListForReading;
@@ -61,15 +64,11 @@ namespace MunoRaceLib.MunoWorld
             pageOpenTime = Time.realtimeSinceStartup;
             typewriter.SetText(MunoCommDialogueUtility.RandomGreeting());
         }
+        //返回缪诺通讯交换终端窗口的固定初始尺寸。
 
-        /// <summary>
-        /// 返回缪诺通讯交换终端窗口的固定初始尺寸。
-        /// </summary>
         public override Vector2 InitialSize => new Vector2(1024f, 680f);
+        //按当前页面绘制缪诺通讯终端界面。
 
-        /// <summary>
-        /// 按当前页面绘制缪诺通讯终端界面。
-        /// </summary>
         public override void DoWindowContents(Rect inRect)
         {
             if (currentPage == CommPage.MainMenu)
@@ -88,13 +87,11 @@ namespace MunoRaceLib.MunoWorld
             MunoCommUIStyle.DrawBackground(inRect);
             DrawExchangePage(inRect);
         }
+        //绘制首页入口布局，包括联络员立绘、缪诺招待链路、可选管理员入口与断开通讯按钮。
 
-        /// <summary>
-        /// 绘制首页入口布局，包括联络员立绘、缪诺招待链路、可选管理员入口与断开通讯按钮。
-        /// </summary>
         private void DrawMainMenuPage(Rect inRect)
         {
-            MunoCommMainMenuAction action = MunoCommMainMenuView.Draw(inRect, "人口交换管理员", pageOpenTime, typewriter);
+            MunoCommMainMenuAction action = MunoCommMainMenuView.Draw(inRect, pageOpenTime, typewriter);
             if (action == MunoCommMainMenuAction.OpenExchange)
             {
                 if (CompleteTextIfNeeded())
@@ -116,10 +113,8 @@ namespace MunoRaceLib.MunoWorld
                 Close();
             }
         }
+        //在文本尚未完整显示时立即展开全文，并返回是否已拦截本次操作。
 
-        /// <summary>
-        /// 在文本尚未完整显示时立即展开全文，并返回是否已拦截本次操作。
-        /// </summary>
         private bool CompleteTextIfNeeded()
         {
             if (typewriter.Completed)
@@ -130,10 +125,8 @@ namespace MunoRaceLib.MunoWorld
             typewriter.Complete();
             return true;
         }
+        //绘制原有交换流程页面，包括标题栏、立绘、说明与候选目标列表。
 
-        /// <summary>
-        /// 绘制原有交换流程页面，包括标题栏、立绘、说明与候选目标列表。
-        /// </summary>
         private void DrawExchangePage(Rect inRect)
         {
             if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺接收链路", MunoLogo))
@@ -148,7 +141,7 @@ namespace MunoRaceLib.MunoWorld
 
             Rect leftRect = new Rect(animatedRect.x + 14f, animatedRect.y + 56f, LeftPanelWidth, animatedRect.height - 70f);
             Rect rightRect = new Rect(leftRect.xMax + 14f, leftRect.y, inRect.width - leftRect.width - 28f, leftRect.height);
-            Rect topRightRect = new Rect(rightRect.x, rightRect.y, rightRect.width, 208f);
+            Rect topRightRect = new Rect(rightRect.x, rightRect.y, rightRect.width, 228f);
             Rect bottomRightRect = new Rect(rightRect.x, topRightRect.yMax + 12f, rightRect.width, rightRect.height - topRightRect.height - 12f);
 
             DrawLeftPanel(leftRect);
@@ -156,19 +149,15 @@ namespace MunoRaceLib.MunoWorld
             DrawCandidatePanel(bottomRightRect);
             GUI.color = oldGuiColor;
         }
+        //切换通讯页面并重置页面进入动效计时。
 
-        /// <summary>
-        /// 切换通讯页面并重置页面进入动效计时。
-        /// </summary>
         private void SetPage(CommPage page)
         {
             currentPage = page;
             pageOpenTime = Time.realtimeSinceStartup;
         }
+        //绘制左栏联系人立绘、状态与交换摘要。
 
-        /// <summary>
-        /// 绘制左栏联系人立绘、状态与交换摘要。
-        /// </summary>
         private void DrawLeftPanel(Rect rect)
         {
             MunoCommUIStyle.DrawPanel(rect);
@@ -191,7 +180,7 @@ namespace MunoRaceLib.MunoWorld
             Widgets.Label(new Rect(0f, 0f, viewRect.width, titleHeight), "通讯状态");
             GUI.color = MunoCommUIStyle.TextColor;
             float infoY = titleHeight + 6f;
-            string statusDesc = "缪诺联络官已确认信号。请选择一名目标，缪诺接收穿梭机将在殖民地内降落并执行人口接收。";
+            string statusDesc = "缪诺联络官已确认信号。军事管理员会派遣接收穿梭机，在殖民地内接收本次选中的目标。";
             float statusHeight = Text.CalcHeight(statusDesc, viewRect.width);
             Widgets.Label(new Rect(0f, infoY, viewRect.width, statusHeight), statusDesc);
 
@@ -199,7 +188,7 @@ namespace MunoRaceLib.MunoWorld
             float rulesTitleY = infoY + statusHeight + 10f;
             Widgets.Label(new Rect(0f, rulesTitleY, viewRect.width, titleHeight), "当前规则");
             GUI.color = MunoCommUIStyle.TextColor;
-            string rulesDesc = "每次仅接收 1 名合法目标。\n可接收对象：殖民者、囚犯、奴隶。\n接收完成后，固定有 1 名缪诺成员加入殖民地。";
+            string rulesDesc = "每次仅接收 1 名选中目标。\n未选中的殖民者、囚犯、奴隶都不能进入穿梭机。\n接收完成后，固定有 1 名缪诺成员加入殖民地。";
             float rulesY = rulesTitleY + titleHeight + 6f;
             float rulesHeight = Text.CalcHeight(rulesDesc, viewRect.width);
             Widgets.Label(new Rect(0f, rulesY, viewRect.width, rulesHeight), rulesDesc);
@@ -207,31 +196,37 @@ namespace MunoRaceLib.MunoWorld
             Widgets.EndScrollView();
             GUI.color = Color.white;
         }
+        //绘制右上角任务说明、奖励信息与当前会话状态。
 
-        /// <summary>
-        /// 绘制右上角任务说明、奖励信息与当前会话状态。
-        /// </summary>
         private void DrawMissionPanel(Rect rect)
         {
             MunoCommUIStyle.DrawLightPanel(rect);
             Rect inner = rect.ContractedBy(12f);
-
+            GameFont oldFont = Text.Font;
+            TextAnchor oldAnchor = Text.Anchor;
+            Color oldColor = GUI.color;
             Text.Font = GameFont.Small;
+            Text.Anchor = TextAnchor.UpperLeft;
             GUI.color = MunoCommUIStyle.MutedDarkTextColor;
-            float titleHeight = Text.LineHeight;
+            float titleHeight = Text.LineHeightOf(GameFont.Small) + 2f;
             Widgets.Label(new Rect(inner.x, inner.y, inner.width, titleHeight), "交换说明");
 
             GUI.color = MunoCommUIStyle.DarkTextColor;
             string statusText = BuildStatusText();
-            string desc = "1. 选择 1 名目标并发起接收请求。\n2. 缪诺穿梭机将在地图内降落。\n3. 将选中的目标送入穿梭机后，穿梭机会自动离场。\n4. 离场成功后，一名缪诺成员将加入殖民地。\n\n" + statusText;
-            float descHeight = Text.CalcHeight(desc, inner.width);
-            Widgets.Label(new Rect(inner.x, inner.y + titleHeight + 8f, inner.width, Mathf.Min(descHeight, inner.height - titleHeight - 8f)), desc);
-            GUI.color = Color.white;
+            string desc = "1. 选择目标并发起接收请求。\n2. 穿梭机将在殖民地内降落。\n3. 只有本次选中的目标可以进入穿梭机。\n4. 目标装入后穿梭机会自动离场。\n5. 离场成功后，一名缪诺成员将加入殖民地。\n\n" + statusText;
+            Rect outRect = new Rect(inner.x, inner.y + titleHeight + 8f, inner.width, inner.height - titleHeight - 8f);
+            float viewWidth = outRect.width - 16f;
+            float descHeight = Mathf.Ceil(Text.CalcHeight(desc, viewWidth)) + 4f;
+            Rect viewRect = new Rect(0f, 0f, viewWidth, Mathf.Max(outRect.height, descHeight));
+            Widgets.BeginScrollView(outRect, ref missionScrollPosition, viewRect);
+            Widgets.Label(new Rect(0f, 0f, viewRect.width, descHeight), desc);
+            Widgets.EndScrollView();
+            Text.Font = oldFont;
+            Text.Anchor = oldAnchor;
+            GUI.color = oldColor;
         }
+        //绘制候选目标列表、选中目标卡片与主操作按钮。
 
-        /// <summary>
-        /// 绘制候选目标列表、选中目标卡片与主操作按钮。
-        /// </summary>
         private void DrawCandidatePanel(Rect rect)
         {
             MunoCommUIStyle.DrawPanel(rect);
@@ -239,23 +234,24 @@ namespace MunoRaceLib.MunoWorld
 
             Text.Font = GameFont.Small;
             GUI.color = MunoCommUIStyle.AccentSoftColor;
-            Widgets.Label(new Rect(inner.x, inner.y, inner.width, 26f), "接收目标列表");
+            float titleHeight = Text.LineHeightOf(GameFont.Small) + 4f;
+            Widgets.Label(new Rect(inner.x, inner.y, inner.width, titleHeight), "接收目标列表");
             GUI.color = Color.white;
 
             List<Pawn> candidates = MunoHostageExchangeService.GetExchangeCandidates(map);
             float listWidth = inner.width * 0.58f;
-            Rect listRect = new Rect(inner.x, inner.y + 32f, listWidth, inner.height - 32f);
-            Rect detailRect = new Rect(listRect.xMax + 12f, listRect.y, inner.width - listRect.width - 12f, inner.height - 82f);
-            Rect actionRect = new Rect(detailRect.x, detailRect.yMax + 10f, detailRect.width, 72f);
+            float actionHeight = Mathf.Max(118f, Text.LineHeightOf(GameFont.Small) * 3f + 58f);
+            float actionGap = 10f;
+            Rect listRect = new Rect(inner.x, inner.y + titleHeight + 8f, listWidth, inner.height - titleHeight - 8f);
+            Rect detailRect = new Rect(listRect.xMax + 12f, listRect.y, inner.width - listRect.width - 12f, listRect.height - actionHeight - actionGap);
+            Rect actionRect = new Rect(detailRect.x, detailRect.yMax + actionGap, detailRect.width, actionHeight);
 
             DrawCandidateList(listRect, candidates);
             DrawSelectedPawnDetail(detailRect);
             DrawActionArea(actionRect, candidates.Count > 0);
         }
+        //绘制候选目标滚动列表，并支持点击切换当前选中目标。
 
-        /// <summary>
-        /// 绘制候选目标滚动列表，并支持点击切换当前选中目标。
-        /// </summary>
         private void DrawCandidateList(Rect rect, List<Pawn> candidates)
         {
             MunoCommUIStyle.DrawLightPanel(rect);
@@ -291,10 +287,8 @@ namespace MunoRaceLib.MunoWorld
 
             Widgets.EndScrollView();
         }
+        //绘制单个候选目标卡片，并在点击时切换当前选中项。
 
-        /// <summary>
-        /// 绘制单个候选目标卡片，并在点击时切换当前选中项。
-        /// </summary>
         private void DrawCandidateRow(Rect rect, Pawn pawn, bool selected)
         {
             Widgets.DrawBoxSolid(rect, selected ? new Color(0.26f, 0.80f, 0.74f, 0.16f) : new Color(0f, 0f, 0f, 0.08f));
@@ -321,47 +315,50 @@ namespace MunoRaceLib.MunoWorld
             Widgets.Label(new Rect(textX, inner.y + topHeight + 6f, textWidth, topHeight), metaText);
             GUI.color = Color.white;
         }
+        //绘制当前选中目标的详细状态卡片，便于在发起前二次确认。
 
-        /// <summary>
-        /// 绘制当前选中目标的详细状态卡片，便于在发起前二次确认。
-        /// </summary>
         private void DrawSelectedPawnDetail(Rect rect)
         {
             MunoCommUIStyle.DrawLightPanel(rect);
             Rect inner = rect.ContractedBy(10f);
-
+            GameFont oldFont = Text.Font;
+            TextAnchor oldAnchor = Text.Anchor;
+            Color oldColor = GUI.color;
             Text.Font = GameFont.Small;
+            Text.Anchor = TextAnchor.UpperLeft;
             GUI.color = MunoCommUIStyle.MutedDarkTextColor;
-            float lineHeight = Text.LineHeight;
+            float lineHeight = Text.LineHeightOf(GameFont.Small) + 2f;
             Widgets.Label(new Rect(inner.x, inner.y, inner.width, lineHeight), "选中目标");
 
             if (selectedPawn == null)
             {
                 GUI.color = MunoCommUIStyle.DarkTextColor;
                 Widgets.Label(new Rect(inner.x, inner.y + lineHeight + 8f, inner.width, lineHeight), "尚未选中任何目标。");
-                GUI.color = Color.white;
+                Text.Font = oldFont;
+                Text.Anchor = oldAnchor;
+                GUI.color = oldColor;
                 return;
             }
 
             GUI.color = MunoCommUIStyle.DarkTextColor;
-            float y = inner.y + lineHeight + 8f;
-            Widgets.Label(new Rect(inner.x, y, inner.width, lineHeight), selectedPawn.LabelCap);
-            y += lineHeight + 6f;
-            Widgets.Label(new Rect(inner.x, y, inner.width, lineHeight), "身份: " + MunoHostageExchangeService.GetPawnRoleLabel(selectedPawn));
-            y += lineHeight + 4f;
-            Widgets.Label(new Rect(inner.x, y, inner.width, lineHeight), "状态: " + MunoHostageExchangeService.GetPawnStatusLabel(selectedPawn));
-            y += lineHeight + 4f;
-            Widgets.Label(new Rect(inner.x, y, inner.width, lineHeight), "年龄: " + selectedPawn.ageTracker.AgeBiologicalYears);
-            y += lineHeight + 10f;
-            string detailText = "该目标会被缪诺接收穿梭机作为本次唯一合法装载对象。穿梭机离场前，如目标死亡、失效或流程被打断，本次接收将直接失败。";
-            float detailHeight = Text.CalcHeight(detailText, inner.width);
-            Widgets.Label(new Rect(inner.x, y, inner.width, Mathf.Min(detailHeight, inner.yMax - y)), detailText);
-            GUI.color = Color.white;
+            Rect outRect = new Rect(inner.x, inner.y + lineHeight + 8f, inner.width, inner.height - lineHeight - 8f);
+            float viewWidth = outRect.width - 16f;
+            string detailText = selectedPawn.LabelCap
+                + "\n身份: " + MunoHostageExchangeService.GetPawnRoleLabel(selectedPawn)
+                + "\n状态: " + MunoHostageExchangeService.GetPawnStatusLabel(selectedPawn)
+                + "\n年龄: " + selectedPawn.ageTracker.AgeBiologicalYears
+                + "\n\n该目标会作为本次唯一接收对象。穿梭机抵达后，未选中的殖民者、囚犯或奴隶都不能进入。";
+            float detailHeight = Mathf.Ceil(Text.CalcHeight(detailText, viewWidth)) + 4f;
+            Rect viewRect = new Rect(0f, 0f, viewWidth, Mathf.Max(outRect.height, detailHeight));
+            Widgets.BeginScrollView(outRect, ref selectedDetailScrollPosition, viewRect);
+            Widgets.Label(new Rect(0f, 0f, viewRect.width, detailHeight), detailText);
+            Widgets.EndScrollView();
+            Text.Font = oldFont;
+            Text.Anchor = oldAnchor;
+            GUI.color = oldColor;
         }
+        //绘制主操作区，并在条件满足时发起缪诺穿梭机接收流程。
 
-        /// <summary>
-        /// 绘制主操作区，并在条件满足时发起缪诺穿梭机接收流程。
-        /// </summary>
         private void DrawActionArea(Rect rect, bool hasCandidates)
         {
             MunoCommUIStyle.DrawPanel(rect);
@@ -385,7 +382,8 @@ namespace MunoRaceLib.MunoWorld
                 disabledReason = "已有缪诺接收穿梭机正在执行任务。";
             }
 
-            Rect buttonRect = new Rect(inner.x, inner.y, inner.width, 34f);
+            float buttonHeight = Mathf.Max(38f, Text.LineHeightOf(GameFont.Small) + 10f);
+            Rect buttonRect = new Rect(inner.x, inner.y, inner.width, buttonHeight);
             bool active = disabledReason == null;
             if (MunoCommUIStyle.DrawButton(buttonRect, "请求缪诺接收穿梭机", active))
             {
@@ -402,18 +400,17 @@ namespace MunoRaceLib.MunoWorld
 
             GUI.color = MunoCommUIStyle.SubtleTextColor;
             string footerText = active ? "奖励固定为 1 名缪诺殖民者。" : disabledReason;
-            float footerHeight = Text.CalcHeight(footerText, inner.width);
-            Widgets.Label(new Rect(inner.x, inner.y + 40f, inner.width, footerHeight), footerText);
+            float footerHeight = Mathf.Ceil(Text.CalcHeight(footerText, inner.width)) + 2f;
+            Rect footerRect = new Rect(inner.x, inner.y + buttonHeight + 8f, inner.width, footerHeight);
+            Widgets.Label(footerRect, footerText);
             GUI.color = Color.white;
         }
+        //按通讯终端立绘卡片比例裁切并绘制联系人图像，使人物重心更贴合画面。
 
-        /// <summary>
-        /// 按通讯终端立绘卡片比例裁切并绘制联系人图像，使人物重心更贴合画面。
-        /// </summary>
         private static void DrawPortrait(Rect rect)
         {
             GUI.BeginGroup(rect);
-            Widgets.DrawBoxSolid(new Rect(0f, 0f, rect.width, rect.height), new Color(0.77f, 0.80f, 0.80f));
+            Widgets.DrawBoxSolid(new Rect(0f, 0f, rect.width, rect.height), new Color(0.14f, 0.19f, 0.19f));
 
             float scale = Mathf.Max(rect.width / PortraitTexture.width, rect.height / PortraitTexture.height) * portraitScale;
             float drawWidth = PortraitTexture.width * scale;
@@ -424,24 +421,20 @@ namespace MunoRaceLib.MunoWorld
             GUI.DrawTexture(new Rect(drawX, drawY, drawWidth, drawHeight), PortraitTexture, ScaleMode.StretchToFill, true);
             GUI.EndGroup();
         }
+        //计算左下信息区完整正文所需高度，供滚动面板安全容纳所有中文文案。
 
-        /// <summary>
-        /// 计算左下信息区完整正文所需高度，供滚动面板安全容纳所有中文文案。
-        /// </summary>
         private static float CalculateLeftInfoContentHeight(float width)
         {
             Text.Font = GameFont.Small;
             float lineHeight = Text.LineHeight;
-            string statusDesc = "缪诺联络官已确认信号。请选择一名目标，缪诺接收穿梭机将在殖民地内降落并执行人口接收。";
-            string rulesDesc = "每次仅接收 1 名合法目标。\n可接收对象：殖民者、囚犯、奴隶。\n接收完成后，固定有 1 名缪诺成员加入殖民地。";
+            string statusDesc = "缪诺联络官已确认信号。军事管理员会派遣接收穿梭机，在殖民地内接收本次选中的目标。";
+            string rulesDesc = "每次仅接收 1 名选中目标。\n未选中的殖民者、囚犯、奴隶都不能进入穿梭机。\n接收完成后，固定有 1 名缪诺成员加入殖民地。";
             float statusHeight = Text.CalcHeight(statusDesc, width);
             float rulesHeight = Text.CalcHeight(rulesDesc, width);
             return lineHeight + 6f + statusHeight + 10f + lineHeight + 6f + rulesHeight + 4f;
         }
+        //组合当前会话状态的说明文本，用于任务面板即时反馈进度。
 
-        /// <summary>
-        /// 组合当前会话状态的说明文本，用于任务面板即时反馈进度。
-        /// </summary>
         private static string BuildStatusText()
         {
             MunoShuttleExchangeSession session = MunoShuttleExchangeService.CurrentSession();
@@ -450,12 +443,17 @@ namespace MunoRaceLib.MunoWorld
                 return "当前没有进行中的缪诺接收流程。";
             }
 
-            if (session.SelectedPawn != null)
+            if (session.TargetLoaded && session.SelectedPawn != null)
             {
-                return "进行中：缪诺接收穿梭机正在等待目标 “" + session.SelectedPawn.LabelShort + "” 登机。";
+                return "进行中：缪诺接收穿梭机已接收目标 “" + session.SelectedPawn.LabelShort + "”，正在离场。";
             }
 
-            return "进行中：缪诺接收穿梭机正在等待目标登机。";
+            if (session.SelectedPawn != null)
+            {
+                return "进行中：缪诺接收穿梭机正在等待 “" + session.SelectedPawn.LabelShort + "” 登机。";
+            }
+
+            return "进行中：缪诺接收穿梭机正在等待选中目标登机。";
         }
     }
 }

@@ -11,15 +11,15 @@ namespace MunoRaceLib.MunoWorld
     {
         public static readonly Color BackgroundColor = new Color(0.05f, 0.08f, 0.09f);
         public static readonly Color PanelColor = new Color(0.12f, 0.17f, 0.18f);
-        public static readonly Color SoftPanelColor = new Color(0.64f, 0.70f, 0.70f);
+        public static readonly Color SoftPanelColor = new Color(0.17f, 0.25f, 0.25f);
         public static readonly Color AccentColor = new Color(0.22f, 0.72f, 0.68f);
         public static readonly Color AccentSoftColor = new Color(0.58f, 0.86f, 0.82f);
         public static readonly Color GoldColor = new Color(0.92f, 0.82f, 0.55f);
         public static readonly Color BorderColor = new Color(0.28f, 0.56f, 0.54f);
         public static readonly Color TextColor = new Color(0.93f, 0.96f, 0.95f);
         public static readonly Color SubtleTextColor = new Color(0.72f, 0.82f, 0.81f);
-        public static readonly Color DarkTextColor = new Color(0.08f, 0.13f, 0.13f);
-        public static readonly Color MutedDarkTextColor = new Color(0.16f, 0.24f, 0.24f);
+        public static readonly Color DarkTextColor = new Color(0.91f, 0.96f, 0.95f);
+        public static readonly Color MutedDarkTextColor = new Color(0.70f, 0.82f, 0.80f);
         public static readonly Color DisabledColor = new Color(0.35f, 0.40f, 0.40f);
         public static readonly Texture2D CloseXSmall = ContentFinder<Texture2D>.Get("UI/Widgets/CloseXSmall", true);
 
@@ -97,7 +97,7 @@ namespace MunoRaceLib.MunoWorld
         {
             Widgets.DrawBoxSolid(rect, SoftPanelColor);
             DrawBorder(rect, AccentColor, 1);
-            Widgets.DrawBoxSolid(rect.ContractedBy(1f), new Color(1f, 1f, 1f, 0.03f));
+            Widgets.DrawBoxSolid(rect.ContractedBy(1f), new Color(1f, 1f, 1f, 0.015f));
         }
 
         /// <summary>

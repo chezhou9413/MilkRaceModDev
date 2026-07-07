@@ -5,14 +5,10 @@ using Verse;
 
 namespace MunoRaceLib.MunoComp
 {
-    /// <summary>
-    /// 负责将触手动力甲解除限制并转化为狂乱触手甲套装。
-    /// </summary>
+    //负责将触手动力甲解除限制并转化为狂乱触手甲套装。
     public class CompUseEffect_TentacleArmorDisabler : CompUseEffect
     {
-        /// <summary>
-        /// 校验使用者是否已经穿着可转化的触手动力甲。
-        /// </summary>
+        //校验使用者是否已经穿着可转化的触手动力甲。
         public override AcceptanceReport CanBeUsedBy(Pawn p)
         {
             if (p?.apparel == null)
@@ -28,10 +24,7 @@ namespace MunoRaceLib.MunoComp
 
             return true;
         }
-
-        /// <summary>
-        /// 执行触手动力甲转化，并销毁本次使用的解除装置。
-        /// </summary>
+        //执行触手动力甲转化，并销毁本次使用的解除装置。
         public override void DoEffect(Pawn usedBy)
         {
             Apparel armor = FindTentacleArmor(usedBy);
@@ -45,10 +38,7 @@ namespace MunoRaceLib.MunoComp
             Messages.Message("触手动力甲已解除限制，转化为狂乱触手甲。", usedBy, MessageTypeDefOf.PositiveEvent, false);
             parent.Destroy(DestroyMode.Vanish);
         }
-
-        /// <summary>
-        /// 在当前穿戴列表中查找待转化的触手动力甲本体。
-        /// </summary>
+        //在当前穿戴列表中查找待转化的触手动力甲本体。
         private Apparel FindTentacleArmor(Pawn pawn)
         {
             foreach (Apparel apparel in pawn.apparel.WornApparel)
@@ -61,15 +51,12 @@ namespace MunoRaceLib.MunoComp
 
             return null;
         }
-
-        /// <summary>
-        /// 将原动力甲替换为狂乱触手甲本体与头部件，并继承必要状态。
-        /// </summary>
+        //将原动力甲替换为狂乱触手甲本体与头部件，并继承必要状态。
         private void TransformArmor(Pawn wearer, Apparel apparel)
         {
             Thing newThing = ThingMaker.MakeThing(MunoDefDataRef.MunoRace_Apparel_Tentaclefrenzyarmor, apparel.Stuff);
             Thing headThing = ThingMaker.MakeThing(MunoDefDataRef.MunoRace_Apparel_TentaclefrenzyarmorHead, apparel.Stuff);
-            newThing.HitPoints = Mathf.Clamp(apparel.HitPoints, 1, newThing.MaxHitPoints);
+            newThing.HitPoints = newThing.MaxHitPoints;
             headThing.HitPoints = headThing.MaxHitPoints;
 
             CompQuality oldQuality = apparel.TryGetComp<CompQuality>();

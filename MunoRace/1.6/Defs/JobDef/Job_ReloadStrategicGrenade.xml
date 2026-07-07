@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <JobDef>
+        <defName>JobDef_ReloadStrategicGrenade</defName>
+        <driverClass>MunoRaceLib.MunoJobDriver.JobDriver_ReloadStrategicGrenade</driverClass>
+        <reportString>正在装填战略榴弹。</reportString>
+    </JobDef>
+</Defs>

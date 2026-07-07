@@ -130,7 +130,14 @@ namespace MunoRaceLib.MunoWorld
         /// </summary>
         private void DrawGreetingPage(Rect rect)
         {
-            MunoCommMainMenuAction action = MunoCommMainMenuView.Draw(rect, "和亲事项管理人", pageOpenTime, typewriter, currentPortraitTexPath);
+            MunoCommMainMenuAction action = MunoCommMainMenuView.Draw(rect, "和亲事项管理人", pageOpenTime, typewriter);
+            if (action == MunoCommMainMenuAction.OpenMilitaryExchange)
+            {
+                Find.WindowStack.Add(new Dialog_MunoHostageExchange(negotiator, true));
+                Close();
+                return;
+            }
+
             if (action == MunoCommMainMenuAction.OpenExchange)
             {
                 if (CompleteTextIfNeeded())

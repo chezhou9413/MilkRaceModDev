@@ -4,9 +4,8 @@ using Verse;
 
 namespace MunoRaceLib.MunoWorld
 {
-    /// <summary>
-    /// 负责保存当前存档中的缪诺穿梭机交换会话，并驱动离场成功后的奖励结算。
-    /// </summary>
+    //负责保存当前存档中的缪诺穿梭机交换会话，并驱动离场成功后的奖励结算。
+
     public class MunoShuttleExchangeSession : GameComponent
     {
         private Pawn negotiator;
@@ -18,42 +17,31 @@ namespace MunoRaceLib.MunoWorld
         private bool launchTriggered;
         private bool targetLoaded;
         private string failReason;
+        //为缪诺穿梭机交换会话创建一个新的游戏级状态组件。
 
-        /// <summary>
-        /// 为缪诺穿梭机交换会话创建一个新的游戏级状态组件。
-        /// </summary>
         public MunoShuttleExchangeSession(Game game)
         {
         }
+        //返回当前是否存在尚未结束的交换会话。
 
-        /// <summary>
-        /// 返回当前是否存在尚未结束的交换会话。
-        /// </summary>
-        public bool HasActiveSession => !finished && selectedPawn != null && shuttle != null;
+        public bool HasActiveSession => !finished && shuttle != null;
+        //返回当前会话绑定的唯一目标 Pawn。
 
-        /// <summary>
-        /// 返回当前会话绑定的唯一目标 Pawn。
-        /// </summary>
         public Pawn SelectedPawn => selectedPawn;
+        //返回选中目标是否已经进入穿梭机。
 
-        /// <summary>
-        /// 返回当前会话使用的穿梭机对象。
-        /// </summary>
+        public bool TargetLoaded => targetLoaded;
+        //返回当前会话使用的穿梭机对象。
+
         public Thing Shuttle => shuttle;
+        //返回当前会话所在地图。
 
-        /// <summary>
-        /// 返回当前会话所在地图。
-        /// </summary>
         public Map Map => map;
+        //返回当前会话失败原因，供 UI 或消息提示复用。
 
-        /// <summary>
-        /// 返回当前会话失败原因，供 UI 或消息提示复用。
-        /// </summary>
         public string FailReason => failReason;
+        //在游戏 Tick 中持续检查穿梭机状态，并在目标成功离场后发放奖励。
 
-        /// <summary>
-        /// 在游戏 Tick 中持续检查穿梭机状态，并在目标成功离场后发放奖励。
-        /// </summary>
         public override void GameComponentTick()
         {
             base.GameComponentTick();
@@ -67,17 +55,19 @@ namespace MunoRaceLib.MunoWorld
                 return;
             }
 
-            if (selectedPawn == null || selectedPawn.Dead || selectedPawn.Destroyed)
+            if (selectedPawn != null && (selectedPawn.Dead || selectedPawn.Destroyed))
             {
                 MarkFailed("目标已死亡或失去有效性，本次缪诺接收流程已中止。");
                 return;
             }
 
             CompTransporter transporter = shuttle.TryGetComp<CompTransporter>();
-            bool pawnLoaded = transporter != null && transporter.innerContainer.Contains(selectedPawn);
+            Pawn loadedPawn = FindLoadedExchangePawn(transporter);
+            bool pawnLoaded = loadedPawn != null;
             if (pawnLoaded)
             {
                 targetLoaded = true;
+                selectedPawn = loadedPawn;
             }
 
             if (shuttle.Destroyed)
@@ -135,10 +125,8 @@ namespace MunoRaceLib.MunoWorld
                 MarkFailed("穿梭机已离场，但目标未被成功接收，本次流程已中止。");
             }
         }
+        //启动新的缪诺穿梭机交换会话，并绑定谈判者、目标与穿梭机。
 
-        /// <summary>
-        /// 启动新的缪诺穿梭机交换会话，并绑定谈判者、目标与穿梭机。
-        /// </summary>
         public void StartSession(Pawn newNegotiator, Pawn newSelectedPawn, Thing newShuttle, Map newMap)
         {
             negotiator = newNegotiator;
@@ -151,10 +139,8 @@ namespace MunoRaceLib.MunoWorld
             targetLoaded = false;
             failReason = null;
         }
+        //将当前流程标记为失败，并向玩家发送一次明确消息。
 
-        /// <summary>
-        /// 将当前流程标记为失败，并向玩家发送一次明确消息。
-        /// </summary>
         public void MarkFailed(string reason)
         {
             if (finished)
@@ -169,10 +155,8 @@ namespace MunoRaceLib.MunoWorld
                 Messages.Message(reason, MessageTypeDefOf.RejectInput, false);
             }
         }
+        //清理本次交换会话，供流程完成或失败后复位使用。
 
-        /// <summary>
-        /// 清理本次交换会话，供流程完成或失败后复位使用。
-        /// </summary>
         public void ClearSession()
         {
             negotiator = null;
@@ -185,10 +169,8 @@ namespace MunoRaceLib.MunoWorld
             targetLoaded = false;
             failReason = null;
         }
+        //持久化当前交换会话的关键引用，保证读档后仍能继续检测状态。
 
-        /// <summary>
-        /// 持久化当前交换会话的关键引用，保证读档后仍能继续检测状态。
-        /// </summary>
         public override void ExposeData()
         {
             base.ExposeData();
@@ -202,10 +184,8 @@ namespace MunoRaceLib.MunoWorld
             Scribe_Values.Look(ref targetLoaded, "munoExchangeTargetLoaded", false);
             Scribe_Values.Look(ref failReason, "munoExchangeFailReason");
         }
+        //在目标被穿梭机成功带离地图后发放固定缪诺成员奖励。
 
-        /// <summary>
-        /// 在目标被穿梭机成功带离地图后发放固定缪诺成员奖励。
-        /// </summary>
         private void GrantReward()
         {
             if (rewardGranted || map == null)
@@ -236,9 +216,18 @@ namespace MunoRaceLib.MunoWorld
             Messages.Message("缪诺已成功接收目标，一名新的缪诺成员已加入殖民地。", rewardPawn, MessageTypeDefOf.PositiveEvent, false);
         }
 
-        /// <summary>
-        /// 在唯一目标完成装载后立即强制穿梭机离场，避免外部模组修改等待 Job 后无法自动进入起飞阶段。
-        /// </summary>
+        //查找穿梭机内实际装载的本次选中目标。
+        private Pawn FindLoadedExchangePawn(CompTransporter transporter)
+        {
+            if (transporter == null || selectedPawn == null)
+            {
+                return null;
+            }
+
+            return transporter.innerContainer.Contains(selectedPawn) ? selectedPawn : null;
+        }
+        //在唯一目标完成装载后立即强制穿梭机离场，避免外部模组修改等待 Job 后无法自动进入起飞阶段。
+
         private bool TryLaunchShuttleNow()
         {
             CompShuttle shuttleComp = shuttle.TryGetComp<CompShuttle>();

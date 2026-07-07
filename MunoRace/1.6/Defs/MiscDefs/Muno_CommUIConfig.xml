@@ -4,12 +4,12 @@
     <defName>Muno_CommUIConfig</defName>
     <label>缪诺通讯 UI 配置</label>
     <homePortrait>
-      <texPath>UI/MunoCommHomePortrait</texPath>
+      <texPath>UI/MunoCommManagers</texPath>
       <frameInset>10</frameInset>
       <imageInset>14</imageInset>
       <imageOffsetX>0</imageOffsetX>
-      <imageOffsetY>0</imageOffsetY>
-      <imageScale>1</imageScale>
+      <imageOffsetY>-7</imageOffsetY>
+      <imageScale>1.1</imageScale>
       <cover>false</cover>
     </homePortrait>
     <marriagePortrait>

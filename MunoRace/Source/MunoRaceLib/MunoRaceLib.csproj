@@ -129,6 +129,9 @@
     <Compile Include="MunoComp\CompTargetEffect_MunoHealGun.cs" />
     <Compile Include="MunoComp\Verb_CastTargetEffect_MunoHealProjectile.cs" />
     <Compile Include="MunoComp\Ability_GalactogenGelShot.cs" />
+    <Compile Include="MunoComp\Ability_MunoLaserSweep.cs" />
+    <Compile Include="MunoComp\Ability_MunoStrategicGrenadeShot.cs" />
+    <Compile Include="MunoComp\Comp_StrategicGrenadeStorageWeapon.cs" />
     <Compile Include="MunoComp\Comp_MolecularCuisine.cs" />
     <Compile Include="MunoComp\HediffComp_UpgradeGalactogen.cs" />
     <Compile Include="MunoComp\HediffComp_GalactogenDrain.cs" />
@@ -144,6 +147,8 @@
     <Compile Include="MunoComp\TentacleArmorGizmoUtility.cs" />
     <Compile Include="MunoComp\ThingComp_Galactogen.cs" />
     <Compile Include="MunoComp\Projectile_GalactogenGel.cs" />
+    <Compile Include="MunoComp\Verb_MunoLaserSweep.cs" />
+    <Compile Include="MunoComp\Verb_MunoStrategicGrenade.cs" />
     <Compile Include="MunoComp\CompProperties_TentacleArmorData.cs" />
     <Compile Include="MunoDefRef\MunoDefDataRef.cs" />
     <Compile Include="MunoGizmo\Gizmo_GalactogenBar.cs" />
@@ -175,6 +180,8 @@
     <Compile Include="MunoWorld\MunoShuttleExchangeSession.cs" />
     <Compile Include="MunoWorld\MunoWindowBase.cs" />
     <Compile Include="MunoJobDriver\JobDriver_GalactogenGelShot.cs" />
+    <Compile Include="MunoJobDriver\JobDriver_MunoLaserSweep.cs" />
+    <Compile Include="MunoJobDriver\JobDriver_MunoStrategicGrenadeShot.cs" />
     <Compile Include="MunoJobDriver\JobDriver_SpawnConcentratedMulacte.cs" />
     <Compile Include="MunoJobDriver\JobDriver_SpawnMunoMilk.cs" />
     <Compile Include="MunoJobGiver\JobGiver_AutoMunoMilk.cs" />
@@ -182,8 +189,10 @@
     <Compile Include="MunoThoughtWorker\ThoughtWorker_GalactogenOverflow.cs" />
     <Compile Include="MunoJobDriver\JobDriver_RefuelGalactogenArmor.cs" />
     <Compile Include="MunoJobDriver\JobDriver_RefuelGalactogenWeapon.cs" />
+    <Compile Include="MunoJobDriver\JobDriver_ReloadStrategicGrenade.cs" />
     <Compile Include="MunoWorker\WorkGiver_RefuelGalactogenArmor.cs" />
     <Compile Include="MunoWorker\WorkGiver_RefuelGalactogenWeapon.cs" />
+    <Compile Include="MunoWorker\WorkGiver_ReloadStrategicGrenade.cs" />
     <Compile Include="Patch\Patch_Pawn_PostApplyDamage.cs" />
     <Compile Include="Patch\Patch_PawnApparelTracker_TryDrop.cs" />
     <Compile Include="Patch\Patch_Faction_TryOpenComms_MunoExchange.cs" />

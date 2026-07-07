@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <JobDef>
+        <defName>JobDef_MunoLaserSweep</defName>
+        <driverClass>MunoRaceLib.MunoJobDriver.JobDriver_MunoLaserSweep</driverClass>
+        <reportString>进行激光增幅横扫。</reportString>
+        <casualInterruptible>false</casualInterruptible>
+    </JobDef>
+</Defs>
