@@ -48,7 +48,7 @@
 	 </bodyPartGroups>
 	 <wornGraphicPath>Apparel/Goldfoilunderwear/MunoRace_Apparel_Goldfoilunderwear</wornGraphicPath> <!--穿着的贴图路径-->
 	 <layers>
-	  <li>Shell</li> <!--层级-->
+	  <li>Muno_Underwear</li> <!--内衣专用层-->
 	 </layers>
 	 <tags> <!--标签-->
 	  <li>Outlander</li>
@@ -77,4 +77,3 @@
 	</ThingDef>
     
 </Defs>
-    

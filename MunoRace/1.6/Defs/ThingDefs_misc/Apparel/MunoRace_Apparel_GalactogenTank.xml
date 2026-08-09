@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="MunoRace_Apparel">
+    <defName>MunoRace_Apparel_GalactogenTank</defName>
+    <label>乳源质储存罐</label>
+    <description>佩戴在腰间的乳源质浓浆储存罐，可保存 3 份浓浆。武器或装甲自身储槽用尽后，会自动从储存罐中继续供给。</description>
+    <techLevel>Industrial</techLevel>
+    <recipeMaker>
+      <researchPrerequisite>ComplexClothing</researchPrerequisite>
+      <displayPriority>217</displayPriority>
+    </recipeMaker>
+    <costList>
+      <Steel>20</Steel>
+      <Plasteel>20</Plasteel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/SmokepopPack/SmokepopPack</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.75</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToMake>3600</WorkToMake>
+      <Mass>3</Mass>
+      <Flammability>0.4</Flammability>
+      <EquipDelay>2</EquipDelay>
+    </statBases>
+    <thingCategories>
+      <li>ApparelUtility</li>
+    </thingCategories>
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SmokepopPack/SmokepopPack</wornGraphicPath>
+      <wornGraphicData>
+        <renderUtilityAsPack>true</renderUtilityAsPack>
+        <north><offset>(0,-0.15)</offset></north>
+        <east>
+          <offset>(-0.35,-0.05)</offset>
+          <thin><offset>(0.05,0)</offset></thin>
+          <hulk><offset>(-0.1,0)</offset></hulk>
+          <fat><offset>(-0.15,0)</offset></fat>
+        </east>
+        <west>
+          <offset>(0.35,-0.05)</offset>
+          <thin><offset>(-0.05,0)</offset></thin>
+          <hulk><offset>(0.1,0)</offset></hulk>
+          <fat><offset>(0.15,0)</offset></fat>
+        </west>
+        <male><scale>(0.75,0.75)</scale></male>
+        <female><scale>(0.75,0.75)</scale></female>
+        <thin><scale>(0.7,0.7)</scale></thin>
+        <hulk><scale>(0.9,0.9)</scale></hulk>
+        <fat><scale>(0.9,0.9)</scale></fat>
+      </wornGraphicData>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <careIfDamaged>false</careIfDamaged>
+      <wearPerDay>0</wearPerDay>
+      <bodyPartGroups>
+        <li>Waist</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Belt</li>
+      </layers>
+    </apparel>
+    <comps>
+      <li><compClass>CompQuality</compClass></li>
+      <li Class="CompProperties_Forbiddable" />
+      <li><compClass>CompColorable</compClass></li>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_GalactogenStorageArmor">
+        <slotCapacity>3</slotCapacity>
+        <slotLabel>乳源质储存罐</slotLabel>
+        <isSharedReserve>true</isSharedReserve>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

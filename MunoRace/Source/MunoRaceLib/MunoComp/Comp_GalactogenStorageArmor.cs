@@ -17,6 +17,8 @@ namespace MunoRaceLib.MunoComp
         public int jumpConcentratedCost = 0;
         public float jumpRange = 0f;
         public float jumpMinRange = 0f;
+        public string slotLabel = "装甲乳源质浓浆槽";
+        public bool isSharedReserve;
         public string soundLandingDefName = "Longjump_Land";
         //绑定装甲浓浆储存组件的运行类型。
         public CompProperties_GalactogenStorageArmor()
@@ -50,6 +52,18 @@ namespace MunoRaceLib.MunoComp
             get { return slotCount >= SlotCapacity; }
         }
 
+        //返回当前穿戴装备储槽在 Gizmo 中显示的名称。
+        public string SlotLabel
+        {
+            get { return Props.slotLabel.NullOrEmpty() ? "装甲乳源质浓浆槽" : Props.slotLabel; }
+        }
+
+        //返回当前储槽是否作为武器与装甲共用的备用储存罐。
+        public bool IsSharedReserve
+        {
+            get { return Props.isSharedReserve; }
+        }
+
         private SoundDef LandingSound
         {
             get
@@ -81,6 +95,13 @@ namespace MunoRaceLib.MunoComp
             slotCount -= amount;
             return true;
         }
+        //从当前槽位中移除不超过指定数量的浓浆，并返回实际移除量。
+        public int RemoveSlots(int amount)
+        {
+            int removed = Mathf.Min(Mathf.Max(0, amount), slotCount);
+            slotCount -= removed;
+            return removed;
+        }
         //检查装甲浓浆槽是否有足够数量供能力使用。
         public bool HasEnough(int amount)
         {
@@ -89,20 +110,14 @@ namespace MunoRaceLib.MunoComp
         //为装甲主动能力消耗浓浆槽，并在不足时提示玩家。
         public bool TryConsumeForAbility(Pawn pawn, int amount)
         {
-            if (!ConsumeSlot(amount))
-            {
-                Messages.Message("装甲浓浆槽不足。", pawn, MessageTypeDefOf.RejectInput);
-                return false;
-            }
-
-            return true;
+            return GalactogenStorageUtility.TryConsume(pawn, this, amount, "装甲浓浆槽与储存罐均不足。");
         }
         //生成装甲浓浆槽状态和喷气系统按钮。
         public IEnumerable<Gizmo> GetStorageGizmos(Pawn pawn)
         {
             if (Props.jumpRange > 0f && Props.jumpConcentratedCost > 0)
             {
-                bool canJump = !pawn.Downed && slotCount >= Props.jumpConcentratedCost;
+                bool canJump = !pawn.Downed && GalactogenStorageUtility.HasEnough(pawn, this, Props.jumpConcentratedCost);
                 yield return new Command_Action
                 {
                     defaultLabel = "激活喷气系统",
@@ -132,9 +147,8 @@ namespace MunoRaceLib.MunoComp
                 targetParams,
                 delegate (LocalTargetInfo target)
                 {
-                    if (!ConsumeSlot(Props.jumpConcentratedCost))
+                    if (!GalactogenStorageUtility.TryConsume(pawn, this, Props.jumpConcentratedCost, "装甲浓浆槽与储存罐均不足，无法跳跃。"))
                     {
-                        Messages.Message("装甲浓浆槽已空，无法跳跃", MessageTypeDefOf.RejectInput, false);
                         return;
                     }
 
@@ -198,29 +212,44 @@ namespace MunoRaceLib.MunoComp
         //返回 Gizmo 在命令栏中的固定宽度。
         public override float GetWidth(float maxWidth)
         {
-            return 136f;
+            return Mathf.Min(maxWidth, 160f);
         }
         //绘制装甲浓浆槽标题、当前数量与分格槽位。
         public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
         {
             Rect outerRect = new Rect(topLeft.x, topLeft.y, GetWidth(maxWidth), 75f);
             Widgets.DrawWindowBackground(outerRect);
-            Rect labelRect = new Rect(outerRect.x + 4f, outerRect.y + 4f, outerRect.width - 8f, Text.LineHeightOf(GameFont.Tiny) + 2f);
+
             GameFont oldFont = Text.Font;
-            Text.Font = GameFont.Tiny;
-            Widgets.Label(labelRect, "乳原质浓浆槽  " + comp.SlotCount + "/" + comp.SlotCapacity);
-
-            float cellW = (outerRect.width - 12f) / comp.SlotCapacity;
-            float cellH = 30f;
-            float cellY = outerRect.y + 28f;
-            for (int i = 0; i < comp.SlotCapacity; i++)
+            TextAnchor oldAnchor = Text.Anchor;
+            bool oldWordWrap = Text.WordWrap;
+            Color oldColor = GUI.color;
+            try
             {
-                Rect cell = new Rect(outerRect.x + 6f + i * cellW, cellY, cellW - 3f, cellH);
-                Widgets.DrawBoxSolid(cell, i < comp.SlotCount ? ColorFull : ColorEmpty);
-                Widgets.DrawBox(cell, 1);
-            }
+                Text.Font = GameFont.Tiny;
+                Text.Anchor = TextAnchor.MiddleCenter;
+                Text.WordWrap = false;
+                float labelHeight = Text.LineHeightOf(GameFont.Tiny) + 4f;
+                Rect labelRect = new Rect(outerRect.x + 4f, outerRect.y + 4f, outerRect.width - 8f, labelHeight);
+                Widgets.Label(labelRect, comp.SlotLabel + "  " + comp.SlotCount + "/" + comp.SlotCapacity);
 
-            Text.Font = oldFont;
+                float cellW = (outerRect.width - 12f) / comp.SlotCapacity;
+                float cellH = 30f;
+                float cellY = labelRect.yMax + 7f;
+                for (int i = 0; i < comp.SlotCapacity; i++)
+                {
+                    Rect cell = new Rect(outerRect.x + 6f + i * cellW, cellY, cellW - 3f, cellH);
+                    Widgets.DrawBoxSolid(cell, i < comp.SlotCount ? ColorFull : ColorEmpty);
+                    Widgets.DrawBox(cell, 1);
+                }
+            }
+            finally
+            {
+                Text.Font = oldFont;
+                Text.Anchor = oldAnchor;
+                Text.WordWrap = oldWordWrap;
+                GUI.color = oldColor;
+            }
             return new GizmoResult(GizmoState.Clear);
         }
     }

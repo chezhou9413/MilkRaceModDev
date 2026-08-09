@@ -8,15 +8,18 @@ using Verse.AI;
 
 namespace MunoRaceLib.MunoJobDriver
 {
+    //执行未穿戴自动汲取装备时的传统缪诺乳收集工作，并把产物生成在脚下。
     public class JobDriver_SpawnMunoMilk : JobDriver
     {
         private const int DurationTicks = 150;
 
+        //传统挤奶只操作执行者自身，不需要额外预留。
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return true;
         }
 
+        //生成等待表现与最终乳源质扣除、物品产出及心情记忆流程。
         protected override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOn(() => pawn.Drafted || !pawn.Spawned || pawn.Downed);
@@ -49,10 +52,17 @@ namespace MunoRaceLib.MunoJobDriver
                 if (galactogen != null && pawn.Map != null)
                 {
                     ThingDef itemDef = MunoDefDataRef.MunoRace_MunoMilk;
+                    int producedCount = (int)galactogen.ReMoveAutoGalactogen(job.count);
+                    if (producedCount <= 0)
+                    {
+                        return;
+                    }
+
                     Thing item = ThingMaker.MakeThing(itemDef);
-                    item.stackCount = (int)galactogen.ReMoveAutoGalactogen(this.job.count);
+                    item.stackCount = producedCount;
                     //在Pawn当前位置生成奶
                     GenSpawn.Spawn(item, pawn.Position, pawn.Map);
+                    MunoMilkingUtility.GiveMilkingMood(pawn);
                     Messages.Message(pawn.LabelShort + "产生了" + MunoDefDataRef.MunoRace_MunoMilk.label, pawn, MessageTypeDefOf.PositiveEvent);
                 }
             });

@@ -1874,6 +1874,27 @@
         <aimingChargeMoteOffset>1.07</aimingChargeMoteOffset>
       </li>
     </verbs>
+    <comps Inherit="False">
+      <li Class="CompProperties_EquippableAbility">
+        <abilityDef>Muno_LaserCannonRadiation</abilityDef>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Styleable"/>
+      <li Class="CompProperties_Biocodable"/>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_GalactogenStorageWeapon">
+        <slotCapacity>1</slotCapacity>
+        <showGelShot>false</showGelShot>
+        <slotLabel>辐射浓浆槽</slotLabel>
+      </li>
+    </comps>
     <tools>
       <li>
         <label>barrels</label>

@@ -8,7 +8,7 @@ namespace MunoRaceLib.MunoWorld
     public enum MunoCommMainMenuAction
     {
         None,
-        OpenMilitaryExchange,
+        OpenPopulationExchange,
         OpenExchange,
         OpenLogistics,
         ForceRefreshMarriage,
@@ -156,12 +156,7 @@ namespace MunoRaceLib.MunoWorld
             float buttonHeight = Mathf.Max(38f, Text.LineHeightOf(GameFont.Medium) + 8f);
             if (MunoCommUIStyle.DrawButton(new Rect(inner.x, buttonY, buttonWidth, buttonHeight), "军事管理员"))
             {
-                if (!managerButtonLabel.NullOrEmpty())
-                {
-                    return MunoCommMainMenuAction.OpenMilitaryExchange;
-                }
-
-                return MunoCommMainMenuAction.OpenExchange;
+                return MunoCommMainMenuAction.OpenPopulationExchange;
             }
 
             if (MunoCommUIStyle.DrawButton(new Rect(inner.x, buttonY + 54f, buttonWidth, buttonHeight), "后勤管理员"))

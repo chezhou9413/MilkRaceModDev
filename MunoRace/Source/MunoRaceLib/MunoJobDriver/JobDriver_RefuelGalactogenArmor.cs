@@ -8,6 +8,7 @@ using Verse.AI;
 
 namespace MunoRaceLib.MunoJobDriver
 {
+    //把搬运到手的乳源质浓浆装入当前下一件未装满的穿戴装备。
     public class JobDriver_RefuelGalactogenArmor : JobDriver
     {
         private const TargetIndex SelfInd = TargetIndex.A;
@@ -23,29 +24,17 @@ namespace MunoRaceLib.MunoJobDriver
         {
             get
             {
-                if (pawn?.apparel == null)
-                {
-                    return null;
-                }
-
-                foreach (Apparel ap in pawn.apparel.WornApparel)
-                {
-                    Comp_GalactogenStorageArmor comp = ap.GetComp<Comp_GalactogenStorageArmor>();
-                    if (comp != null)
-                    {
-                        return comp;
-                    }
-                }
-
-                return null;
+                return GalactogenStorageUtility.FindNextRefuelableApparelStorage(pawn);
             }
         }
 
+        //预留需要搬运的浓浆物品。
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return pawn.Reserve(Fuel, job, 1, -1, null, errorOnFailed);
         }
 
+        //依次执行靠近、搬运、等待和装填，并在目标装备装满后安全结束。
         protected override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOnDestroyedNullOrForbidden(FuelInd);

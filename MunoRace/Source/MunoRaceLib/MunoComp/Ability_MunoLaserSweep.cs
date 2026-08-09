@@ -42,9 +42,9 @@ namespace MunoRaceLib.MunoComp
                     return "未装备带激光增幅浓浆槽的武器。";
                 }
 
-                if (!comp.HasEnough(SweepCost))
+                if (!GalactogenStorageUtility.HasEnough(pawn, comp, SweepCost))
                 {
-                    return "激光增幅浓浆槽不足。";
+                    return "激光增幅浓浆槽与储存罐均不足。";
                 }
 
                 return true;
@@ -151,11 +151,11 @@ namespace MunoRaceLib.MunoComp
                 return false;
             }
 
-            if (!comp.HasEnough(Props.cost))
+            if (!GalactogenStorageUtility.HasEnough(parent.pawn, comp, Props.cost))
             {
                 if (throwMessages)
                 {
-                    Messages.Message("激光增幅浓浆槽不足，无法横扫。", parent.pawn, MessageTypeDefOf.RejectInput);
+                    Messages.Message("激光增幅浓浆槽与储存罐均不足，无法横扫。", parent.pawn, MessageTypeDefOf.RejectInput);
                 }
 
                 return false;

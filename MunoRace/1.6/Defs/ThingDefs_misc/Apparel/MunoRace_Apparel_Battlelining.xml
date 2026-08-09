@@ -57,7 +57,7 @@
 	 </bodyPartGroups>
 	 <wornGraphicPath>Apparel/Battlelining/MunoRace_Apparel_Battlelining</wornGraphicPath> <!--穿着的贴图路径-->
 	 <layers>
-	  <li>Shell</li> <!--层级-->
+	  <li>Muno_Underwear</li> <!--内衣专用层-->
 	 </layers>
 	 <tags> <!--标签-->
 	  <li>Outlander</li>
@@ -73,7 +73,8 @@
       <li Class="CompProperties_Forbiddable" />
       <li>      
           <compClass>CompColorable</compClass>
-      </li>            
+      </li>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_GalactogenExtractor" />
       <li Class="ChezhouLib.comp.ApparelAddBodyAddonCompProperties">            
         <targetRaces>
           <li>MunoRace</li>          
@@ -87,4 +88,3 @@
 	</ThingDef>
     
 </Defs>
-    

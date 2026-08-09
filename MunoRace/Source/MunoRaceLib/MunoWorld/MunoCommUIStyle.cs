@@ -3,9 +3,7 @@ using Verse;
 
 namespace MunoRaceLib.MunoWorld
 {
-    /// <summary>
-    /// 负责统一管理缪诺通讯交换界面的配色、边框与按钮绘制样式。
-    /// </summary>
+    //负责统一管理缪诺通讯交换界面的配色、边框与按钮绘制样式。
     [StaticConstructorOnStartup]
     public static class MunoCommUIStyle
     {
@@ -23,9 +21,7 @@ namespace MunoRaceLib.MunoWorld
         public static readonly Color DisabledColor = new Color(0.35f, 0.40f, 0.40f);
         public static readonly Texture2D CloseXSmall = ContentFinder<Texture2D>.Get("UI/Widgets/CloseXSmall", true);
 
-        /// <summary>
-        /// 根据窗口创建时间计算页面进入动效后的绘制区域。
-        /// </summary>
+        //根据窗口创建时间计算页面进入动效后的绘制区域。
         public static Rect ApplyEntryAnimation(Rect rect, float openTime)
         {
             float elapsed = Mathf.Clamp01((Time.realtimeSinceStartup - openTime) / 0.22f);
@@ -34,27 +30,21 @@ namespace MunoRaceLib.MunoWorld
             return new Rect(rect.x, rect.y + offsetY, rect.width, rect.height);
         }
 
-        /// <summary>
-        /// 根据窗口创建时间返回页面进入动效透明度。
-        /// </summary>
+        //根据窗口创建时间返回页面进入动效透明度。
         public static float EntryAlpha(float openTime)
         {
             float elapsed = Mathf.Clamp01((Time.realtimeSinceStartup - openTime) / 0.22f);
             return 1f - Mathf.Pow(1f - elapsed, 2f);
         }
 
-        /// <summary>
-        /// 绘制整窗背景与外层描边。
-        /// </summary>
+        //绘制整窗背景与外层描边。
         public static void DrawBackground(Rect rect)
         {
             Widgets.DrawBoxSolid(rect, BackgroundColor);
             DrawBorder(rect, BorderColor, 2);
         }
 
-        /// <summary>
-        /// 绘制通讯终端标题栏，并返回右侧关闭按钮是否被点击。
-        /// </summary>
+        //绘制通讯终端标题栏，并返回右侧关闭按钮是否被点击。
         public static bool DrawTerminalHeader(Rect inRect, string title, Texture2D logo)
         {
             Rect headerRect = new Rect(inRect.x + 12f, inRect.y + 10f, inRect.width - 24f, 42f);
@@ -68,31 +58,30 @@ namespace MunoRaceLib.MunoWorld
 
             GameFont oldFont = Text.Font;
             TextAnchor oldAnchor = Text.Anchor;
+            bool oldWordWrap = Text.WordWrap;
             Color oldColor = GUI.color;
             Text.Font = GameFont.Medium;
             Text.Anchor = TextAnchor.MiddleLeft;
+            Text.WordWrap = false;
             GUI.color = GoldColor;
             Widgets.Label(new Rect(logoRect.xMax + 10f, headerRect.y + 4f, headerRect.width - 90f, 34f), title);
             Text.Font = oldFont;
             Text.Anchor = oldAnchor;
+            Text.WordWrap = oldWordWrap;
             GUI.color = oldColor;
 
             Rect closeRect = new Rect(headerRect.xMax - 34f, headerRect.y + 6f, 28f, 28f);
             return Widgets.ButtonImage(closeRect, CloseXSmall);
         }
 
-        /// <summary>
-        /// 绘制深色信息面板，用于正文和立绘承载区。
-        /// </summary>
+        //绘制深色信息面板，用于正文和立绘承载区。
         public static void DrawPanel(Rect rect)
         {
             Widgets.DrawBoxSolid(rect, PanelColor);
             DrawBorder(rect, BorderColor, 1);
         }
 
-        /// <summary>
-        /// 绘制浅色重点卡片，用于承载说明摘要与选中目标信息。
-        /// </summary>
+        //绘制浅色重点卡片，用于承载说明摘要与选中目标信息。
         public static void DrawLightPanel(Rect rect)
         {
             Widgets.DrawBoxSolid(rect, SoftPanelColor);
@@ -100,9 +89,7 @@ namespace MunoRaceLib.MunoWorld
             Widgets.DrawBoxSolid(rect.ContractedBy(1f), new Color(1f, 1f, 1f, 0.015f));
         }
 
-        /// <summary>
-        /// 为指定区域绘制描边，避免窗口层级在深色背景中混成一片。
-        /// </summary>
+        //为指定区域绘制描边，避免窗口层级在深色背景中混成一片。
         public static void DrawBorder(Rect rect, Color color, int thickness = 1)
         {
             Color oldColor = GUI.color;
@@ -111,14 +98,13 @@ namespace MunoRaceLib.MunoWorld
             GUI.color = oldColor;
         }
 
-        /// <summary>
-        /// 绘制缪诺风格按钮，并在启用时返回点击结果。
-        /// </summary>
+        //绘制缪诺风格按钮，并在启用时返回点击结果。
         public static bool DrawButton(Rect rect, string label, bool active = true)
         {
             Color oldColor = GUI.color;
             GameFont oldFont = Text.Font;
             TextAnchor oldAnchor = Text.Anchor;
+            bool oldWordWrap = Text.WordWrap;
             bool hovered = active && Mouse.IsOver(rect);
             bool pressed = hovered && Event.current.type == EventType.MouseDown && Event.current.button == 0;
             Rect drawRect = pressed ? rect.ContractedBy(2f) : rect;
@@ -135,10 +121,12 @@ namespace MunoRaceLib.MunoWorld
 
             Text.Anchor = TextAnchor.MiddleCenter;
             Text.Font = GameFont.Small;
+            Text.WordWrap = false;
             GUI.color = textColor;
             Widgets.Label(drawRect, label);
             Text.Anchor = oldAnchor;
             Text.Font = oldFont;
+            Text.WordWrap = oldWordWrap;
             GUI.color = oldColor;
             return active && Widgets.ButtonInvisible(drawRect);
         }

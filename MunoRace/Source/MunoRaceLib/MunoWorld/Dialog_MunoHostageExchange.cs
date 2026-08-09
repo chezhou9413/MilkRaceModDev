@@ -1,44 +1,45 @@
 using RimWorld;
+using RimWorld.Planet;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
-using RimWorld.Planet;
 
 namespace MunoRaceLib.MunoWorld
 {
-    //负责显示缪诺通讯交换终端界面，并发起穿梭机人口接收流程。
-
+    //负责管理缪诺人口交换通讯窗口的页面、上下文和提交动作。
     [StaticConstructorOnStartup]
     public class Dialog_MunoHostageExchange : MunoWindowBase
     {
-        private const float LeftPanelWidth = 280f;
-        private const float CandidateRowHeight = 68f;
-        private const float CandidateRowGap = 8f;
-        private static readonly Texture2D PortraitTexture = ContentFinder<Texture2D>.Get("UI/MunoCommPortrait", false) ?? BaseContent.BadTex;
+        private const float ManagerColumnWidth = 280f;
+        private const float ManagerColumnGap = 14f;
+        private const float ManagerPortraitScale = 1.033f;
+        private const float ManagerPortraitOffsetX = -16.19f;
+        private const float ManagerPortraitVerticalFactor = 0.4f;
         private static readonly Texture2D MunoLogo = ContentFinder<Texture2D>.Get("UI/MunoLogo", true);
-        private static float portraitOffsetX = -16.19f;
-        private static float portraitOffsetY = 0.400f;
-        private static float portraitScale = 1.033f;
+        private static readonly Texture2D ManagerPortrait = ContentFinder<Texture2D>.Get("UI/MunoCommPortrait", true);
 
         private readonly Pawn negotiator;
         private readonly Map map;
-        private Vector2 candidateScrollPosition;
-        private Vector2 leftInfoScrollPosition;
-        private Vector2 missionScrollPosition;
-        private Vector2 selectedDetailScrollPosition;
-        private Pawn selectedPawn;
+        private readonly Settlement settlement;
+        private readonly Caravan caravan;
+        private readonly bool caravanMode;
+        private MunoHostageExchangeDraft draft = new MunoHostageExchangeDraft();
         private CommPage currentPage;
+        private Vector2 targetScrollPosition;
+        private Vector2 rewardScrollPosition;
+        private Vector2 previewScrollPosition;
         private float pageOpenTime;
         private MunoTypewriterTextState typewriter = new MunoTypewriterTextState();
-        //表示缪诺通讯窗口当前显示的页面。
 
+        //表示通讯窗口当前显示的交换页面。
         private enum CommPage
         {
             MainMenu,
-            Exchange
+            Targets,
+            Rewards
         }
-        //构建一个绑定当前通讯发起者与地图环境的缪诺交换终端窗口。
 
+        //构建绑定当前地图谈判者的人口交换窗口。
         public Dialog_MunoHostageExchange(Pawn negotiator)
         {
             this.negotiator = negotiator;
@@ -46,37 +47,47 @@ namespace MunoRaceLib.MunoWorld
             pageOpenTime = Time.realtimeSinceStartup;
             typewriter.SetText(MunoCommDialogueUtility.RandomGreeting());
         }
-        //构建人口接收窗口，并按需要直接进入接收流程页。
+
+        //构建人口交换窗口，并按需要直接进入候选选择页。
         public Dialog_MunoHostageExchange(Pawn negotiator, bool startAtExchange) : this(negotiator)
         {
             if (startAtExchange)
             {
-                SetPage(CommPage.Exchange);
+                SetPage(CommPage.Targets);
             }
         }
-        //为兼容旧的据点交换入口，允许从远行队场景直接构建同一窗口。
 
+        //构建绑定缪诺据点远行队的批量交换窗口。
         public Dialog_MunoHostageExchange(Settlement settlement, Caravan caravan)
         {
+            this.settlement = settlement;
+            this.caravan = caravan;
+            caravanMode = true;
             List<Pawn> pawns = caravan?.PawnsListForReading;
             negotiator = pawns != null && pawns.Count > 0 ? pawns[0] : null;
-            map = negotiator?.Map;
             pageOpenTime = Time.realtimeSinceStartup;
             typewriter.SetText(MunoCommDialogueUtility.RandomGreeting());
         }
-        //返回缪诺通讯交换终端窗口的固定初始尺寸。
 
+        //返回缪诺人口交换通讯窗口的固定初始尺寸。
         public override Vector2 InitialSize => new Vector2(1024f, 680f);
-        //按当前页面绘制缪诺通讯终端界面。
 
+        //在窗口通过外部关闭方式结束时清理尚未提交的物资预览。
+        public override void PreClose()
+        {
+            draft?.DisposePreview();
+            base.PreClose();
+        }
+
+        //绘制首页或批量交换页面，并处理窗口关闭时的预览清理。
         public override void DoWindowContents(Rect inRect)
         {
             if (currentPage == CommPage.MainMenu)
             {
                 MunoCommUIStyle.DrawBackground(inRect);
-                if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺接收链路", MunoLogo))
+                if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺人口交换", MunoLogo))
                 {
-                    Close();
+                    CloseWithDraftCleanup();
                     return;
                 }
 
@@ -85,21 +96,27 @@ namespace MunoRaceLib.MunoWorld
             }
 
             MunoCommUIStyle.DrawBackground(inRect);
-            DrawExchangePage(inRect);
-        }
-        //绘制首页入口布局，包括联络员立绘、缪诺招待链路、可选管理员入口与断开通讯按钮。
+            if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺人口交换", MunoLogo))
+            {
+                CloseWithDraftCleanup();
+                return;
+            }
 
-        private void DrawMainMenuPage(Rect inRect)
+            DrawExchangePage(new Rect(inRect.x + 14f, inRect.y + 56f, inRect.width - 28f, inRect.height - 70f));
+        }
+
+        //绘制通讯首页，并在人口交换入口被点击后进入交换页面。
+        private void DrawMainMenuPage(Rect rect)
         {
-            MunoCommMainMenuAction action = MunoCommMainMenuView.Draw(inRect, pageOpenTime, typewriter);
-            if (action == MunoCommMainMenuAction.OpenExchange)
+            MunoCommMainMenuAction action = MunoCommMainMenuView.Draw(rect, pageOpenTime, typewriter);
+            if (action == MunoCommMainMenuAction.OpenPopulationExchange)
             {
                 if (CompleteTextIfNeeded())
                 {
                     return;
                 }
 
-                SetPage(CommPage.Exchange);
+                SetPage(CommPage.Targets);
                 return;
             }
 
@@ -110,11 +127,11 @@ namespace MunoRaceLib.MunoWorld
                     return;
                 }
 
-                Close();
+                CloseWithDraftCleanup();
             }
         }
-        //在文本尚未完整显示时立即展开全文，并返回是否已拦截本次操作。
 
+        //在问候文本未播放完成时展开全文，并返回是否拦截了当前操作。
         private bool CompleteTextIfNeeded()
         {
             if (typewriter.Completed)
@@ -125,316 +142,231 @@ namespace MunoRaceLib.MunoWorld
             typewriter.Complete();
             return true;
         }
-        //绘制原有交换流程页面，包括标题栏、立绘、说明与候选目标列表。
 
-        private void DrawExchangePage(Rect inRect)
+        //绘制交换说明、进行中状态和当前页面内容。
+        private void DrawExchangePage(Rect rect)
         {
-            if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺接收链路", MunoLogo))
+            Rect managerRect = new Rect(rect.x, rect.y, ManagerColumnWidth, rect.height);
+            Rect workspaceRect = new Rect(managerRect.xMax + ManagerColumnGap, rect.y, rect.width - ManagerColumnWidth - ManagerColumnGap, rect.height);
+            DrawMilitaryManagerPanel(managerRect);
+
+            float statusHeight = CalculateStatusPanelHeight(workspaceRect.width);
+            Rect statusRect = new Rect(workspaceRect.x, workspaceRect.y, workspaceRect.width, statusHeight);
+            Rect contentRect = new Rect(workspaceRect.x, statusRect.yMax + 10f, workspaceRect.width, workspaceRect.height - statusRect.height - 10f);
+            DrawStatusPanel(statusRect);
+
+            List<Pawn> candidates = GetCandidates();
+            draft.SyncCandidates(candidates);
+            bool exchangeBlocked = !caravanMode && MunoShuttleExchangeService.CurrentSession().HasActiveSession;
+            string blockedReason = exchangeBlocked ? "已有缪诺接收穿梭机正在执行任务。" : null;
+            if (caravanMode && CannotCarryItemRewardsAfterExchange())
             {
-                Close();
-                return;
+                exchangeBlocked = true;
+                blockedReason = "当前选择会让远行队没有成员承载物资奖励；请保留一名未上交成员或将至少一名目标设为缪诺成员。";
+            }
+            MunoHostageExchangePanelAction action;
+            if (currentPage == CommPage.Targets)
+            {
+                action = MunoHostageExchangePanelView.DrawTargetPage(contentRect, candidates, draft, ref targetScrollPosition, caravanMode);
+            }
+            else
+            {
+                action = MunoHostageExchangePanelView.DrawRewardPage(contentRect, draft, ref rewardScrollPosition, ref previewScrollPosition, caravanMode, exchangeBlocked, blockedReason);
             }
 
-            Rect animatedRect = MunoCommUIStyle.ApplyEntryAnimation(inRect, pageOpenTime);
-            Color oldGuiColor = GUI.color;
-            GUI.color = new Color(oldGuiColor.r, oldGuiColor.g, oldGuiColor.b, oldGuiColor.a * MunoCommUIStyle.EntryAlpha(pageOpenTime));
-
-            Rect leftRect = new Rect(animatedRect.x + 14f, animatedRect.y + 56f, LeftPanelWidth, animatedRect.height - 70f);
-            Rect rightRect = new Rect(leftRect.xMax + 14f, leftRect.y, inRect.width - leftRect.width - 28f, leftRect.height);
-            Rect topRightRect = new Rect(rightRect.x, rightRect.y, rightRect.width, 228f);
-            Rect bottomRightRect = new Rect(rightRect.x, topRightRect.yMax + 12f, rightRect.width, rightRect.height - topRightRect.height - 12f);
-
-            DrawLeftPanel(leftRect);
-            DrawMissionPanel(topRightRect);
-            DrawCandidatePanel(bottomRightRect);
-            GUI.color = oldGuiColor;
+            if (action == MunoHostageExchangePanelAction.OpenRewards)
+            {
+                SetPage(CommPage.Rewards);
+            }
+            else if (action == MunoHostageExchangePanelAction.BackToTargets)
+            {
+                SetPage(CommPage.Targets);
+            }
+            else if (action == MunoHostageExchangePanelAction.Submit)
+            {
+                TrySubmitExchange();
+            }
         }
-        //切换通讯页面并重置页面进入动效计时。
 
-        private void SetPage(CommPage page)
-        {
-            currentPage = page;
-            pageOpenTime = Time.realtimeSinceStartup;
-        }
-        //绘制左栏联系人立绘、状态与交换摘要。
-
-        private void DrawLeftPanel(Rect rect)
+        //绘制军事管理员立绘栏和身份名称。
+        private static void DrawMilitaryManagerPanel(Rect rect)
         {
             MunoCommUIStyle.DrawPanel(rect);
-
-            float portraitHeight = 404f;
-            Rect portraitRect = new Rect(rect.x + 10f, rect.y + 10f, rect.width - 20f, portraitHeight);
-            MunoCommUIStyle.DrawLightPanel(portraitRect);
-            DrawPortrait(portraitRect.ContractedBy(4f));
-
-            Rect infoRect = new Rect(rect.x + 10f, portraitRect.yMax + 10f, rect.width - 20f, rect.height - portraitHeight - 30f);
-            MunoCommUIStyle.DrawPanel(infoRect);
-
-            Rect inner = infoRect.ContractedBy(10f);
-            Rect viewRect = new Rect(0f, 0f, inner.width - 16f, CalculateLeftInfoContentHeight(inner.width - 16f));
-            Widgets.BeginScrollView(inner, ref leftInfoScrollPosition, viewRect);
-
-            Text.Font = GameFont.Small;
-            GUI.color = MunoCommUIStyle.AccentSoftColor;
-            float titleHeight = Text.LineHeight;
-            Widgets.Label(new Rect(0f, 0f, viewRect.width, titleHeight), "通讯状态");
-            GUI.color = MunoCommUIStyle.TextColor;
-            float infoY = titleHeight + 6f;
-            string statusDesc = "缪诺联络官已确认信号。军事管理员会派遣接收穿梭机，在殖民地内接收本次选中的目标。";
-            float statusHeight = Text.CalcHeight(statusDesc, viewRect.width);
-            Widgets.Label(new Rect(0f, infoY, viewRect.width, statusHeight), statusDesc);
-
-            GUI.color = MunoCommUIStyle.AccentSoftColor;
-            float rulesTitleY = infoY + statusHeight + 10f;
-            Widgets.Label(new Rect(0f, rulesTitleY, viewRect.width, titleHeight), "当前规则");
-            GUI.color = MunoCommUIStyle.TextColor;
-            string rulesDesc = "每次仅接收 1 名选中目标。\n未选中的殖民者、囚犯、奴隶都不能进入穿梭机。\n接收完成后，固定有 1 名缪诺成员加入殖民地。";
-            float rulesY = rulesTitleY + titleHeight + 6f;
-            float rulesHeight = Text.CalcHeight(rulesDesc, viewRect.width);
-            Widgets.Label(new Rect(0f, rulesY, viewRect.width, rulesHeight), rulesDesc);
-
-            Widgets.EndScrollView();
-            GUI.color = Color.white;
-        }
-        //绘制右上角任务说明、奖励信息与当前会话状态。
-
-        private void DrawMissionPanel(Rect rect)
-        {
-            MunoCommUIStyle.DrawLightPanel(rect);
-            Rect inner = rect.ContractedBy(12f);
-            GameFont oldFont = Text.Font;
-            TextAnchor oldAnchor = Text.Anchor;
-            Color oldColor = GUI.color;
-            Text.Font = GameFont.Small;
-            Text.Anchor = TextAnchor.UpperLeft;
-            GUI.color = MunoCommUIStyle.MutedDarkTextColor;
-            float titleHeight = Text.LineHeightOf(GameFont.Small) + 2f;
-            Widgets.Label(new Rect(inner.x, inner.y, inner.width, titleHeight), "交换说明");
-
-            GUI.color = MunoCommUIStyle.DarkTextColor;
-            string statusText = BuildStatusText();
-            string desc = "1. 选择目标并发起接收请求。\n2. 穿梭机将在殖民地内降落。\n3. 只有本次选中的目标可以进入穿梭机。\n4. 目标装入后穿梭机会自动离场。\n5. 离场成功后，一名缪诺成员将加入殖民地。\n\n" + statusText;
-            Rect outRect = new Rect(inner.x, inner.y + titleHeight + 8f, inner.width, inner.height - titleHeight - 8f);
-            float viewWidth = outRect.width - 16f;
-            float descHeight = Mathf.Ceil(Text.CalcHeight(desc, viewWidth)) + 4f;
-            Rect viewRect = new Rect(0f, 0f, viewWidth, Mathf.Max(outRect.height, descHeight));
-            Widgets.BeginScrollView(outRect, ref missionScrollPosition, viewRect);
-            Widgets.Label(new Rect(0f, 0f, viewRect.width, descHeight), desc);
-            Widgets.EndScrollView();
-            Text.Font = oldFont;
-            Text.Anchor = oldAnchor;
-            GUI.color = oldColor;
-        }
-        //绘制候选目标列表、选中目标卡片与主操作按钮。
-
-        private void DrawCandidatePanel(Rect rect)
-        {
-            MunoCommUIStyle.DrawPanel(rect);
-            Rect inner = rect.ContractedBy(12f);
-
-            Text.Font = GameFont.Small;
-            GUI.color = MunoCommUIStyle.AccentSoftColor;
-            float titleHeight = Text.LineHeightOf(GameFont.Small) + 4f;
-            Widgets.Label(new Rect(inner.x, inner.y, inner.width, titleHeight), "接收目标列表");
-            GUI.color = Color.white;
-
-            List<Pawn> candidates = MunoHostageExchangeService.GetExchangeCandidates(map);
-            float listWidth = inner.width * 0.58f;
-            float actionHeight = Mathf.Max(118f, Text.LineHeightOf(GameFont.Small) * 3f + 58f);
-            float actionGap = 10f;
-            Rect listRect = new Rect(inner.x, inner.y + titleHeight + 8f, listWidth, inner.height - titleHeight - 8f);
-            Rect detailRect = new Rect(listRect.xMax + 12f, listRect.y, inner.width - listRect.width - 12f, listRect.height - actionHeight - actionGap);
-            Rect actionRect = new Rect(detailRect.x, detailRect.yMax + actionGap, detailRect.width, actionHeight);
-
-            DrawCandidateList(listRect, candidates);
-            DrawSelectedPawnDetail(detailRect);
-            DrawActionArea(actionRect, candidates.Count > 0);
-        }
-        //绘制候选目标滚动列表，并支持点击切换当前选中目标。
-
-        private void DrawCandidateList(Rect rect, List<Pawn> candidates)
-        {
-            MunoCommUIStyle.DrawLightPanel(rect);
-            Rect bodyRect = rect.ContractedBy(8f);
-
-            if (candidates.Count == 0)
-            {
-                Text.Anchor = TextAnchor.MiddleCenter;
-                GUI.color = MunoCommUIStyle.DarkTextColor;
-                Widgets.Label(bodyRect, "当前地图没有可供缪诺接收的合法目标。");
-                GUI.color = Color.white;
-                Text.Anchor = TextAnchor.UpperLeft;
-                return;
-            }
-
-            if (selectedPawn == null || !candidates.Contains(selectedPawn))
-            {
-                selectedPawn = candidates[0];
-            }
-
-            float viewHeight = candidates.Count * (CandidateRowHeight + CandidateRowGap) + 4f;
-            Rect viewRect = new Rect(0f, 0f, bodyRect.width - 16f, viewHeight);
-            Widgets.BeginScrollView(bodyRect, ref candidateScrollPosition, viewRect);
-
-            float y = 2f;
-            for (int i = 0; i < candidates.Count; i++)
-            {
-                Pawn pawn = candidates[i];
-                Rect rowRect = new Rect(0f, y, viewRect.width, CandidateRowHeight);
-                DrawCandidateRow(rowRect, pawn, pawn == selectedPawn);
-                y += CandidateRowHeight + CandidateRowGap;
-            }
-
-            Widgets.EndScrollView();
-        }
-        //绘制单个候选目标卡片，并在点击时切换当前选中项。
-
-        private void DrawCandidateRow(Rect rect, Pawn pawn, bool selected)
-        {
-            Widgets.DrawBoxSolid(rect, selected ? new Color(0.26f, 0.80f, 0.74f, 0.16f) : new Color(0f, 0f, 0f, 0.08f));
-            MunoCommUIStyle.DrawBorder(rect, selected ? MunoCommUIStyle.AccentColor : new Color(0.32f, 0.45f, 0.45f));
-
-            if (Widgets.ButtonInvisible(rect))
-            {
-                selectedPawn = pawn;
-            }
-
-            Rect inner = rect.ContractedBy(8f);
-            Widgets.ThingIcon(new Rect(inner.x, inner.y + 6f, 42f, 42f), pawn);
-
-            float textX = inner.x + 52f;
-            float textWidth = inner.width - 52f;
-            float topHeight = Text.LineHeight;
-            GUI.color = MunoCommUIStyle.DarkTextColor;
-            Widgets.Label(new Rect(textX, inner.y + 2f, textWidth, topHeight), pawn.LabelCap);
-
-            string metaText = MunoHostageExchangeService.GetPawnRoleLabel(pawn)
-                + "    年龄 " + pawn.ageTracker.AgeBiologicalYears
-                + "    " + MunoHostageExchangeService.GetPawnStatusLabel(pawn);
-            GUI.color = MunoCommUIStyle.MutedDarkTextColor;
-            Widgets.Label(new Rect(textX, inner.y + topHeight + 6f, textWidth, topHeight), metaText);
-            GUI.color = Color.white;
-        }
-        //绘制当前选中目标的详细状态卡片，便于在发起前二次确认。
-
-        private void DrawSelectedPawnDetail(Rect rect)
-        {
-            MunoCommUIStyle.DrawLightPanel(rect);
             Rect inner = rect.ContractedBy(10f);
+            float labelHeight = Text.LineHeightOf(GameFont.Medium) + 12f;
+            Rect portraitRect = new Rect(inner.x, inner.y, inner.width, inner.height - labelHeight - 10f);
+            Rect labelRect = new Rect(inner.x, portraitRect.yMax + 10f, inner.width, labelHeight);
+
+            MunoCommUIStyle.DrawLightPanel(portraitRect);
+            DrawMilitaryManagerPortrait(portraitRect.ContractedBy(4f));
+            MunoCommUIStyle.DrawLightPanel(labelRect);
+
             GameFont oldFont = Text.Font;
             TextAnchor oldAnchor = Text.Anchor;
+            bool oldWordWrap = Text.WordWrap;
             Color oldColor = GUI.color;
-            Text.Font = GameFont.Small;
-            Text.Anchor = TextAnchor.UpperLeft;
-            GUI.color = MunoCommUIStyle.MutedDarkTextColor;
-            float lineHeight = Text.LineHeightOf(GameFont.Small) + 2f;
-            Widgets.Label(new Rect(inner.x, inner.y, inner.width, lineHeight), "选中目标");
-
-            if (selectedPawn == null)
+            try
             {
+                Text.Font = GameFont.Medium;
+                Text.Anchor = TextAnchor.MiddleCenter;
+                Text.WordWrap = false;
                 GUI.color = MunoCommUIStyle.DarkTextColor;
-                Widgets.Label(new Rect(inner.x, inner.y + lineHeight + 8f, inner.width, lineHeight), "尚未选中任何目标。");
+                Widgets.Label(labelRect, "军事管理员");
+            }
+            finally
+            {
                 Text.Font = oldFont;
                 Text.Anchor = oldAnchor;
+                Text.WordWrap = oldWordWrap;
                 GUI.color = oldColor;
+            }
+        }
+
+        //按旧通讯页面的裁切比例绘制军事管理员立绘。
+        private static void DrawMilitaryManagerPortrait(Rect rect)
+        {
+            GUI.BeginGroup(rect);
+            try
+            {
+                Rect localRect = new Rect(0f, 0f, rect.width, rect.height);
+                Widgets.DrawBoxSolid(localRect, new Color(0.14f, 0.19f, 0.19f));
+                float scale = Mathf.Max(rect.width / ManagerPortrait.width, rect.height / ManagerPortrait.height) * ManagerPortraitScale;
+                float drawWidth = ManagerPortrait.width * scale;
+                float drawHeight = ManagerPortrait.height * scale;
+                float drawX = (rect.width - drawWidth) * 0.5f + ManagerPortraitOffsetX;
+                float drawY = (rect.height - drawHeight) * ManagerPortraitVerticalFactor;
+                GUI.DrawTexture(new Rect(drawX, drawY, drawWidth, drawHeight), ManagerPortrait, ScaleMode.StretchToFill, true);
+            }
+            finally
+            {
+                GUI.EndGroup();
+            }
+        }
+
+        //绘制当前交换规则和已进行会话的状态。
+        private void DrawStatusPanel(Rect rect)
+        {
+            MunoCommUIStyle.DrawLightPanel(rect);
+            Rect inner = rect.ContractedBy(10f);
+            string text = BuildStatusPanelText();
+            GameFont oldFont = Text.Font;
+            TextAnchor oldAnchor = Text.Anchor;
+            bool oldWordWrap = Text.WordWrap;
+            Color oldColor = GUI.color;
+            try
+            {
+                Text.Font = GameFont.Small;
+                Text.Anchor = TextAnchor.UpperLeft;
+                Text.WordWrap = true;
+                GUI.color = MunoCommUIStyle.DarkTextColor;
+                float height = Mathf.Ceil(Text.CalcHeight(text, inner.width)) + 2f;
+                Widgets.Label(new Rect(inner.x, inner.y, inner.width, height), text);
+            }
+            finally
+            {
+                Text.Font = oldFont;
+                Text.Anchor = oldAnchor;
+                Text.WordWrap = oldWordWrap;
+                GUI.color = oldColor;
+            }
+        }
+
+        //根据当前上下文组合人口交换状态面板文本。
+        private string BuildStatusPanelText()
+        {
+            string modeText = caravanMode ? "缪诺据点批量交换" : "缪诺接收穿梭机";
+            string statusText = caravanMode ? "远行队交换会在确认后立即完成。" : BuildStatusText();
+            return modeText + "\n每名上交人员对应一份奖励，可逐人选择缪诺成员或原版任务式等值物资。\n" + statusText;
+        }
+
+        //按照实际中文换行高度计算状态面板尺寸，避免覆盖下方交换列表。
+        private float CalculateStatusPanelHeight(float width)
+        {
+            GameFont oldFont = Text.Font;
+            bool oldWordWrap = Text.WordWrap;
+            try
+            {
+                Text.Font = GameFont.Small;
+                Text.WordWrap = true;
+                float textWidth = Mathf.Max(1f, width - 20f);
+                return Mathf.Ceil(Text.CalcHeight(BuildStatusPanelText(), textWidth)) + 22f;
+            }
+            finally
+            {
+                Text.Font = oldFont;
+                Text.WordWrap = oldWordWrap;
+            }
+        }
+
+        //返回当前上下文内的可交换候选列表。
+        private List<Pawn> GetCandidates()
+        {
+            return caravanMode ? MunoHostageExchangeService.GetExchangeCandidates(caravan) : MunoHostageExchangeService.GetExchangeCandidates(map);
+        }
+
+        //判断纯物资奖励是否会导致据点交换后远行队没有可用载体。
+        private bool CannotCarryItemRewardsAfterExchange()
+        {
+            if (draft.CountRewardType(MunoExchangeRewardType.RandomItems) == 0
+                || draft.CountRewardType(MunoExchangeRewardType.MunoPawn) > 0
+                || caravan == null)
+            {
+                return false;
+            }
+
+            List<Pawn> caravanPawns = caravan.PawnsListForReading;
+            for (int i = 0; i < caravanPawns.Count; i++)
+            {
+                if (!draft.IsSelected(caravanPawns[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        //提交当前人员和奖励分配到据点或穿梭机服务。
+        private void TrySubmitExchange()
+        {
+            if (!draft.EnsureItemPreview(out string previewFailReason))
+            {
+                Messages.Message(previewFailReason ?? "未能生成随机物资奖励。", MessageTypeDefOf.RejectInput, false);
                 return;
             }
 
-            GUI.color = MunoCommUIStyle.DarkTextColor;
-            Rect outRect = new Rect(inner.x, inner.y + lineHeight + 8f, inner.width, inner.height - lineHeight - 8f);
-            float viewWidth = outRect.width - 16f;
-            string detailText = selectedPawn.LabelCap
-                + "\n身份: " + MunoHostageExchangeService.GetPawnRoleLabel(selectedPawn)
-                + "\n状态: " + MunoHostageExchangeService.GetPawnStatusLabel(selectedPawn)
-                + "\n年龄: " + selectedPawn.ageTracker.AgeBiologicalYears
-                + "\n\n该目标会作为本次唯一接收对象。穿梭机抵达后，未选中的殖民者、囚犯或奴隶都不能进入。";
-            float detailHeight = Mathf.Ceil(Text.CalcHeight(detailText, viewWidth)) + 4f;
-            Rect viewRect = new Rect(0f, 0f, viewWidth, Mathf.Max(outRect.height, detailHeight));
-            Widgets.BeginScrollView(outRect, ref selectedDetailScrollPosition, viewRect);
-            Widgets.Label(new Rect(0f, 0f, viewRect.width, detailHeight), detailText);
-            Widgets.EndScrollView();
-            Text.Font = oldFont;
-            Text.Anchor = oldAnchor;
-            GUI.color = oldColor;
-        }
-        //绘制主操作区，并在条件满足时发起缪诺穿梭机接收流程。
-
-        private void DrawActionArea(Rect rect, bool hasCandidates)
-        {
-            MunoCommUIStyle.DrawPanel(rect);
-            Rect inner = rect.ContractedBy(10f);
-
-            string disabledReason = null;
-            if (map == null || negotiator == null)
+            List<MunoExchangeTargetRecord> targets = draft.BuildTargetRecords();
+            if (caravanMode)
             {
-                disabledReason = "当前谈判者不在有效地图中。";
-            }
-            else if (!hasCandidates)
-            {
-                disabledReason = "当前地图没有合法目标。";
-            }
-            else if (selectedPawn == null)
-            {
-                disabledReason = "请先选择一个接收目标。";
-            }
-            else if (MunoShuttleExchangeService.CurrentSession().HasActiveSession)
-            {
-                disabledReason = "已有缪诺接收穿梭机正在执行任务。";
-            }
-
-            float buttonHeight = Mathf.Max(38f, Text.LineHeightOf(GameFont.Small) + 10f);
-            Rect buttonRect = new Rect(inner.x, inner.y, inner.width, buttonHeight);
-            bool active = disabledReason == null;
-            if (MunoCommUIStyle.DrawButton(buttonRect, "请求缪诺接收穿梭机", active))
-            {
-                if (MunoShuttleExchangeService.TryStartExchange(negotiator, selectedPawn, out string failReason))
+                if (MunoHostageExchangeService.TryExchangePawns(settlement, caravan, targets, draft.ItemRewards, out string failReason, out List<Pawn> joinedPawns))
                 {
-                    Messages.Message("缪诺接收穿梭机已在殖民地内进场，请将选中目标送入穿梭机。", MessageTypeDefOf.TaskCompletion, false);
+                    Messages.Message("已完成 " + targets.Count + " 名人员的缪诺批量交换，加入 " + joinedPawns.Count + " 名缪诺成员。", MessageTypeDefOf.PositiveEvent, false);
+                    draft = new MunoHostageExchangeDraft();
                     Close();
                 }
                 else
                 {
-                    Messages.Message(failReason ?? "未能发起缪诺接收流程。", MessageTypeDefOf.RejectInput, false);
+                    Messages.Message(failReason ?? "未能完成缪诺批量交换。", MessageTypeDefOf.RejectInput, false);
+                    draft.DisposePreview();
                 }
+
+                return;
             }
 
-            GUI.color = MunoCommUIStyle.SubtleTextColor;
-            string footerText = active ? "奖励固定为 1 名缪诺殖民者。" : disabledReason;
-            float footerHeight = Mathf.Ceil(Text.CalcHeight(footerText, inner.width)) + 2f;
-            Rect footerRect = new Rect(inner.x, inner.y + buttonHeight + 8f, inner.width, footerHeight);
-            Widgets.Label(footerRect, footerText);
-            GUI.color = Color.white;
+            if (MunoShuttleExchangeService.TryStartExchange(negotiator, targets, draft.ItemRewards, out string shuttleFailReason))
+            {
+                Messages.Message("缪诺接收穿梭机已进场，请将选中的 " + targets.Count + " 名目标送入穿梭机。", MessageTypeDefOf.TaskCompletion, false);
+                draft = new MunoHostageExchangeDraft();
+                Close();
+            }
+            else
+            {
+                Messages.Message(shuttleFailReason ?? "未能发起缪诺接收流程。", MessageTypeDefOf.RejectInput, false);
+                draft.DisposePreview();
+            }
         }
-        //按通讯终端立绘卡片比例裁切并绘制联系人图像，使人物重心更贴合画面。
 
-        private static void DrawPortrait(Rect rect)
-        {
-            GUI.BeginGroup(rect);
-            Widgets.DrawBoxSolid(new Rect(0f, 0f, rect.width, rect.height), new Color(0.14f, 0.19f, 0.19f));
-
-            float scale = Mathf.Max(rect.width / PortraitTexture.width, rect.height / PortraitTexture.height) * portraitScale;
-            float drawWidth = PortraitTexture.width * scale;
-            float drawHeight = PortraitTexture.height * scale;
-            float drawX = (rect.width - drawWidth) * 0.5f + portraitOffsetX;
-            float drawY = (rect.height - drawHeight) * portraitOffsetY;
-
-            GUI.DrawTexture(new Rect(drawX, drawY, drawWidth, drawHeight), PortraitTexture, ScaleMode.StretchToFill, true);
-            GUI.EndGroup();
-        }
-        //计算左下信息区完整正文所需高度，供滚动面板安全容纳所有中文文案。
-
-        private static float CalculateLeftInfoContentHeight(float width)
-        {
-            Text.Font = GameFont.Small;
-            float lineHeight = Text.LineHeight;
-            string statusDesc = "缪诺联络官已确认信号。军事管理员会派遣接收穿梭机，在殖民地内接收本次选中的目标。";
-            string rulesDesc = "每次仅接收 1 名选中目标。\n未选中的殖民者、囚犯、奴隶都不能进入穿梭机。\n接收完成后，固定有 1 名缪诺成员加入殖民地。";
-            float statusHeight = Text.CalcHeight(statusDesc, width);
-            float rulesHeight = Text.CalcHeight(rulesDesc, width);
-            return lineHeight + 6f + statusHeight + 10f + lineHeight + 6f + rulesHeight + 4f;
-        }
-        //组合当前会话状态的说明文本，用于任务面板即时反馈进度。
-
+        //组合当前地图穿梭机交换状态文本。
         private static string BuildStatusText()
         {
             MunoShuttleExchangeSession session = MunoShuttleExchangeService.CurrentSession();
@@ -443,17 +375,21 @@ namespace MunoRaceLib.MunoWorld
                 return "当前没有进行中的缪诺接收流程。";
             }
 
-            if (session.TargetLoaded && session.SelectedPawn != null)
-            {
-                return "进行中：缪诺接收穿梭机已接收目标 “" + session.SelectedPawn.LabelShort + "”，正在离场。";
-            }
+            return "进行中：已装载 " + session.LoadedTargetCount + " / " + session.TargetCount + " 名目标。";
+        }
 
-            if (session.SelectedPawn != null)
-            {
-                return "进行中：缪诺接收穿梭机正在等待 “" + session.SelectedPawn.LabelShort + "” 登机。";
-            }
+        //关闭窗口前销毁尚未交给交换会话的物资预览。
+        private void CloseWithDraftCleanup()
+        {
+            draft?.DisposePreview();
+            Close();
+        }
 
-            return "进行中：缪诺接收穿梭机正在等待选中目标登机。";
+        //切换页面并重置页面进入动画时间。
+        private void SetPage(CommPage page)
+        {
+            currentPage = page;
+            pageOpenTime = Time.realtimeSinceStartup;
         }
     }
 }

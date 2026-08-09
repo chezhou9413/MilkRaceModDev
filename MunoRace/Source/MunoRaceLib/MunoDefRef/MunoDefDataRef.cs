@@ -22,12 +22,15 @@ namespace MunoRaceLib.MunoDefRef
         public static AbilityDef Muno_StrategicGrenadeShot;
         public static AbilityDef Muno_LaserSweep_LR;
         public static AbilityDef Muno_LaserSweep_LSR;
+        public static AbilityDef Muno_LaserCannonRadiation;
 
         public static JobDef JobDriver_SpawnMunoMilk;
         public static JobDef JobDriver_SpawnConcentratedMulacte;
         public static JobDef JobDef_GalactogenGelShot;
         public static JobDef JobDef_MunoStrategicGrenadeShot;
         public static JobDef JobDef_MunoLaserSweep;
+        public static JobDef JobDef_AutoExtractMunoMilk;
+        public static JobDef JobDef_AutoExtractConcentratedMulacte;
 
         public static ThingDef Muno_Filth_Galactogen;
 
@@ -53,11 +56,13 @@ namespace MunoRaceLib.MunoDefRef
         public static ThoughtDef Muno_TentacleWithdrawalThought;
         public static ThoughtDef Muno_MolecularCuisineDelicious;
         public static ThoughtDef Muno_MolecularCuisineAwful;
+        public static ThoughtDef Muno_MilkedMood;
 
         public static ThingDef MunoRace_Disabler;
         public static ThingDef MunoRace_Apparel_Tentaclearmor;
         public static ThingDef MunoRace_Apparel_Tentaclefrenzyarmor;
         public static ThingDef MunoRace_Apparel_TentaclefrenzyarmorHead;
+        public static ThingDef Gun_MunoLC;
 
         public static PawnKindDef Muno_Mech_Tentacles;
         public static PawnKindDef MunoRace_Colonist;

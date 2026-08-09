@@ -26,17 +26,17 @@ namespace MunoRaceLib.MunoComp
                 return true;
             }
 
-            return StorageComp != null && StorageComp.HasEnough(SweepCost);
+            return StorageComp != null && GalactogenStorageUtility.HasEnough(CasterPawn, StorageComp, SweepCost);
         }
 
         //校验目标前先给浓浆不足状态提供明确提示。
         public override bool ValidateTarget(LocalTargetInfo target, bool showMessages = true)
         {
-            if (StorageComp == null || !StorageComp.HasEnough(SweepCost))
+            if (StorageComp == null || !GalactogenStorageUtility.HasEnough(CasterPawn, StorageComp, SweepCost))
             {
                 if (showMessages)
                 {
-                    Messages.Message("激光增幅浓浆槽不足，无法横扫。", CasterPawn, MessageTypeDefOf.RejectInput, false);
+                    Messages.Message("激光增幅浓浆槽与储存罐均不足，无法横扫。", CasterPawn, MessageTypeDefOf.RejectInput, false);
                 }
 
                 return false;
@@ -48,9 +48,8 @@ namespace MunoRaceLib.MunoComp
         //暖机完成时扣除一次浓浆，并让原版 Beam 横扫流程继续执行。
         public override void WarmupComplete()
         {
-            if (StorageComp == null || !StorageComp.ConsumeSlot(SweepCost))
+            if (StorageComp == null || !GalactogenStorageUtility.TryConsume(CasterPawn, StorageComp, SweepCost, "激光增幅浓浆槽与储存罐均不足，无法横扫。"))
             {
-                Messages.Message("激光增幅浓浆槽不足，无法横扫。", CasterPawn, MessageTypeDefOf.RejectInput, false);
                 Reset();
                 return;
             }

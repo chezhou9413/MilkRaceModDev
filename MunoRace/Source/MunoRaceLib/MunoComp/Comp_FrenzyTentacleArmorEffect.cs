@@ -108,8 +108,8 @@ namespace MunoRaceLib.MunoComp
                 defaultLabel = "分化次级个体",
                 defaultDesc = "消耗槽内 1 个乳源质浓浆，生成 " + Props.minionSpawnCount + " 个触手个体协助作战。",
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/Attack", true),
-                Disabled = storageComp == null || !storageComp.HasEnough(1) || pawn.Downed,
-                disabledReason = pawn.Downed ? "小人已倒下" : (storageComp != null && storageComp.HasEnough(1) ? string.Empty : "装甲浓浆槽不足"),
+                Disabled = storageComp == null || !GalactogenStorageUtility.HasEnough(pawn, storageComp, 1) || pawn.Downed,
+                disabledReason = pawn.Downed ? "小人已倒下" : (storageComp != null && GalactogenStorageUtility.HasEnough(pawn, storageComp, 1) ? string.Empty : "装甲浓浆槽与储存罐均不足"),
                 action = delegate
                 {
                     if (storageComp != null && storageComp.TryConsumeForAbility(pawn, 1))
@@ -132,8 +132,8 @@ namespace MunoRaceLib.MunoComp
                 defaultLabel = label,
                 defaultDesc = desc,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/DesirePower", true),
-                Disabled = storageComp == null || !storageComp.HasEnough(1) || pawn.Downed,
-                disabledReason = pawn.Downed ? "小人已倒下" : (storageComp != null && storageComp.HasEnough(1) ? string.Empty : "装甲浓浆槽不足"),
+                Disabled = storageComp == null || !GalactogenStorageUtility.HasEnough(pawn, storageComp, 1) || pawn.Downed,
+                disabledReason = pawn.Downed ? "小人已倒下" : (storageComp != null && GalactogenStorageUtility.HasEnough(pawn, storageComp, 1) ? string.Empty : "装甲浓浆槽与储存罐均不足"),
                 action = delegate
                 {
                     if (storageComp != null && storageComp.TryConsumeForAbility(pawn, 1))

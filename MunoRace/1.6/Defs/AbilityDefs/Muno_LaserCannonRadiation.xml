@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <AbilityDef>
+    <defName>Muno_LaserCannonRadiation</defName>
+    <label>辐射放射</label>
+    <description>消耗 1 份乳源质浓浆，向前方 22 度锥形区域放射高能热辐射。墙体会阻挡后方区域，并可能误伤友军与中立目标。</description>
+    <abilityClass>MunoRaceLib.MunoComp.Ability_MunoLaserCannonRadiation</abilityClass>
+    <gizmoClass>MunoRaceLib.MunoComp.Command_AbilityMunoLaserCannonRadiation</gizmoClass>
+    <iconPath>Weapons/Gun_MunoLC</iconPath>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <targetRequired>true</targetRequired>
+    <hostile>true</hostile>
+    <verbProperties Class="MunoRaceLib.MunoComp.VerbProperties_MunoRadiationCone">
+      <verbClass>Verb_CastAbility</verbClass>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+      </targetParams>
+      <range>26</range>
+      <warmupTime>1.2</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <soundCast>Shot_BeamRepeater</soundCast>
+      <soundCastTail>GunTail_Medium</soundCastTail>
+      <coneAngleDegrees>22</coneAngleDegrees>
+      <damageAmount>25</damageAmount>
+      <armorPenetration>0.8</armorPenetration>
+      <storageCost>1</storageCost>
+      <damageDef>Muno_LaserCannonRadiationHeat</damageDef>
+      <coneFleckDef>Fleck_BeamSpark</coneFleckDef>
+      <coneFleckChancePerCell>0.28</coneFleckChancePerCell>
+      <coneFleckScale>4~7</coneFleckScale>
+      <targetFleckDef>Fleck_RadialSparks</targetFleckDef>
+      <targetFleckScale>0.45</targetFleckScale>
+    </verbProperties>
+    <comps>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_AbilityMunoRadiationCone" />
+    </comps>
+  </AbilityDef>
+</Defs>

@@ -91,8 +91,8 @@ namespace MunoRaceLib.MunoComp
                 defaultLabel = label,
                 defaultDesc = desc,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/DesirePower", true),
-                Disabled = storageComp == null || !storageComp.HasEnough(1) || pawn.Downed,
-                disabledReason = pawn.Downed ? "小人已倒下" : (storageComp != null && storageComp.HasEnough(1) ? string.Empty : "装甲浓浆槽不足"),
+                Disabled = storageComp == null || !GalactogenStorageUtility.HasEnough(pawn, storageComp, 1) || pawn.Downed,
+                disabledReason = pawn.Downed ? "小人已倒下" : (storageComp != null && GalactogenStorageUtility.HasEnough(pawn, storageComp, 1) ? string.Empty : "装甲浓浆槽与储存罐均不足"),
                 action = delegate
                 {
                     if (storageComp != null && storageComp.TryConsumeForAbility(pawn, 1))

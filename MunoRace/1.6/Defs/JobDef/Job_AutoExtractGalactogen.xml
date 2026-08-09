@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>JobDef_AutoExtractMunoMilk</defName>
+    <driverClass>MunoRaceLib.MunoJobDriver.JobDriver_AutoExtractGalactogen</driverClass>
+    <reportString>正在自动汲取缪诺乳</reportString>
+    <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+  </JobDef>
+
+  <JobDef>
+    <defName>JobDef_AutoExtractConcentratedMulacte</defName>
+    <driverClass>MunoRaceLib.MunoJobDriver.JobDriver_AutoExtractGalactogen</driverClass>
+    <reportString>正在自动汲取乳源质浓浆</reportString>
+    <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+  </JobDef>
+</Defs>

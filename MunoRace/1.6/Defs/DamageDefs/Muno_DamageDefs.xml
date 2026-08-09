@@ -15,4 +15,11 @@
     <defaultArmorPenetration>1.1</defaultArmorPenetration>
     <ignoreShields>true</ignoreShields>
   </DamageDef>
+
+  <DamageDef ParentName="Beam">
+    <defName>Muno_LaserCannonRadiationHeat</defName>
+    <label>激光炮热辐射</label>
+    <defaultDamage>25</defaultDamage>
+    <defaultArmorPenetration>0.8</defaultArmorPenetration>
+  </DamageDef>
 </Defs>

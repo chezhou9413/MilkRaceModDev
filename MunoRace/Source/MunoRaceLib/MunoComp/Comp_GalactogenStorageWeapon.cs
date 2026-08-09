@@ -86,6 +86,14 @@ namespace MunoRaceLib.MunoComp
             return actual;
         }
 
+        //从武器浓浆槽中移除不超过现有数量的槽位，并返回实际移除数量。
+        public int RemoveSlots(int amount)
+        {
+            int actual = Mathf.Min(Mathf.Max(0, amount), slotCount);
+            slotCount -= actual;
+            return actual;
+        }
+
         //检查武器浓浆槽中是否有足够数量供能力消耗。
         public bool HasEnough(int amount)
         {
@@ -107,13 +115,7 @@ namespace MunoRaceLib.MunoComp
         //为武器特殊射击消耗浓浆槽，并在不足时给玩家提示。
         public bool TryConsumeForGelShot(Pawn pawn, int amount)
         {
-            if (ConsumeSlot(amount))
-            {
-                return true;
-            }
-
-            Messages.Message("机炮浓浆槽不足，无法发射化合粘胶弹。", pawn, MessageTypeDefOf.RejectInput);
-            return false;
+            return GalactogenStorageUtility.TryConsume(pawn, this, amount, "机炮浓浆槽与储存罐均不足，无法发射化合粘胶弹。");
         }
 
         //保存和读取武器内当前浓浆槽数量。
@@ -152,12 +154,14 @@ namespace MunoRaceLib.MunoComp
 
             GameFont oldFont = Text.Font;
             TextAnchor oldAnchor = Text.Anchor;
+            bool oldWordWrap = Text.WordWrap;
             Color oldColor = GUI.color;
             try
             {
                 Rect labelRect = new Rect(outerRect.x + 4f, outerRect.y + 4f, outerRect.width - 8f, Text.LineHeightOf(GameFont.Tiny) + 4f);
                 Text.Font = GameFont.Tiny;
                 Text.Anchor = TextAnchor.MiddleCenter;
+                Text.WordWrap = false;
                 Widgets.Label(labelRect, comp.SlotLabel + "  " + comp.SlotCount + "/" + comp.SlotCapacity);
 
                 float cellW = (outerRect.width - 12f) / comp.SlotCapacity;
@@ -174,6 +178,7 @@ namespace MunoRaceLib.MunoComp
             {
                 Text.Font = oldFont;
                 Text.Anchor = oldAnchor;
+                Text.WordWrap = oldWordWrap;
                 GUI.color = oldColor;
             }
 

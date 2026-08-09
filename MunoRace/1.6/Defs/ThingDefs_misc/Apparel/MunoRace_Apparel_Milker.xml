@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="MunoRace_Apparel">
+    <defName>MunoRace_Apparel_Milker</defName>
+    <label>挤奶器</label>
+    <description>在奶牛纹高叉的基础上加入自动汲取机构。可按设定阈值把乳源质转化为缪诺乳或乳源质浓浆，并直接送入储存设备或背包。</description>
+    <possessionCount>1</possessionCount>
+    <recipeMaker>
+      <researchPrerequisite>ComplexClothing</researchPrerequisite>
+      <displayPriority>216</displayPriority>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Apparel/Milkleotard/MunoRace_Apparel_Milkleotard</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.1</drawSize>
+    </graphicData>
+    <costStuffCount>80</costStuffCount>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costList>
+      <Gold>2</Gold>
+    </costList>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToMake>10000</WorkToMake>
+      <Mass>1.5</Mass>
+      <StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.2</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.2</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>3</EquipDelay>
+    </statBases>
+    <generateCommonality>0.05</generateCommonality>
+    <equippedStatOffsets>
+      <SocialImpact>0.1</SocialImpact>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">0.05</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>Apparel</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Apparel/Milkleotard/MunoRace_Apparel_Milkleotard</wornGraphicPath>
+      <layers>
+        <li>Muno_Underwear</li>
+      </layers>
+      <tags>
+        <li>Outlander</li>
+        <li>Spacer</li>
+      </tags>
+    </apparel>
+    <comps>
+      <li><compClass>CompQuality</compClass></li>
+      <li Class="CompProperties_Forbiddable" />
+      <li><compClass>CompColorable</compClass></li>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_GalactogenExtractor" />
+      <li Class="ChezhouLib.comp.ApparelAddBodyAddonCompProperties">
+        <targetRaces>
+          <li>MunoRace</li>
+        </targetRaces>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

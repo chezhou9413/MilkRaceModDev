@@ -129,6 +129,7 @@
     <Compile Include="MunoComp\CompTargetEffect_MunoHealGun.cs" />
     <Compile Include="MunoComp\Verb_CastTargetEffect_MunoHealProjectile.cs" />
     <Compile Include="MunoComp\Ability_GalactogenGelShot.cs" />
+    <Compile Include="MunoComp\Ability_MunoLaserCannonRadiation.cs" />
     <Compile Include="MunoComp\Ability_MunoLaserSweep.cs" />
     <Compile Include="MunoComp\Ability_MunoStrategicGrenadeShot.cs" />
     <Compile Include="MunoComp\Comp_StrategicGrenadeStorageWeapon.cs" />
@@ -139,6 +140,14 @@
     <Compile Include="MunoComp\HediffComp_TentacleMinionLifetime.cs" />
     <Compile Include="MunoComp\CompUseEffect_TentacleArmorDisabler.cs" />
     <Compile Include="MunoComp\Comp_GalactogenStorageWeapon.cs" />
+    <Compile Include="MunoComp\Command_AbilityMunoLaserCannonRadiation.cs" />
+    <Compile Include="MunoComp\CompAbilityEffect_MunoRadiationCone.cs" />
+    <Compile Include="MunoComp\CompProperties_AbilityMunoRadiationCone.cs" />
+    <Compile Include="MunoComp\CompProperties_GalactogenExtractor.cs" />
+    <Compile Include="MunoComp\Comp_GalactogenExtractor.cs" />
+    <Compile Include="MunoComp\GalactogenAutoCollectMode.cs" />
+    <Compile Include="MunoComp\GalactogenExtractorUtility.cs" />
+    <Compile Include="MunoComp\GalactogenStorageUtility.cs" />
     <Compile Include="MunoComp\Comp_TentacleMinionController.cs" />
     <Compile Include="MunoComp\Comp_GalactogenStorageArmor.cs" />
     <Compile Include="MunoComp\Comp_HeavyArmorEffect.cs" />
@@ -149,6 +158,7 @@
     <Compile Include="MunoComp\Projectile_GalactogenGel.cs" />
     <Compile Include="MunoComp\Verb_MunoLaserSweep.cs" />
     <Compile Include="MunoComp\Verb_MunoStrategicGrenade.cs" />
+    <Compile Include="MunoComp\VerbProperties_MunoRadiationCone.cs" />
     <Compile Include="MunoComp\CompProperties_TentacleArmorData.cs" />
     <Compile Include="MunoDefRef\MunoDefDataRef.cs" />
     <Compile Include="MunoGizmo\Gizmo_GalactogenBar.cs" />
@@ -176,6 +186,11 @@
     <Compile Include="MunoWorld\MunoCommUIStyle.cs" />
     <Compile Include="MunoWorld\MunoTypewriterTextState.cs" />
     <Compile Include="MunoWorld\MunoHostageExchangeService.cs" />
+    <Compile Include="MunoWorld\MunoHostageExchangeDraft.cs" />
+    <Compile Include="MunoWorld\MunoHostageExchangePanelView.cs" />
+    <Compile Include="MunoWorld\MunoExchangeRewardType.cs" />
+    <Compile Include="MunoWorld\MunoExchangeTargetRecord.cs" />
+    <Compile Include="MunoWorld\MunoExchangeRewardService.cs" />
     <Compile Include="MunoWorld\MunoShuttleExchangeService.cs" />
     <Compile Include="MunoWorld\MunoShuttleExchangeSession.cs" />
     <Compile Include="MunoWorld\MunoWindowBase.cs" />
@@ -184,6 +199,7 @@
     <Compile Include="MunoJobDriver\JobDriver_MunoStrategicGrenadeShot.cs" />
     <Compile Include="MunoJobDriver\JobDriver_SpawnConcentratedMulacte.cs" />
     <Compile Include="MunoJobDriver\JobDriver_SpawnMunoMilk.cs" />
+    <Compile Include="MunoJobDriver\JobDriver_AutoExtractGalactogen.cs" />
     <Compile Include="MunoJobGiver\JobGiver_AutoMunoMilk.cs" />
     <Compile Include="MunoMain.cs" />
     <Compile Include="MunoThoughtWorker\ThoughtWorker_GalactogenOverflow.cs" />
@@ -196,6 +212,7 @@
     <Compile Include="Patch\Patch_Pawn_PostApplyDamage.cs" />
     <Compile Include="Patch\Patch_PawnApparelTracker_TryDrop.cs" />
     <Compile Include="Patch\Patch_Faction_TryOpenComms_MunoExchange.cs" />
+    <Compile Include="Patch\Patch_Faction_TryMakeInitialRelationsWith_Muno.cs" />
     <Compile Include="Patch\Patch_Pawn_RelationsTracker_AddDirectRelation_MunoMarriage.cs" />
     <Compile Include="Patch\Patch_Recipe_RemoveBodyPart_MunoMarriage.cs" />
     <Compile Include="Patch\Patch_Settlement_GetCaravanGizmos_MunoExchange.cs" />
@@ -204,6 +221,7 @@
     <Compile Include="Patch\Pawn_GetGizmos_GalactogenArmor_Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tool\FilthGalactogenTool.cs" />
+    <Compile Include="Tool\MunoMilkingUtility.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

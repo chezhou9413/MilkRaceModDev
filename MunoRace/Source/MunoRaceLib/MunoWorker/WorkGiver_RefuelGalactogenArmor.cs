@@ -50,24 +50,10 @@ namespace MunoRaceLib.MunoWorker
             return job;
         }
 
-        //获取小人当前穿戴列表中第一个带浓浆储存组件的装甲。
+        //按主动装备优先、共享储存罐最后的顺序获取下一件未装满装备。
         private Comp_GalactogenStorageArmor GetArmorComp(Pawn pawn)
         {
-            if (pawn?.apparel == null)
-            {
-                return null;
-            }
-
-            foreach (Apparel ap in pawn.apparel.WornApparel)
-            {
-                Comp_GalactogenStorageArmor comp = ap.GetComp<Comp_GalactogenStorageArmor>();
-                if (comp != null)
-                {
-                    return comp;
-                }
-            }
-
-            return null;
+            return GalactogenStorageUtility.FindNextRefuelableApparelStorage(pawn);
         }
     }
 }

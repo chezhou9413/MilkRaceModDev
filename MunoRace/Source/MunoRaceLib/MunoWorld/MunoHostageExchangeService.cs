@@ -2,23 +2,20 @@ using MunoRaceLib.MunoDefRef;
 using RimWorld;
 using RimWorld.Planet;
 using System.Collections.Generic;
-using UnityEngine;
 using Verse;
 
 namespace MunoRaceLib.MunoWorld
 {
-    //负责处理缪诺据点的人质交换筛选、校验、移交与新成员加入远行队的事务逻辑。
-
+    //负责处理缪诺人口交换的候选筛选、批量校验和远行队事务。
     public static class MunoHostageExchangeService
     {
-        //返回当前据点是否为可执行交换的缪诺据点。
-
+        //判断指定据点是否属于缪诺派系。
         public static bool IsMunoSettlement(Settlement settlement)
         {
             return settlement?.Faction?.def == MunoDefDataRef.MunoColony_Faction;
         }
-        //判断当前远行队是否正停驻在目标缪诺据点。
 
+        //判断远行队是否正停驻在可执行交换的缪诺据点。
         public static bool CanExchangeAt(Settlement settlement, Caravan caravan)
         {
             if (settlement == null || caravan == null || !caravan.IsPlayerControlled)
@@ -26,15 +23,10 @@ namespace MunoRaceLib.MunoWorld
                 return false;
             }
 
-            if (!IsMunoSettlement(settlement))
-            {
-                return false;
-            }
-
-            return CaravanVisitUtility.SettlementVisitedNow(caravan) == settlement;
+            return IsMunoSettlement(settlement) && CaravanVisitUtility.SettlementVisitedNow(caravan) == settlement;
         }
-        //收集当前远行队内所有允许上交给缪诺据点的目标 Pawn。
 
+        //收集远行队内所有符合缪诺交换条件的人形成人。
         public static List<Pawn> GetExchangeCandidates(Caravan caravan)
         {
             List<Pawn> result = new List<Pawn>();
@@ -46,17 +38,16 @@ namespace MunoRaceLib.MunoWorld
             List<Pawn> pawns = caravan.PawnsListForReading;
             for (int i = 0; i < pawns.Count; i++)
             {
-                Pawn pawn = pawns[i];
-                if (IsEligibleCandidate(pawn))
+                if (IsEligibleCandidate(pawns[i]))
                 {
-                    result.Add(pawn);
+                    result.Add(pawns[i]);
                 }
             }
 
             return result;
         }
-        //收集当前地图内所有允许上交给缪诺接收穿梭机的目标 Pawn。
 
+        //收集地图内所有符合缪诺接收条件的人形成人。
         public static List<Pawn> GetExchangeCandidates(Map map)
         {
             List<Pawn> result = new List<Pawn>();
@@ -68,17 +59,16 @@ namespace MunoRaceLib.MunoWorld
             IReadOnlyList<Pawn> pawns = map.mapPawns.AllPawnsSpawned;
             for (int i = 0; i < pawns.Count; i++)
             {
-                Pawn pawn = pawns[i];
-                if (IsEligibleCandidateOnMap(pawn, map))
+                if (IsEligibleCandidateOnMap(pawns[i], map))
                 {
-                    result.Add(pawn);
+                    result.Add(pawns[i]);
                 }
             }
 
             return result;
         }
-        //判断指定 Pawn 是否符合当前交换候选条件。
 
+        //判断 Pawn 是否符合交换的基础生物和身份条件。
         public static bool IsEligibleCandidate(Pawn pawn)
         {
             if (pawn == null || pawn.Dead || pawn.Destroyed)
@@ -93,19 +83,14 @@ namespace MunoRaceLib.MunoWorld
 
             return IsEligibleColonist(pawn) || pawn.IsPrisonerOfColony || pawn.IsSlaveOfColony;
         }
-        //判断指定 Pawn 是否符合当前地图内缪诺接收流程的候选条件。
 
+        //判断 Pawn 是否仍位于指定地图并符合交换条件。
         public static bool IsEligibleCandidateOnMap(Pawn pawn, Map map)
         {
-            if (!IsEligibleCandidate(pawn))
-            {
-                return false;
-            }
-
-            return pawn.Map == map;
+            return IsEligibleCandidate(pawn) && pawn.Map == map;
         }
-        //返回候选 Pawn 在列表中显示的身份文本。
 
+        //返回候选 Pawn 的身份文本。
         public static string GetPawnRoleLabel(Pawn pawn)
         {
             if (pawn == null)
@@ -130,8 +115,8 @@ namespace MunoRaceLib.MunoWorld
 
             return "其他";
         }
-        //返回候选 Pawn 的当前状态文本。
 
+        //返回候选 Pawn 的当前健康或精神状态文本。
         public static string GetPawnStatusLabel(Pawn pawn)
         {
             if (pawn == null)
@@ -156,80 +141,76 @@ namespace MunoRaceLib.MunoWorld
 
             return "稳定";
         }
-        //执行一次单人交换事务；成功时移交旧成员并让新的缪诺成员直接加入当前远行队。
 
-        public static bool TryExchangePawn(Settlement settlement, Caravan caravan, Pawn offeredPawn, out string failReason, out Pawn joinedPawn)
+        //批量完成据点交换，并按每名目标的奖励选择发放奖励。
+        public static bool TryExchangePawns(Settlement settlement, Caravan caravan, List<MunoExchangeTargetRecord> targets, List<Thing> itemRewards, out string failReason, out List<Pawn> joinedPawns)
         {
             failReason = null;
-            joinedPawn = null;
-
+            joinedPawns = new List<Pawn>();
             if (!CanExchangeAt(settlement, caravan))
             {
                 failReason = "当前远行队未停驻在可交换的缪诺据点。";
                 return false;
             }
 
-            if (!IsEligibleCandidate(offeredPawn) || !caravan.ContainsPawn(offeredPawn))
+            if (!TryValidateTargetRecords(targets, null, caravan, out failReason))
             {
-                failReason = "所选目标已不再符合交换条件。";
                 return false;
             }
 
-            if (settlement.Faction == null)
+            if (MunoDefDataRef.MunoColony_Faction == null)
             {
                 failReason = "缪诺据点派系数据无效。";
                 return false;
             }
 
-            if (MunoDefDataRef.MunoRace_Colonist == null)
+            if (itemRewards == null)
             {
-                failReason = "缪诺殖民者模板缺失，无法完成交换。";
-                return false;
-            }
-
-            Pawn generatedPawn = null;
-            try
-            {
-                if (!TryGenerateRewardPawn(out generatedPawn, out failReason))
+                if (!MunoExchangeRewardService.TryGenerateRandomItemReward(targets, out itemRewards, out _, out failReason))
                 {
                     return false;
                 }
-
-                if (!TryAddRewardPawnToCaravan(caravan, generatedPawn, out failReason))
-                {
-                    return false;
-                }
-
-                TransferPawnToMunoFaction(caravan, settlement.Faction, offeredPawn);
-                joinedPawn = generatedPawn;
-                return true;
             }
-            catch (System.Exception ex)
+
+            int munoRewardCount = CountRewardType(targets, MunoExchangeRewardType.MunoPawn);
+            if (!MunoExchangeRewardService.TryGenerateMunoPawns(munoRewardCount, out List<Pawn> generatedPawns, out failReason))
             {
-                if (generatedPawn != null && caravan != null && caravan.ContainsPawn(generatedPawn))
-                {
-                    caravan.RemovePawn(generatedPawn);
-                    caravan.Notify_PawnRemoved(generatedPawn);
-                }
-
-                if (generatedPawn != null && generatedPawn.ParentHolder == null && !generatedPawn.Destroyed)
-                {
-                    generatedPawn.Destroy();
-                }
-
-                Log.Error("缪诺据点交换成员时发生异常: " + ex);
-                failReason = "交换过程中发生异常，未执行本次交换。";
+                MunoExchangeRewardService.DestroyItems(itemRewards);
                 return false;
             }
+
+            List<Pawn> offeredPawns = new List<Pawn>();
+            for (int i = 0; i < targets.Count; i++)
+            {
+                offeredPawns.Add(targets[i].pawn);
+            }
+
+            if (!MunoExchangeRewardService.TryDeliverRewardsToCaravan(caravan, generatedPawns, itemRewards, out failReason, offeredPawns))
+            {
+                MunoExchangeRewardService.DestroyPawns(generatedPawns);
+                MunoExchangeRewardService.DestroyItems(itemRewards);
+                return false;
+            }
+
+            Faction munoFaction = settlement.Faction;
+            for (int i = 0; i < targets.Count; i++)
+            {
+                TransferPawnToMunoFaction(caravan, munoFaction, targets[i].pawn);
+            }
+
+            joinedPawns.AddRange(generatedPawns);
+            return true;
         }
-        //判断指定 Pawn 是否属于玩家可控制殖民者，且兼容远行队中的未生成成员。
 
+        //判断 Pawn 是否属于玩家可控制的殖民者，并排除自由缪诺殖民者。
         private static bool IsEligibleColonist(Pawn pawn)
         {
-            return !IsMunoPawn(pawn) && (pawn.IsColonistPlayerControlled || (pawn.IsColonist && pawn.IsCaravanMember()));
+            return !IsMunoPawn(pawn)
+                && !pawn.IsQuestLodger()
+                && (pawn.IsColonistPlayerControlled || (pawn.IsColonist && pawn.IsCaravanMember()));
         }
-        //判断指定 Pawn 是否属于缪诺种族，用于避免把缪诺殖民者再次拿去交换缪诺。
 
+        //判断 Pawn 是否属于缪诺种族，避免自由缪诺成员被再次交换。
         private static bool IsMunoPawn(Pawn pawn)
         {
             if (pawn == null || MunoDefDataRef.MunoRace_Colonist?.race == null)
@@ -239,100 +220,71 @@ namespace MunoRaceLib.MunoWorld
 
             return pawn.def == MunoDefDataRef.MunoRace_Colonist.race;
         }
-        //生成一个可作为交换奖励发放的缪诺殖民者。
 
-        public static bool TryGenerateRewardPawn(out Pawn pawn, out string failReason)
+        //验证批量目标的唯一性、地图或远行队归属及当前交换资格。
+        private static bool TryValidateTargetRecords(List<MunoExchangeTargetRecord> targets, Map map, Caravan caravan, out string failReason)
         {
             failReason = null;
-            pawn = null;
-            if (MunoDefDataRef.MunoRace_Colonist == null)
+            if (targets == null || targets.Count == 0)
             {
-                failReason = "缪诺殖民者模板缺失，无法生成奖励成员。";
+                failReason = "至少选择一名交换目标。";
                 return false;
             }
 
-            pawn = GenerateMunoColonist();
-            if (pawn == null)
+            HashSet<Pawn> seen = new HashSet<Pawn>();
+            for (int i = 0; i < targets.Count; i++)
             {
-                failReason = "未能生成新的缪诺成员。";
-                return false;
+                MunoExchangeTargetRecord target = targets[i];
+                if (target?.pawn == null || !seen.Add(target.pawn))
+                {
+                    failReason = "交换目标列表包含无效或重复人员。";
+                    return false;
+                }
+
+                if (target.rewardType != MunoExchangeRewardType.MunoPawn && target.rewardType != MunoExchangeRewardType.RandomItems)
+                {
+                    failReason = "交换奖励类型无效。";
+                    return false;
+                }
+
+                if (!IsEligibleCandidate(target.pawn))
+                {
+                    failReason = "所选目标已不再符合缪诺交换条件。";
+                    return false;
+                }
+
+                if (map != null && !IsEligibleCandidateOnMap(target.pawn, map))
+                {
+                    failReason = "所选目标已离开当前地图。";
+                    return false;
+                }
+
+                if (caravan != null && !caravan.ContainsPawn(target.pawn))
+                {
+                    failReason = "所选目标已离开当前远行队。";
+                    return false;
+                }
             }
 
             return true;
         }
-        //将奖励缪诺成员安全加入远行队，并校验其最终状态是否正确。
 
-        public static bool TryAddRewardPawnToCaravan(Caravan caravan, Pawn pawn, out string failReason)
+        //统计指定奖励类型的目标数量。
+        private static int CountRewardType(List<MunoExchangeTargetRecord> targets, MunoExchangeRewardType rewardType)
         {
-            failReason = null;
-            if (caravan == null || pawn == null)
+            int count = 0;
+            for (int i = 0; i < targets.Count; i++)
             {
-                failReason = "远行队或奖励成员无效，无法完成加入。";
-                return false;
+                if (targets[i].rewardType == rewardType)
+                {
+                    count++;
+                }
             }
 
-            AddGeneratedPawnToCaravan(caravan, pawn);
-            if (!IsJoinedPawnValid(pawn))
-            {
-                failReason = "新缪诺成员加入远行队后未能恢复为玩家殖民者状态。";
-                return false;
-            }
-
-            return true;
+            return count;
         }
-        //将奖励缪诺成员安全放入当前地图，并尝试在目标附近为其寻找可站立位置。
 
-        public static bool TryAddRewardPawnToMap(Map map, Pawn pawn, out string failReason)
-        {
-            failReason = null;
-            if (map == null || pawn == null)
-            {
-                failReason = "地图或奖励成员无效，无法完成加入。";
-                return false;
-            }
-
-            NormalizeJoinedPawnState(pawn);
-            IntVec3 dropCell;
-            if (!DropCellFinder.TryFindDropSpotNear(map.Center, map, out dropCell, allowFogged: false, canRoofPunch: false))
-            {
-                failReason = "未能为缪诺奖励成员找到合适的落点。";
-                return false;
-            }
-
-            List<Thing> things = new List<Thing> { pawn };
-            DropPodUtility.DropThingsNear(dropCell, map, things, 110, canInstaDropDuringInit: false, leaveSlag: false, canRoofPunch: false, forbid: false, allowFogged: false, Faction.OfPlayer);
-
-            NormalizeJoinedPawnState(pawn);
-            if (pawn.Faction != Faction.OfPlayer)
-            {
-                failReason = "新缪诺成员未能正确绑定到玩家阵营的空投仓。";
-                return false;
-            }
-
-            return true;
-        }
-        //生成一个可直接加入玩家阵营的缪诺殖民者。
-
-        private static Pawn GenerateMunoColonist()
-        {
-            PawnGenerationRequest request = new PawnGenerationRequest(
-                MunoDefDataRef.MunoRace_Colonist,
-                Faction.OfPlayer,
-                PawnGenerationContext.PlayerStarter,
-                -1,
-                forceGenerateNewPawn: true,
-                allowDead: false,
-                allowDowned: false,
-                canGeneratePawnRelations: false,
-                mustBeCapableOfViolence: false,
-                colonistRelationChanceFactor: 0f);
-
-            Pawn pawn = PawnGenerator.GeneratePawn(request);
-            NormalizeJoinedPawnState(pawn);
-            return pawn;
-        }
-        //将被上交的 Pawn 从远行队移除，并改归缪诺派系保留为世界 Pawn。
-
+        //将上交 Pawn 移出远行队并交给缪诺派系保留为世界 Pawn。
         private static void TransferPawnToMunoFaction(Caravan caravan, Faction munoFaction, Pawn pawn)
         {
             caravan.RemovePawn(pawn);
@@ -344,43 +296,6 @@ namespace MunoRaceLib.MunoWorld
             {
                 Find.WorldPawns.PassToWorld(pawn, PawnDiscardDecideMode.KeepForever);
             }
-        }
-        //将新生成的缪诺成员安全加入当前远行队，并刷新远行队缓存。
-
-        private static void AddGeneratedPawnToCaravan(Caravan caravan, Pawn pawn)
-        {
-            NormalizeJoinedPawnState(pawn);
-            caravan.AddPawn(pawn, addCarriedPawnToWorldPawnsIfAny: true);
-            caravan.Notify_PawnAdded(pawn);
-            if (!pawn.IsWorldPawn())
-            {
-                // 先加入远行队再转为世界 Pawn，避免原版把自由状态的玩家人形 Pawn 改派到随机外部派系。
-                Find.WorldPawns.PassToWorld(pawn, PawnDiscardDecideMode.KeepForever);
-            }
-
-            NormalizeJoinedPawnState(pawn);
-        }
-        //将交换得到的 Pawn 统一整理成玩家可控制殖民者状态，避免加入远行队时被自动当成囚犯。
-
-        private static void NormalizeJoinedPawnState(Pawn pawn)
-        {
-            if (pawn == null)
-            {
-                return;
-            }
-
-            RecruitUtility.Recruit(pawn, Faction.OfPlayer);
-            pawn.guest?.SetGuestStatus(null);
-        }
-        //校验新加入远行队的 Pawn 是否已经恢复为玩家殖民者，而不是囚犯或奴隶。
-
-        private static bool IsJoinedPawnValid(Pawn pawn)
-        {
-            return pawn != null
-                && pawn.Faction == Faction.OfPlayer
-                && pawn.HostFaction == null
-                && !pawn.IsPrisonerOfColony
-                && !pawn.IsSlaveOfColony;
         }
     }
 }
