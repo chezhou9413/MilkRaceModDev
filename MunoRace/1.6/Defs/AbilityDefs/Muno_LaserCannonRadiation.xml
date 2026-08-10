@@ -6,7 +6,7 @@
     <description>消耗 1 份乳源质浓浆，向前方 22 度锥形区域放射高能热辐射。墙体会阻挡后方区域，并可能误伤友军与中立目标。</description>
     <abilityClass>MunoRaceLib.MunoComp.Ability_MunoLaserCannonRadiation</abilityClass>
     <gizmoClass>MunoRaceLib.MunoComp.Command_AbilityMunoLaserCannonRadiation</gizmoClass>
-    <iconPath>Weapons/Gun_MunoLC</iconPath>
+    <iconPath>Weapons/Gun_LC</iconPath>
     <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
     <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
     <targetRequired>true</targetRequired>

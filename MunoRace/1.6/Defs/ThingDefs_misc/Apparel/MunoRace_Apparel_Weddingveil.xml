@@ -13,14 +13,11 @@
 	<graphicClass>Graphic_Single</graphicClass>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
-	<costStuffCount>80</costStuffCount> <!--制作材料 任意布料和皮革-->    
+	<costStuffCount>35</costStuffCount> <!--制作材料 任意布料和皮革-->    
     <stuffCategories>
       <li>Fabric</li>
       <li>Leathery</li>
     </stuffCategories>
-	<costList> <!--固定制作材料-->
-	  <Gold>2</Gold>
-   	</costList>
 	<statBases>  <!--工作量 防护 保温等-->   
 	 <MaxHitPoints>110</MaxHitPoints>
 	 <WorkToMake>20000</WorkToMake> <!--工作量-->   

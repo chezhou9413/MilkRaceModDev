@@ -23,9 +23,6 @@
       <li>Fabric</li>
       <li>Leathery</li>
     </stuffCategories>
-	<costList> <!--固定制作材料-->
-	  <Gold>2</Gold>
-   	</costList>
 	<statBases>  <!--工作量 防护 保温等-->   
 	 <MaxHitPoints>100</MaxHitPoints>
 	 <WorkToMake>10000</WorkToMake> <!--工作量-->   

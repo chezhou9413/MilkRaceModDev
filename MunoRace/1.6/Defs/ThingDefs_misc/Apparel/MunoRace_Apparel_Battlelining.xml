@@ -18,10 +18,12 @@
 	<graphicClass>Graphic_Single</graphicClass>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
+	<stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
 	<costList> <!--固定制作材料-->
-      <ComponentSpacer>4</ComponentSpacer>
-      <Plasteel>100</Plasteel>
-      <Uranium>20</Uranium>
+      <ComponentIndustrial>1</ComponentIndustrial>
    	</costList>
 	<statBases>  <!--工作量 防护 保温等-->   
 	<MaxHitPoints>150</MaxHitPoints>

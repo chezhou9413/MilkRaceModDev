@@ -19,9 +19,6 @@
       <li>Fabric</li>
       <li>Leathery</li>
     </stuffCategories>
-    <costList>
-      <Gold>2</Gold>
-    </costList>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <WorkToMake>10000</WorkToMake>

@@ -21,7 +21,6 @@
 		<costList>			<!--固定制作材料-->
 			<ComponentSpacer>1</ComponentSpacer>
 			<Plasteel>100</Plasteel>
-			<Uranium>20</Uranium>
 		</costList>
 		<statBases>			<!--工作量 防护 保温等-->
 			<MaxHitPoints>150</MaxHitPoints>

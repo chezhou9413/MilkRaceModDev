@@ -28,7 +28,7 @@
 			<WorkToMake>60000</WorkToMake>
 			<Mass>6</Mass>
 			<ArmorRating_Blunt>0.45</ArmorRating_Blunt>			<!--写死钝击防护-->
-			<ArmorRating_Sharp>1.06</ArmorRating_Sharp>			<!--写死利器防护-->
+			<ArmorRating_Sharp>1.20</ArmorRating_Sharp>			<!--写死利器防护-->
 			<ArmorRating_Heat>2.00</ArmorRating_Heat>			<!--写死热能防护-->
 			<Insulation_Heat>10</Insulation_Heat>			<!--写死抗热防护-->
 			<Insulation_Cold>68</Insulation_Cold>			<!--写死抗寒防护-->
