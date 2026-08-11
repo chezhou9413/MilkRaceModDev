@@ -72,6 +72,11 @@
         <slotLabel>乳源质储存罐</slotLabel>
         <isSharedReserve>true</isSharedReserve>
       </li>
+      <li Class="ChezhouLib.comp.ApparelAddBodyAddonCompProperties">            
+        <targetRaces>
+          <li>MunoRace</li>          
+        </targetRaces>                
+      </li>   
     </comps>
   </ThingDef>
 </Defs>
