@@ -383,7 +383,7 @@
             <hasGenders>True</hasGenders>
             <body>MunoGirlBody</body>
             <baseHungerRate>0.75</baseHungerRate>
-            <baseBodySize>1</baseBodySize>
+            <baseBodySize>1.4</baseBodySize>
             <baseHealthScale>1.1</baseHealthScale>
             <foodType>OmnivoreHuman</foodType>
             <gestationPeriodDays>30</gestationPeriodDays>

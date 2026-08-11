@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
 
@@ -33,7 +33,7 @@
 			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
 		</costList>		
 		<recipeMaker>
-			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<researchPrerequisite>Muno_Advancedfirearms</researchPrerequisite>
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
@@ -122,7 +122,7 @@
         <ComponentIndustrial>8</ComponentIndustrial>
     </costList>
     <recipeMaker>
-        <researchPrerequisite>Gunsmithing</researchPrerequisite>
+        <researchPrerequisite>Muno_Basicfirearms</researchPrerequisite>
         <skillRequirements>
             <Crafting>3</Crafting>
         </skillRequirements>
@@ -211,7 +211,7 @@
         <Plasteel>5</Plasteel>
     </costList>
     <recipeMaker>
-        <researchPrerequisite>Gunsmithing</researchPrerequisite>
+        <researchPrerequisite>Muno_Basicfirearms</researchPrerequisite>
         <skillRequirements>
             <Crafting>5</Crafting>
         </skillRequirements>
@@ -274,7 +274,7 @@
     </projectile>
 	</ThingDef>
 
-	!-- 精准射手步枪 -->
+	<!-- 精准射手步枪 -->
 	<ThingDef ParentName="BaseHumanMakeableGun">
     <defName>Gun_SR</defName>
     <label>缪诺精准射手步枪</label>
@@ -300,7 +300,7 @@
         <Plasteel>12</Plasteel>
     </costList>
     <recipeMaker>
-        <researchPrerequisite>Gunsmithing</researchPrerequisite>
+        <researchPrerequisite>Muno_Advancedfirearms</researchPrerequisite>
         <skillRequirements>
             <Crafting>6</Crafting>
         </skillRequirements>
@@ -394,7 +394,7 @@
 			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
 		</costList>		
 		<recipeMaker>
-			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<researchPrerequisite>Muno_Militaryfirearms</researchPrerequisite>
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
@@ -489,7 +489,7 @@
 			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
 		</costList>		
 		<recipeMaker>
-			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<researchPrerequisite>Muno_Militaryfirearms</researchPrerequisite>
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
@@ -632,7 +632,7 @@
 			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
 		</costList>		
 		<recipeMaker>
-			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<researchPrerequisite>Muno_Basicfirearms</researchPrerequisite>
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
@@ -727,7 +727,7 @@
 			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
 		</costList>		
 		<recipeMaker>
-			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<researchPrerequisite>Muno_Basicfirearms</researchPrerequisite>
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
@@ -822,7 +822,7 @@
 			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
 		</costList>		
 		<recipeMaker>
-			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<researchPrerequisite>Muno_Basicfirearms</researchPrerequisite>
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
@@ -917,7 +917,7 @@
 			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
 		</costList>		
 		<recipeMaker>
-			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<researchPrerequisite>Muno_Militaryfirearms</researchPrerequisite>
 			<skillRequirements>
 			<Crafting>7</Crafting>
 			</skillRequirements>
@@ -1016,7 +1016,7 @@
 			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
 		</costList>		
 		<recipeMaker>
-			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<researchPrerequisite>Muno_Heavyfirepower</researchPrerequisite>
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
@@ -1108,7 +1108,7 @@
         <Uranium>20</Uranium>
     </costList>
     <recipeMaker>
-        <researchPrerequisite>GasOperation</researchPrerequisite>
+        <researchPrerequisite>Muno_Heavyfirepower</researchPrerequisite>
         <skillRequirements>
             <Crafting>8</Crafting>
         </skillRequirements>
@@ -1202,7 +1202,7 @@
 			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
 		</costList>		
 		<recipeMaker>
-			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<researchPrerequisite>Muno_Heavyfirepower</researchPrerequisite>
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
@@ -1327,7 +1327,7 @@
 			<!--Silver>4</Silver-->		<!--银，实际消耗x10-->
 		</costList>		
 		<recipeMaker>
-			<researchPrerequisite>GasOperation</researchPrerequisite>
+			<researchPrerequisite>Muno_Militaryfirearms</researchPrerequisite>
 			<skillRequirements>
 			<Crafting>7</Crafting>
 			</skillRequirements>
@@ -1427,7 +1427,10 @@
       <ComponentSpacer>4</ComponentSpacer>
     </costList>
     <recipeMaker>
-      <researchPrerequisite>BeamWeapons</researchPrerequisite>
+      <researchPrerequisite>Muno_Militaryfirearms</researchPrerequisite>
+      <researchPrerequisites>
+        <li>Muno_Laserweapon</li>
+      </researchPrerequisites>
       <skillRequirements>
         <Crafting>8</Crafting>
       </skillRequirements>
@@ -1584,7 +1587,10 @@
       <ComponentSpacer>6</ComponentSpacer>
     </costList>
     <recipeMaker>
-      <researchPrerequisite>BeamWeapons</researchPrerequisite>
+      <researchPrerequisite>Muno_Militaryfirearms</researchPrerequisite>
+      <researchPrerequisites>
+        <li>Muno_Laserweapon</li>
+      </researchPrerequisites>
       <skillRequirements>
         <Crafting>8</Crafting>
       </skillRequirements>
@@ -1741,7 +1747,10 @@
       <ComponentSpacer>4</ComponentSpacer>
     </costList>
     <recipeMaker>
-      <researchPrerequisite>BeamWeapons</researchPrerequisite>
+      <researchPrerequisite>Muno_Advancedfirearms</researchPrerequisite>
+      <researchPrerequisites>
+        <li>Muno_Laserweapon</li>
+      </researchPrerequisites>
       <skillRequirements>
         <Crafting>8</Crafting>
       </skillRequirements>
@@ -1842,7 +1851,10 @@
       <ComponentSpacer>4</ComponentSpacer>
     </costList>
     <recipeMaker>
-      <researchPrerequisite>BeamWeapons</researchPrerequisite>
+      <researchPrerequisite>Muno_Heavyfirepower</researchPrerequisite>
+      <researchPrerequisites>
+        <li>Muno_Laserweapon</li>
+      </researchPrerequisites>
       <skillRequirements>
         <Crafting>8</Crafting>
       </skillRequirements>
