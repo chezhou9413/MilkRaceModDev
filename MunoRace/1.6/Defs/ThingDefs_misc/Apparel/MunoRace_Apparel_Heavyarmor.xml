@@ -10,7 +10,7 @@
 		<possessionCount>1</possessionCount>
 		<tickerType>Normal</tickerType>
 		<recipeMaker>
-			<researchPrerequisite>ComplexClothing</researchPrerequisite>			<!--研发项目-->
+			<researchPrerequisite>Muno_TacticalArmor</researchPrerequisite>			<!--研发项目-->
 			<displayPriority>215</displayPriority>			<!--显示等级-->
 		</recipeMaker>
 		<graphicData>

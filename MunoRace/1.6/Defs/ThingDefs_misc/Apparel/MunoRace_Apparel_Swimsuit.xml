@@ -10,7 +10,7 @@
     <description>使用丝带与皮带组成的泳衣，在缪诺中很受欢迎，被认为很好的展现了穿着者的身体美感.</description>
 	<possessionCount>1</possessionCount>
     <recipeMaker>
-      <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
+      <researchPrerequisite>Muno_ApparelBasic</researchPrerequisite>  <!--研发项目-->
       <displayPriority>215</displayPriority>   <!--显示等级-->
     </recipeMaker>
     <graphicData>

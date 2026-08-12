@@ -17,7 +17,7 @@
     <ResearchProjectDef ParentName="Muno_BaseTech">
     <defName>Muno_Basicfirearms</defName>
     <label>缪诺初级枪械</label>
-    <description>制造在缪诺民间广泛使用的初级枪械，结构简单可靠，适合射击运动、狩猎与个人防卫</description>
+    <description>在缪诺民间广泛使用的初级枪械，结构简单可靠，适合射击运动、狩猎与个人防卫</description>
     <baseCost>500</baseCost>
     <requiredResearchBuilding Inherit="False"/>
     <techLevel>Industrial</techLevel>
@@ -63,7 +63,7 @@
       <ResearchProjectDef ParentName="Muno_BaseTech">
     <defName>Muno_Laserweapon</defName>
     <label>缪诺激光武器</label>
-    <description>制造使用多种波段的定向能量武器。激光武器精度极高且无弹道延迟，但结构精密、维护成本高昂</description>
+    <description>使用多种波段的定向能量武器。激光武器精度极高且无弹道延迟，但结构精密、维护成本高昂</description>
     <baseCost>500</baseCost>
     <requiredResearchBuilding Inherit="False"/>
     <techLevel>Industrial</techLevel>
@@ -71,7 +71,7 @@
       <li>Muno_Basicfirearms</li>
     </prerequisites>
     <researchViewX>1.00</researchViewX>
-    <researchViewY>3.20</researchViewY>
+    <researchViewY>3.50</researchViewY>
     <generalRules>
       <rulesStrings>
        <li>subject->缪诺激光武器</li>
@@ -107,7 +107,7 @@
     <ResearchProjectDef ParentName="Muno_BaseTech">
     <defName>Muno_Heavyfirepower</defName>
     <label>缪诺重火力武器</label>
-    <description>一些在缪诺军队组织中使用的重火力武器</description>
+    <description>缪诺军队组织中使用的重火力武器</description>
     <baseCost>500</baseCost>
     <requiredResearchBuilding Inherit="False"/>
     <techLevel>Industrial</techLevel>
@@ -124,4 +124,143 @@
       </rulesStrings>
     </generalRules>
   </ResearchProjectDef>
+
+  <!-- ==================== 服装研究项目 ==================== -->
+
+  <!-- 缪诺服装基础 -->
+  <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_ApparelBasic</defName>
+    <label>缪诺服装基础</label>
+    <description>学习缪诺族日常服装的制作工艺，包括各类生活服饰、礼服与工作服等</description>
+    <baseCost>400</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>4.50</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->缪诺日常服装制作工艺</li>
+        <li>subject->从日常穿着到礼服的各种缪诺服装</li>
+        <li>subject_story->缪诺们对穿着打扮颇为讲究，即使是在边缘世界也不例外</li>
+        <li>subject_gerund->制作缪诺日常服装</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+  <!-- 缪诺女仆战术护甲 -->
+  <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_MaidTacticalArmor</defName>
+    <label>缪诺女仆战术护甲</label>
+    <description>将女仆装的优雅美观与战术护甲的防护性能相结合，打造独特的女仆战斗装备</description>
+    <baseCost>300</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Muno_ApparelBasic</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>4.50</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->缪诺女仆战术护甲</li>
+        <li>subject->结合了美观与防护的女仆风格战斗装备</li>
+        <li>subject_story->缪诺们证明了即使穿着女仆装也能高效作战，女仆战术护甲是缪诺工程师们的浪漫结晶</li>
+        <li>subject_gerund->研发女仆战术护甲</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+  <!-- 缪诺战术护甲技术 -->
+  <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_TacticalArmor</defName>
+    <label>缪诺战术护甲技术</label>
+    <description>解锁缪诺族使用的战术护甲，结合了缪诺乳应用科技，提供具有更高战术价值的装备</description>
+    <baseCost>800</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Muno_MilkCollectEquipment</li>
+      <li>Muno_MilkApplication</li>
+    </prerequisites>
+    <researchViewX>3.00</researchViewX>
+    <researchViewY>6.50</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->缪诺战术护甲技术</li>
+        <li>subject->为缪诺战士提供可靠防护的战术装备</li>
+        <li>subject_story->在多次冲突中总结经验后，缪诺工程师们开发出了这套结合了缪诺乳应用科技，提供具有更高战术价值的装备</li>
+        <li>subject_gerund->研发缪诺战术护甲</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+  <!-- 缪诺乳收集装备 -->
+  <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_MilkCollectEquipment</defName>
+    <label>缪诺乳收集装备</label>
+    <description>解锁制造缪诺专用的产乳与收集装备，充分利用缪诺的生理特性</description>
+    <baseCost>1000</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Muno_ApparelBasic</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>5.50</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->缪诺乳收集装备</li>
+        <li>subject->基于缪诺族生理特性开发的产乳与收集装备</li>
+        <li>subject_story->缪诺族的产乳能力是其重要的生物特征，专用的装备能够大幅提升产乳效率</li>
+        <li>subject_gerund->研究产乳与收集装备</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+  <!-- 缪诺乳应用 -->
+  <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_MilkApplication</defName>
+    <label>缪诺乳应用</label>
+    <description>研究缪诺乳汁在各领域的应用</description>
+    <baseCost>2000</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Muno_MilkCollectEquipment</li>
+    </prerequisites>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>6.50</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->缪诺乳应用</li>
+        <li>subject->缪诺乳汁在各领域的应用研究</li>
+        <li>subject_story->缪诺乳汁富含多种营养与活性成分，应用前景广阔</li>
+        <li>subject_gerund->研究缪诺乳应用</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+  <!-- 缪诺触手生物护甲 -->
+  <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_TentacleBiotech</defName>
+    <label>缪诺触手生物护甲</label>
+    <description>融合触手生物特性与先进材料技术，制造具有自我修复与自适应能力的生物护甲</description>
+    <baseCost>1500</baseCost>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>Muno_MilkCollectEquipment</li>
+    </prerequisites>
+    <researchViewX>3.00</researchViewX>
+    <researchViewY>5.50</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->缪诺触手生物护甲</li>
+        <li>subject->融合生物工程与先进材料的尖端防护技术</li>
+        <li>subject_story->通过对触手生物组织的深入研究，缪诺科学家成功将生物再生特性融入护甲设计</li>
+        <li>subject_gerund->研发触手生物护甲</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
 </Defs>

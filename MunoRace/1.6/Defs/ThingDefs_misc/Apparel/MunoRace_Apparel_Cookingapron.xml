@@ -10,7 +10,7 @@
     <description>一种简朴的围裙，能让烹饪更加卫生，至少是视觉上.</description>
 	<possessionCount>1</possessionCount>
     <recipeMaker>
-      <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
+      <researchPrerequisite>Muno_ApparelBasic</researchPrerequisite>  <!--研发项目-->
       <displayPriority>215</displayPriority>   <!--显示等级-->
     </recipeMaker>
     <graphicData>

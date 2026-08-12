@@ -8,6 +8,10 @@
   	<defName>MunoRace_Apparel_MaidHeaddress</defName>
     <label>缪诺女仆头饰</label>
     <description>装饰性头饰，成套穿戴很漂亮</description>
+    <recipeMaker>
+      <researchPrerequisite>Muno_ApparelBasic</researchPrerequisite>
+      <displayPriority>215</displayPriority>
+    </recipeMaker>
     <graphicData>
    	<texPath>Apparel/HeadApparel/MaidHeaddress/MunoRace_Apparel_MaidHeaddress</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>

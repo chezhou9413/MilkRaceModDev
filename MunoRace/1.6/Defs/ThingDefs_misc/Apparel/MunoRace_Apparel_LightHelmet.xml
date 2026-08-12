@@ -8,6 +8,10 @@
   	<defName>MunoRace_Apparel_LightHelmet</defName>
     <label>缪诺轻型头盔</label>
     <description>一种轻型的通用动力甲头盔，提供了全包围防护，内置了HUD系统，能够为使用者提供辅助</description>
+    <recipeMaker>
+      <researchPrerequisite>Muno_TacticalArmor</researchPrerequisite>
+      <displayPriority>215</displayPriority>
+    </recipeMaker>
     <graphicData>
    	<texPath>Apparel/HeadApparel/LightHelmet/MunoRace_Apparel_LightHelmet</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>

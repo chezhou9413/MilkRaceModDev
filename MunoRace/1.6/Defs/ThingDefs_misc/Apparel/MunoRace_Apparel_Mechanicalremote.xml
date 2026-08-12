@@ -8,6 +8,10 @@
   	<defName>MunoRace_Apparel_Mechanicalremote</defName>
     <label>缪诺机械遥控仪</label>
     <description>用于机械师操作机械体的轻型装备，能够提供更多带宽和控制组，但几乎没有防护能力</description>
+    <recipeMaker>
+      <researchPrerequisite>Muno_ApparelBasic</researchPrerequisite>
+      <displayPriority>215</displayPriority>
+    </recipeMaker>
     <graphicData>
    	<texPath>Apparel/HeadApparel/Mechanicalremote/MunoRace_Apparel_Mechanicalremote</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>

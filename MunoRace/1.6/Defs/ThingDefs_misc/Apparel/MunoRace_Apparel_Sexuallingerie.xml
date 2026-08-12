@@ -10,7 +10,7 @@
     <description>经过精心设计的内衣，巧妙的将几种面料进行了搭配，被认为极高的提升了情侣之间的感情.</description>
 	<possessionCount>1</possessionCount>
     <recipeMaker>
-      <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
+      <researchPrerequisite>Muno_ApparelBasic</researchPrerequisite>  <!--研发项目-->
       <displayPriority>215</displayPriority>   <!--显示等级-->
     </recipeMaker>
     <graphicData>

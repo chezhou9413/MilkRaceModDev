@@ -10,7 +10,7 @@
     <description>一种内衬，通常搭配动力甲使用，可以节省缪诺们汲取缪诺乳、携带乳源质的麻烦，同时还能提供些许防护能力.</description>
 	<possessionCount>1</possessionCount>
     <recipeMaker>
-      <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
+      <researchPrerequisite>Muno_TacticalArmor</researchPrerequisite>  <!--研发项目-->
       <displayPriority>215</displayPriority>   <!--显示等级-->
     </recipeMaker>
     <graphicData>

@@ -10,7 +10,7 @@
     <description>一件单薄的旗袍，能够凸现穿着者的身材.</description>
 	<possessionCount>1</possessionCount>
     <recipeMaker>
-      <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
+      <researchPrerequisite>Muno_ApparelBasic</researchPrerequisite>  <!--研发项目-->
       <displayPriority>215</displayPriority>   <!--显示等级-->
     </recipeMaker>
     <graphicData>

@@ -10,7 +10,7 @@
 		<description>设计形似女仆装的轻型装甲套装，相比常规缪诺动力甲缺少了一些辅助功能，但胜在美观与实用，深受缪诺们欢迎.</description>
 		<possessionCount>1</possessionCount>
 		<recipeMaker>
-			<researchPrerequisite>ComplexClothing</researchPrerequisite>			<!--研发项目-->
+			<researchPrerequisite>Muno_MaidTacticalArmor</researchPrerequisite>			<!--研发项目-->
 			<displayPriority>215</displayPriority>			<!--显示等级-->
 		</recipeMaker>
 		<graphicData>

@@ -6,7 +6,7 @@
     <description>佩戴在腰间的乳源质浓浆储存罐，可保存 3 份浓浆。武器或装甲自身储槽用尽后，会自动从储存罐中继续供给。</description>
     <techLevel>Industrial</techLevel>
     <recipeMaker>
-      <researchPrerequisite>ComplexClothing</researchPrerequisite>
+      <researchPrerequisite>Muno_MilkCollectEquipment</researchPrerequisite>
       <displayPriority>217</displayPriority>
     </recipeMaker>
     <costList>

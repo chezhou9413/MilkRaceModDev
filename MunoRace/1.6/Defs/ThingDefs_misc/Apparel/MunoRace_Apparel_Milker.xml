@@ -6,7 +6,7 @@
     <description>在奶牛纹高叉的基础上加入自动汲取机构。可按设定阈值把乳源质转化为缪诺乳或乳源质浓浆，并直接送入储存设备或背包。</description>
     <possessionCount>1</possessionCount>
     <recipeMaker>
-      <researchPrerequisite>ComplexClothing</researchPrerequisite>
+      <researchPrerequisite>Muno_MilkCollectEquipment</researchPrerequisite>
       <displayPriority>216</displayPriority>
     </recipeMaker>
     <graphicData>

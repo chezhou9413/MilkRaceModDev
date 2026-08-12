@@ -10,7 +10,7 @@
     <description>缪诺中常见的旧式内衣，款式老旧，但总是大量供给给船队，让人不禁怀疑是不是某种利益交易.</description>
 	<possessionCount>1</possessionCount>
     <recipeMaker>
-      <researchPrerequisite>ComplexClothing</researchPrerequisite>  <!--研发项目-->
+      <researchPrerequisite>Muno_ApparelBasic</researchPrerequisite>  <!--研发项目-->
       <displayPriority>215</displayPriority>   <!--显示等级-->
     </recipeMaker>
     <graphicData>

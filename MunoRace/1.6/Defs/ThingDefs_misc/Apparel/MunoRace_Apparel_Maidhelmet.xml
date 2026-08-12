@@ -8,6 +8,10 @@
   	<defName>MunoRace_Apparel_Maidhelmet</defName>
     <label>缪诺女仆头盔</label>
     <description>带有女仆装饰的轻量化头盔，提供基础的防护与美观的造型</description>
+    <recipeMaker>
+      <researchPrerequisite>Muno_MaidTacticalArmor</researchPrerequisite>
+      <displayPriority>215</displayPriority>
+    </recipeMaker>
     <graphicData>
    	<texPath>Apparel/HeadApparel/Maidhelmet/MunoRace_Apparel_Maidhelmet</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>

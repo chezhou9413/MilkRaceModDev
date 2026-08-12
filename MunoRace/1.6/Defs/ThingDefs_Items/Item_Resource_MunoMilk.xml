@@ -5,7 +5,7 @@
 <ThingDef ParentName="OrganicProductBase">
     <defName>MunoRace_MunoMilk</defName>
     <label>缪诺乳</label>
-    <description>从缪诺族身上获得的可食用液体，同时还有多种用途，但从哪里获得尚不可知</description>
+    <description>从缪诺族身上获得的可食用液体，同时借助缪诺科技能给实现多种用途</description>
     <graphicData>
       <texPath>Item/Resource/MunoRace_MunoMilk</texPath>
 			<graphicClass>Graphic_StackCount</graphicClass>
@@ -17,7 +17,7 @@
       <MaxHitPoints>60</MaxHitPoints>
       <Flammability>0.2</Flammability>
       <Nutrition>0.1</Nutrition>
-      <FoodPoisonChanceFixedHuman>0.01</FoodPoisonChanceFixedHuman>
+      <FoodPoisonChanceFixedHuman>0</FoodPoisonChanceFixedHuman>
     </statBases>
     <comps>
       <li Class="CompProperties_Rottable">

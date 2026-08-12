@@ -8,6 +8,10 @@
   	<defName>MunoRace_Apparel_Weddingveil</defName>
     <label>缪诺婚礼头纱</label>
     <description>装饰性头饰，成套穿戴很漂亮</description>
+    <recipeMaker>
+      <researchPrerequisite>Muno_ApparelBasic</researchPrerequisite>
+      <displayPriority>215</displayPriority>
+    </recipeMaker>
     <graphicData>
    	<texPath>Apparel/HeadApparel/Weddingveil/MunoRace_Apparel_Weddingveil</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
