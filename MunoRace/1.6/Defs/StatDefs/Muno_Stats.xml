@@ -19,4 +19,24 @@
     <hideAtValue>0</hideAtValue>
   </StatDef>
 
+  <StatDef>
+    <defName>Muno_GalactogenCapacityFactor</defName>
+    <label>乳源质容量倍率</label>
+    <description>乳源质最终容量的倍率。</description>
+    <category>PawnMisc</category>
+    <defaultBaseValue>1</defaultBaseValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <hideAtValue>1</hideAtValue>
+  </StatDef>
+
+  <StatDef>
+    <defName>Muno_GalactogenRecoveryFactor</defName>
+    <label>乳源质产量倍率</label>
+    <description>乳源质每小时最终恢复数量的倍率。</description>
+    <category>PawnMisc</category>
+    <defaultBaseValue>1</defaultBaseValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <hideAtValue>1</hideAtValue>
+  </StatDef>
+
 </Defs>

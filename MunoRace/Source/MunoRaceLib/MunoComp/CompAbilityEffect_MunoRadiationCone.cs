@@ -56,7 +56,8 @@ namespace MunoRaceLib.MunoComp
         public override void DrawEffectPreview(LocalTargetInfo target)
         {
             base.DrawEffectPreview(target);
-            GenDraw.DrawFieldEdges(CalculateAffectedCells(target));
+            MunoRadiationConeGeometry previewGeometry;
+            GenDraw.DrawFieldEdges(CalculateAffectedCells(target, out previewGeometry));
         }
 
         //暖机完成后扣除一次浓浆，再对锥形内所有有效 Pawn 与建筑进行去重伤害。
@@ -80,7 +81,13 @@ namespace MunoRaceLib.MunoComp
             }
 
             affectedThings.Clear();
-            List<IntVec3> cells = CalculateAffectedCells(target);
+            MunoRadiationConeGeometry geometry;
+            List<IntVec3> cells = CalculateAffectedCells(target, out geometry);
+            if (geometry.IsValid)
+            {
+                Mote_MunoRadiationConeEffect.Spawn(pawn.Map, geometry);
+            }
+
             SpawnConfiguredEffects(cells, target, props);
             for (int i = 0; i < cells.Count; i++)
             {
@@ -126,31 +133,29 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
-        //根据 XML 射程与完整锥角筛选格子，并使用原版射线判定阻止伤害穿墙。
-        private List<IntVec3> CalculateAffectedCells(LocalTargetInfo target)
+        //根据共享锥形几何筛选格子，并使用原版射线判定阻止伤害穿墙。
+        private List<IntVec3> CalculateAffectedCells(
+            LocalTargetInfo target,
+            out MunoRadiationConeGeometry geometry)
         {
             affectedCells.Clear();
             Pawn pawn = parent.pawn;
             VerbProperties_MunoRadiationCone props = ConeProps;
-            if (pawn?.Map == null || props == null || !target.Cell.IsValid || target.Cell == pawn.Position)
+            if (!MunoRadiationConeGeometry.TryCreate(pawn, target, props, out geometry))
             {
                 return affectedCells;
             }
 
-            Vector3 origin = pawn.Position.ToVector3Shifted().Yto0();
-            Vector3 direction = (target.Cell.ToVector3Shifted().Yto0() - origin).normalized;
-            float halfAngle = Mathf.Clamp(props.coneAngleDegrees, 0.1f, 179f) * 0.5f;
-            int cellCount = GenRadial.NumCellsInRadius(props.range);
+            int cellCount = GenRadial.NumCellsInRadius(geometry.Range);
             for (int i = 0; i < cellCount; i++)
             {
                 IntVec3 cell = pawn.Position + GenRadial.RadialPattern[i];
-                if (!CanUseCell(cell, props.range))
+                if (!CanUseCell(cell, geometry.Range))
                 {
                     continue;
                 }
 
-                Vector3 cellDirection = (cell.ToVector3Shifted().Yto0() - origin).normalized;
-                if (Vector3.Angle(direction, cellDirection) <= halfAngle)
+                if (geometry.Contains(cell.ToVector3Shifted().Yto0()))
                 {
                     affectedCells.Add(cell);
                 }

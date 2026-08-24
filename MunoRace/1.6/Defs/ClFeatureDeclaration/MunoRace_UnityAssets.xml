@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ChezhouLib.LibDef.ClFeatureDeclarationDef>
+    <defName>MunoRace_Enable_UnityAssets</defName>
+    <feature>UnityAssets</feature>
+    <targetPackageIds>
+      <li>fireturtle.MunoGirlPack</li>
+    </targetPackageIds>
+  </ChezhouLib.LibDef.ClFeatureDeclarationDef>
+</Defs>

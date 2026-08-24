@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ChezhouLib.LibDef.UnityShaderLord>
+    <defName>MunoRace_UnityShaderLord</defName>
+    <label>缪诺 Unity Shader 资源</label>
+    <AbPath>/AssetBundles/munorace.ab</AbPath>
+    <AbPathWindows>/AssetBundles/munorace.ab</AbPathWindows>
+    <AbPathMac>/AssetBundles/munorace_mac.ab</AbPathMac>
+    <ShaderFolderName>/Shader/</ShaderFolderName>
+    <ImageFolderName>/EffImage/</ImageFolderName>
+  </ChezhouLib.LibDef.UnityShaderLord>
+
+  <ChezhouLib.LibDef.ClShaderMaterial>
+    <defName>MunoRace_TriangleRadiation_Material</defName>
+    <label>缪诺三角辐射材质</label>
+    <shaderName>MunoRace/Effects/TriangleRadiation</shaderName>
+    <resModID>fireturtle.MunoGirlPack</resModID>
+    <shaderParameters>
+      <li>
+        <parameterName>_Progress</parameterName>
+        <parameterValue>0.765</parameterValue>
+      </li>
+      <li>
+        <parameterName>_EdgeSoftness</parameterName>
+        <parameterValue>21.2</parameterValue>
+      </li>
+      <li>
+        <parameterName>_OutlineWidth</parameterName>
+        <parameterValue>0.5</parameterValue>
+      </li>
+      <li>
+        <parameterName>_OutlineSoftness</parameterName>
+        <parameterValue>20</parameterValue>
+      </li>
+      <li>
+        <parameterName>_OutlineStrength</parameterName>
+        <parameterValue>0.218</parameterValue>
+      </li>
+      <li>
+        <parameterName>_CoreBlend</parameterName>
+        <parameterValue>0.127</parameterValue>
+      </li>
+      <li>
+        <parameterName>_EmissionStrength</parameterName>
+        <parameterValue>1.81</parameterValue>
+      </li>
+      <li>
+        <parameterName>_PulseStrength</parameterName>
+        <parameterValue>0.108</parameterValue>
+      </li>
+      <li>
+        <parameterName>_PulseSpeed</parameterName>
+        <parameterValue>6.76</parameterValue>
+      </li>
+      <li>
+        <parameterName>_NoiseScale</parameterName>
+        <parameterValue>18</parameterValue>
+      </li>
+      <li>
+        <parameterName>_NoiseSpeed</parameterName>
+        <parameterValue>0.35</parameterValue>
+      </li>
+      <li>
+        <parameterName>_DissolveSoftness</parameterName>
+        <parameterValue>0.06</parameterValue>
+      </li>
+      <li>
+        <parameterName>_DissolveEdgeStrength</parameterName>
+        <parameterValue>1.2</parameterValue>
+      </li>
+      <li>
+        <parameterName>_BlackColor</parameterName>
+        <parameterValue>(0.000, 0.000, 0.000, 1.000)</parameterValue>
+      </li>
+      <li>
+        <parameterName>_DarkColor</parameterName>
+        <parameterValue>(0.015, 0.000, 0.000, 0.463)</parameterValue>
+      </li>
+      <li>
+        <parameterName>_InnerColor</parameterName>
+        <parameterValue>(3.338, 0.026, 0.000, 1.000)</parameterValue>
+      </li>
+      <li>
+        <parameterName>_OuterColor</parameterName>
+        <parameterValue>(0.050, 2.200, 0.200, 1.000)</parameterValue>
+      </li>
+      <li>
+        <parameterName>_PointA</parameterName>
+        <parameterValue>(0.50, 0.85, 0.00, 0.00)</parameterValue>
+      </li>
+      <li>
+        <parameterName>_PointB</parameterName>
+        <parameterValue>(0.15, 0.15, 0.00, 0.00)</parameterValue>
+      </li>
+      <li>
+        <parameterName>_PointC</parameterName>
+        <parameterValue>(0.85, 0.15, 0.00, 0.00)</parameterValue>
+      </li>
+    </shaderParameters>
+  </ChezhouLib.LibDef.ClShaderMaterial>
+
+  <ChezhouLib.LibDef.ClShaderPro>
+    <defName>MunoRace_TriangleRadiation_ShaderPro</defName>
+    <label>缪诺三角辐射 Shader</label>
+    <ClShaderMaterial>MunoRace_TriangleRadiation_Material</ClShaderMaterial>
+    <shaderPath>Transparent</shaderPath>
+  </ChezhouLib.LibDef.ClShaderPro>
+</Defs>

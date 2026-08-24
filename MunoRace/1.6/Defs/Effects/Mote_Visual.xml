@@ -51,4 +51,24 @@
     </graphicData>
   </ThingDef>
 
-  </Defs>
+  <!--辐射锥 Shader 的动态世界平面载体。-->
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_MunoRadiationConeEffect</defName>
+    <label>缪诺辐射锥特效</label>
+    <thingClass>MunoRaceLib.MunoComp.Mote_MunoRadiationConeEffect</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>UI/Misc/BadTexture</texPath>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <shaderType>MunoRace_TriangleRadiation_ShaderPro</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <mote>
+      <fadeInTime>0</fadeInTime>
+      <solidTime>1.5</solidTime>
+      <fadeOutTime>0</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+</Defs>

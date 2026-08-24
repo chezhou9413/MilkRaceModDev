@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>Muno_LactationChipImplant</defName>
+    <label>缪诺泌乳芯片</label>
+    <labelNoun>一个缪诺泌乳芯片</labelNoun>
+    <description>芯片持续调节乳源质循环，使乳源质产量与容量提高 50%。</description>
+    <descriptionHyperlinks>
+      <ThingDef>MunoRace_LactationChip</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>MunoRace_LactationChip</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statFactors>
+          <Muno_GalactogenCapacityFactor>1.5</Muno_GalactogenCapacityFactor>
+          <Muno_GalactogenRecoveryFactor>1.5</Muno_GalactogenRecoveryFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

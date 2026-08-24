@@ -33,11 +33,14 @@ namespace MunoRaceLib.MunoDefRef
         public static JobDef JobDef_AutoExtractConcentratedMulacte;
 
         public static ThingDef Muno_Filth_Galactogen;
+        public static ThingDef Mote_MunoRadiationConeEffect;
 
         public static FleckDef Muno_Fleck_MilkSplatter;
 
         public static StatDef Muno_MaxGalactogen;
         public static StatDef Muno_GalactogenRecovery;
+        public static StatDef Muno_GalactogenCapacityFactor;
+        public static StatDef Muno_GalactogenRecoveryFactor;
 
         public static HediffDef Muno_GalactogenEnhancement;
         public static HediffDef Muno_TentacleNervePassive;

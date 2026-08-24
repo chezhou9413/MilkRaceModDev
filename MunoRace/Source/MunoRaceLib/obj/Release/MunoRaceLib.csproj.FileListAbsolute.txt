@@ -1,0 +1,6 @@
+E:\RimModDev\MunoRace\MunoRace\MunoRace\Source\MunoRaceLib\bin\Release\MunoRaceLib.dll
+E:\RimModDev\MunoRace\MunoRace\MunoRace\Source\MunoRaceLib\bin\Release\MunoRaceLib.pdb
+E:\RimModDev\MunoRace\MunoRace\MunoRace\Source\MunoRaceLib\obj\Release\MunoRaceLib.csproj.AssemblyReference.cache
+E:\RimModDev\MunoRace\MunoRace\MunoRace\Source\MunoRaceLib\obj\Release\MunoRaceLib.csproj.CoreCompileInputs.cache
+E:\RimModDev\MunoRace\MunoRace\MunoRace\Source\MunoRaceLib\obj\Release\MunoRaceLib.dll
+E:\RimModDev\MunoRace\MunoRace\MunoRace\Source\MunoRaceLib\obj\Release\MunoRaceLib.pdb

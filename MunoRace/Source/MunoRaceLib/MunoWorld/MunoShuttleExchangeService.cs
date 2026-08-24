@@ -256,9 +256,14 @@ namespace MunoRaceLib.MunoWorld
             return transportShip;
         }
 
-        //在谈判者附近寻找可供原版穿梭机降落的位置。
+        //优先采用玩家着陆信标区域，没有可用信标时再在谈判者附近寻找安全位置。
         private static bool TryFindLandingCell(Map map, IntVec3 near, out IntVec3 landingCell)
         {
+            if (DropCellFinder.TryFindShipLandingArea(map, out landingCell, out _))
+            {
+                return true;
+            }
+
             return CellFinder.TryFindRandomCellNear(near, map, (int)LandingSearchRadius, cell => RoyalTitlePermitWorker_CallShuttle.ShuttleCanLandHere(cell, map).Accepted, out landingCell);
         }
 

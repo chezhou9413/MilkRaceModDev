@@ -40,6 +40,31 @@ namespace MunoRaceLib.MunoComp
         //返回当前乳源质组件使用的 XML 属性。
         public ThingCompProperties_Galactogen Props => (ThingCompProperties_Galactogen)props;
 
+        //返回基础恢复量与角色属性加成合计并应用最终倍率后的每小时乳源质恢复量。
+        public float RecoveryPerHour =>
+            (Props.houseGalactogen + SelfPawn.GetStatValue(MunoDefDataRef.Muno_GalactogenRecovery))
+            * SelfPawn.GetStatValue(MunoDefDataRef.Muno_GalactogenRecoveryFactor);
+
+        //汇总当前生效装备效果每小时消耗的乳源质数量。
+        public float EquipmentDrainPerHour
+        {
+            get
+            {
+                float totalDrain = 0f;
+                List<Hediff> hediffs = SelfPawn.health.hediffSet.hediffs;
+                for (int i = 0; i < hediffs.Count; i++)
+                {
+                    HediffComp_GalactogenDrain drainComp = hediffs[i].TryGetComp<HediffComp_GalactogenDrain>();
+                    if (drainComp != null)
+                    {
+                        totalDrain += drainComp.DrainPerHour;
+                    }
+                }
+
+                return totalDrain;
+            }
+        }
+
         //初始化乳源质组件的基础数值。
         public override void Initialize(CompProperties props)
         {
@@ -95,6 +120,15 @@ namespace MunoRaceLib.MunoComp
                 yield return new MunoGizmo.Gizmo_GalactogenBar(SelfPawn);
             }
 
+            if (Prefs.DevMode)
+            {
+                yield return BuildDebugSetCommand(0f);
+                yield return BuildDebugSetCommand(0.25f);
+                yield return BuildDebugSetCommand(0.75f);
+                yield return BuildDebugSetCommand(1f);
+                yield return BuildDebugSetCommand(1.2f);
+            }
+
             bool hasExtractor = GalactogenExtractorUtility.HasActiveExtractor(SelfPawn);
             yield return BuildAutoCollectToggle(hasExtractor);
             if (hasExtractor)
@@ -121,8 +155,10 @@ namespace MunoRaceLib.MunoComp
         //根据饱食度与属性加成刷新乳源质的自然恢复或反向消耗。
         private void CheckGalactogen()
         {
-            MaxGalactogen = Props.maxGalactogen + SelfPawn.GetStatValue(MunoDefDataRef.Muno_MaxGalactogen);
-            HouseGalactogen = Props.houseGalactogen + SelfPawn.GetStatValue(MunoDefDataRef.Muno_GalactogenRecovery);
+            MaxGalactogen =
+                (Props.maxGalactogen + SelfPawn.GetStatValue(MunoDefDataRef.Muno_MaxGalactogen))
+                * SelfPawn.GetStatValue(MunoDefDataRef.Muno_GalactogenCapacityFactor);
+            HouseGalactogen = RecoveryPerHour;
             if (SelfPawn.needs?.food == null)
             {
                 return;
@@ -151,6 +187,17 @@ namespace MunoRaceLib.MunoComp
             }
 
             return SelfPawn.Faction == Faction.OfPlayer && SelfPawn.HostFaction == null && !SelfPawn.IsSlave;
+        }
+
+        //创建将当前乳源质直接设为指定容量比例的开发者调试按钮。
+        private Command_Action BuildDebugSetCommand(float percentage)
+        {
+            return new Command_Action
+            {
+                defaultLabel = $"DEV: {percentage:P0}",
+                defaultDesc = $"[调试] 将{Props.GalactogenUIName}设置为最大值的 {percentage:P0}",
+                action = () => CurrentGalactogen = MaxGalactogen * percentage
+            };
         }
 
         //创建自动收集启停按钮，并根据是否穿戴汲取装备显示当前产物。

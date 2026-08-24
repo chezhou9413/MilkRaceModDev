@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 61368079
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 69b4ea4bbcd2204a17eaebf369006107
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b4f2efbdb85a500017afd875df75d980
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 69b4ea4bbcd2204a17eaebf369006107
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Shader/MunoTriangleRadiation.shader
+- Assets/EffImage/Noise35t.png
+Dependencies: []

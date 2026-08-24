@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="BodyPartBionicBase">
+    <defName>MunoRace_LactationChip</defName>
+    <label>缪诺泌乳芯片</label>
+    <description>用于调节缪诺乳源质循环的高级植入芯片。植入后使乳源质产量与容量提高 50%。</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallMunoLactationChip</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <Plasteel>15</Plasteel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <thingSetMakerTags>
+      <li>RewardStandardMidFreq</li>
+    </thingSetMakerTags>
+    <statBases>
+      <Mass>0.3</Mass>
+    </statBases>
+  </ThingDef>
+
+</Defs>

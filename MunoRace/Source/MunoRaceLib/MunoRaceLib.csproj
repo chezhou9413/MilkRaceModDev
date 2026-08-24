@@ -134,6 +134,7 @@
     <Compile Include="MunoComp\Ability_MunoStrategicGrenadeShot.cs" />
     <Compile Include="MunoComp\Comp_StrategicGrenadeStorageWeapon.cs" />
     <Compile Include="MunoComp\Comp_MolecularCuisine.cs" />
+    <Compile Include="MunoComp\Comp_MunoMilkFoodPoisoningCure.cs" />
     <Compile Include="MunoComp\HediffComp_UpgradeGalactogen.cs" />
     <Compile Include="MunoComp\HediffComp_GalactogenDrain.cs" />
     <Compile Include="MunoComp\HediffComp_TentacleArmorEffects.cs" />
@@ -143,6 +144,8 @@
     <Compile Include="MunoComp\Command_AbilityMunoLaserCannonRadiation.cs" />
     <Compile Include="MunoComp\CompAbilityEffect_MunoRadiationCone.cs" />
     <Compile Include="MunoComp\CompProperties_AbilityMunoRadiationCone.cs" />
+    <Compile Include="MunoComp\Radiation\MunoRadiationConeGeometry.cs" />
+    <Compile Include="MunoComp\Radiation\Mote_MunoRadiationConeEffect.cs" />
     <Compile Include="MunoComp\CompProperties_GalactogenExtractor.cs" />
     <Compile Include="MunoComp\Comp_GalactogenExtractor.cs" />
     <Compile Include="MunoComp\GalactogenAutoCollectMode.cs" />

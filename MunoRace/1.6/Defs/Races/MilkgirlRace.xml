@@ -98,6 +98,12 @@
                             </first>
                         </li>
                         <li>
+                            <name>hair</name>
+                            <first Class="ColorGenerator_Single">
+                                <color>RGB(255,255,255)</color>
+                            </first>
+                        </li>
+                        <li>
                             <name>face</name>
                             <first Class="ColorGenerator_Single">
                                 <color>RGB(255,255,255)</color>
@@ -156,7 +162,7 @@
                             <name>MunoRace_hair</name>
                             <userCustomizable>false</userCustomizable>
                             <path>AlienRace/MunoRace/hair/Hair</path>
-                            <colorChannel>skin</colorChannel>
+                            <colorChannel>hair</colorChannel>
                             <inFrontOfBody>true</inFrontOfBody>
                             <layerInvert>false</layerInvert>
                             <angle>0</angle>
@@ -198,7 +204,7 @@
                             <userCustomizable>false</userCustomizable>
                             <linkVariantIndexWithPrevious>true</linkVariantIndexWithPrevious>
                             <path>AlienRace/MunoRace/hairback/hairback</path>
-                            <colorChannel>skin</colorChannel>
+                            <colorChannel>hair</colorChannel>
                             <inFrontOfBody>true</inFrontOfBody>
                             <layerInvert>false</layerInvert>
                             <drawSize>1</drawSize>
