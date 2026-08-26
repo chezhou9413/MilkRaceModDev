@@ -63,6 +63,18 @@
                 <immuneToXenophobia>false</immuneToXenophobia>
                 <immuneToAge>false</immuneToAge>
                 <humanRecipeImport>true</humanRecipeImport>
+                <childBackstoryFilter>
+                    <li><categories><li>MunoGirl</li></categories><commonality>1.0</commonality></li>
+                </childBackstoryFilter>
+                <adultBackstoryFilter>
+                    <li><categories><li>MunoGirl</li></categories><commonality>1.0</commonality></li>
+                </adultBackstoryFilter>
+                <adultVatBackstoryFilter>
+                    <li><categories><li>MunoGirl</li></categories><commonality>1.0</commonality></li>
+                </adultVatBackstoryFilter>
+                <newbornBackstoryFilter>
+                    <li><categories><li>MunoGirl</li></categories><commonality>1.0</commonality></li>
+                </newbornBackstoryFilter>
                 <alienPartGenerator>
                     <customDrawSize>(1.3, 1.3)</customDrawSize>                    <!-- 整体大小设置 -->
                     <customHeadDrawSize>(0.8, 0.8)</customHeadDrawSize>                      <!-- 头部大小设置 -->
