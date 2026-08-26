@@ -62,7 +62,9 @@
 			<tags>				<!--标签-->
 				<li>Outlander</li>
 				<li>Spacer</li>
-			</tags>
+			  <li>MunoApparelAdvanced</li>
+  <li>MunoArmor</li>
+	</tags>
 		</apparel>		<!--不用颜色配置-->
 
 		<comps>

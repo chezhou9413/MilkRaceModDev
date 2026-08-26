@@ -21,7 +21,25 @@
       <EquipDelay>1</EquipDelay>
       <MarketValue>550</MarketValue>
       <MaxHitPoints>80</MaxHitPoints>
+      <WorkToMake>36000</WorkToMake>
     </statBases>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
+      <MunoRace_ConcentratedMulacte>5</MunoRace_ConcentratedMulacte>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>Muno_MilkApplication</researchPrerequisite>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <recipeUsers>
+        <li>MunoRace_WorkBench</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <displayPriority>218</displayPriority>
+    </recipeMaker>
     <tickerType>Normal</tickerType>
     <thingCategories>
       <li>ApparelUtility</li>
@@ -39,6 +57,12 @@
       <layers>
         <li>Belt</li>
       </layers>
+      <tags>
+        <li>Outlander</li>
+        <li>Spacer</li>
+        <li>MunoApparelAdvanced</li>
+        <li>BeltDefensePop</li>
+      </tags>
       <wornGraphicPath>Weapons/Gun_MunoHG</wornGraphicPath>
       <wornGraphicData>
         <renderUtilityAsPack>true</renderUtilityAsPack>

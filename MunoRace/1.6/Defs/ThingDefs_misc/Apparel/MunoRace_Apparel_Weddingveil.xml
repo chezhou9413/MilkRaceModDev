@@ -49,7 +49,8 @@
 	 <tags>
 	  <li>Outlander</li>
 	  <li>Spacer</li>
-	 </tags>
+	   <li>MunoApparelMiddle</li>
+	</tags>
      <drawData>
           <scale>0.7</scale>
       </drawData>

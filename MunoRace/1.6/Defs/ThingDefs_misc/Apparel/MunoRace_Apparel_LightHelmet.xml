@@ -55,7 +55,9 @@
 	 <tags>
 	  <li>Outlander</li>
 	  <li>Spacer</li>
-	 </tags>
+	   <li>MunoApparelAdvanced</li>
+  <li>MunoArmor</li>
+	</tags>
 	  <drawData>    
           <scale>0.6</scale>
     </drawData>  

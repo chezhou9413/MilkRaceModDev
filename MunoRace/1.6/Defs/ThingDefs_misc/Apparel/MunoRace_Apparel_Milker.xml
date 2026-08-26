@@ -51,7 +51,10 @@
       <tags>
         <li>Outlander</li>
         <li>Spacer</li>
-      </tags>
+        <li>MunoApparelBasic</li>
+  <li>MunoApparelMiddle</li>
+  <li>MunoApparelAdvanced</li>
+	</tags>
     </apparel>
     <comps>
       <li><compClass>CompQuality</compClass></li>

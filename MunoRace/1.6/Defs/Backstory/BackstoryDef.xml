@@ -5,6 +5,7 @@
 		<bodyTypeMale>Thin</bodyTypeMale><!-- 이 백스토리를 사용하는 여성의 체형 -->
 		<bodyTypeFemale>Thin</bodyTypeFemale><!-- 이 백스토리를 사용하는 남성의 체형 -->
 		<maleCommonality>0</maleCommonality>
+		<femaleCommonality>1.0</femaleCommonality>
 		<!--<forcedHediffs>
 			<li>DR_Heal_A</li>
 			<li>DR_Heal_B</li>
