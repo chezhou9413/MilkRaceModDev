@@ -2,9 +2,8 @@
 <Defs>
 	
 	<AlienRace.AlienBackstoryDef Name="MunoGirlBackStory" Abstract="True">
-		<bodyTypeMale>Thin</bodyTypeMale><!-- 이 백스토리를 사용하는 여성의 체형 -->
-		<bodyTypeFemale>Thin</bodyTypeFemale><!-- 이 백스토리를 사용하는 남성의 체형 -->
-		<maleCommonality>0</maleCommonality>
+		<bodyTypeMale>Thin</bodyTypeMale><!-- 使用该背景故事的男性体型 -->
+		<bodyTypeFemale>Thin</bodyTypeFemale><!-- 使用该背景故事的女性体型 -->
 		<!--<forcedHediffs>
 			<li>DR_Heal_A</li>
 			<li>DR_Heal_B</li>
