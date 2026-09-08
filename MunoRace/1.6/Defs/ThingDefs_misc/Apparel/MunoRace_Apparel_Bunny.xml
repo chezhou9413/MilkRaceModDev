@@ -49,12 +49,11 @@
 	 </bodyPartGroups>
 	 <wornGraphicPath>Apparel/Bunny/MunoRace_Apparel_Bunny</wornGraphicPath> <!--穿着的贴图路径-->
 	 <layers>
-	  <li>Shell</li> <!--层级-->
+	  	  <li>Muno_Underwear</li> <!--内衣专用层-->
 	 </layers>
 	 <tags> <!--标签-->
-	  <li>Outlander</li>
-	  <li>Spacer</li>
 	   <li>MunoApparelBasic</li>
+	   <li>MunoApparelUnderwear</li>
 	</tags>
 	</apparel>  <!--不用颜色配置-->
 

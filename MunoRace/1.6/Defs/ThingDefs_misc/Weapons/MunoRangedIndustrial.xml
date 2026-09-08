@@ -1088,7 +1088,7 @@
     <graphicData>
         <texPath>Weapons/Gun_MunoRAMR</texPath>
         <graphicClass>Graphic_Single</graphicClass>
-        <drawSize>1.4</drawSize>
+        <drawSize>2.0</drawSize>
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>
     <statBases>
@@ -1217,7 +1217,7 @@
 				<defaultProjectile>Bullet_MunoAC</defaultProjectile>
 				<warmupTime>1.9</warmupTime>
 				<range>33</range>
-				<burstShotCount>3</burstShotCount>
+				<burstShotCount>4</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<forcedMissRadius>0.2</forcedMissRadius>
 				<soundCast>Shot_Minigun</soundCast>

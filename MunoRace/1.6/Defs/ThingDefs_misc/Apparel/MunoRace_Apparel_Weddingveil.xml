@@ -47,9 +47,7 @@
 	  <li>Overhead</li>
 	 </layers>
 	 <tags>
-	  <li>Outlander</li>
-	  <li>Spacer</li>
-	   <li>MunoApparelMiddle</li>
+       <li>MunoApparelRitual</li>
 	</tags>
      <drawData>
           <scale>0.7</scale>

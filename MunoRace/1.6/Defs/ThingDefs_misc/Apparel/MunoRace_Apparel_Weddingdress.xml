@@ -56,9 +56,7 @@
 	  <li>Shell</li> <!--层级-->
 	 </layers>
 	 <tags> <!--标签-->
-	  <li>Outlander</li>
-	  <li>Spacer</li>
-	   <li>MunoApparelMiddle</li>
+	   <li>MunoApparelRitual</li>
 	</tags>
 	</apparel>  <!--不用颜色配置-->
 

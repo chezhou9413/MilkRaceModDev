@@ -49,7 +49,7 @@
 	</thingCategories>
 	<apparel>
 	 <bodyPartGroups> <!--覆盖部位--> 
-	  <li>Torso</li>
+	    <li>Torso</li>
       <li>Neck</li>  
       <li>Shoulders</li>
       <li>Arms</li>    
@@ -60,10 +60,10 @@
 	  <li>Shell</li> <!--层级-->
 	 </layers>
 	 <tags> <!--标签-->
-	  <li>Outlander</li>
-	  <li>Spacer</li>
-	   <li>MunoApparelAdvanced</li>
-  <li>MunoArmor</li>
+	    <li>Outlander</li>
+	    <li>Spacer</li>
+	    <li>MunoApparelAdvanced</li>
+      <li>MunoArmor</li>
 	</tags>
 	</apparel>  <!--不用颜色配置-->
 
