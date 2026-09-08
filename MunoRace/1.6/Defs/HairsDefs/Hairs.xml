@@ -9,6 +9,6 @@
 	<HairDef ParentName="BaseMunoGirlHair">
 		<defName>MunoGirl_Hair01</defName>
 		<label>奶牛娘短发</label>
-        <texPath>AlienRace/ag/Null/Null</texPath>
+        <texPath>AlienRace/MunoRace/Null/Null</texPath>
 	</HairDef>
 </Defs>

@@ -6,6 +6,7 @@ using Verse;
 
 namespace MunoRaceLib.Tool
 {
+    //提供乳液污物和飞溅特效的生成入口。
     public static class FilthGalactogenTool
     {
         public static List<string> paths = new List<string>()
@@ -14,15 +15,21 @@ namespace MunoRaceLib.Tool
                 "Fleck/MilkSplatter/SplatterB",
                 "Fleck/MilkSplatter/SplatterC",
             };
+        //在 Pawn 当前所在或被容器持有的地图位置生成乳液污物。
         public static void SpawnFilthGalactogen(Pawn pawn)
         {
+            Map map = pawn.MapHeld;
+            IntVec3 position = pawn.PositionHeld;
+            if (map == null || !position.InBounds(map)) return;
+
             ThingDef filthDef = MunoDefDataRef.Muno_Filth_Galactogen;
             if (filthDef != null)
             {
-                FilthMaker.TryMakeFilth(pawn.Position, pawn.Map, filthDef, pawn.LabelShort, 1);
+                FilthMaker.TryMakeFilth(position, map, filthDef, pawn.LabelShort, 1);
             }
         }
 
+        //在指定地图位置生成带有随机方向、速度和尺寸的乳液飞溅。
         public static void SpawnMilkSplatter(Vector3 position, Map map, int count = 6)
         {
             if (map == null) return;

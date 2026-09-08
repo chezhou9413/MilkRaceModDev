@@ -226,6 +226,21 @@
     <Compile Include="Tool\FilthGalactogenTool.cs" />
     <Compile Include="Tool\MunoMilkingUtility.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="MunoQuests\Common\MunoQuestConfig.cs" />
+    <Compile Include="MunoQuests\Common\MunoQuestUtility.cs" />
+    <Compile Include="MunoQuests\Common\QuestNode_MunoMilitary.cs" />
+    <Compile Include="MunoQuests\Common\QuestPart_MunoMilitary.cs" />
+    <Compile Include="MunoQuests\Common\MunoQuestShuttle.cs" />
+    <Compile Include="MunoQuests\CaptureOutpost\QuestNode_MunoCapture.cs" />
+    <Compile Include="MunoQuests\CaptureOutpost\QuestPart_MunoCapture.cs" />
+    <Compile Include="MunoQuests\CaptureOutpost\SitePartWorker_MunoCaptureTarget.cs" />
+    <Compile Include="MunoQuests\ProtectRaider\QuestNode_MunoProtect.cs" />
+    <Compile Include="MunoQuests\ProtectRaider\QuestPart_MunoProtect.cs" />
+    <Compile Include="MunoQuests\ProtectRaider\MunoRaiderUtility.cs" />
+    <Compile Include="MunoQuests\Rewards\QuestPart_MunoRewards.cs" />
+    <Compile Include="MunoQuests\Rewards\ChoiceLetter_MunoQuestReward.cs" />
+    <Compile Include="MunoQuests\Debug\MunoQuestDebugActions.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

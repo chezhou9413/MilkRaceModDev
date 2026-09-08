@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <QuestScriptDef>
+    <defName>Muno_CaptureOutpost</defName>
+    <rootSelectionWeight>1</rootSelectionWeight>
+    <expireDaysRange>5</expireDaysRange>
+    <rootIncreasesPopulation>true</rootIncreasesPopulation>
+    <questAvailableLetterTextIsDescription>true</questAvailableLetterTextIsDescription>
+    <questNameRules>
+      <rulesStrings><li>questName->缪诺委托：哨站活捉</li></rulesStrings>
+    </questNameRules>
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription->缪诺军事管理员请求你前往附近敌对哨站，活捉一名指定的成年目标。
+\n接受后将标记哨站及目标。你有 [captureDays] 天将目标作为囚犯带回任意地面基地，其他人员不能替代。目标带回后，接收穿梭机将在 [arrivalDays] 天内抵达，并等待 [shuttleDays] 天装载。目标必须活着被带走。
+\n完成后保证可选一名缪诺成员，或一份约 [rewardValue] 银币价值的物资。目标死亡、获释、被招募、交接基地丢失或接收失败，均会导致任务失败。
+\n所需头衔：[requiredTitle]或更高。邀请将在 [offerDays] 天后过期。</li>
+      </rulesStrings>
+    </questDescriptionRules>
+    <root Class="MunoRaceLib.MunoQuests.QuestNode_MunoCapture" />
+    <modExtensions>
+      <li Class="MunoRaceLib.MunoQuests.MunoQuestConfig">
+        <requiredTitle>Muno_JuniorAssistant</requiredTitle>
+        <captureDays>15</captureDays>
+        <arrivalDays>1~2</arrivalDays>
+        <shuttleDays>3</shuttleDays>
+        <rewardValue>2000</rewardValue>
+        <threatFactor>0.7</threatFactor>
+      </li>
+    </modExtensions>
+  </QuestScriptDef>
+  <QuestScriptDef>
+    <defName>Muno_ProtectRaider</defName>
+    <rootSelectionWeight>1</rootSelectionWeight>
+    <expireDaysRange>5</expireDaysRange>
+    <rootIncreasesPopulation>true</rootIncreasesPopulation>
+    <questAvailableLetterTextIsDescription>true</questAvailableLetterTextIsDescription>
+    <questNameRules>
+      <rulesStrings><li>questName->缪诺委托：保护突袭队员</li></rulesStrings>
+    </questNameRules>
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription->一名受伤的缪诺突袭队员正在躲避敌人追击。缪诺军事管理员请求你提供庇护。
+\n接受后，一名成年队员将通过运输舱抵达基地，作为可控制的临时客人。她拥有 [skillRange] 级射击和格斗技能，带有随机伤势及自己的装备，请及时救治。
+\n一波追兵将在 [arrivalDays] 天后抵达，强度随殖民地难度变化。击退本次全部追兵，并确保队员存活且留在基地，即可选择奖励。
+\n你可以让这名队员永久加入，保留其技能、伤势与装备；也可以选择约 [rewardValue] 银币价值的物资，先由穿梭机接走队员，再发放物资。接收穿梭机等待 [shuttleDays] 天。
+\n队员死亡、被囚禁或奴役、离开基地，或交接失败，均会导致任务失败。所需头衔：[requiredTitle]或更高。邀请将在 [offerDays] 天后过期。</li>
+      </rulesStrings>
+    </questDescriptionRules>
+    <root Class="MunoRaceLib.MunoQuests.QuestNode_MunoProtect" />
+    <modExtensions>
+      <li Class="MunoRaceLib.MunoQuests.MunoQuestConfig">
+        <requiredTitle>Muno_SeniorAssistant</requiredTitle>
+        <arrivalDays>1~2</arrivalDays>
+        <shuttleDays>3</shuttleDays>
+        <rewardValue>2000</rewardValue>
+        <threatFactor>1</threatFactor>
+        <combatSkill>14~18</combatSkill>
+        <injuryCount>3~6</injuryCount>
+        <injuryDamage>3~6</injuryDamage>
+      </li>
+    </modExtensions>
+  </QuestScriptDef>
+</Defs>
