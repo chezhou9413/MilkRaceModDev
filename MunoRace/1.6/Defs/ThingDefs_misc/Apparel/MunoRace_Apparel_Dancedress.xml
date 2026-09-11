@@ -19,6 +19,9 @@
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
 	<costStuffCount>80</costStuffCount> <!--制作材料 任意布料和皮革-->    
+	<costList> <!--固定制作材料-->
+	  <Gold>20</Gold>
+   	</costList>
     <stuffCategories>
       <li>Fabric</li>
       <li>Leathery</li>
@@ -53,9 +56,7 @@
 	  <li>Shell</li> <!--层级-->
 	 </layers>
 	 <tags> <!--标签-->
-	  <li>Outlander</li>
-	  <li>Spacer</li>
-	   <li>MunoApparelMiddle</li>
+		<li>MunoApparelRitual</li>
 	</tags>
 	</apparel>  <!--不用颜色配置-->
 

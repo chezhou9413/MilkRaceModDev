@@ -76,10 +76,10 @@
 		<maxGenerationAge>28</maxGenerationAge>
 		<apparelMoney>1600~3600</apparelMoney>
 		<apparelTags>
-			<li>IndustrialBasic</li>
-			<li>IndustrialAdvanced</li>
+			<li>MunoApparelRitual</li>
+			<li>MunoApparelBasic</li>
+			<li>MunoApparelMiddle</li>
 			<li>MunoApparelAdvanced</li>
-			<li>BeltDefensePop</li>
 		</apparelTags>
 		<skills>
 			<li>
@@ -109,8 +109,9 @@
 		<weaponMoney>480~1250</weaponMoney>
 		<apparelMoney>200~1200</apparelMoney>
 		<apparelTags>
-			<li>IndustrialBasic</li>
-			<li>IndustrialAdvanced</li>
+	   		<li>MunoApparelUnderwear</li>
+			<li>MunoApparelBasic</li>
+			<li>MunoApparelMiddle</li>
 		</apparelTags>
 		<apparelAllowHeadgearChance>0.4</apparelAllowHeadgearChance>
 		<techHediffsChance>0.06</techHediffsChance>
@@ -145,6 +146,9 @@
 		<minGenerationAge>18</minGenerationAge>
 		<gearHealthRange>0.6~2</gearHealthRange>
 		<apparelTags>
+			<li>MunoApparelUnderwear</li>
+			<li>MunoApparelBattleUnderwear</li>
+			<li>MunoApparelBasic</li>
 			<li>MunoApparelAdvanced</li>
 			<li>MunoArmor</li>
 		</apparelTags>
@@ -204,13 +208,15 @@
 		<itemQuality>Normal</itemQuality>
 		<weaponTags>
 			<li>MunoGunMiddle</li>
+			<li>MunoGunAdvanced</li>
 		</weaponTags>
 		<weaponMoney>505~1400</weaponMoney>
 		<apparelMoney>400~1600</apparelMoney>
 		<apparelTags>
-			<li>IndustrialMilitaryBasic</li>
-			<li>IndustrialMilitaryAdvanced</li>
-			<li>BeltDefensePop</li>
+			<li>MunoApparelUnderwear</li>
+			<li>MunoApparelBasic</li>
+			<li>MunoApparelMiddle</li>
+			<li>MunoApparelAdvanced</li>
 		</apparelTags>
 		<apparelRequired>
 			<li>Apparel_BowlerHat</li>
@@ -252,11 +258,16 @@
 		<weaponMoney>505~1600</weaponMoney>
 		<weaponTags>
 			<li>MunoGunMiddle</li>
+			<li>MunoGunAdvanced</li>
+			
 		</weaponTags>
 		<apparelMoney>700~1200</apparelMoney>
 		<apparelTags>
-			<li>IndustrialMilitaryBasic</li>
-			<li>BeltDefensePop</li>
+			<li>MunoApparelUnderwear</li>
+			<li>MunoApparelBasic</li>
+			<li>MunoApparelMiddle</li>
+			<li>MunoApparelAdvanced</li>
+			<li>MunoArmor</li>
 		</apparelTags>
 		<apparelRequired>
 			<li>Apparel_BowlerHat</li>
