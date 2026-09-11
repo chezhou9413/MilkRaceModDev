@@ -52,6 +52,10 @@ namespace MunoRaceLib.MunoQuests
         {
             MunoQuestConfig config = mission.Config;
             QuestGen.slate.Set("captureDays", config.captureDays.ToString("0.#"));
+            QuestGen.slate.Set("captureCount", config.captureCount);
+            QuestGen.slate.Set("intelligenceChance", config.intelligenceChance.ToStringPercent());
+            QuestGen.slate.Set("intelligenceRewardValue", config.intelligenceRewardValue.ToString("0"));
+            QuestGen.slate.Set("goodwillReward", config.goodwillReward);
             QuestGen.slate.Set("arrivalDays", config.arrivalDays.min.ToString("0.#") + "–" + config.arrivalDays.max.ToString("0.#"));
             QuestGen.slate.Set("shuttleDays", config.shuttleDays.ToString("0.#"));
             QuestGen.slate.Set("rewardValue", config.rewardValue.ToString("0"));

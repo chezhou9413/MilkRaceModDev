@@ -103,6 +103,6 @@
     <defName>MunoRace_TriangleRadiation_ShaderPro</defName>
     <label>缪诺三角辐射 Shader</label>
     <ClShaderMaterial>MunoRace_TriangleRadiation_Material</ClShaderMaterial>
-    <shaderPath>Transparent</shaderPath>
+    <shaderPath>Map/Transparent</shaderPath>
   </ChezhouLib.LibDef.ClShaderPro>
 </Defs>

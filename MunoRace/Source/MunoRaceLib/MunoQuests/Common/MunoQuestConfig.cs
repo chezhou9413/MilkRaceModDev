@@ -7,6 +7,10 @@ namespace MunoRaceLib.MunoQuests
     {
         public string requiredTitle;
         public float captureDays = 15f;
+        public int captureCount = 1;
+        public float intelligenceChance = 0.5f;
+        public float intelligenceRewardValue = 1000f;
+        public int goodwillReward;
         public FloatRange arrivalDays = new FloatRange(1f, 2f);
         public float shuttleDays = 3f;
         public float rewardValue = 2000f;

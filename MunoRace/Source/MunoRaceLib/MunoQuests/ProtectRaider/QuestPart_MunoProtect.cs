@@ -19,17 +19,19 @@ namespace MunoRaceLib.MunoQuests
         //取得预先登记到原版任务缓存中的临时归属部件。
         private QuestPart_ExtraFaction LodgerPart => quest.PartsListForReading.OfType<QuestPart_ExtraFaction>().Single();
 
-        //接受后生成伤员，以临时玩家人物身份通过运输舱抵达。
+        //接受后从可达地图边缘生成临时队员，并令其步行前往基地内部。
         protected override void StartMission()
         {
-            if (!DropCellFinder.TryFindDropSpotNear(map.Center, map, out IntVec3 cell, allowFogged: false, canRoofPunch: false))
-                throw new InvalidOperationException("没有可供伤员运输舱降落的空地。");
+            if (!RCellFinder.TryFindRandomPawnEntryCell(out IntVec3 cell, map, CellFinder.EdgeRoadChance_Neutral))
+                throw new InvalidOperationException("没有可供受保护队员步行进入基地的地图边缘入口。");
             subject = MunoRaiderUtility.Generate(giver, map, Config);
             LodgerPart.affectedPawns.Add(subject);
             subject.SetFaction(Faction.OfPlayer);
-            DropPodUtility.DropThingsNear(cell, map, new Thing[] { subject }, 110, false, false, false, false, false, giver);
+            GenSpawn.Spawn(subject, cell, map, Rot4.FromAngleFlat((map.Center - cell).AngleFlat));
+            IntVec3 destination = RCellFinder.BestOrderedGotoDestNear(map.Center, subject);
+            subject.jobs.TryTakeOrderedJob(JobMaker.MakeJob(JobDefOf.Goto, destination), JobTag.Misc);
             dueTick = GenTicks.TicksGame + (int)(Config.arrivalDays.RandomInRange * GenDate.TicksPerDay);
-            progress = "受伤突袭队员已抵达，请救治并保护她，等待追兵抵达。";
+            progress = "受伤突袭队员正从地图边缘步行进入，请救治并保护她，等待追兵抵达。";
             Find.LetterStack.ReceiveLetter("缪诺伤员抵达", progress + "\n" + subject.LabelShortCap
                 + "（射击 " + subject.skills.GetSkill(SkillDefOf.Shooting).Level + "，格斗 "
                 + subject.skills.GetSkill(SkillDefOf.Melee).Level + "）\n追兵预计抵达："

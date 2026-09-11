@@ -1,6 +1,7 @@
 using MunoRaceLib.MunoDefRef;
 using RimWorld;
 using RimWorld.Planet;
+using System;
 using System.Collections.Generic;
 using Verse;
 
@@ -31,18 +32,39 @@ namespace MunoRaceLib.MunoWorld
                 return false;
             }
 
-            for (int i = 0; i < count; i++)
+            Faction munoFaction = Find.FactionManager.FirstFactionOfDef(MunoDefDataRef.MunoColony_Faction);
+            if (munoFaction == null)
             {
-                Pawn pawn = GenerateMunoColonist();
-                if (pawn == null)
-                {
-                    DestroyPawns(pawns);
-                    pawns.Clear();
-                    failReason = "未能生成新的缪诺成员。";
-                    return false;
-                }
+                failReason = "缪诺派系不存在，无法生成奖励成员。";
+                return false;
+            }
 
-                pawns.Add(pawn);
+            try
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    Pawn pawn = GenerateMunoColonist(munoFaction);
+                    if (pawn == null)
+                    {
+                        DestroyPawns(pawns);
+                        pawns.Clear();
+                        failReason = "未能生成新的缪诺成员。";
+                        return false;
+                    }
+
+                    //先登记待交付人物，招募阶段异常时也能清理本批奖励。
+                    pawns.Add(pawn);
+                    NormalizeJoinedPawnState(pawn);
+                }
+            }
+            catch (Exception exception)
+            {
+                //把生成异常返回给交换会话结束流程，避免定时结算反复创建人物。
+                Log.Error("[MunoRace] 生成缪诺奖励成员失败：" + exception);
+                DestroyPawns(pawns);
+                pawns.Clear();
+                failReason = "生成缪诺奖励成员时发生异常，本次交换已中止，详情见日志。";
+                return false;
             }
 
             return true;
@@ -392,13 +414,14 @@ namespace MunoRaceLib.MunoWorld
             return true;
         }
 
-        //生成一名缪诺奖励殖民者并恢复玩家控制状态。
-        private static Pawn GenerateMunoColonist()
+        //以缪诺派系成员身份完成奖励人物的年龄、背景和装备初始化。
+        private static Pawn GenerateMunoColonist(Faction munoFaction)
         {
+            //生成期间不能先成为玩家殖民者，否则成年回调会在童年背景尚未建立时分配成年背景。
             PawnGenerationRequest request = new PawnGenerationRequest(
                 MunoDefDataRef.MunoRace_Colonist,
-                Faction.OfPlayer,
-                PawnGenerationContext.PlayerStarter,
+                munoFaction,
+                PawnGenerationContext.NonPlayer,
                 -1,
                 forceGenerateNewPawn: true,
                 allowDead: false,
@@ -407,9 +430,7 @@ namespace MunoRaceLib.MunoWorld
                 mustBeCapableOfViolence: false,
                 colonistRelationChanceFactor: 0f);
 
-            Pawn pawn = PawnGenerator.GeneratePawn(request);
-            NormalizeJoinedPawnState(pawn);
-            return pawn;
+            return PawnGenerator.GeneratePawn(request);
         }
 
         //将生成的缪诺成员加入远行队并刷新远行队通知。

@@ -6,7 +6,7 @@ using Verse;
 
 namespace MunoRaceLib.MunoQuests
 {
-    //生成具有稳定战斗技能的缪诺突袭队员，并施加不会立即致死或断肢的随机伤势。
+    //生成具有稳定战斗技能且能步行入场的缪诺突袭队员，并施加有限随机伤势。
     public static class MunoRaiderUtility
     {
         //使用专用成年战斗模板生成受保护人物。
@@ -32,33 +32,28 @@ namespace MunoRaceLib.MunoQuests
             }
         }
 
-        //按原版伤害入口逐次添加有限伤势，预先排除会导致死亡或摧毁部位的伤害量。
+        //按原版伤害入口添加有限伤势，排除致死、倒地和摧毁部位的伤害量。
         private static void AddInjuries(Pawn pawn, MunoQuestConfig config)
         {
             int count = config.injuryCount.RandomInRange;
-            bool oldForceDowned = pawn.health.forceDowned;
-            pawn.health.forceDowned = true;
-            try
+            for (int i = 0; i < count; i++)
             {
-                for (int i = 0; i < count; i++)
-                {
-                    var parts = pawn.health.hediffSet.GetNotMissingParts()
-                        .Where(p => p.depth == BodyPartDepth.Outside && pawn.health.hediffSet.GetPartHealth(p) > 8f).ToList();
-                    if (parts.Count == 0) break;
-                    BodyPartRecord part = parts.RandomElement();
-                    float factor = pawn.GetStatValue(StatDefOf.IncomingDamageFactor);
-                    if (factor <= 0f) throw new InvalidOperationException("突袭队员无法承受用于任务初始化的伤害。");
-                    float damage = Mathf.Min(config.injuryDamage.RandomInRange,
-                        (pawn.health.hediffSet.GetPartHealth(part) - 4f) / factor);
-                    DamageDef type = Rand.Bool ? DamageDefOf.Cut : DamageDefOf.Blunt;
-                    HediffDef hediff = HealthUtility.GetHediffDefFromDamage(type, pawn, part);
-                    if (pawn.health.WouldDieAfterAddingHediff(hediff, part, damage * factor)) continue;
-                    DamageInfo info = new DamageInfo(type, damage, 999f, -1f, null, part);
-                    info.SetAllowDamagePropagation(false);
-                    pawn.TakeDamage(info);
-                }
+                var parts = pawn.health.hediffSet.GetNotMissingParts()
+                    .Where(p => p.depth == BodyPartDepth.Outside && pawn.health.hediffSet.GetPartHealth(p) > 8f).ToList();
+                if (parts.Count == 0) break;
+                BodyPartRecord part = parts.RandomElement();
+                float factor = pawn.GetStatValue(StatDefOf.IncomingDamageFactor);
+                if (factor <= 0f) throw new InvalidOperationException("突袭队员无法承受用于任务初始化的伤害。");
+                float damage = Mathf.Min(config.injuryDamage.RandomInRange,
+                    (pawn.health.hediffSet.GetPartHealth(part) - 4f) / factor);
+                DamageDef type = Rand.Bool ? DamageDefOf.Cut : DamageDefOf.Blunt;
+                HediffDef hediff = HealthUtility.GetHediffDefFromDamage(type, pawn, part);
+                if (pawn.health.WouldDieAfterAddingHediff(hediff, part, damage * factor)
+                    || pawn.health.WouldBeDownedAfterAddingHediff(hediff, part, damage * factor)) continue;
+                DamageInfo info = new DamageInfo(type, damage, 999f, -1f, null, part);
+                info.SetAllowDamagePropagation(false);
+                pawn.TakeDamage(info);
             }
-            finally { pawn.health.forceDowned = oldForceDowned; }
         }
     }
 }
