@@ -13,6 +13,7 @@ namespace MunoRaceLib.MunoQuests
     {
         private ThingOwner<Thing> contents;
         private Pawn rewardPawn;
+        private List<Thing> bonusItems = new List<Thing>();
         private bool prepared;
         private bool paid;
 
@@ -50,9 +51,17 @@ namespace MunoRaceLib.MunoQuests
                 if (Find.WorldPawns.Contains(rewardPawn)) Find.WorldPawns.RemovePawn(rewardPawn);
                 if (!contents.TryAddOrTransfer(rewardPawn)) throw new InvalidOperationException("无法持有缪诺成员奖励。");
             }
+            GenerateItems(mission, mission.Config.rewardValue, false);
+            if (mission.BonusRewardValue > 0f) GenerateItems(mission, mission.BonusRewardValue, true);
+            prepared = true;
+        }
+
+        //按独立预算生成普通或附加物资，并保持各物品身份以供两种奖励分支准确选取。
+        private void GenerateItems(QuestPart_MunoMilitary mission, float value, bool bonus)
+        {
             RewardsGeneratorParams parms = new RewardsGeneratorParams
             {
-                rewardValue = mission.Config.rewardValue,
+                rewardValue = value,
                 giverFaction = mission.giver,
                 minGeneratedRewardValue = 250f,
                 thingRewardRequired = true,
@@ -63,11 +72,16 @@ namespace MunoRaceLib.MunoQuests
                 allowXenogermReimplantation = false
             };
             List<Reward> rewards = RewardsGenerator.Generate(parms, out _);
+            int count = 0;
             foreach (Reward_Items reward in rewards.OfType<Reward_Items>())
                 foreach (Thing item in reward.ItemsListForReading)
-                    if (!contents.TryAddOrTransfer(item)) throw new InvalidOperationException("无法持有任务物资奖励。");
-            if (!contents.Any(t => !(t is Pawn))) throw new InvalidOperationException("原版奖励生成器未生成物资候选。");
-            prepared = true;
+                {
+                    if (!contents.TryAddOrTransfer(item, canMergeWithExistingStacks: false))
+                        throw new InvalidOperationException("无法持有任务物资奖励。");
+                    if (bonus) bonusItems.Add(item);
+                    count++;
+                }
+            if (count == 0) throw new InvalidOperationException("原版奖励生成器未生成物资候选。");
         }
 
         //展示成员身份、技能、健康与具体物资，关闭窗口时仍保留选择信件。
@@ -83,7 +97,15 @@ namespace MunoRaceLib.MunoQuests
             text.AppendLine("特性：" + string.Join("、", rewardPawn.story.traits.allTraits.Select(t => t.LabelCap.ToString())));
             text.AppendLine("服装：" + string.Join("、", rewardPawn.apparel.WornApparel.Select(a => a.LabelCap.ToString())));
             text.AppendLine("\n物资候选：");
-            foreach (Thing item in contents.Where(t => !(t is Pawn))) text.AppendLine("• " + item.LabelCap);
+            foreach (Thing item in contents.Where(t => !(t is Pawn) && !bonusItems.Contains(t))) text.AppendLine("• " + item.LabelCap);
+            if (bonusItems.Count > 0)
+            {
+                text.AppendLine("\n情报附加物资（无论选择成员还是物资，都会获得）：");
+                foreach (Thing item in bonusItems) text.AppendLine("• " + item.LabelCap);
+            }
+            QuestPart_MunoMilitary mission = quest.PartsListForReading.OfType<QuestPart_MunoMilitary>().Single();
+            if (mission.Config.goodwillReward > 0)
+                text.AppendLine("\n任务最终完成时增加缪诺好感：" + mission.Config.goodwillReward + "。");
             if (quest.PartsListForReading.OfType<QuestPart_MunoProtect>().Any())
                 text.AppendLine("\n选择物资后，请先将受保护队员送上接收穿梭机，起飞后物资才会送达。");
             ChoiceLetter_MunoQuestReward letter = (ChoiceLetter_MunoQuestReward)LetterMaker.MakeLetter(
@@ -106,21 +128,23 @@ namespace MunoRaceLib.MunoQuests
         {
             if (paid) throw new InvalidOperationException("该任务的奖励已经领取。");
             if (!prepared) throw new InvalidOperationException("该任务尚未准备奖励。");
+            List<Pawn> pawns = new List<Pawn>();
             if (takePawn && mission is QuestPart_MunoProtect)
             {
                 if (rewardPawn != mission.subject || rewardPawn.Dead) throw new InvalidOperationException("受保护成员已失效。");
                 rewardPawn.guest.SetGuestStatus(null);
                 rewardPawn.SetFaction(Faction.OfPlayer);
             }
-            else
+            else if (takePawn) pawns.Add(rewardPawn);
+            List<Thing> items = takePawn ? new List<Thing>(bonusItems) : contents.Where(t => !(t is Pawn)).ToList();
+            if (pawns.Count > 0 || items.Count > 0)
             {
-                List<Pawn> pawns = takePawn ? new List<Pawn> { rewardPawn } : new List<Pawn>();
-                List<Thing> items = takePawn ? new List<Thing>() : contents.Where(t => !(t is Pawn)).ToList();
                 //交付前释放任务持有权，由原版运输舱接管，避免同一对象被双重保存。
                 foreach (Thing thing in pawns.Cast<Thing>().Concat(items)) contents.Remove(thing);
                 if (!MunoExchangeRewardService.TryDeliverRewardsToMap(mission.map, pawns, items, out string reason))
                     throw new InvalidOperationException(reason);
             }
+            bonusItems.Clear();
             paid = true;
         }
 
@@ -129,6 +153,7 @@ namespace MunoRaceLib.MunoQuests
         {
             base.Cleanup();
             contents.ClearAndDestroyContentsOrPassToWorld();
+            bonusItems.Clear();
         }
 
         //保存容器和人物引用，受保护人物始终只引用其原有地图持有链。
@@ -137,6 +162,7 @@ namespace MunoRaceLib.MunoQuests
             base.ExposeData();
             Scribe_Deep.Look(ref contents, "contents", this);
             Scribe_References.Look(ref rewardPawn, "rewardPawn");
+            Scribe_Collections.Look(ref bonusItems, "bonusItems", LookMode.Reference);
             Scribe_Values.Look(ref prepared, "prepared");
             Scribe_Values.Look(ref paid, "paid");
         }

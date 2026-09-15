@@ -26,6 +26,12 @@ namespace MunoRaceLib.MunoQuests
         //返回任务独占的待领取奖励容器。
         public QuestPart_MunoRewards Rewards => quest.PartsListForReading.OfType<QuestPart_MunoRewards>().Single();
 
+        //指定人物任务需要持续检查目标生命，按人数抓捕由其名册自行检查。
+        protected virtual bool RequiresSubject => true;
+
+        //返回完成附加目标后两种奖励选项都应包含的物资预算。
+        public virtual float BonusRewardValue => 0f;
+
         //显示任务当前阶段及指定人物。
         public override string DescriptionPart => progress + (subject == null ? "" : "\n指定人物：" + subject.LabelShortCap);
 
@@ -97,10 +103,11 @@ namespace MunoRaceLib.MunoQuests
                     OnPickupCompleted();
                     return;
                 }
-                if ((!rewardReady || this is QuestPart_MunoProtect) && (subject == null || subject.Dead || subject.Destroyed))
+                if (RequiresSubject && (!rewardReady || this is QuestPart_MunoProtect)
+                    && (subject == null || subject.Dead || subject.Destroyed))
                 { Fail("指定人物已死亡或失效。"); return; }
                 TickMission();
-                if (!settled && pickup != null && !pickup.Poll(subject, map, out string reason)) Fail(reason);
+                if (!settled && pickup != null && !pickup.Poll(map, out string reason)) Fail(reason);
             }
             catch (Exception error) { FailException(error); }
         }
@@ -109,7 +116,7 @@ namespace MunoRaceLib.MunoQuests
         public override void Notify_QuestSignalReceived(Signal signal)
         {
             base.Notify_QuestSignalReceived(signal);
-            if (pickup != null) pickup.ReceiveSignal(signal, subject);
+            if (pickup != null) pickup.ReceiveSignal(signal);
         }
 
         //在指定人物完成交接后转入领奖或物资发放。
@@ -122,10 +129,16 @@ namespace MunoRaceLib.MunoQuests
         //安排只接收指定人物的独立穿梭机。
         protected void StartPickup()
         {
+            StartPickup(new List<Pawn> { subject });
+        }
+
+        //为本次任务需要交付的人员安排同一架接收穿梭机。
+        protected void StartPickup(List<Pawn> pawns)
+        {
             pickup = new MunoQuestShuttle();
-            pickup.Start(quest, giver, map, subject, Config.shuttleDays);
+            pickup.Start(quest, giver, map, pawns, Config.shuttleDays);
             dueTick = pickup.ExpiryTick;
-            progress = "接收穿梭机已出发，请在期限内装载指定人物。";
+            progress = "接收穿梭机已出发，请在期限内装载 " + pawns.Count + " 名任务人员。";
         }
 
         //准备固定奖励并发送可暂缓处理的选择信件。
@@ -158,6 +171,10 @@ namespace MunoRaceLib.MunoQuests
         //标记成功并让原版任务系统执行清理与成功通知。
         protected void Finish()
         {
+            if (settled) return;
+            if (Config.goodwillReward != 0)
+                giver.TryAffectGoodwillWith(Faction.OfPlayer, Config.goodwillReward,
+                    reason: HistoryEventDefOf.QuestGoodwillReward);
             settled = true;
             progress = "委托完成，奖励已交付。";
             quest.End(QuestEndOutcome.Success);

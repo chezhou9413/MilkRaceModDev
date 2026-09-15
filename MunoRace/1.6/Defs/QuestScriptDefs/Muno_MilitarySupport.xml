@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <SitePartDef>
-    <defName>Muno_CaptureTarget</defName>
-    <label>指定抓捕目标</label>
-    <description>缪诺军事管理员要求活捉并带回基地的指定成年目标。</description>
-    <workerClass>MunoRaceLib.MunoQuests.SitePartWorker_MunoCaptureTarget</workerClass>
+    <defName>Muno_CaptureOutpostRoster</defName>
+    <label>据点抓捕人员</label>
+    <description>缪诺军事管理员要求从本据点活捉足量成年守军，不限定具体姓名。</description>
+    <workerClass>MunoRaceLib.MunoQuests.SitePartWorker_MunoCaptureOutpost</workerClass>
     <requiresFaction>true</requiresFaction>
     <wantsThreatPoints>false</wantsThreatPoints>
     <disallowsAutomaticDetectionTimerStart>true</disallowsAutomaticDetectionTimerStart>

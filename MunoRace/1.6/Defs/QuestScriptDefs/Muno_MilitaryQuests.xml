@@ -11,9 +11,10 @@
     </questNameRules>
     <questDescriptionRules>
       <rulesStrings>
-        <li>questDescription->缪诺军事管理员请求你前往附近敌对哨站，活捉一名指定的成年目标。
-\n接受后将标记哨站及目标。你有 [captureDays] 天将目标作为囚犯带回任意地面基地，其他人员不能替代。目标带回后，接收穿梭机将在 [arrivalDays] 天内抵达，并等待 [shuttleDays] 天装载。目标必须活着被带走。
-\n完成后保证可选一名缪诺成员，或一份约 [rewardValue] 银币价值的物资。目标死亡、获释、被招募、交接基地丢失或接收失败，均会导致任务失败。
+        <li>questDescription->缪诺军事管理员请求你前往附近敌对据点，活捉任意 [captureCount] 名成年守军，不限定姓名。
+\n接受后将标记据点。你有 [captureDays] 天从本据点带回足量俘虏，集中在任意一座地面基地。其他来源的囚犯不计入人数。带回后，接收穿梭机将在 [arrivalDays] 天内抵达，并等待 [shuttleDays] 天装载；起飞前可用该据点其他合格俘虏替换失效人员。
+\n完成后可选一名缪诺成员，或一份约 [rewardValue] 银币价值的物资。本次据点有 [intelligenceChance] 概率由一名敌人携带“据点情报”。在俘虏交付前将本任务的情报带回地面基地，两种奖励选项都会额外附送约 [intelligenceRewardValue] 银币物资。情报可保留使用，揭示所属敌对派系的一处限时据点。
+\n未能在期限内带回足量俘虏、剩余人员不足、交接基地丢失或穿梭机接收失败，会导致任务失败。情报是可选目标，未取得情报不影响基础奖励。
 \n所需头衔：[requiredTitle]或更高。邀请将在 [offerDays] 天后过期。</li>
       </rulesStrings>
     </questDescriptionRules>
@@ -22,6 +23,9 @@
       <li Class="MunoRaceLib.MunoQuests.MunoQuestConfig">
         <requiredTitle>Muno_JuniorAssistant</requiredTitle>
         <captureDays>15</captureDays>
+        <captureCount>1</captureCount>
+        <intelligenceChance>0.5</intelligenceChance>
+        <intelligenceRewardValue>1000</intelligenceRewardValue>
         <arrivalDays>1~2</arrivalDays>
         <shuttleDays>3</shuttleDays>
         <rewardValue>2000</rewardValue>
@@ -41,9 +45,9 @@
     <questDescriptionRules>
       <rulesStrings>
         <li>questDescription->一名受伤的缪诺突袭队员正在躲避敌人追击。缪诺军事管理员请求你提供庇护。
-\n接受后，一名成年队员将通过运输舱抵达基地，作为可控制的临时客人。她拥有 [skillRange] 级射击和格斗技能，带有随机伤势及自己的装备，请及时救治。
+\n接受后，一名成年队员将从地图边缘步行进入基地，作为可控制的临时客人。她拥有 [skillRange] 级射击和格斗技能，带有不妨碍步行入场的随机伤势及自己的装备，请及时救治。
 \n一波追兵将在 [arrivalDays] 天后抵达，强度随殖民地难度变化。击退本次全部追兵，并确保队员存活且留在基地，即可选择奖励。
-\n你可以让这名队员永久加入，保留其技能、伤势与装备；也可以选择约 [rewardValue] 银币价值的物资，先由穿梭机接走队员，再发放物资。接收穿梭机等待 [shuttleDays] 天。
+\n你可以让这名队员永久加入，保留其技能、伤势与装备；也可以选择约 [rewardValue] 银币价值的物资，先由穿梭机接走队员，再发放物资。接收穿梭机等待 [shuttleDays] 天。无论选择哪种奖励，任务最终完成时都增加 [goodwillReward] 点缪诺好感。
 \n队员死亡、被囚禁或奴役、离开基地，或交接失败，均会导致任务失败。所需头衔：[requiredTitle]或更高。邀请将在 [offerDays] 天后过期。</li>
       </rulesStrings>
     </questDescriptionRules>
@@ -51,6 +55,7 @@
     <modExtensions>
       <li Class="MunoRaceLib.MunoQuests.MunoQuestConfig">
         <requiredTitle>Muno_SeniorAssistant</requiredTitle>
+        <goodwillReward>10</goodwillReward>
         <arrivalDays>1~2</arrivalDays>
         <shuttleDays>3</shuttleDays>
         <rewardValue>2000</rewardValue>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>Muno_OutpostIntelligence</defName>
+    <label>据点情报</label>
+    <description>从敌人身上获得的加密据点资料。缪诺抓捕任务中，在俘虏交付前将该任务的情报带回地面基地，可以获得额外物资奖励。情报仍可保留使用：由玩家成员解读后，会揭示其所属派系的一处限时据点，成功揭示后消耗这份情报。</description>
+    <thingClass>ThingWithComps</thingClass>
+    <graphicData>
+      <texPath>Things/Item/Special/SubpersonaCoreTechprof</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.6</drawSize>
+      <color>(0.55, 0.85, 1.0)</color>
+    </graphicData>
+    <stackLimit>1</stackLimit>
+    <tradeability>None</tradeability>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>0.1</Mass>
+      <MarketValue>0</MarketValue>
+      <Flammability>0.4</Flammability>
+    </statBases>
+    <thingCategories><li>Items</li></thingCategories>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseArtifact</useJob>
+        <useLabel>解读据点情报</useLabel>
+        <useDuration>180</useDuration>
+        <showUseGizmo>true</showUseGizmo>
+      </li>
+      <li Class="MunoRaceLib.MunoQuests.CompProperties_MunoOutpostIntel">
+        <siteDays>10</siteDays>
+        <threatFactor>0.7</threatFactor>
+        <minSiteDistance>3</minSiteDistance>
+        <maxSiteDistance>15</maxSiteDistance>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

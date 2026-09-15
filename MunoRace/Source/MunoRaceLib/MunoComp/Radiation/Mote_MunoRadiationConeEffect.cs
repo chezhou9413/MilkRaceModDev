@@ -5,6 +5,7 @@ using Verse;
 namespace MunoRaceLib.MunoComp
 {
     //绘制短寿命辐射锥平面，并把三个锥形顶点与播放进度逐帧传给 CL Shader。
+    [StaticConstructorOnStartup]
     public class Mote_MunoRadiationConeEffect : Mote
     {
         private static readonly int ProgressId = Shader.PropertyToID("_Progress");
