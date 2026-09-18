@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 缪诺雪糕的心情载体。 -->
+  <HediffDef>
+    <defName>Muno_IceCreamMood</defName>
+    <label>雪糕的甜蜜</label>
+    <description>缪诺雪糕带来的甜蜜与清凉，让人心情愉悦。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.88, 0.65, 0.92)</defaultLabelColor>
+    <maxSeverity>1</maxSeverity>
+    <initialSeverity>1</initialSeverity>
+    <stages>
+      <li></li>
+    </stages>
+    <comps>
+      <li Class="Verse.HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1500</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+</Defs>

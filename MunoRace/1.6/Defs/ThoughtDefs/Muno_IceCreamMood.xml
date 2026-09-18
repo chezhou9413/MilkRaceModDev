@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 缪诺雪糕 +3 心情。-->
+  <ThoughtDef>
+    <defName>Muno_IceCreamMood</defName>
+    <label>雪糕的甜蜜</label>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>Muno_IceCreamMood</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>雪糕的甜蜜</label>
+        <description>刚刚吃过的缪诺雪糕冰凉香甜，真是美味。</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 缪诺雪糕：用 25 份缪诺乳在灶台制作。提供 +3 心情。 -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>MunoRace_IceCream</defName>
+    <label>缪诺雪糕</label>
+    <description>以缪诺乳作为主要原料制成的雪糕，口感浓郁绵密、奶香四溢。食用时能让人心情舒畅。</description>
+    <thingClass>ThingWithComps</thingClass>
+    <category>Item</category>
+    <graphicData>
+      <texPath>Item/Resource/MunoRace_IceCream</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+    <stackLimit>75</stackLimit>
+    <useHitPoints>true</useHitPoints>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <MarketValue>60</MarketValue>
+      <Mass>0.15</Mass>
+      <Flammability>0.5</Flammability>
+      <DeteriorationRate>8</DeteriorationRate>
+      <Nutrition>0.5</Nutrition>
+      <FoodPoisonChanceFixedHuman>0</FoodPoisonChanceFixedHuman>
+      <WorkToMake>2000</WorkToMake>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>10</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <ingestible>
+      <preferability>DesperateOnly</preferability>
+      <foodType>Processed</foodType>
+      <joy>0.1</joy>
+      <joyKind>Gluttonous</joyKind>
+      <maxNumToIngestAtOnce>4</maxNumToIngestAtOnce>
+      <defaultNumToIngestAtOnce>4</defaultNumToIngestAtOnce>
+      <ingestSound>Meal_Eat</ingestSound>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>Muno_IceCreamMood</hediffDef>
+          <severity>1</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <thingCategories>
+      <li>Foods</li>
+    </thingCategories>
+    <costList>
+      <MunoRace_MunoMilk>25</MunoRace_MunoMilk>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>Muno_MilkApplication</researchPrerequisite>
+      <workSkill>Cooking</workSkill>
+      <recipeUsers>
+        <li>ElectricStove</li>
+        <li>FueledStove</li>
+        <li>Campfire</li>
+      </recipeUsers>
+      <displayPriority>300</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+</Defs>
