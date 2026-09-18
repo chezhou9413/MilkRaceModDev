@@ -13,6 +13,7 @@
       <graphicClass>Graphic_Random</graphicClass>
       <drawSize>0.85</drawSize>
     </graphicData>
+    <tickerType>Rare</tickerType>
     <stackLimit>75</stackLimit>
     <useHitPoints>true</useHitPoints>
     <socialPropernessMatters>true</socialPropernessMatters>
