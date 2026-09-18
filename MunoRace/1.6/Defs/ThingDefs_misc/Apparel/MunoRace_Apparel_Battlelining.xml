@@ -22,6 +22,7 @@
       <li>Fabric</li>
       <li>Leathery</li>
     </stuffCategories>
+	<costStuffCount>40</costStuffCount> <!--制作材料 任意布料和皮革-->    
 	<costList> <!--固定制作材料-->
       <ComponentIndustrial>1</ComponentIndustrial>
    	</costList>
