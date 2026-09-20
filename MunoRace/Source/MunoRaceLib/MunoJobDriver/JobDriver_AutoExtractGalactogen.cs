@@ -51,13 +51,8 @@ namespace MunoRaceLib.MunoJobDriver
         private bool CanContinueExtraction()
         {
             ThingComp_Galactogen galactogen = pawn.GetComp<ThingComp_Galactogen>();
-            return galactogen != null
-                && galactogen.autoCollectEnabled
-                && galactogen.autoCollectMode == Mode
-                && GalactogenExtractorUtility.HasActiveExtractor(pawn)
-                && !pawn.Drafted
-                && !pawn.Downed
-                && !pawn.health.hediffSet.HasHediff(HediffDefOf.Malnutrition);
+            return GalactogenExtractionUtility.CanOperate(pawn, galactogen)
+                && galactogen.autoCollectMode == Mode;
         }
 
         //在等待期间生成与原有挤奶流程一致的飞溅和污物表现。
@@ -79,7 +74,7 @@ namespace MunoRaceLib.MunoJobDriver
             }
         }
 
-        //在工作完成时按当前阈值重新校验可产数量，避免模式或资源变化造成透支。
+        //完成时按任务锁定数量和剩余资源结算，数量设置变动只影响下一次汲取。
         private void CompleteExtraction()
         {
             ThingComp_Galactogen galactogen = pawn.GetComp<ThingComp_Galactogen>();
@@ -88,15 +83,14 @@ namespace MunoRaceLib.MunoJobDriver
                 return;
             }
 
-            float targetAmount = galactogen.MaxGalactogen * galactogen.AutoGather;
-            float surplus = Mathf.Max(0f, galactogen.CurrentGalactogen - targetAmount);
+            int count = Mathf.Min(job.count, GalactogenExtractionUtility.AffordableAmount(galactogen, Mode));
             if (Mode == GalactogenAutoCollectMode.Milk)
             {
-                CompleteMilkExtraction(galactogen, Mathf.FloorToInt(surplus));
+                CompleteMilkExtraction(galactogen, count);
                 return;
             }
 
-            CompleteSlurryExtraction(galactogen, Mathf.FloorToInt(surplus / 100f));
+            CompleteSlurryExtraction(galactogen, count);
         }
 
         //把自动产出的缪诺乳完整加入背包，成功后再扣除对应乳源质并刷新心情。

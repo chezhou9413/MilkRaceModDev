@@ -8,7 +8,7 @@ using Verse.Sound;
 
 namespace MunoRaceLib.MunoGizmo
 {
-    //以原版血源条风格显示乳源质存量，并负责阈值拖拽与数值对比色绘制。
+    //以原版血源条风格显示乳源质，提供阈值拖拽、汲取数量选择和数值对比色。
     [StaticConstructorOnStartup]
     public class Gizmo_GalactogenBar : Gizmo_Slider
     {
@@ -116,22 +116,37 @@ namespace MunoRaceLib.MunoGizmo
             }
         }
 
-        //绘制资源名和当前阈值百分比，并保持调用前的文字对齐状态。
+        //左侧紧邻显示资源名和阈值，右上角固定显示图标与数量切换入口。
         protected override void DrawHeader(Rect headerRect, ref bool mouseOverElement)
         {
             TextAnchor oldAnchor = Text.Anchor;
+            bool oldWordWrap = Text.WordWrap;
             try
             {
-                Text.Anchor = TextAnchor.UpperLeft;
-                Widgets.Label(new Rect(headerRect.x, headerRect.y, Mathf.Max(0f, headerRect.width - 52f), headerRect.height), Title);
+                Rect labelRect = headerRect;
+                if (GalactogenExtractorUtility.HasActiveExtractor(pawn))
+                {
+                    float buttonWidth = GalactogenExtractionAmountButton.RequiredWidth();
+                    Rect buttonRect = new Rect(headerRect.xMax - buttonWidth, headerRect.y, buttonWidth, headerRect.height);
+                    GalactogenExtractionAmountButton.Draw(buttonRect, Comp);
+                    labelRect.xMax = buttonRect.x - 8f;
+                }
 
-                Text.Anchor = TextAnchor.UpperRight;
-                Widgets.Label(headerRect, $"{Comp.AutoGather * 100f:F0}%");
+                string threshold = $"{Comp.AutoGather * 100f:F0}%";
+                float thresholdWidth = Text.CalcSize(threshold).x;
+                Text.WordWrap = false;
+                Text.Anchor = TextAnchor.MiddleLeft;
+                float availableTitleWidth = Mathf.Max(0f, labelRect.width - thresholdWidth - 6f);
+                string title = Title.Truncate(availableTitleWidth);
+                float titleWidth = Text.CalcSize(title).x;
+                Widgets.Label(new Rect(labelRect.x, labelRect.y, titleWidth, labelRect.height), title);
+                Widgets.Label(new Rect(labelRect.x + titleWidth + 6f, labelRect.y, thresholdWidth, labelRect.height), threshold);
                 mouseOverElement = true;
             }
             finally
             {
                 Text.Anchor = oldAnchor;
+                Text.WordWrap = oldWordWrap;
             }
         }
 
@@ -140,7 +155,7 @@ namespace MunoRaceLib.MunoGizmo
         {
             string recovery = Comp.RecoveryPerHour.ToString("0.##");
             string equipmentDrain = Comp.EquipmentDrainPerHour.ToString("0.##");
-            return $"{Comp.Props.GalactogenUIDes}\n\n乳源质恢复：+{recovery} / 小时\n装备消耗：-{equipmentDrain} / 小时\n当前自动收集阈值：{Comp.AutoGather * 100f:F0}%\n可以直接拖动条内目标线进行快速调整，靠近常用刻度时会自动吸附。";
+            return $"{Comp.Props.GalactogenUIDes}\n\n乳源质恢复：+{recovery} / 小时\n装备消耗：-{equipmentDrain} / 小时\n当前自动收集触发阈值：{Comp.AutoGather * 100f:F0}%\n达到阈值后启动收集，收集后允许低于阈值。\n可以直接拖动条内目标线进行快速调整，靠近常用刻度时会自动吸附。";
         }
 
         //在乳源质进度条矩形上直接注册动态悬浮提示，避免依赖父类整块 Gizmo 的提示区域。

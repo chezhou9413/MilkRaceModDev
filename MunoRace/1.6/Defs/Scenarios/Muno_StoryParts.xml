@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ScenPartDef>
+    <defName>Muno_StoryStartingPawns</defName>
+    <label>缪诺剧情开局人员</label>
+    <category>Fixed</category>
+    <scenPartClass>MunoRaceLib.MunoScenarios.ScenPart_MunoStart</scenPartClass>
+    <pageClass>Page_ConfigureStartingPawns</pageClass>
+    <summaryPriority>500</summaryPriority>
+    <canBeRandomlyAdded>false</canBeRandomlyAdded>
+    <preventRemovalOfFaction>MunoColony_Faction</preventRemovalOfFaction>
+  </ScenPartDef>
+  <PawnKindDef ParentName="MunoGirl_Colonist">
+    <defName>MunoRace_StorySurvivor</defName>
+    <label>缪诺生存者</label>
+    <apparelMoney>200~450</apparelMoney>
+    <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    <apparelTags Inherit="False"><li>MunoApparelBasic</li></apparelTags>
+    <weaponMoney>0</weaponMoney>
+  </PawnKindDef>
+</Defs>

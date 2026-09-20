@@ -1,7 +1,6 @@
 using MunoRaceLib.MunoComp;
 using MunoRaceLib.MunoDefRef;
 using RimWorld;
-using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -25,15 +24,7 @@ namespace MunoRaceLib.MunoJobGiver
                 return BuildLegacyMilkJob(pawn, galactogen, targetAmount);
             }
 
-            float surplus = Mathf.Max(0f, galactogen.CurrentGalactogen - targetAmount);
-            if (galactogen.autoCollectMode == GalactogenAutoCollectMode.Milk)
-            {
-                int count = Mathf.FloorToInt(surplus);
-                return count > 0 ? BuildExtractionJob(MunoDefDataRef.JobDef_AutoExtractMunoMilk, pawn, count) : null;
-            }
-
-            int slurryCount = Mathf.FloorToInt(surplus / 100f);
-            return slurryCount > 0 ? BuildExtractionJob(MunoDefDataRef.JobDef_AutoExtractConcentratedMulacte, pawn, slurryCount) : null;
+            return GalactogenExtractionUtility.TryCreateJob(pawn, galactogen);
         }
 
         //检查自动收集所需的小人、营养和组件状态。
@@ -60,12 +51,5 @@ namespace MunoRaceLib.MunoJobGiver
             return job;
         }
 
-        //创建指定产物模式和精确产量的装备自动汲取工作。
-        private static Job BuildExtractionJob(JobDef jobDef, Pawn pawn, int count)
-        {
-            Job job = JobMaker.MakeJob(jobDef, pawn);
-            job.count = count;
-            return job;
-        }
     }
 }

@@ -193,10 +193,15 @@ namespace MunoRaceLib.MunoWorld
             }
 
             Faction munoFaction = settlement.Faction;
+            List<string> endingMembers = new List<string>();
+            foreach (MunoExchangeTargetRecord target in targets)
+                if (MunoScenarios.MunoStoryUtility.IsEndingMember(target.pawn)) endingMembers.Add(target.pawn.ThingID);
             for (int i = 0; i < targets.Count; i++)
             {
                 TransferPawnToMunoFaction(caravan, munoFaction, targets[i].pawn);
             }
+
+            Current.Game.GetComponent<MunoEndings.MunoEndingComponent>().RecordDelivery(offeredPawns, endingMembers, false);
 
             joinedPawns.AddRange(generatedPawns);
             return true;

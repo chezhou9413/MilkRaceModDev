@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <FleckDef>
+    <defName>Muno_CameraRecordingLight</defName>
+    <fleckSystemClass>FleckSystemStatic</fleckSystemClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime><solidTime>0.15</solidTime><fadeOutTime>0.15</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Mote/BrightFlash</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass><shaderType>MoteGlow</shaderType>
+      <color>(1,0.08,0.04,0.85)</color>
+    </graphicData>
+  </FleckDef>
+  <FleckDef>
+    <defName>Muno_CameraFlash</defName>
+    <fleckSystemClass>FleckSystemStatic</fleckSystemClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.01</fadeInTime><solidTime>0.03</solidTime><fadeOutTime>0.14</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Mote/BrightFlash</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass><shaderType>MoteGlow</shaderType>
+      <color>(0.8,0.9,1,0.9)</color>
+    </graphicData>
+  </FleckDef>
+</Defs>

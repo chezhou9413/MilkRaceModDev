@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--成年成长流程会分别选择童年与成年背景，独立分类同时提供两个槽位。-->
+  <AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">
+    <defName>Muno_ColonyChildhood</defName>
+    <title>殖民地长大的缪诺</title>
+    <titleShort>殖民地孩子</titleShort>
+    <baseDesc>[PAWN_nameDef]在这座殖民地度过了童年，与居民们一起生活，逐渐熟悉了这里的日常。</baseDesc>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>MunoColonyGrowth</li>
+    </spawnCategories>
+    <requiresSpawnCategory>true</requiresSpawnCategory>
+    <requiredWorkTags>None</requiredWorkTags>
+  </AlienRace.AlienBackstoryDef>
+
+  <!--成长背景不要求既有工作能力，初始生成时的职业背景由人物种类配置选择。-->
+  <AlienRace.AlienBackstoryDef ParentName="MunoGirlBackStory">
+    <defName>Muno_ColonyAdulthood</defName>
+    <title>缪诺殖民者</title>
+    <titleShort>殖民者</titleShort>
+    <baseDesc>[PAWN_nameDef]在这座殖民地迈入成年，开始承担自己的职责。[PAWN_possessive]未来仍在书写之中。</baseDesc>
+    <slot>Adulthood</slot>
+    <spawnCategories>
+      <li>MunoColonyGrowth</li>
+    </spawnCategories>
+    <requiresSpawnCategory>true</requiresSpawnCategory>
+    <requiredWorkTags>None</requiredWorkTags>
+  </AlienRace.AlienBackstoryDef>
+</Defs>

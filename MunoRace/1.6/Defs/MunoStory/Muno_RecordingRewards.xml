@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <MunoRaceLib.MunoScenarios.MunoRecordingRewardDef>
+    <defName>Muno_TapeRewardFood</defName>
+    <thingDef>MealSurvivalPack</thingDef><count>10~18</count><weight>4</weight>
+  </MunoRaceLib.MunoScenarios.MunoRecordingRewardDef>
+  <MunoRaceLib.MunoScenarios.MunoRecordingRewardDef>
+    <defName>Muno_TapeRewardMedicine</defName>
+    <thingDef>MedicineIndustrial</thingDef><count>3~6</count><weight>2</weight>
+  </MunoRaceLib.MunoScenarios.MunoRecordingRewardDef>
+  <MunoRaceLib.MunoScenarios.MunoRecordingRewardDef>
+    <defName>Muno_TapeRewardSteel</defName>
+    <thingDef>Steel</thingDef><count>40~80</count><weight>3</weight>
+  </MunoRaceLib.MunoScenarios.MunoRecordingRewardDef>
+  <MunoRaceLib.MunoScenarios.MunoRecordingRewardDef>
+    <defName>Muno_TapeRewardComponents</defName>
+    <thingDef>ComponentIndustrial</thingDef><count>2~4</count><weight>2</weight>
+  </MunoRaceLib.MunoScenarios.MunoRecordingRewardDef>
+  <MunoRaceLib.MunoScenarios.MunoRecordingRewardDef>
+    <defName>Muno_TapeRewardSilver</defName>
+    <thingDef>Silver</thingDef><count>60~120</count><weight>1</weight>
+  </MunoRaceLib.MunoScenarios.MunoRecordingRewardDef>
+</Defs>

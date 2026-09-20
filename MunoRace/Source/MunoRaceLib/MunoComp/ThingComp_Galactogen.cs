@@ -33,6 +33,8 @@ namespace MunoRaceLib.MunoComp
         public float AutoGather = 0.8f;
         public bool autoCollectEnabled = true;
         public GalactogenAutoCollectMode autoCollectMode = GalactogenAutoCollectMode.Milk;
+        public int autoMilkAmount = 25;
+        public int autoSlurryAmount = 1;
 
         //返回当前乳源质组件所属的小人。
         public Pawn SelfPawn => parent as Pawn;
@@ -74,13 +76,17 @@ namespace MunoRaceLib.MunoComp
             HouseGalactogen = Props.houseGalactogen;
         }
 
-        //按固定周期刷新乳源质自然增减逻辑。
+        //按固定周期刷新乳源质，并及时安排达到阈值的装备自动汲取。
         public override void CompTick()
         {
             base.CompTick();
             if (parent.IsHashIntervalTick(2500))
             {
                 CheckGalactogen();
+            }
+            if (parent.IsHashIntervalTick(120))
+            {
+                GalactogenExtractionUtility.TryStartPeriodic(this);
             }
         }
 
@@ -139,7 +145,7 @@ namespace MunoRaceLib.MunoComp
             yield return BuildManualSlurryCommand();
         }
 
-        //保存和读取乳源质当前状态、阈值、启停状态与自动汲取模式。
+        //保存和读取乳源质、触发阈值、启停状态、产物模式与各自的汲取数量。
         public override void PostExposeData()
         {
             base.PostExposeData();
@@ -150,6 +156,8 @@ namespace MunoRaceLib.MunoComp
             Scribe_Values.Look(ref AutoGather, "AutoGather", 0.8f);
             Scribe_Values.Look(ref autoCollectEnabled, "autoCollectEnabled", true);
             Scribe_Values.Look(ref autoCollectMode, "autoCollectMode", GalactogenAutoCollectMode.Milk);
+            Scribe_Values.Look(ref autoMilkAmount, "autoMilkAmount", 25);
+            Scribe_Values.Look(ref autoSlurryAmount, "autoSlurryAmount", 1);
         }
 
         //根据饱食度与属性加成刷新乳源质的自然恢复或反向消耗。
@@ -208,7 +216,7 @@ namespace MunoRaceLib.MunoComp
             {
                 defaultLabel = hasExtractor ? "自动汲取：" + product : "自动收集缪诺乳",
                 defaultDesc = hasExtractor
-                    ? "开启后，乳源质超过设定阈值时自动汲取为" + product + "。"
+                    ? "开启后，乳源质达到设定阈值时，按资源条右上角的数量自动汲取为" + product + "。汲取后允许低于阈值，资源不足时仅产出可负担的整份数量。"
                     : "开启后，乳源质达到设定阈值时自动转换为缪诺乳。",
                 icon = ProductIcon(hasExtractor ? autoCollectMode : GalactogenAutoCollectMode.Milk),
                 isActive = () => autoCollectEnabled,

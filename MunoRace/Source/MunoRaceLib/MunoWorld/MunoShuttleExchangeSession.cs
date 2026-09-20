@@ -1,5 +1,6 @@
 using RimWorld;
 using System.Collections.Generic;
+using System.Linq;
 using Verse;
 
 namespace MunoRaceLib.MunoWorld
@@ -17,6 +18,9 @@ namespace MunoRaceLib.MunoWorld
         private bool finished = true;
         private bool launchTriggered;
         private string failReason;
+        private bool endingTransfer;
+        private int launchTick;
+        private List<string> endingMemberIds = new List<string>();
 
         //创建当前存档使用的缪诺穿梭机交换组件。
         public MunoShuttleExchangeSession(Game game)
@@ -56,25 +60,17 @@ namespace MunoRaceLib.MunoWorld
                 return;
             }
 
-            if (shuttle == null)
+            if (launchTriggered)
             {
-                if (launchTriggered && AllTargetsLoaded)
-                {
-                    GrantReward();
-                }
-                else
-                {
-                    MarkFailed("缪诺接收穿梭机引用已失效，本次流程已中止。", true);
-                }
+                if (targets.Any(t => t.pawn == null || t.pawn.Dead || t.pawn.Destroyed)
+                    || Find.TickManager.TicksGame - launchTick > GenDate.TicksPerHour)
+                    MarkFailed("接收穿梭机未能携带全部目标完成离场，交付未结算。", true);
                 return;
             }
 
-            if (launchTriggered)
+            if (shuttle == null)
             {
-                if (AllTargetsLoaded && (shuttle.Destroyed || shuttle.MapHeld == null))
-                {
-                    GrantReward();
-                }
+                MarkFailed("缪诺接收穿梭机引用已失效，本次流程已中止。", true);
                 return;
             }
 
@@ -110,6 +106,7 @@ namespace MunoRaceLib.MunoWorld
             }
 
             launchTriggered = true;
+            launchTick = Find.TickManager.TicksGame;
             if (!TryLaunchShuttleNow())
             {
                 launchTriggered = false;
@@ -118,7 +115,7 @@ namespace MunoRaceLib.MunoWorld
         }
 
         //启动新的批量交换会话并接管锁定的随机物资对象。
-        public void StartSession(Pawn newNegotiator, List<MunoExchangeTargetRecord> newTargets, List<Thing> itemRewards, Thing newShuttle, Map newMap)
+        public void StartSession(Pawn newNegotiator, List<MunoExchangeTargetRecord> newTargets, List<Thing> itemRewards, Thing newShuttle, Map newMap, bool requestEnding = false)
         {
             negotiator = newNegotiator;
             targets = newTargets ?? new List<MunoExchangeTargetRecord>();
@@ -130,6 +127,10 @@ namespace MunoRaceLib.MunoWorld
             finished = false;
             launchTriggered = false;
             failReason = null;
+            endingTransfer = requestEnding;
+            launchTick = 0;
+            endingMemberIds = targets.Select(t => t.pawn).Where(MunoScenarios.MunoStoryUtility.IsEndingMember)
+                .Select(p => p.ThingID).ToList();
         }
 
         //持久化会话目标、锁定物资、穿梭机引用和结算状态。
@@ -146,6 +147,9 @@ namespace MunoRaceLib.MunoWorld
             Scribe_Values.Look(ref finished, "munoExchangeFinished", true);
             Scribe_Values.Look(ref launchTriggered, "munoExchangeLaunchTriggered", false);
             Scribe_Values.Look(ref failReason, "munoExchangeFailReason");
+            Scribe_Values.Look(ref endingTransfer, "endingTransfer");
+            Scribe_Values.Look(ref launchTick, "launchTick");
+            Scribe_Collections.Look(ref endingMemberIds, "endingMemberIds", LookMode.Value);
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 targets = targets ?? new List<MunoExchangeTargetRecord>();
@@ -181,6 +185,8 @@ namespace MunoRaceLib.MunoWorld
                 {
                     return true;
                 }
+
+                if (endingTransfer && !MunoScenarios.MunoStoryUtility.IsEndingMember(pawn)) return true;
 
                 if (transporter.innerContainer.Contains(pawn))
                 {
@@ -225,6 +231,44 @@ namespace MunoRaceLib.MunoWorld
 
             shuttleComp.shipParent.ForceJob(ShipJobDefOf.FlyAway);
             return true;
+        }
+
+        //确认实际离场的乘员来自本会话，并在原版移交世界前设置接收派系。
+        public bool PrepareDeparture(FlyShipLeaving leaving)
+        {
+            if (finished || !launchTriggered || leaving.createWorldObject || leaving.Map != map
+                || leaving.Contents == null || targets.Count == 0) return false;
+            if (targets.Any(t => t.pawn == null || t.pawn.Dead || t.pawn.Destroyed
+                || !leaving.Contents.innerContainer.Contains(t.pawn))) return false;
+            Faction faction = MunoScenarios.MunoStoryUtility.Faction;
+            if (faction == null)
+            {
+                MarkFailed("缪诺接收派系已失效，不能完成交付。", true);
+                return false;
+            }
+            endingMemberIds.RemoveAll(id => !targets.Any(t => t.pawn.ThingID == id
+                && MunoScenarios.MunoStoryUtility.IsEndingMember(t.pawn)));
+            foreach (MunoExchangeTargetRecord target in targets)
+            {
+                target.pawn.guest?.SetGuestStatus(null);
+                target.pawn.SetFaction(faction);
+            }
+            return true;
+        }
+
+        //在原版完成乘员离场后结算物资或结局，并记录实际交付成员。
+        public void CompleteDeparture()
+        {
+            if (finished) return;
+            if (endingTransfer)
+            {
+                finished = true;
+                rewardGranted = true;
+                Messages.Message("缪诺聚落已接收本次融入申请中的 " + TargetCount + " 名成员。", MessageTypeDefOf.PositiveEvent, false);
+            }
+            else GrantReward();
+            Current.Game.GetComponent<MunoEndings.MunoEndingComponent>().RecordDelivery(
+                targets.Select(t => t.pawn), endingMemberIds, endingTransfer);
         }
 
         //按目标记录统计缪诺成员奖励数量。
@@ -299,24 +343,5 @@ namespace MunoRaceLib.MunoWorld
             }
         }
 
-        //清理会话引用，并按需要销毁尚未交付的物资。
-        private void ClearSession(bool destroyPendingItems)
-        {
-            if (destroyPendingItems)
-            {
-                MunoExchangeRewardService.DestroyItems(pendingItemRewards);
-            }
-
-            negotiator = null;
-            targets.Clear();
-            pendingItemRewards.Clear();
-            shuttle = null;
-            map = null;
-            loadedTargetCount = 0;
-            rewardGranted = false;
-            finished = true;
-            launchTriggered = false;
-            failReason = null;
-        }
     }
 }

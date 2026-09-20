@@ -12,7 +12,7 @@ namespace MunoRaceLib.MunoWorld
         private const float LandingSearchRadius = 10f;
 
         //启动一轮批量缪诺穿梭机交换流程。
-        public static bool TryStartExchange(Pawn negotiator, List<MunoExchangeTargetRecord> targets, List<Thing> itemRewards, out string failReason)
+        public static bool TryStartExchange(Pawn negotiator, List<MunoExchangeTargetRecord> targets, List<Thing> itemRewards, out string failReason, bool endingTransfer = false)
         {
             failReason = null;
             bool ownsGeneratedItems = false;
@@ -28,11 +28,12 @@ namespace MunoRaceLib.MunoWorld
                 return false;
             }
 
-            if (!TryBuildTargetLists(targets, negotiator.Map, out List<MunoExchangeTargetRecord> sessionTargets, out List<Pawn> targetPawns, out failReason))
+            if (!TryBuildTargetLists(targets, negotiator.Map, out List<MunoExchangeTargetRecord> sessionTargets, out List<Pawn> targetPawns, out failReason, endingTransfer))
             {
                 return false;
             }
 
+            if (endingTransfer) itemRewards = new List<Thing>();
             if (itemRewards == null)
             {
                 if (!MunoExchangeRewardService.TryGenerateRandomItemReward(sessionTargets, out itemRewards, out _, out failReason))
@@ -74,7 +75,7 @@ namespace MunoRaceLib.MunoWorld
             }
 
             Faction munoFaction = Find.FactionManager.FirstFactionOfDef(MunoDefDataRef.MunoColony_Faction);
-            if (munoFaction == null)
+            if (munoFaction == null || munoFaction.defeated || munoFaction.deactivated)
             {
                 failReason = "未找到有效的缪诺派系实例。";
                 if (ownsGeneratedItems)
@@ -147,7 +148,7 @@ namespace MunoRaceLib.MunoWorld
                 return false;
             }
 
-            session.StartSession(negotiator, sessionTargets, itemRewards, shuttle, negotiator.Map);
+            session.StartSession(negotiator, sessionTargets, itemRewards, shuttle, negotiator.Map, endingTransfer);
             return true;
         }
 
@@ -158,7 +159,7 @@ namespace MunoRaceLib.MunoWorld
         }
 
         //复制并验证目标记录，同时构建原版穿梭机需要的 Pawn 列表。
-        private static bool TryBuildTargetLists(List<MunoExchangeTargetRecord> targets, Map map, out List<MunoExchangeTargetRecord> sessionTargets, out List<Pawn> targetPawns, out string failReason)
+        private static bool TryBuildTargetLists(List<MunoExchangeTargetRecord> targets, Map map, out List<MunoExchangeTargetRecord> sessionTargets, out List<Pawn> targetPawns, out string failReason, bool endingTransfer)
         {
             sessionTargets = new List<MunoExchangeTargetRecord>();
             targetPawns = new List<Pawn>();
@@ -185,7 +186,10 @@ namespace MunoRaceLib.MunoWorld
                     return false;
                 }
 
-                if (!MunoHostageExchangeService.IsEligibleCandidateOnMap(target.pawn, map))
+                bool eligible = endingTransfer
+                    ? MunoScenarios.MunoStoryUtility.IsEndingMember(target.pawn) && target.pawn.Map == map
+                    : MunoHostageExchangeService.IsEligibleCandidateOnMap(target.pawn, map);
+                if (!eligible)
                 {
                     failReason = "所选目标已不再符合缪诺接收条件。";
                     return false;

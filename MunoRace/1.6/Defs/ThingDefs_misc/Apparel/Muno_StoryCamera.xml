@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ApparelLayerDef>
+    <defName>Muno_CameraHarness</defName>
+    <label>摄像机挂具</label>
+    <drawOrder>95</drawOrder>
+  </ApparelLayerDef>
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>Muno_StoryCamera</defName>
+    <label>生存挑战摄像机</label>
+    <description>通过独立挂具穿戴的摄像机，不占用武器栏，镜头始终朝向穿戴者前方。穿戴后定期自动举机拍摄附近殖民者，完整拍摄才积累片段，中断不产出。征召、倒地、睡眠或精神异常时停止拍摄。摄像机仅用于自动拍摄和上传录像带，上传后可获得节目组物资。可在机械加工台制造替代设备。</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Apparel/MunoCamera/MunoCamera</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.65</drawSize>
+    </graphicData>
+    <statBases><MaxHitPoints>180</MaxHitPoints><Mass>1.5</Mass><EquipDelay>2</EquipDelay><WorkToMake>4000</WorkToMake><MarketValue>180</MarketValue></statBases>
+    <thingCategories><li>Apparel</li></thingCategories>
+    <generateCommonality>0</generateCommonality>
+    <costList><Steel>40</Steel><ComponentIndustrial>2</ComponentIndustrial></costList>
+    <recipeMaker><recipeUsers><li>TableMachining</li></recipeUsers><researchPrerequisite>Machining</researchPrerequisite><skillRequirements><Crafting>3</Crafting></skillRequirements></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li></bodyPartGroups>
+      <layers><li>Muno_CameraHarness</li></layers>
+      <tags><li>MunoStoryCamera</li></tags>
+      <renderNodeProperties>
+        <li>
+          <nodeClass>PawnRenderNode</nodeClass>
+          <workerClass>MunoRaceLib.MunoRecording.PawnRenderNodeWorker_MunoCamera</workerClass>
+          <parentTagDef>Body</parentTagDef>
+          <texPath>Apparel/MunoCamera/Worn/MunoCamera</texPath>
+          <shaderTypeDef>Cutout</shaderTypeDef>
+          <drawSize>(0.55,0.55)</drawSize>
+          <overrideMeshSize>(1,1)</overrideMeshSize>
+          <baseLayer>95</baseLayer>
+          <debugLabel>摄像机挂具与取景动作</debugLabel>
+        </li>
+      </renderNodeProperties>
+    </apparel>
+    <comps><li Class="MunoRaceLib.MunoRecording.CompProperties_MunoCamera" /></comps>
+  </ThingDef>
+</Defs>

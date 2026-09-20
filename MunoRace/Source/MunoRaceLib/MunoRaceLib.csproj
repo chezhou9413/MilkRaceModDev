@@ -150,6 +150,7 @@
     <Compile Include="MunoComp\Comp_GalactogenExtractor.cs" />
     <Compile Include="MunoComp\GalactogenAutoCollectMode.cs" />
     <Compile Include="MunoComp\GalactogenExtractorUtility.cs" />
+    <Compile Include="MunoComp\Extraction\GalactogenExtractionUtility.cs" />
     <Compile Include="MunoComp\GalactogenStorageUtility.cs" />
     <Compile Include="MunoComp\Comp_TentacleMinionController.cs" />
     <Compile Include="MunoComp\Comp_GalactogenStorageArmor.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="MunoComp\CompProperties_TentacleArmorData.cs" />
     <Compile Include="MunoDefRef\MunoDefDataRef.cs" />
     <Compile Include="MunoGizmo\Gizmo_GalactogenBar.cs" />
+    <Compile Include="MunoGizmo\GalactogenExtractionAmountButton.cs" />
     <Compile Include="MunoWorld\Dialog_MunoHostageExchange.cs" />
     <Compile Include="MunoWorld\Dialog_MunoMarriageComms.cs" />
     <Compile Include="MunoWorld\MunoCommDialogueDef.cs" />
@@ -228,6 +230,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MunoQuests\Common\MunoQuestConfig.cs" />
+    <Compile Include="MunoScenarios\*.cs" />
+    <Compile Include="MunoRecording\*.cs" />
+    <Compile Include="MunoRecording\Jobs\*.cs" />
+    <Compile Include="MunoRecording\Visuals\*.cs" />
+    <Compile Include="MunoPursuit\*.cs" />
+    <Compile Include="MunoEndings\*.cs" />
     <Compile Include="MunoQuests\Common\MunoQuestUtility.cs" />
     <Compile Include="MunoQuests\Common\QuestNode_MunoMilitary.cs" />
     <Compile Include="MunoQuests\Common\QuestPart_MunoMilitary.cs" />
