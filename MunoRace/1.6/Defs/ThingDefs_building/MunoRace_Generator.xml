@@ -40,13 +40,13 @@
       <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
     </building>
     <costList>
-      <Steel>100</Steel>
+      <Steel>50</Steel>
       <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
-        <basePowerConsumption>-250</basePowerConsumption>
+        <basePowerConsumption>-500</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
         <soundAmbientProducingPower>WoodFiredGenerator_Ambience</soundAmbientProducingPower>
       </li>
@@ -68,7 +68,7 @@
       </li>
       <li Class="CompProperties_HeatPusher">
         <compClass>CompHeatPusherPowered</compClass>
-        <heatPerSecond>6</heatPerSecond>
+        <heatPerSecond>0</heatPerSecond>
       </li>
       <li Class="CompProperties_Breakdownable"/>
       <li Class="CompProperties_Stunnable">
