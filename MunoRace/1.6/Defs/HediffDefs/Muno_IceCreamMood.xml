@@ -16,7 +16,7 @@
     </stages>
     <comps>
       <li Class="Verse.HediffCompProperties_Disappears">
-        <disappearsAfterTicks>1500</disappearsAfterTicks>
+        <disappearsAfterTicks>7500</disappearsAfterTicks>
         <showRemainingTime>true</showRemainingTime>
       </li>
     </comps>

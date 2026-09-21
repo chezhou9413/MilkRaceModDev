@@ -132,7 +132,7 @@
     <defName>Muno_ApparelBasic</defName>
     <label>缪诺服装基础</label>
     <description>学习缪诺族日常服装的制作工艺，包括各类生活服饰、礼服与工作服等</description>
-    <baseCost>400</baseCost>
+    <baseCost>300</baseCost>
     <requiredResearchBuilding Inherit="False"/>
     <techLevel>Industrial</techLevel>
     <researchViewX>0.00</researchViewX>
@@ -199,7 +199,7 @@
     <defName>Muno_MilkCollectEquipment</defName>
     <label>缪诺乳收集装备</label>
     <description>解锁制造缪诺专用的产乳与收集装备，充分利用缪诺的生理特性</description>
-    <baseCost>1000</baseCost>
+    <baseCost>600</baseCost>
     <requiredResearchBuilding Inherit="False"/>
     <techLevel>Industrial</techLevel>
     <prerequisites>
@@ -222,7 +222,7 @@
     <defName>Muno_MilkApplication</defName>
     <label>缪诺乳应用</label>
     <description>研究缪诺乳汁在各领域的应用</description>
-    <baseCost>2000</baseCost>
+    <baseCost>600</baseCost>
     <requiredResearchBuilding Inherit="False"/>
     <techLevel>Industrial</techLevel>
     <prerequisites>
@@ -245,7 +245,7 @@
     <defName>Muno_TentacleBiotech</defName>
     <label>缪诺触手生物护甲</label>
     <description>融合触手生物特性与先进材料技术，制造具有自我修复与自适应能力的生物护甲</description>
-    <baseCost>1500</baseCost>
+    <baseCost>1000</baseCost>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
     <techLevel>Spacer</techLevel>
     <prerequisites>

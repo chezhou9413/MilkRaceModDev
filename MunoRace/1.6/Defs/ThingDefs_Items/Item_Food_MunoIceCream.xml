@@ -10,7 +10,7 @@
     <category>Item</category>
     <graphicData>
       <texPath>Item/Resource/MunoRace_IceCream</texPath>
-      <graphicClass>Graphic_Random</graphicClass>
+      <graphicClass>Graphic_StackCount</graphicClass>
       <drawSize>0.85</drawSize>
     </graphicData>
     <tickerType>Rare</tickerType>
@@ -25,7 +25,7 @@
       <DeteriorationRate>8</DeteriorationRate>
       <Nutrition>0.5</Nutrition>
       <FoodPoisonChanceFixedHuman>0</FoodPoisonChanceFixedHuman>
-      <WorkToMake>2000</WorkToMake>
+      <WorkToMake>500</WorkToMake>
     </statBases>
     <comps>
       <li Class="CompProperties_Forbiddable" />
@@ -53,7 +53,7 @@
       <li>Foods</li>
     </thingCategories>
     <costList>
-      <MunoRace_MunoMilk>25</MunoRace_MunoMilk>
+      <MunoRace_MunoMilk>10</MunoRace_MunoMilk>
     </costList>
     <recipeMaker>
       <researchPrerequisite>Muno_MilkApplication</researchPrerequisite>

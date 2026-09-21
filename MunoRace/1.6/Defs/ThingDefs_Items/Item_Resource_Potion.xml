@@ -5,7 +5,7 @@
   <ThingDef ParentName="ResourceBase">
     <defName>MunoRace_Potion</defName>
     <label>强化药水</label>
-    <description>可以强化缪诺乳源质储量，积累速度的药水.</description>
+    <description>可以强化缪诺乳源质储量，积累速度的药水，药水效果随着使用次数逐渐递增，多次使用后会出现副作用。</description>
     <possessionCount>1</possessionCount>
     <graphicData>
       <texPath>Item/Resource/MunoRace_Potion</texPath>
@@ -20,7 +20,18 @@
       <Mass>0.02</Mass>
       <Flammability>0.7</Flammability>
       <DeteriorationRate>1.0</DeteriorationRate>
+      <WorkToMake>600</WorkToMake>
     </statBases>
+    <costList>
+      <Neutroamine>2</Neutroamine>
+      <MunoRace_ConcentratedMulacte>5</MunoRace_ConcentratedMulacte>
+    </costList>
+    <recipeMaker>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <displayPriority>2200</displayPriority>
+    </recipeMaker>
     <thingCategories>
       <li>Manufactured</li>
     </thingCategories>

@@ -2,13 +2,13 @@
 <Defs>
   <ApparelLayerDef>
     <defName>Muno_CameraHarness</defName>
-    <label>摄像机挂具</label>
+    <label>自动摄像机</label>
     <drawOrder>95</drawOrder>
   </ApparelLayerDef>
   <ThingDef ParentName="ApparelNoQualityBase">
     <defName>Muno_StoryCamera</defName>
     <label>生存挑战摄像机</label>
-    <description>通过独立挂具穿戴的摄像机，不占用武器栏，镜头始终朝向穿戴者前方。穿戴后定期自动举机拍摄附近殖民者，完整拍摄才积累片段，中断不产出。征召、倒地、睡眠或精神异常时停止拍摄。摄像机仅用于自动拍摄和上传录像带，上传后可获得节目组物资。可在机械加工台制造替代设备。</description>
+    <description>通过独立挂具穿戴的摄像机，不会影响使用者战斗与工作。穿戴后定期自动举机拍摄附近殖民者，摄像机能够自动跟踪拍摄，摄像机内置了迷你数据传输器，能够上传给缪诺电视台™获取一些随机奖励。</description>
     <techLevel>Industrial</techLevel>
     <graphicData>
       <texPath>Apparel/MunoCamera/MunoCamera</texPath>
