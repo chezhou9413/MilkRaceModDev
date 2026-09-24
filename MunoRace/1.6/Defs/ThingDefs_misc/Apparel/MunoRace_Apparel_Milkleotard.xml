@@ -16,6 +16,8 @@
     <graphicData>
    	<texPath>Apparel/Milkleotard/MunoRace_Apparel_Milkleotard</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
+	<shaderType>CutoutComplex</shaderType>
+	<maskPath>Apparel/Milkleotard/MunoRace_Apparel_Milkleotard_m</maskPath>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
 	<costStuffCount>60</costStuffCount> <!--制作材料 任意布料和皮革-->    
@@ -48,7 +50,8 @@
       <li>Arms</li>    
       <li>Legs</li>
 	 </bodyPartGroups>
-	 <wornGraphicPath>Apparel/Milkleotard/MunoRace_Apparel_Milkleotard</wornGraphicPath> <!--穿着的贴图路径-->
+	 <wornGraphicPath>Apparel/Milkleotard/MunoRace_Apparel_Milkleotard</wornGraphicPath>
+	 <useWornGraphicMask>true</useWornGraphicMask> <!--穿着的贴图路径-->
 	 <layers>
 	  <li>Muno_Underwear</li> <!--内衣专用层-->
 	 </layers>

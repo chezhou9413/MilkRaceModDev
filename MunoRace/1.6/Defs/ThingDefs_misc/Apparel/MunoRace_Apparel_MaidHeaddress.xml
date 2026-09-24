@@ -15,6 +15,8 @@
     <graphicData>
    	<texPath>Apparel/HeadApparel/MaidHeaddress/MunoRace_Apparel_MaidHeaddress</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
+	<shaderType>CutoutComplex</shaderType>
+	<maskPath>Apparel/HeadApparel/MaidHeaddress/MunoRace_Apparel_MaidHeaddress_m</maskPath>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
 	<costStuffCount>80</costStuffCount> <!--制作材料 任意布料和皮革-->    
@@ -42,7 +44,8 @@
 	 <bodyPartGroups>
       <li>UpperHead</li>  
 	 </bodyPartGroups>
-	 <wornGraphicPath>AlienRace/MunoRace/Null/Null</wornGraphicPath> <!--穿着的贴图路径-->
+	 <wornGraphicPath>AlienRace/MunoRace/Null/Null</wornGraphicPath>
+	 <useWornGraphicMask>true</useWornGraphicMask> <!--穿着的贴图路径-->
 	 <layers>
 	  <li>Overhead</li>
 	 </layers>

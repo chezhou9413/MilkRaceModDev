@@ -16,6 +16,8 @@
     <graphicData>
    	<texPath>Apparel/Bunny/MunoRace_Apparel_Bunny</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
+	<shaderType>CutoutComplex</shaderType>
+	<maskPath>Apparel/Bunny/MunoRace_Apparel_Bunny_m</maskPath>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
 	<costStuffCount>40</costStuffCount> <!--制作材料 任意布料和皮革-->    
@@ -47,7 +49,8 @@
       <li>Arms</li>    
       <li>Legs</li>
 	 </bodyPartGroups>
-	 <wornGraphicPath>Apparel/Bunny/MunoRace_Apparel_Bunny</wornGraphicPath> <!--穿着的贴图路径-->
+	 <wornGraphicPath>Apparel/Bunny/MunoRace_Apparel_Bunny</wornGraphicPath>
+	 <useWornGraphicMask>true</useWornGraphicMask> <!--穿着的贴图路径-->
 	 <layers>
 	  	  <li>Muno_Underwear</li> <!--内衣专用层-->
 	 </layers>

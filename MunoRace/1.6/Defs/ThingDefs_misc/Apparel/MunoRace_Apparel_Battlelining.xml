@@ -16,6 +16,8 @@
     <graphicData>
    	<texPath>Apparel/Battlelining/MunoRace_Apparel_Battlelining</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
+	<shaderType>CutoutComplex</shaderType>
+	<maskPath>Apparel/Battlelining/MunoRace_Apparel_Battlelining_m</maskPath>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
 	<stuffCategories>
@@ -58,7 +60,8 @@
       <li>Arms</li>    
       <li>Legs</li>
 	 </bodyPartGroups>
-	 <wornGraphicPath>Apparel/Battlelining/MunoRace_Apparel_Battlelining</wornGraphicPath> <!--穿着的贴图路径-->
+	 <wornGraphicPath>Apparel/Battlelining/MunoRace_Apparel_Battlelining</wornGraphicPath>
+	 <useWornGraphicMask>true</useWornGraphicMask> <!--穿着的贴图路径-->
 	 <layers>
 	  <li>Muno_Underwear</li> <!--内衣专用层-->
 	 </layers>

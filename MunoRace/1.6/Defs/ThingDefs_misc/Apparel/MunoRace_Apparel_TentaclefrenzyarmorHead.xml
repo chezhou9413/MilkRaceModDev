@@ -12,6 +12,8 @@
     <graphicData>
    	<texPath>Apparel/HeadApparel/TentaclefrenzyarmorHead/MunoRace_Apparel_TentaclefrenzyarmorHead</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
+	<shaderType>CutoutComplex</shaderType>
+	<maskPath>Apparel/HeadApparel/TentaclefrenzyarmorHead/MunoRace_Apparel_TentaclefrenzyarmorHead_m</maskPath>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
 	<costList> <!--固定制作材料-->
@@ -44,7 +46,8 @@
 	 <bodyPartGroups>
       <li>UpperHead</li>  
 	 </bodyPartGroups>
-	 <wornGraphicPath>AlienRace/MunoRace/Null/Null</wornGraphicPath> <!--穿着的贴图路径-->
+	 <wornGraphicPath>AlienRace/MunoRace/Null/Null</wornGraphicPath>
+	 <useWornGraphicMask>true</useWornGraphicMask> <!--穿着的贴图路径-->
 	 <layers>
 	  <li>Overhead</li>
 	 </layers>

@@ -16,6 +16,8 @@
     <graphicData>
    	<texPath>Apparel/Goldfoilunderwear/MunoRace_Apparel_Goldfoilunderwear</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
+	<shaderType>CutoutComplex</shaderType>
+	<maskPath>Apparel/Goldfoilunderwear/MunoRace_Apparel_Goldfoilunderwear_m</maskPath>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
 	<costList> <!--固定制作材料-->
@@ -46,7 +48,8 @@
       <li>Arms</li>    
       <li>Legs</li>
 	 </bodyPartGroups>
-	 <wornGraphicPath>Apparel/Goldfoilunderwear/MunoRace_Apparel_Goldfoilunderwear</wornGraphicPath> <!--穿着的贴图路径-->
+	 <wornGraphicPath>Apparel/Goldfoilunderwear/MunoRace_Apparel_Goldfoilunderwear</wornGraphicPath>
+	 <useWornGraphicMask>true</useWornGraphicMask> <!--穿着的贴图路径-->
 	 <layers>
 	  <li>Muno_Underwear</li> <!--内衣专用层-->
 	 </layers>

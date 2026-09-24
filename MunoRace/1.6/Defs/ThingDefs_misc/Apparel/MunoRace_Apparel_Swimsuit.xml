@@ -16,6 +16,8 @@
     <graphicData>
    	<texPath>Apparel/Swimsuit/MunoRace_Apparel_Swimsuit</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
+	<shaderType>CutoutComplex</shaderType>
+	<maskPath>Apparel/Swimsuit/MunoRace_Apparel_Swimsuit_m</maskPath>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
 	<costStuffCount>40</costStuffCount> <!--制作材料 任意布料和皮革-->    
@@ -49,6 +51,7 @@
       <li>Legs</li>
 	 </bodyPartGroups>
 	 <wornGraphicPath>Apparel/Swimsuit/MunoRace_Apparel_Swimsuit</wornGraphicPath> <!--穿着的贴图路径-->
+	 <useWornGraphicMask>true</useWornGraphicMask> <!--使用空蒙版，避免被染色-->
 	 <layers>
 	  <li>Muno_Underwear</li> <!--内衣专用层-->
 	 </layers>

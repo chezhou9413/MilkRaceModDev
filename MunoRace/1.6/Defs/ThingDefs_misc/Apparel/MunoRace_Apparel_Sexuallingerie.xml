@@ -16,6 +16,8 @@
     <graphicData>
    	<texPath>Apparel/Sexuallingerie/MunoRace_Apparel_Sexuallingerie</texPath> <!--物件的贴图路径-->
 	<graphicClass>Graphic_Single</graphicClass>
+	<shaderType>CutoutComplex</shaderType>
+	<maskPath>Apparel/Sexuallingerie/MunoRace_Apparel_Sexuallingerie_m</maskPath>
 	<drawSize>1.1</drawSize>    <!--物品渲染大小-->
 	</graphicData>
 	<costStuffCount>30</costStuffCount> <!--制作材料 任意布料和皮革-->    
@@ -48,7 +50,8 @@
       <li>Arms</li>    
       <li>Legs</li>
 	 </bodyPartGroups>
-	 <wornGraphicPath>Apparel/Sexuallingerie/MunoRace_Apparel_Sexuallingerie</wornGraphicPath> <!--穿着的贴图路径-->
+	 <wornGraphicPath>Apparel/Sexuallingerie/MunoRace_Apparel_Sexuallingerie</wornGraphicPath>
+	 <useWornGraphicMask>true</useWornGraphicMask> <!--穿着的贴图路径-->
 	 <layers>
 	  <li>Muno_Underwear</li> <!--内衣专用层-->
 	 </layers>

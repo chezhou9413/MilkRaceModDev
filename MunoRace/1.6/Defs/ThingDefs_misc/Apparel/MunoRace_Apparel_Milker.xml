@@ -3,15 +3,17 @@
   <ThingDef ParentName="MunoRace_Apparel">
     <defName>MunoRace_Apparel_Milker</defName>
     <label>挤奶器</label>
-    <description>在奶牛纹高叉的基础上加入自动汲取机构。可按设定阈值把乳源质转化为缪诺乳或乳源质浓浆，并直接送入储存设备或背包。</description>
+    <description>能够配合各种衣物穿着的轻量化挤奶器，可以设定汲取量自动汲取缪诺乳或者乳源质浓浆。</description>
     <possessionCount>1</possessionCount>
     <recipeMaker>
       <researchPrerequisite>Muno_MilkCollectEquipment</researchPrerequisite>
       <displayPriority>216</displayPriority>
     </recipeMaker>
-    <graphicData>
-      <texPath>Apparel/Milkleotard/MunoRace_Apparel_Milkleotard</texPath>
+   <graphicData>
+      <texPath>Apparel/MilkingMachine/MunoRace_Apparel_MilkingMachine</texPath>
+      <shaderType>CutoutComplex</shaderType>
       <graphicClass>Graphic_Single</graphicClass>
+      <maskPath>Apparel/MilkingMachine/MunoRace_Apparel_MilkingMachine_m</maskPath>  <!-- 改成 _m -->
       <drawSize>1.1</drawSize>
     </graphicData>
     <costStuffCount>80</costStuffCount>
@@ -44,7 +46,8 @@
         <li>Arms</li>
         <li>Legs</li>
       </bodyPartGroups>
-      <wornGraphicPath>Apparel/Milkleotard/MunoRace_Apparel_Milkleotard</wornGraphicPath>
+      <wornGraphicPath>Apparel/MilkingMachine/MunoRace_Apparel_MilkingMachine</wornGraphicPath>
+       <useWornGraphicMask>true</useWornGraphicMask>
       <layers>
         <li>Muno_Underwear</li>
       </layers>
