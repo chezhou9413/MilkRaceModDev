@@ -6,7 +6,7 @@
 	<ThingDef ParentName="BaseHumanMakeableGun">
 		<defName>Gun_MunoLMG</defName>
 		<label>缪诺突击轻机枪</label>
-		<description>一款缪诺中常用的轻机枪，它结构可靠，操作简单，被大规模的使用，发射中口径弹药，具有良好的杀伤效果和足够的侵彻能力，</description>
+		<description>一款缪诺中常用的轻机枪，它结构可靠，操作简单，被大规模的使用，发射小口径步枪弹，具有良好的杀伤效果和足够的侵彻能力，</description>
 		<graphicData>
 			<texPath>Weapons/Gun_MunoLMG</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -17,9 +17,9 @@
 			<WorkToMake>68000</WorkToMake>
 			<Mass>7.5</Mass>
 			<AccuracyTouch>0.50</AccuracyTouch>
-			<AccuracyShort>0.82</AccuracyShort>
-			<AccuracyMedium>0.82</AccuracyMedium>
-			<AccuracyLong>0.68</AccuracyLong>
+			<AccuracyShort>0.70</AccuracyShort>
+			<AccuracyMedium>0.80</AccuracyMedium>
+			<AccuracyLong>0.65</AccuracyLong>
 			<RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
@@ -90,7 +90,7 @@
 		</graphicData>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>10</damageAmountBase>
+			<damageAmountBase>11</damageAmountBase>
 			<speed>70</speed>
 			<stoppingPower>0.1</stoppingPower>
 			<armorPenetrationBase>0.39</armorPenetrationBase>
@@ -111,10 +111,10 @@
     <statBases>
         <WorkToMake>20000</WorkToMake>
         <Mass>3.5</Mass>
-        <AccuracyTouch>0.70</AccuracyTouch>
-        <AccuracyShort>0.85</AccuracyShort>
-        <AccuracyMedium>0.75</AccuracyMedium>
-        <AccuracyLong>0.55</AccuracyLong>
+        <AccuracyTouch>0.65</AccuracyTouch>
+        <AccuracyShort>0.65</AccuracyShort>
+        <AccuracyMedium>0.85</AccuracyMedium>
+        <AccuracyLong>0.85</AccuracyLong>
         <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
     </statBases>
     <costList>
@@ -202,7 +202,7 @@
         <AccuracyTouch>0.45</AccuracyTouch>
         <AccuracyShort>0.80</AccuracyShort>
         <AccuracyMedium>0.88</AccuracyMedium>
-        <AccuracyLong>0.82</AccuracyLong>
+        <AccuracyLong>0.90</AccuracyLong>
         <RangedWeapon_Cooldown>1.3</RangedWeapon_Cooldown>
     </statBases>
     <costList>
@@ -267,7 +267,7 @@
     </graphicData>
     <projectile>
         <damageDef>Bullet</damageDef>
-        <damageAmountBase>11</damageAmountBase>
+        <damageAmountBase>13</damageAmountBase>
         <speed>70</speed>
         <stoppingPower>0.7</stoppingPower>
         <armorPenetrationBase>0.10</armorPenetrationBase>
@@ -291,7 +291,7 @@
         <AccuracyTouch>0.55</AccuracyTouch>
         <AccuracyShort>0.85</AccuracyShort>
         <AccuracyMedium>0.90</AccuracyMedium>
-        <AccuracyLong>0.85</AccuracyLong>
+        <AccuracyLong>0.95</AccuracyLong>
         <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
     </statBases>
     <costList>
@@ -474,8 +474,8 @@
 			<Mass>5</Mass>
 			<AccuracyTouch>0.68</AccuracyTouch>
 			<AccuracyShort>0.85</AccuracyShort>
-			<AccuracyMedium>0.78</AccuracyMedium>
-			<AccuracyLong>0.68</AccuracyLong>
+			<AccuracyMedium>0.80</AccuracyMedium>
+			<AccuracyLong>0.65</AccuracyLong>
 			<RangedWeapon_Cooldown>1.3</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
@@ -615,8 +615,8 @@
 		<statBases>
 			<WorkToMake>24000</WorkToMake>
 			<Mass>2.5</Mass>
-			<AccuracyTouch>0.78</AccuracyTouch>
-			<AccuracyShort>0.82</AccuracyShort>
+			<AccuracyTouch>0.83</AccuracyTouch>
+			<AccuracyShort>0.80</AccuracyShort>
 			<AccuracyMedium>0.55</AccuracyMedium>
 			<AccuracyLong>0.28</AccuracyLong>
 			<RangedWeapon_Cooldown>1.0</RangedWeapon_Cooldown>
@@ -806,7 +806,7 @@
 			<WorkToMake>48000</WorkToMake>
 			<Mass>2</Mass>
 			<AccuracyTouch>0.86</AccuracyTouch>
-			<AccuracyShort>0.70</AccuracyShort>
+			<AccuracyShort>0.80</AccuracyShort>
 			<AccuracyMedium>0.52</AccuracyMedium>
 			<AccuracyLong>0.22</AccuracyLong>
 			<RangedWeapon_Cooldown>1.0</RangedWeapon_Cooldown>
@@ -1000,9 +1000,9 @@
 			<WorkToMake>120000</WorkToMake>
 			<Mass>21</Mass>
 			<AccuracyTouch>0.35</AccuracyTouch>
-			<AccuracyShort>0.72</AccuracyShort>
-			<AccuracyMedium>0.66</AccuracyMedium>
-			<AccuracyLong>0.56</AccuracyLong>
+			<AccuracyShort>0.65</AccuracyShort>
+			<AccuracyMedium>0.72</AccuracyMedium>
+			<AccuracyLong>0.68</AccuracyLong>
 			<RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
@@ -1186,9 +1186,9 @@
 			<WorkToMake>120000</WorkToMake>
 			<Mass>21</Mass>
 			<AccuracyTouch>0.35</AccuracyTouch>
-			<AccuracyShort>0.72</AccuracyShort>
-			<AccuracyMedium>0.66</AccuracyMedium>
-			<AccuracyLong>0.56</AccuracyLong>
+			<AccuracyShort>0.50</AccuracyShort>
+			<AccuracyMedium>0.72</AccuracyMedium>
+			<AccuracyLong>0.85</AccuracyLong>
 			<RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
@@ -1311,9 +1311,9 @@
 			<WorkToMake>120000</WorkToMake>
 			<Mass>11.5</Mass>
 			<AccuracyTouch>0.48</AccuracyTouch>
-			<AccuracyShort>0.80</AccuracyShort>
-			<AccuracyMedium>0.65</AccuracyMedium>
-			<AccuracyLong>0.45</AccuracyLong>
+			<AccuracyShort>0.72</AccuracyShort>
+			<AccuracyMedium>0.80</AccuracyMedium>
+			<AccuracyLong>0.65</AccuracyLong>
 			<RangedWeapon_Cooldown>2.2</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>

@@ -40,6 +40,31 @@
   </ResearchProjectDef>
 
     <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_BasicMelee</defName>
+    <label>缪诺初级近战武器</label>
+    <description>缪诺民间与军队中广泛使用的初级近战武器，结构简单、坚固耐用，是缪诺战士近身格斗的基础装备</description>
+    <baseCost>500</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Machining</li>
+    </prerequisites>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>3.50</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->各种缪诺制式的初级近战武器</li>
+
+        <li>subject_story->简单可靠的缪诺近战装备，从日常工具演变为制式武器</li>
+        <li>subject_story->缪诺们在近身搏斗中磨练技艺，打造出统一规格的刀与斧</li>
+
+        <li>subject_gerund->制造缪诺近战武器</li>
+
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+    <ResearchProjectDef ParentName="Muno_BaseTech">
     <defName>Muno_Advancedfirearms</defName>
     <label>缪诺进阶枪械</label>
     <description>各种拥有相对复杂机构的缪诺枪械,性能更优异</description>

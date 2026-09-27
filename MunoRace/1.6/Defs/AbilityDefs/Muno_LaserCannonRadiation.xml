@@ -24,7 +24,7 @@
       <soundCast>Shot_BeamRepeater</soundCast>
       <soundCastTail>GunTail_Medium</soundCastTail>
       <coneAngleDegrees>22</coneAngleDegrees>
-      <damageAmount>25</damageAmount>
+      <damageAmount>50</damageAmount>
       <armorPenetration>0.8</armorPenetration>
       <storageCost>1</storageCost>
       <damageDef>Muno_LaserCannonRadiationHeat</damageDef>

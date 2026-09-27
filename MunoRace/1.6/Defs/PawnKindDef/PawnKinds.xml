@@ -105,6 +105,7 @@
 		<gearHealthRange>0.2~2.0</gearHealthRange>
 		<weaponTags>
 			<li>MunoGunBasic</li>
+			<li>MunoMelee</li>
 		</weaponTags>
 		<weaponMoney>480~1250</weaponMoney>
 		<apparelMoney>200~1200</apparelMoney>
@@ -157,6 +158,7 @@
 		<weaponTags>
 			<li>MunoGunMiddle</li>
 			<li>MunoGunAdvanced</li>
+			<li>MunoMelee</li>
 		</weaponTags>
 		<weaponMoney>505~1400</weaponMoney>
 		<biocodeWeaponChance>0.1</biocodeWeaponChance>
@@ -209,6 +211,7 @@
 		<weaponTags>
 			<li>MunoGunMiddle</li>
 			<li>MunoGunAdvanced</li>
+			<li>MunoMelee</li>
 		</weaponTags>
 		<weaponMoney>505~1400</weaponMoney>
 		<apparelMoney>400~1600</apparelMoney>
@@ -259,6 +262,7 @@
 		<weaponTags>
 			<li>MunoGunMiddle</li>
 			<li>MunoGunAdvanced</li>
+			<li>MunoMelee</li>
 			
 		</weaponTags>
 		<apparelMoney>700~1200</apparelMoney>

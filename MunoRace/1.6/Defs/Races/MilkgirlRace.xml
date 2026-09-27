@@ -7,8 +7,8 @@
     </HeadTypeDef>
     <AlienRace.ThingDef_AlienRace ParentName="BasePawn">
         <defName>MunoRace</defName>
-        <label>奶牛娘</label>
-        <description>一只奶牛娘</description>
+        <label>缪诺</label>
+        <description>一只缪诺，根据她们的自述，她们是被神明创造出来用来引导人类进化的。她们拥有一套独特生理结构，能够在体内合成、储备名为乳源质的特殊生物物质。</description>
         <alienRace>
             <raceRestriction>
                 <onlyUseRaceRestrictedApparel>true</onlyUseRaceRestrictedApparel>
