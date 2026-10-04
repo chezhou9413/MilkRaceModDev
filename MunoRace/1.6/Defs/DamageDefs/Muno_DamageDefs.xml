@@ -22,4 +22,11 @@
     <defaultDamage>25</defaultDamage>
     <defaultArmorPenetration>0.8</defaultArmorPenetration>
   </DamageDef>
+
+  <!-- 战斗部同原版 Bomb，仅换榴弹爆炸音 -->
+  <DamageDef ParentName="Bomb">
+    <defName>Muno_Bomb</defName>
+    <label>榴弹爆炸</label>
+    <soundExplosion>Muno_Explosion_MGL</soundExplosion>
+  </DamageDef>
 </Defs>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 缪诺手枪 · 原版 Shot_Autopistol -->
+  <SoundDef>
+    <defName>Muno_Shot_PO</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_PO</clipPath>
+          </li>
+        </grains>
+        <volumeRange>61.76471~61.76471</volumeRange>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 大威力手枪 · 原版 Shot_Revolver -->
+  <SoundDef>
+    <defName>Muno_Shot_HPP</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_HPP</clipPath>
+          </li>
+        </grains>
+        <volumeRange>35~35</volumeRange>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 冲锋手枪 · 原版 Shot_MachinePistol -->
+  <SoundDef>
+    <defName>Muno_Shot_MP</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_MP</clipPath>
+          </li>
+        </grains>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 练习步枪 · 原版 Shot_AssaultRifle -->
+  <SoundDef>
+    <defName>Muno_Shot_PR</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_PR</clipPath>
+          </li>
+        </grains>
+        <volumeRange>45.2941~45.2941</volumeRange>
+        <pitchRange>1.091765~1</pitchRange>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 电磁突击步枪 · 原版 Shot_AssaultRifle（突击步枪/突击轻机枪/战略步枪主模式共用） -->
+  <SoundDef>
+    <defName>Muno_Shot_AR</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_AR</clipPath>
+          </li>
+        </grains>
+        <volumeRange>45.2941~45.2941</volumeRange>
+        <pitchRange>1.091765~1</pitchRange>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 射手步枪 · 原版 Shot_BoltActionRifle（精准/简易射手步枪共用） -->
+  <SoundDef>
+    <defName>Muno_Shot_SR</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_SR</clipPath>
+          </li>
+        </grains>
+        <pitchRange>0.9770592~1.114706</pitchRange>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 重机枪 · 原版 Shot_Minigun -->
+  <SoundDef>
+    <defName>Muno_Shot_HMG</defName>
+    <context>MapOnly</context>
+    <maxVoices>8</maxVoices>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_HMG</clipPath>
+          </li>
+        </grains>
+        <volumeRange>33.52942~33.52942</volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 机炮 · 原版 Shot_Minigun -->
+  <SoundDef>
+    <defName>Muno_Shot_AC</defName>
+    <context>MapOnly</context>
+    <maxVoices>8</maxVoices>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_AC</clipPath>
+          </li>
+        </grains>
+        <volumeRange>33.52942~33.52942</volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 电磁反器材步枪 · 原版 Shot_SniperRifle -->
+  <SoundDef>
+    <defName>Muno_Shot_RAMR</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_RAMR</clipPath>
+          </li>
+        </grains>
+        <volumeRange>70~70</volumeRange>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 电磁反器材步枪 充能音（开火前 warmup 期间循环）· 原版 HellsphereCannon_Aiming -->
+  <SoundDef>
+    <defName>Muno_Charge_RAMR</defName>
+    <sustain>true</sustain>
+    <context>MapOnly</context>
+    <maxSimultaneous>2</maxSimultaneous>
+    <priorityMode>PrioritizeNearest</priorityMode>
+    <subSounds>
+      <li>
+        <tempoAffectedByGameSpeed>true</tempoAffectedByGameSpeed>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoCharge_RAMR</clipPath>
+          </li>
+        </grains>
+        <pitchRange>0.99~1.01</pitchRange>
+        <volumeRange>40</volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 榴弹发射器 发射音 · 原版 ChargeLance_Fire（战略步枪副模式共用） -->
+  <SoundDef>
+    <defName>Muno_Shot_MGL</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_MGL</clipPath>
+          </li>
+        </grains>
+        <pitchRange>0.9082353~1.045882</pitchRange>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 火箭榴弹发射器 发射音 · 原版 ChargeLance_Fire -->
+  <SoundDef>
+    <defName>Muno_Shot_RGL</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_RGL</clipPath>
+          </li>
+        </grains>
+        <pitchRange>0.9082353~1.045882</pitchRange>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 榴弹爆炸音，两个片段随机取一 · 原版 Explosion_Bomb（榴弹发射器/战略榴弹共用） -->
+  <SoundDef>
+    <defName>Muno_Explosion_MGL</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoExplosion_MGL_1</clipPath>
+          </li>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoExplosion_MGL_2</clipPath>
+          </li>
+        </grains>
+        <volumeRange>80~80</volumeRange>
+        <pitchRange>0.8516304~1.254348</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 激光轻·发射音 · 原版 Shot_BeamRepeater（激光步枪/激光手枪共用） -->
+  <SoundDef>
+    <defName>Muno_Shot_LaserLight</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_LaserLight</clipPath>
+          </li>
+        </grains>
+        <volumeRange>25</volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- 激光重·发射音 · 音量参照原版 BeamGraser_Shooting（激光狙击枪/激光炮共用） -->
+  <SoundDef>
+    <defName>Muno_Shot_LaserHeavy</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_LaserHeavy</clipPath>
+          </li>
+        </grains>
+        <volumeRange>30</volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+</Defs>
