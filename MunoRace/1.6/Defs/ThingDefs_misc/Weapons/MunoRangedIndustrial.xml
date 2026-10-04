@@ -50,7 +50,7 @@
 				<range>35</range>
 				<burstShotCount>12</burstShotCount>
 				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
-				<soundCast>Shot_Minigun</soundCast>
+				<soundCast>Muno_Shot_AR</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>10</muzzleFlashScale>
 			</li>	
@@ -138,7 +138,7 @@
             <warmupTime>0.7</warmupTime>
             <range>31</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>Shot_AssaultRifle</soundCast>
+            <soundCast>Muno_Shot_PR</soundCast>
             <soundCastTail>GunTail_Light</soundCastTail>
             <muzzleFlashScale>6</muzzleFlashScale>
         </li>
@@ -227,7 +227,7 @@
             <warmupTime>1.2</warmupTime>
             <range>37</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>Shot_BoltActionRifle</soundCast>
+            <soundCast>Muno_Shot_SR</soundCast>
             <soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>9</muzzleFlashScale>
         </li>
@@ -316,7 +316,7 @@
             <warmupTime>1.0</warmupTime>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>Shot_BoltActionRifle</soundCast>
+            <soundCast>Muno_Shot_SR</soundCast>
             <soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>10</muzzleFlashScale>
         </li>
@@ -411,7 +411,7 @@
 				<range>32</range>
 				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
-				<soundCast>Shot_AssaultRifle</soundCast>
+				<soundCast>Muno_Shot_AR</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>	
@@ -506,7 +506,7 @@
 				<range>32</range>
 				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
-				<soundCast>Shot_AssaultRifle</soundCast>
+				<soundCast>Muno_Shot_AR</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>	
@@ -518,7 +518,7 @@
 				<warmupTime>1.6</warmupTime>
 				<range>25</range>
 				<forcedMissRadius>1.2</forcedMissRadius>
-				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCast>Muno_Shot_MGL</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>10</muzzleFlashScale>
 			</li>
@@ -591,7 +591,7 @@
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
 		<projectile>
-			<damageDef>Bomb</damageDef>
+			<damageDef>Muno_Bomb</damageDef>
 			<explosionRadius>3</explosionRadius>
 			<speed>55</speed>
 			<explosionDelay>1</explosionDelay>
@@ -649,7 +649,7 @@
 				<range>23</range>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-				<soundCast>Shot_Revolver</soundCast>
+				<soundCast>Muno_Shot_HPP</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>12</muzzleFlashScale>
 			</li>	
@@ -744,7 +744,7 @@
 				<range>23</range>
 				<burstShotCount>1</burstShotCount>
 				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-				<soundCast>Shot_Autopistol</soundCast>
+				<soundCast>Muno_Shot_PO</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>8</muzzleFlashScale>
 			</li>	
@@ -839,7 +839,7 @@
 				<range>23</range>
 				<burstShotCount>4</burstShotCount>
 				<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
-				<soundCast>Shot_MachinePistol</soundCast>
+				<soundCast>Muno_Shot_MP</soundCast>
 				<soundCastTail>GunTail_Light</soundCastTail>
 				<muzzleFlashScale>8</muzzleFlashScale>
 			</li>	
@@ -935,7 +935,7 @@
 				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
                 <forcedMissRadius>0.2</forcedMissRadius>
-				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCast>Muno_Shot_MGL</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>12</muzzleFlashScale>
 			</li>	
@@ -975,7 +975,7 @@
 		</graphicData>
 		<thingClass>Projectile_Explosive</thingClass>
         <projectile>
-          <damageDef>Bomb</damageDef>
+          <damageDef>Muno_Bomb</damageDef>
           <explosionRadius>1</explosionRadius>
           <speed>75</speed>
           <explosionDelay>1</explosionDelay>
@@ -1033,7 +1033,7 @@
 				<range>33</range>
 				<burstShotCount>9</burstShotCount>
 				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
-				<soundCast>Shot_Minigun</soundCast>
+				<soundCast>Muno_Shot_HMG</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>13</muzzleFlashScale>
 			</li>	
@@ -1124,7 +1124,8 @@
             <warmupTime>2.5</warmupTime>
             <range>45</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>Shot_SniperRifle</soundCast>
+            <soundCast>Muno_Shot_RAMR</soundCast>
+            <soundAiming>Muno_Charge_RAMR</soundAiming>
             <soundCastTail>GunTail_Heavy</soundCastTail>
             <muzzleFlashScale>16</muzzleFlashScale>
         </li>
@@ -1220,7 +1221,7 @@
 				<burstShotCount>4</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<forcedMissRadius>0.2</forcedMissRadius>
-				<soundCast>Shot_Minigun</soundCast>
+				<soundCast>Muno_Shot_AC</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>13</muzzleFlashScale>
 			</li>	
@@ -1345,7 +1346,7 @@
 				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
                 <forcedMissRadius>0.2</forcedMissRadius>
-				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCast>Muno_Shot_RGL</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>12</muzzleFlashScale>
 			</li>	
@@ -1455,7 +1456,7 @@
         <range>26</range>
         <burstShotCount>5</burstShotCount>
         <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
-        <soundCast>Shot_BeamRepeater</soundCast>
+        <soundCast>Muno_Shot_LaserLight</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
         <aimingChargeMote>Mote_MunoBeamRepeater_Charge_LR</aimingChargeMote>
@@ -1615,7 +1616,7 @@
         <range>38</range>
         <burstShotCount>3</burstShotCount>
         <ticksBetweenBurstShots>14</ticksBetweenBurstShots>
-        <soundCast>Shot_BeamRepeater</soundCast>
+        <soundCast>Muno_Shot_LaserHeavy</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>11</muzzleFlashScale>
         <aimingChargeMote>Mote_MunoBeamRepeater_Charge_LSR</aimingChargeMote>
@@ -1775,7 +1776,7 @@
         <range>26</range>
         <burstShotCount>5</burstShotCount>
         <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
-        <soundCast>Shot_BeamRepeater</soundCast>
+        <soundCast>Muno_Shot_LaserLight</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
         <aimingChargeMote>Mote_MunoBeamRepeater_Charge_LR</aimingChargeMote>
@@ -1879,7 +1880,7 @@
         <range>26</range>
         <burstShotCount>5</burstShotCount>
         <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
-        <soundCast>Shot_BeamRepeater</soundCast>
+        <soundCast>Muno_Shot_LaserHeavy</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
         <aimingChargeMote>Mote_MunoBeamRepeater_Charge_LR</aimingChargeMote>
