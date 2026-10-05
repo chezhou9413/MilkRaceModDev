@@ -91,6 +91,25 @@
     </subSounds>
   </SoundDef>
 
+    <!-- 电磁突击步枪 · 原版 Shot_AssaultRifle（突击步枪/突击轻机枪/战略步枪主模式共用） -->
+  <SoundDef>
+    <defName>Muno_Shot_AR_N</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/MunoShot_AR_N</clipPath>
+          </li>
+        </grains>
+        <volumeRange>45.2941~45.2941</volumeRange>
+        <pitchRange>1.091765~1</pitchRange>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
   <!-- 射手步枪 · 原版 Shot_BoltActionRifle（精准/简易射手步枪共用） -->
   <SoundDef>
     <defName>Muno_Shot_SR</defName>

@@ -50,7 +50,7 @@
 				<range>35</range>
 				<burstShotCount>12</burstShotCount>
 				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
-				<soundCast>Muno_Shot_AR</soundCast>
+				<soundCast>Muno_Shot_AR_N</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>10</muzzleFlashScale>
 			</li>	
@@ -838,7 +838,7 @@
 				<warmupTime>0.6</warmupTime>
 				<range>23</range>
 				<burstShotCount>4</burstShotCount>
-				<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
 				<soundCast>Muno_Shot_MP</soundCast>
 				<soundCastTail>GunTail_Light</soundCastTail>
 				<muzzleFlashScale>8</muzzleFlashScale>
@@ -931,7 +931,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_MunoMGL</defaultProjectile>
 				<warmupTime>1.8</warmupTime>
-				<range>25</range>
+				<range>29</range>
 				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
                 <forcedMissRadius>0.2</forcedMissRadius>
@@ -1342,7 +1342,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Bullet_MunoRGL</defaultProjectile>
 				<warmupTime>1.8</warmupTime>
-				<range>25</range>
+				<range>32</range>
 				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
                 <forcedMissRadius>0.2</forcedMissRadius>
@@ -1453,7 +1453,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_MunoLR</defaultProjectile>
         <warmupTime>1.2</warmupTime>
-        <range>26</range>
+        <range>30</range>
         <burstShotCount>5</burstShotCount>
         <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
         <soundCast>Muno_Shot_LaserLight</soundCast>
@@ -1467,7 +1467,7 @@
         <label>激光增幅横扫</label>
         <hasStandardCommand>false</hasStandardCommand>
         <warmupTime>1.4</warmupTime>
-        <range>26</range>
+        <range>30</range>
         <minRange>3</minRange>
         <beamFullWidthRange>7</beamFullWidthRange>
         <burstShotCount>5</burstShotCount>
@@ -1877,7 +1877,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_MunoLC</defaultProjectile>
         <warmupTime>1.2</warmupTime>
-        <range>26</range>
+        <range>35</range>
         <burstShotCount>5</burstShotCount>
         <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
         <soundCast>Muno_Shot_LaserHeavy</soundCast>
