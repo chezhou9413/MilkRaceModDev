@@ -49,7 +49,7 @@
 				<warmupTime>1.2</warmupTime>
 				<range>35</range>
 				<burstShotCount>12</burstShotCount>
-				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
 				<soundCast>Muno_Shot_AR_N</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>10</muzzleFlashScale>
@@ -1032,7 +1032,7 @@
 				<warmupTime>1.9</warmupTime>
 				<range>33</range>
 				<burstShotCount>9</burstShotCount>
-				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>6.5</ticksBetweenBurstShots>
 				<soundCast>Muno_Shot_HMG</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>13</muzzleFlashScale>
@@ -1418,7 +1418,7 @@
       <Mass>13</Mass>
       <AccuracyTouch>0.72</AccuracyTouch>
       <AccuracyShort>0.78</AccuracyShort>
-      <AccuracyMedium>0.72</AccuracyMedium>
+      <AccuracyMedium>0.80</AccuracyMedium>
       <AccuracyLong>0.66</AccuracyLong>
       <RangedWeapon_Cooldown>1.6</RangedWeapon_Cooldown>
     </statBases>
@@ -1452,7 +1452,7 @@
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_MunoLR</defaultProjectile>
-        <warmupTime>1.2</warmupTime>
+        <warmupTime>0.8</warmupTime>
         <range>30</range>
         <burstShotCount>5</burstShotCount>
         <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
@@ -1736,10 +1736,10 @@
     <statBases>
       <WorkToMake>90000</WorkToMake>
       <Mass>13</Mass>
-      <AccuracyTouch>0.72</AccuracyTouch>
-      <AccuracyShort>0.78</AccuracyShort>
-      <AccuracyMedium>0.72</AccuracyMedium>
-      <AccuracyLong>0.66</AccuracyLong>
+      <AccuracyTouch>0.89</AccuracyTouch>
+      <AccuracyShort>0.92</AccuracyShort>
+      <AccuracyMedium>0.91</AccuracyMedium>
+      <AccuracyLong>0.87</AccuracyLong>
       <RangedWeapon_Cooldown>1.6</RangedWeapon_Cooldown>
     </statBases>
     <costList>
@@ -1772,15 +1772,15 @@
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_MunoLPO</defaultProjectile>
-        <warmupTime>1.2</warmupTime>
+        <warmupTime>0.5</warmupTime>
         <range>26</range>
-        <burstShotCount>5</burstShotCount>
+        <burstShotCount>3</burstShotCount>
         <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
         <soundCast>Muno_Shot_LaserLight</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
         <aimingChargeMote>Mote_MunoBeamRepeater_Charge_LR</aimingChargeMote>
-        <aimingChargeMoteOffset>1.07</aimingChargeMoteOffset>
+        <aimingChargeMoteOffset>0.6</aimingChargeMoteOffset>
       </li>
     </verbs>
     <tools>
@@ -1814,7 +1814,7 @@
     </graphicData>
     <projectile>
       <damageDef>BeamBypassShields</damageDef>
-      <damageAmountBase>13</damageAmountBase>
+      <damageAmountBase>9</damageAmountBase>
       <beamMoteDef>Mote_BeamRepeaterLaser</beamMoteDef>
       <beamStartOffset>0.1</beamStartOffset>
       <armorPenetrationBase>0.66</armorPenetrationBase>
@@ -1842,7 +1842,7 @@
       <Mass>13</Mass>
       <AccuracyTouch>0.72</AccuracyTouch>
       <AccuracyShort>0.78</AccuracyShort>
-      <AccuracyMedium>0.72</AccuracyMedium>
+      <AccuracyMedium>0.82</AccuracyMedium>
       <AccuracyLong>0.66</AccuracyLong>
       <RangedWeapon_Cooldown>1.6</RangedWeapon_Cooldown>
     </statBases>
