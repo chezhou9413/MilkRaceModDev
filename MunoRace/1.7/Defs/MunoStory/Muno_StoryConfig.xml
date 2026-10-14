@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <MunoRaceLib.MunoScenarios.MunoStoryConfigDef>
+    <defName>Muno_StoryConfig</defName>
+    <recordingIntervalDays>0.1~0.25</recordingIntervalDays>
+    <recordingRadius>12</recordingRadius>
+    <recordingsPerTape>4</recordingsPerTape>
+    <recordingDurationTicks>300</recordingDurationTicks>
+    <pursuitGraceDays>5</pursuitGraceDays>
+    <pursuitIntervalDays>5~8</pursuitIntervalDays>
+    <pursuitPoints>100~800</pursuitPoints>
+    <pursuitGrowthPerWave>0.15</pursuitGrowthPerWave>
+    <earlyEndingDays>7</earlyEndingDays>
+    <recordingRewards>
+      <li>Muno_TapeRewardFood</li>
+      <li>Muno_TapeRewardMedicine</li>
+      <li>Muno_TapeRewardSteel</li>
+      <li>Muno_TapeRewardComponents</li>
+      <li>Muno_TapeRewardSilver</li>
+    </recordingRewards>
+  </MunoRaceLib.MunoScenarios.MunoStoryConfigDef>
+</Defs>

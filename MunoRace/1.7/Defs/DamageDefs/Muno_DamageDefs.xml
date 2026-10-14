@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <DamageDef ParentName="Beam">
+    <defName>Muno_LaserSweepBeam_LR</defName>
+    <label>步枪增幅激光</label>
+    <defaultDamage>30</defaultDamage>
+    <defaultArmorPenetration>0.8</defaultArmorPenetration>
+    <ignoreShields>true</ignoreShields>
+  </DamageDef>
+
+  <DamageDef ParentName="Beam">
+    <defName>Muno_LaserSweepBeam_LSR</defName>
+    <label>狙击增幅激光</label>
+    <defaultDamage>45</defaultDamage>
+    <defaultArmorPenetration>1.1</defaultArmorPenetration>
+    <ignoreShields>true</ignoreShields>
+  </DamageDef>
+
+  <DamageDef ParentName="Beam">
+    <defName>Muno_LaserCannonRadiationHeat</defName>
+    <label>激光炮热辐射</label>
+    <defaultDamage>25</defaultDamage>
+    <defaultArmorPenetration>0.8</defaultArmorPenetration>
+  </DamageDef>
+
+  <!-- 战斗部同原版 Bomb，仅换榴弹爆炸音 -->
+  <DamageDef ParentName="Bomb">
+    <defName>Muno_Bomb</defName>
+    <label>榴弹爆炸</label>
+    <soundExplosion>Muno_Explosion_MGL</soundExplosion>
+  </DamageDef>
+</Defs>

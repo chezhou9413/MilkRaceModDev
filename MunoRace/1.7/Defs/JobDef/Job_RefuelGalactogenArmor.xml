@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <JobDef>
+        <defName>JobDef_RefuelGalactogenArmor</defName>
+        <driverClass>MunoRaceLib.MunoJobDriver.JobDriver_RefuelGalactogenArmor</driverClass>
+        <reportString>正在为盔甲装填乳原质浓浆</reportString>
+        <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+        <playerInterruptible>true</playerInterruptible>
+    </JobDef>
+</Defs>

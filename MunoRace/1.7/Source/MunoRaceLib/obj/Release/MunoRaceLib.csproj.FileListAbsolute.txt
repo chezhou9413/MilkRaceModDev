@@ -1,0 +1,11 @@
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.7\Assemblies\MunoRaceLib.deps.json
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.7\Assemblies\MunoRaceLib.dll
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.7\Assemblies\MunoRaceLib.pdb
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.7\Source\MunoRaceLib\obj\Release\MunoRaceLib.csproj.AssemblyReference.cache
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.7\Source\MunoRaceLib\obj\Release\MunoRaceLib.GeneratedMSBuildEditorConfig.editorconfig
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.7\Source\MunoRaceLib\obj\Release\MunoRaceLib.csproj.CoreCompileInputs.cache
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.7\Source\MunoRaceLib\obj\Release\MunoRaceLib.sourcelink.json
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.7\Source\MunoRaceLib\obj\Release\MunoRaceLib.dll
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.7\Source\MunoRaceLib\obj\Release\refint\MunoRaceLib.dll
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.7\Source\MunoRaceLib\obj\Release\MunoRaceLib.pdb
+E:\RimModDev\MunoRace\MunoRace\MunoRace\1.7\Source\MunoRaceLib\obj\Release\ref\MunoRaceLib.dll

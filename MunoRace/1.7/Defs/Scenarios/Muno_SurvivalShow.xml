@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>Muno_SurvivalShow</defName>
+    <label>一牛四男：生存挑战</label>
+    <description>一名缪诺和四名男性被送往边缘世界，参加一场生存挑战。他们只有少量物资和一台摄像机。让一人穿戴摄像机，拍摄殖民者的日常，向节目组上交录像带获取随机补给。摄像机终端无需通讯台。</description>
+    <scenario>
+      <summary>一名成年缪诺、四名成年男性人类，少量物资和一台摄像机。</summary>
+      <parts>
+        <li Class="MunoRaceLib.MunoScenarios.ScenPart_MunoStart">
+          <def>Muno_StoryStartingPawns</def><mode>SurvivalShow</mode>
+        </li>
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def><method>DropPods</method><visible>false</visible>
+        </li>
+        <li Class="ScenPart_NoPossessions"><def>NoPossessions</def></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MealSurvivalPack</thingDef><count>25</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MedicineIndustrial</thingDef><count>5</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Steel</thingDef><count>80</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>WoodLog</thingDef><count>120</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Muno_StoryCamera</thingDef><count>1</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_Revolver</thingDef><count>1</count></li>
+      </parts>
+    </scenario>
+  </ScenarioDef>
+</Defs>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>Muno_RecordColonist</defName>
+    <driverClass>MunoRaceLib.MunoRecording.JobDriver_MunoRecordColonist</driverClass>
+    <reportString>正在拍摄 TargetA 的生存日常。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <playerInterruptible>true</playerInterruptible>
+    <suspendable>false</suspendable>
+  </JobDef>
+</Defs>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>Apparel_Gun_MunoHG</defName>
+    <label>缪诺治疗枪</label>
+    <description>一种便携治疗枪，内置纳米转换器，可以自动把浓缩乳源质转换为一种治疗剂，可以进行应急治疗处理。</description>
+    <graphicData>
+      <texPath>Weapons/Gun_MunoHG</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Archotech</techLevel>
+    <tradeTags>
+      <li>Artifact</li>
+    </tradeTags>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+    <statBases>
+      <Mass>0.5</Mass>
+      <EquipDelay>1</EquipDelay>
+      <MarketValue>550</MarketValue>
+      <MaxHitPoints>80</MaxHitPoints>
+      <WorkToMake>36000</WorkToMake>
+    </statBases>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
+      <MunoRace_ConcentratedMulacte>5</MunoRace_ConcentratedMulacte>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>Muno_MilkApplication</researchPrerequisite>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <recipeUsers>
+        <li>MunoRace_WorkBench</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <displayPriority>218</displayPriority>
+    </recipeMaker>
+    <tickerType>Normal</tickerType>
+    <thingCategories>
+      <li>ApparelUtility</li>
+    </thingCategories>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <scoreOffset>4</scoreOffset>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <careIfDamaged>false</careIfDamaged>
+      <ignoredByNonViolent>true</ignoredByNonViolent>
+      <wearPerDay>0</wearPerDay>
+      <bodyPartGroups>
+        <li>Waist</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Belt</li>
+      </layers>
+      <tags>
+        <li>Outlander</li>
+        <li>Spacer</li>
+        <li>MunoApparelAdvanced</li>
+        <li>BeltDefensePop</li>
+      </tags>
+      <wornGraphicPath>Weapons/Gun_MunoHG</wornGraphicPath>
+      <wornGraphicData>
+        <renderUtilityAsPack>true</renderUtilityAsPack>
+        <north>
+          <offset>(0.2,-0.1)</offset>
+          <scale>(0.3,0.3)</scale>
+        </north>
+        <south>
+          <offset>(-0.2,-0.1)</offset>
+          <scale>(0.3,0.3)</scale>
+        </south>
+        <east>
+          <offset>(-0.2,-0.1)</offset>
+          <scale>(0.3,0.3)</scale>
+          <thin>
+            <offset>(0,0.1)</offset>
+          </thin>
+          <hulk>
+            <offset>(-0.15,0)</offset>
+          </hulk>
+          <fat>
+            <offset>(-0.15,0)</offset>
+          </fat>
+          <male>
+            <offset>(0,0.1)</offset>
+          </male>
+        </east>
+        <west>
+          <offset>(0.2,-0.1)</offset>
+          <scale>(0.3,0.3)</scale>
+          <thin>
+            <offset>(0,0.1)</offset>
+          </thin>
+          <hulk>
+            <offset>(0.15,0)</offset>
+          </hulk>
+          <fat>
+            <offset>(0.15,0)</offset>
+          </fat>
+          <male>
+            <offset>(0,0.1)</offset>
+          </male>
+        </west>
+      </wornGraphicData>
+    </apparel>
+
+    <comps>
+     <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Forbiddable" />
+      <li>      
+          <compClass>CompColorable</compClass>
+      </li>            
+      <li Class="ChezhouLib.comp.ApparelAddBodyAddonCompProperties">            
+        <targetRaces>
+          <li>MunoRace</li>          
+        </targetRaces>                
+      </li>
+      <li Class="CompProperties_ApparelReloadable">
+        <maxCharges>3</maxCharges>
+        <ammoDef>MunoRace_ConcentratedMulacte</ammoDef>
+        <ammoCountPerCharge>1</ammoCountPerCharge>
+        <destroyOnEmpty>false</destroyOnEmpty>
+        <hotKey>Misc4</hotKey>
+        <chargeNoun>治疗弹</chargeNoun>
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+      <li Class="CompProperties_TargetEffect_MunoHealGun">
+        <maxWoundsPerShot>3</maxWoundsPerShot>
+        <tendQuality>0.8</tendQuality>
+        <maxTendQuality>1.0</maxTendQuality>
+      </li>
+      <li Class="CompProperties_TargetEffect_FleckOnTarget">
+        <fleckDef>HealingCross</fleckDef>
+      </li>
+      <li Class="CompProperties_Styleable"></li>
+     </comps>
+    
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <smeltable>false</smeltable>
+    <burnableByRecipe>false</burnableByRecipe>
+    <drawGUIOverlay>false</drawGUIOverlay>
+    <relicChance>3</relicChance>
+    <verbs>
+      <li>
+        <verbClass>MunoRaceLib.MunoComp.Verb_CastTargetEffect_MunoHealProjectile</verbClass>
+        <label>muno heal gun</label>
+        <hasStandardCommand>true</hasStandardCommand>
+        <targetable>true</targetable>
+        <onlyManualCast>True</onlyManualCast>
+        <defaultProjectile>Bullet_MunoHealGun</defaultProjectile>
+        <range>41.9</range>
+        <warmupTime>2.2</warmupTime>
+        <targetParams>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetSelf>true</canTargetSelf>
+        </targetParams>
+        <soundCast>TechMedicineUsed</soundCast>
+      </li>
+    </verbs>
+    <allowedArchonexusCount>1</allowedArchonexusCount>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_MunoHealGun</defName>
+    <label>缪诺治疗弹</label>
+    <thingClass>MunoRaceLib.MunoComp.Projectile_MunoHealing</thingClass>
+    <graphicData>
+      <texPath>Weapons/Gun_MunoHG_proj</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <!-- <color>(0.2,1.0,0.35)</color> -->
+      <drawSize>0.65</drawSize>
+    </graphicData>
+    <projectile>
+      <speed>28</speed>
+      <damageDef>Smoke</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <stoppingPower>0</stoppingPower>
+      <armorPenetrationBase>0</armorPenetrationBase>
+      <shadowSize>0.25</shadowSize>
+    </projectile>
+  </ThingDef>
+
+</Defs>

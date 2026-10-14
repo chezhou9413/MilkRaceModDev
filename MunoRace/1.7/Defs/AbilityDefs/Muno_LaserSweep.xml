@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <AbilityDef>
+    <defName>Muno_LaserSweep_LR</defName>
+    <label>激光增幅横扫</label>
+    <description>消耗 1 份激光增幅浓浆，使用缪诺激光步枪进行横扫射击。</description>
+    <abilityClass>MunoRaceLib.MunoComp.Ability_MunoLaserSweep</abilityClass>
+    <gizmoClass>MunoRaceLib.MunoComp.Command_AbilityMunoLaserSweep</gizmoClass>
+    <iconPath>Weapons/Gun_MunoLR</iconPath>
+    <jobDef>JobDef_MunoLaserSweep</jobDef>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <targetRequired>true</targetRequired>
+    <hostile>true</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+      </targetParams>
+      <range>26</range>
+      <minRange>3</minRange>
+      <warmupTime>1.4</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <soundCast>Shot_BeamRepeater</soundCast>
+      <soundCastTail>GunTail_Medium</soundCastTail>
+    </verbProperties>
+    <comps>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_AbilityMunoLaserSweep">
+        <cost>1</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef>
+    <defName>Muno_LaserSweep_LSR</defName>
+    <label>激光增幅横扫</label>
+    <description>消耗 1 份激光增幅浓浆，使用缪诺激光狙击枪进行横扫射击。</description>
+    <abilityClass>MunoRaceLib.MunoComp.Ability_MunoLaserSweep</abilityClass>
+    <gizmoClass>MunoRaceLib.MunoComp.Command_AbilityMunoLaserSweep</gizmoClass>
+    <iconPath>Weapons/Gun_MunoLSR</iconPath>
+    <jobDef>JobDef_MunoLaserSweep</jobDef>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <targetRequired>true</targetRequired>
+    <hostile>true</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+      </targetParams>
+      <range>38</range>
+      <minRange>4</minRange>
+      <warmupTime>1.6</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <soundCast>Shot_BeamRepeater</soundCast>
+      <soundCastTail>GunTail_Medium</soundCastTail>
+    </verbProperties>
+    <comps>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_AbilityMunoLaserSweep">
+        <cost>1</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+</Defs>

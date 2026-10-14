@@ -1,0 +1,25 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <DefineConstants>$(DefineConstants);RW_1_7</DefineConstants>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>../../Assemblies/</OutputPath>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">E:\steam\steamapps\common\RimWorld</RimWorldDir>
+    <ChezhouLibDir Condition="'$(ChezhouLibDir)' == ''">E:\RimModDev\ChezhouLib</ChezhouLibDir>
+    <RimUnityDir Condition="'$(RimUnityDir)' == ''">E:\RimModDev\RimUnity</RimUnityDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp" HintPath="$(RimWorldDir)/Assembly-CSharp.dll" />
+    <Reference Include="UnityStubs" HintPath="$(RimWorldDir)/UnityStubs.dll" />
+    <Reference Include="Waylith" HintPath="$(RimWorldDir)/Waylith.dll" />
+    <Reference Include="Waylith.UnityCompat" HintPath="$(RimWorldDir)/Waylith.UnityCompat.dll" />
+    <Reference Include="0Harmony" HintPath="E:\steam\steamapps\workshop\content\294100\2009463077\1.7\Assemblies\0Harmony.dll" />
+  </ItemGroup>
+  <ItemDefinitionGroup>
+    <Reference><Private>false</Private></Reference>
+    <ProjectReference><Private>false</Private></ProjectReference>
+  </ItemDefinitionGroup>
+</Project>

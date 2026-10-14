@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <WorkGiverDef>
+        <defName>Muno_ReloadStrategicGrenade</defName>
+        <label>装填战略榴弹</label>
+        <giverClass>MunoRaceLib.MunoWorker.WorkGiver_ReloadStrategicGrenade</giverClass>
+        <workType>Hauling</workType>
+        <priorityInType>68</priorityInType>
+        <verb>装填</verb>
+        <gerund>装填战略榴弹</gerund>
+        <canBeDoneWhileDrafted>true</canBeDoneWhileDrafted>
+    </WorkGiverDef>
+</Defs>

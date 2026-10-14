@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="MunoRace_Apparel">
+    <defName>MunoRace_Apparel_Milker</defName>
+    <label>挤奶器</label>
+    <description>能够配合各种衣物穿着的轻量化挤奶器，可以设定汲取量自动汲取缪诺乳或者乳源质浓浆。</description>
+    <possessionCount>1</possessionCount>
+    <recipeMaker>
+      <researchPrerequisite>Muno_MilkCollectEquipment</researchPrerequisite>
+      <displayPriority>216</displayPriority>
+    </recipeMaker>
+   <graphicData>
+      <texPath>Apparel/MilkingMachine/MunoRace_Apparel_MilkingMachine</texPath>
+      <shaderType>CutoutComplex</shaderType>
+      <graphicClass>Graphic_Single</graphicClass>
+      <maskPath>Apparel/MilkingMachine/MunoRace_Apparel_MilkingMachine_m</maskPath>  <!-- 改成 _m -->
+      <drawSize>1.1</drawSize>
+    </graphicData>
+    <costStuffCount>80</costStuffCount>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToMake>10000</WorkToMake>
+      <Mass>1.5</Mass>
+      <StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.2</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.2</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>3</EquipDelay>
+    </statBases>
+    <generateCommonality>0.05</generateCommonality>
+    <equippedStatOffsets>
+      <SocialImpact>0.1</SocialImpact>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">0.05</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>Apparel</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Apparel/MilkingMachine/MunoRace_Apparel_MilkingMachine</wornGraphicPath>
+       <useWornGraphicMask>true</useWornGraphicMask>
+      <layers>
+        <li>Muno_Underwear</li>
+      </layers>
+      <tags>
+        <li>Outlander</li>
+        <li>Spacer</li>
+        <li>MunoApparelBasic</li>
+  <li>MunoApparelMiddle</li>
+  <li>MunoApparelAdvanced</li>
+	</tags>
+    </apparel>
+    <comps>
+      <li><compClass>CompQuality</compClass></li>
+      <li Class="CompProperties_Forbiddable" />
+      <li><compClass>CompColorable</compClass></li>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_GalactogenExtractor" />
+      <li Class="ChezhouLib.comp.ApparelAddBodyAddonCompProperties">
+        <targetRaces>
+          <li>MunoRace</li>
+        </targetRaces>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

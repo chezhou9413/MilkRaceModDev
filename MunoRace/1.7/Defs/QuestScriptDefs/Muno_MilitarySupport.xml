@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <SitePartDef>
+    <defName>Muno_CaptureOutpostRoster</defName>
+    <label>据点抓捕人员</label>
+    <description>缪诺军事管理员要求从本据点活捉足量成年守军，不限定具体姓名。</description>
+    <workerClass>MunoRaceLib.MunoQuests.SitePartWorker_MunoCaptureOutpost</workerClass>
+    <requiresFaction>true</requiresFaction>
+    <wantsThreatPoints>false</wantsThreatPoints>
+    <disallowsAutomaticDetectionTimerStart>true</disallowsAutomaticDetectionTimerStart>
+    <selectionWeight>0</selectionWeight>
+  </SitePartDef>
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>Muno_QuestRewardChoice</defName>
+    <label>缪诺任务奖励</label>
+    <letterClass>MunoRaceLib.MunoQuests.ChoiceLetter_MunoQuestReward</letterClass>
+    <arriveSound>LetterArrive_Good</arriveSound>
+  </LetterDef>
+  <PawnKindDef ParentName="MunoRace_GuardBase">
+    <defName>MunoRace_QuestRaider</defName>
+    <label>缪诺突袭队员</label>
+    <labelPlural>缪诺突袭队员</labelPlural>
+    <description>接受过战斗训练、执行缪诺军事行动的成年突袭队员。</description>
+    <minGenerationAge>22</minGenerationAge>
+    <maxGenerationAge>38</maxGenerationAge>
+    <biocodeWeaponChance>0</biocodeWeaponChance>
+    <techHediffsChance>0</techHediffsChance>
+    <combatEnhancingDrugsChance>0</combatEnhancingDrugsChance>
+    <skills Inherit="False">
+      <li><skill>Shooting</skill><range>14~18</range></li>
+      <li><skill>Melee</skill><range>14~18</range></li>
+    </skills>
+  </PawnKindDef>
+</Defs>

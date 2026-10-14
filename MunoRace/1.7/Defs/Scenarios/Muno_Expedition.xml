@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>Muno_Expedition</defName>
+    <label>缪诺开拓队</label>
+    <description>三名缪诺受命前往新的区域进行开拓。聚落为她们准备了充足资源，双方以同盟关系开始。选中殖民者可使用联络终端。</description>
+    <scenario>
+      <summary>三名成年缪诺，充足物资，与聚落同盟。</summary>
+      <parts>
+        <li Class="MunoRaceLib.MunoScenarios.ScenPart_MunoStart">
+          <def>Muno_StoryStartingPawns</def><mode>Expedition</mode>
+        </li>
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def><method>DropPods</method><visible>false</visible>
+        </li>
+        <li Class="ScenPart_NoPossessions"><def>NoPossessions</def></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Silver</thingDef><count>1000</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MealSurvivalPack</thingDef><count>90</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MedicineIndustrial</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Steel</thingDef><count>600</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>WoodLog</thingDef><count>400</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>ComponentIndustrial</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_BoltActionRifle</thingDef><count>2</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_Revolver</thingDef><count>1</count></li>
+      </parts>
+    </scenario>
+  </ScenarioDef>
+</Defs>

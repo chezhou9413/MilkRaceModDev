@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- ============================================================
+	     缪诺近战武器：制式斧 / 制式刀
+	     参考原版 MeleeWeapon_Axe / MeleeWeapon_LongSword 的写法。
+	     父类 BaseMeleeWeapon_Sharp_Quality 已提供：
+	       CompEquippable / CompQuality / CompProperties_Art / CompProperties_Forbiddable /
+	       CompProperties_Styleable / thingClass=ThingWithComps / category=Item /
+	       thingCategories=WeaponsMelee / weaponClasses=(Melee, MeleePiercer) /
+	       tradeTags=(WeaponMelee) / recipeMaker 骨架(workSkill=Crafting, effectWorking=Smith) 等
+	     贴图：Textures/Weapons/Melee_MunoAxe.png、Textures/Weapons/Melee_MunoSword.png
+	     ============================================================ -->
+
+	<!-- ============ 缪诺制式斧 ============ -->
+	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+		<defName>MunoRace_MeleeAxe</defName>
+		<label>缪诺制式斧</label>
+		<description>缪诺军队的制式单手战斧。工业批量生产的制式武器，每一把长得都基本一个样，兼具劈砍与破甲能力，既是战场上可靠的近战武器，也是聚落中常见的实用工具。</description>
+		<graphicData>
+			<texPath>Weapons/Melee_MunoAxe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<costStuffCount>50</costStuffCount>
+		<stuffCategories>
+			<li>Metallic</li>
+		</stuffCategories>
+		<statBases>
+			<WorkToMake>7000</WorkToMake>
+			<Mass>1.5</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>17</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+		<weaponTags>
+			<li>MunoMelee</li>
+			<li>Axe</li>
+		</weaponTags>
+		<recipeMaker>
+			<researchPrerequisite>Muno_BasicMelee</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>MunoRace_WorkBench</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>4</Crafting>
+			</skillRequirements>
+			<displayPriority>430</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+
+	<!-- ============ 缪诺制式刀 ============ -->
+	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+		<defName>MunoRace_MeleeSword</defName>
+		<label>缪诺制式刀</label>
+		<description>缪诺军队的制式单手刀。工业批量生产的制式武器，每一把长得都基本一个样，刀身修长锋利，可劈可刺，是缪诺战士近身格斗的标准装备，也常被军官作为随身佩刀。</description>
+		<graphicData>
+			<texPath>Weapons/Melee_MunoSword</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<costStuffCount>100</costStuffCount>
+		<stuffCategories>
+			<li>Metallic</li>
+		</stuffCategories>
+		<statBases>
+			<WorkToMake>18000</WorkToMake>
+			<Mass>2</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>24</power>
+				<cooldownTime>2.5</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>24</power>
+				<cooldownTime>2.5</cooldownTime>
+			</li>
+		</tools>
+		<weaponTags>
+			<li>MunoMelee</li>
+			<li>LongSword</li>
+		</weaponTags>
+		<recipeMaker>
+			<researchPrerequisite>Muno_BasicMelee</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>MunoRace_WorkBench</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+			<displayPriority>420</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+
+	<!-- ============ 缪诺警棍 ============ -->
+	<ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+		<defName>MunoRace_MeleeBaton</defName>
+		<label>缪诺警棍</label>
+		<description>缪诺聚落治安人员使用的制式警棍。工业批量生产的制式武器，每一把长得都基本一个样,钝头设计能在制服目标的同时尽量避免致命伤，附带的电极能够有效的电击瘫痪目标，是巡逻与镇暴的常用装备，在缪诺牧场中也有使用。</description>
+		<graphicData>
+			<texPath>Weapons/Melee_MunoBatons</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<costStuffCount>50</costStuffCount>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+		</stuffCategories>
+		<statBases>
+			<WorkToMake>6000</WorkToMake>
+			<Mass>1.25</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>16</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+		<weaponClasses Inherit="False">
+			<li>MeleeBlunt</li>
+			<li>Melee</li>
+		</weaponClasses>
+		<weaponTags>
+			<li>MunoMelee</li>
+		</weaponTags>
+		<recipeMaker>
+			<researchPrerequisite>Muno_BasicMelee</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>MunoRace_WorkBench</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>3</Crafting>
+			</skillRequirements>
+			<displayPriority>410</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+
+</Defs>

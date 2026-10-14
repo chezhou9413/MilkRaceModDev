@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThoughtDef>
+    <defName>Muno_LactationChipNumbness</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>Muno_LactationChipImplant</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>泌乳芯片麻痹</label>
+        <description>芯片带来的持续麻痹感让我格外放松和满足。</description>
+        <baseMoodEffect>30</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

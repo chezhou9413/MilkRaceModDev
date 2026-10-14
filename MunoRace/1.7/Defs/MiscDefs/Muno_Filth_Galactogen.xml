@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <ThingDef ParentName="BaseFilth">
+        <defName>Muno_Filth_Galactogen</defName>
+        <label>乳源质溅射</label>
+        <statBases>
+            <Beauty>-20</Beauty>
+            <Cleanliness>-10</Cleanliness>
+        </statBases>
+        <graphicData>
+            <texPath>Filth/GalactogenFilth</texPath>
+            <graphicClass>Graphic_Cluster</graphicClass>
+            <color>(255, 255, 255, 180)</color>
+        </graphicData>
+        <filth>
+            <rainWashes>true</rainWashes>
+            <cleaningWorkToReduceThickness>70</cleaningWorkToReduceThickness>
+            <cleaningSound>Interact_CleanFilth</cleaningSound>
+        </filth>
+    </ThingDef>
+</Defs>

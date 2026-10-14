@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="MealBase">
+    <defName>MunoRace_MolecularCuisine</defName>
+    <label>分子料理</label>
+    <description>缪诺后勤管理员制作的实验性料理，外观看起来精致得有些不可思议，味道和效果都还在测试中。</description>
+    <thingClass>ThingWithComps</thingClass>
+    <graphicData>
+      <texPath>Item/Resource/MunoRace_MolecularCuisine</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+    <stackLimit>1</stackLimit>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <MarketValue>18</MarketValue>
+      <Mass>0.12</Mass>
+      <Nutrition>0.9</Nutrition>
+      <FoodPoisonChanceFixedHuman>0</FoodPoisonChanceFixedHuman>
+    </statBases>
+    <comps>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_MolecularCuisine" />
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>6</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+    <ingestible>
+      <preferability>MealLavish</preferability>
+      <foodType>Meal</foodType>
+      <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+    </ingestible>
+  </ThingDef>
+
+</Defs>

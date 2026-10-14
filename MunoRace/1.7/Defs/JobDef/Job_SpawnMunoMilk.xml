@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <JobDef>
+        <defName>JobDriver_SpawnMunoMilk</defName>
+        <driverClass>MunoRaceLib.MunoJobDriver.JobDriver_SpawnMunoMilk</driverClass>
+        <reportString>正在收集缪诺乳</reportString>
+        <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+    </JobDef>
+</Defs>

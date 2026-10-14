@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>MunoRaceLib</AssemblyName>
+    <RootNamespace>MunoRaceLib</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../../Source/MunoRaceLib/**/*.cs" Exclude="../../../Source/MunoRaceLib/obj/**/*.cs;../../../Source/MunoRaceLib/bin/**/*.cs" />
+    <Compile Include="**/*.cs" Exclude="obj/**/*.cs;bin/**/*.cs" />
+    <Reference Include="ChezhouLib" HintPath="$(ChezhouLibDir)/1.7/Assemblies/ChezhouLib.dll" />
+    <Reference Include="AlienRace" HintPath="$(ChezhouLibDir)/Source/.build/references/1.7/AlienRace.dll" />
+    <Reference Include="RimUnity.Core" HintPath="$(RimUnityDir)/1.7/Assemblies/RimUnity.Core.dll" />
+    <Reference Include="RimUnity" HintPath="$(RimUnityDir)/1.7/Assemblies/RimUnity.dll" />
+  </ItemGroup>
+</Project>

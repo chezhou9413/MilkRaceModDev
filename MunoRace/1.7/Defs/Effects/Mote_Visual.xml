@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_MunoBeamRepeater_Charge_LR</defName>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.15</fadeInTime>
+      <fadeOutTime>0.3</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+    </mote>
+    <graphicData>
+      <texPath>Mote/Mote_MunoBeamRepeater_Charge_A</texPath>
+      <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+      <shaderType>MoteHellfireCannon_Charge</shaderType>
+      <shaderParameters>
+        <_RandomTex>/Things/Mote/RandomFlicker</_RandomTex>
+        <_FlickerFrequency>0.25</_FlickerFrequency>
+        <_FlickerAmount>0.6</_FlickerAmount>
+        <_InnerCircleIntensity>0.1</_InnerCircleIntensity>
+        <_InnerCircleSize>0.1</_InnerCircleSize>
+        <_InnerCircleShimmerAmount>0.14</_InnerCircleShimmerAmount>
+      </shaderParameters>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_MunoBeamRepeater_Charge_LSR</defName>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.15</fadeInTime>
+      <fadeOutTime>0.3</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+    </mote>
+    <graphicData>
+      <texPath>Mote/Mote_MunoBeamRepeater_Charge_A</texPath>
+      <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+      <shaderType>MoteHellfireCannon_Charge</shaderType>
+      <shaderParameters>
+        <_RandomTex>/Things/Mote/RandomFlicker</_RandomTex>
+        <_FlickerFrequency>0.25</_FlickerFrequency>
+        <_FlickerAmount>0.6</_FlickerAmount>
+        <_InnerCircleIntensity>0.1</_InnerCircleIntensity>
+        <_InnerCircleSize>0.1</_InnerCircleSize>
+        <_InnerCircleShimmerAmount>0.14</_InnerCircleShimmerAmount>
+      </shaderParameters>
+    </graphicData>
+  </ThingDef>
+
+  <!--辐射锥 Shader 的动态世界平面载体。-->
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_MunoRadiationConeEffect</defName>
+    <label>缪诺辐射锥特效</label>
+    <thingClass>MunoRaceLib.MunoComp.Mote_MunoRadiationConeEffect</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>UI/Misc/BadTexture</texPath>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <shaderType>MunoRace_TriangleRadiation_ShaderPro</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <mote>
+      <fadeInTime>0</fadeInTime>
+      <solidTime>1.5</solidTime>
+      <fadeOutTime>0</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+</Defs>

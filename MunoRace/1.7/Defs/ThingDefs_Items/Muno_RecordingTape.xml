@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>Muno_RecordingTape</defName>
+    <label>生存录像带</label>
+    <description>记录殖民者生存日常的数据载体，可以保存500PB的极高清素材。可通过摄像机或通讯台向非敌对的缪诺聚落上传，每份录像都能像缪诺电视台™换取一份随机物资。</description>
+    <graphicData>
+      <texPath>Item/Resource/MunoRace_VideoTape</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.0</drawSize>
+    </graphicData>
+    <stackLimit>50</stackLimit>
+    <tradeability>None</tradeability>
+    <statBases><MaxHitPoints>100</MaxHitPoints><Mass>0.05</Mass><MarketValue>0</MarketValue><Flammability>0.6</Flammability></statBases>
+    <thingCategories><li>Items</li></thingCategories>
+  </ThingDef>
+</Defs>

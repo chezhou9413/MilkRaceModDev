@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThoughtDef>
+    <defName>Muno_MolecularCuisineDelicious</defName>
+    <label>吃了美味的分子料理</label>
+    <description>我刚刚吃了一份非常美味的缪诺分子料理，味道比预想中好得多。</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>吃了美味的分子料理</label>
+        <description>我刚刚吃了一份非常美味的缪诺分子料理，味道比预想中好得多。</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Muno_MolecularCuisineAwful</defName>
+    <label>吃了难吃的分子料理</label>
+    <description>我刚刚吃了一份很难吃的缪诺分子料理，口味实在让人难以接受。</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>吃了难吃的分子料理</label>
+        <description>我刚刚吃了一份很难吃的缪诺分子料理，口味实在让人难以接受。</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>InstallMunoLactationChip</defName>
+    <label>植入缪诺泌乳芯片</label>
+    <description>在躯干内植入缪诺泌乳芯片。</description>
+    <descriptionHyperlinks>
+      <ThingDef>MunoRace_LactationChip</ThingDef>
+      <HediffDef>Muno_LactationChipImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>正在植入缪诺泌乳芯片。</jobString>
+    <recipeUsers Inherit="False">
+      <li>MunoRace</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MunoRace_LactationChip</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>MunoRace_LactationChip</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>Muno_LactationChipImplant</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveMunoLactationChip</defName>
+    <label>移除缪诺泌乳芯片</label>
+    <description>从躯干内移除缪诺泌乳芯片。</description>
+    <descriptionHyperlinks>
+      <ThingDef>MunoRace_LactationChip</ThingDef>
+      <HediffDef>Muno_LactationChipImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>正在移除缪诺泌乳芯片。</jobString>
+    <recipeUsers Inherit="False">
+      <li>MunoRace</li>
+    </recipeUsers>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <removesHediff>Muno_LactationChipImplant</removesHediff>
+  </RecipeDef>
+
+</Defs>

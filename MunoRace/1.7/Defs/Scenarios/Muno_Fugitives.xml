@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>Muno_Fugitives</defName>
+    <label>缪诺叛逃者</label>
+    <description>一名叛逃缪诺和一名人类同伴逃离聚落，来到了边缘世界。她们并未真正安全：五天宽限期后，聚落每隔五至八天派遣追击队，强度随追击波次增长。达成和平、原始逃亡者全部离开队伍或完成融入结局后，追击结束。远行途中不生成地图袭击，回到地图后继续追踪。</description>
+    <scenario>
+      <summary>一名成年缪诺、一名成年人类；聚落敌对，五天后开始持续追击。</summary>
+      <parts>
+        <li Class="MunoRaceLib.MunoScenarios.ScenPart_MunoStart">
+          <def>Muno_StoryStartingPawns</def><mode>Fugitives</mode>
+        </li>
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def><method>DropPods</method><visible>false</visible>
+        </li>
+        <li Class="ScenPart_NoPossessions"><def>NoPossessions</def></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MealSurvivalPack</thingDef><count>20</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MedicineIndustrial</thingDef><count>8</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Steel</thingDef><count>100</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>WoodLog</thingDef><count>150</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_BoltActionRifle</thingDef><count>1</count></li>
+      </parts>
+    </scenario>
+  </ScenarioDef>
+</Defs>

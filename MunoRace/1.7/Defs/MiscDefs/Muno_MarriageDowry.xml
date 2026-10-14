@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <MunoRaceLib.MunoWorld.MunoMarriageDowryDef>
+    <defName>Muno_MarriageDowry</defName>
+    <label>缪诺和亲嫁妆配置</label>
+    <weaponPool>
+      <li>Gun_MunoLMG</li>
+      <li>Gun_MunoAR</li>
+      <li>Gun_MunoSR</li>
+      <li>Gun_MunoHPP</li>
+      <li>Gun_MunoPO</li>
+      <li>Gun_MunoMP</li>
+      <li>Gun_MunoMGL</li>
+      <li>Gun_MunoHMG</li>
+      <li>Gun_MunoAC</li>
+      <li>Gun_MunoRGL</li>
+      <li>Gun_MunoLR</li>
+      <li>Gun_MunoLSR</li>
+      <li>Gun_MunoLPO</li>
+      <li>Gun_MunoLC</li>
+    </weaponPool>
+    <armorPool>
+      <li>MunoRace_Apparel_Tentaclearmor</li>
+    </armorPool>
+    <archotechBodyPartPool>
+      <li>ArchotechArm</li>
+      <li>ArchotechLeg</li>
+      <li>ArchotechEye</li>
+    </archotechBodyPartPool>
+    <bionicFallbackPool>
+      <li>BionicArm</li>
+      <li>BionicLeg</li>
+      <li>BionicEye</li>
+      <li>BionicHeart</li>
+      <li>BionicSpine</li>
+    </bionicFallbackPool>
+    <weaponCount>1~2</weaponCount>
+    <armorCount>1~1</armorCount>
+    <bodyPartCount>1~3</bodyPartCount>
+    <techprintCount>1~1</techprintCount>
+    <minQuality>Excellent</minQuality>
+    <maxQuality>Masterwork</maxQuality>
+  </MunoRaceLib.MunoWorld.MunoMarriageDowryDef>
+</Defs>

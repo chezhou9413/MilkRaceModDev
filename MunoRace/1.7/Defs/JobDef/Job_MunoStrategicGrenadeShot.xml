@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <JobDef>
+        <defName>JobDef_MunoStrategicGrenadeShot</defName>
+        <driverClass>MunoRaceLib.MunoJobDriver.JobDriver_MunoStrategicGrenadeShot</driverClass>
+        <reportString>发射战略榴弹。</reportString>
+        <casualInterruptible>false</casualInterruptible>
+    </JobDef>
+</Defs>
