@@ -85,7 +85,7 @@
 		<defName>Bullet_MunoLMG</defName>
 		<label>缪诺轻机枪弹</label>
 		<graphicData>
-			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<texPath>Weapons/Gun_Rife_proj</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
@@ -173,7 +173,7 @@
     <defName>Bullet_Muno_PR</defName>
     <label>小口径练习弹</label>
     <graphicData>
-        <texPath>Things/Projectile/Bullet_Small</texPath>
+        <texPath>Weapons/Gun_Rife_proj</texPath>
         <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -262,7 +262,7 @@
     <defName>Bullet_SSR</defName>
     <label>小口径狙击弹</label>
     <graphicData>
-        <texPath>Things/Projectile/Bullet_Small</texPath>
+        <texPath>Weapons/Gun_Rife_proj</texPath>
         <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -351,7 +351,7 @@
     <defName>Bullet_SR</defName>
     <label>全威力弹</label>
     <graphicData>
-        <texPath>Things/Projectile/Bullet_Small</texPath>
+        <texPath>Weapons/Gun_Rife_proj</texPath>
         <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
@@ -446,7 +446,7 @@
 		<defName>Bullet_MunoAR</defName>
 		<label>缪诺突击步枪弹</label>
 		<graphicData>
-			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<texPath>Weapons/Gun_Rail_L_proj</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
@@ -571,7 +571,7 @@
 		<defName>Bullet_MunoSR</defName>
 		<label>缪诺战略步枪弹</label>
 		<graphicData>
-			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<texPath>Weapons/Gun_Rife_proj</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
@@ -684,7 +684,7 @@
 		<defName>Bullet_MunoHPP</defName>
 		<label>缪诺大威力手枪弹</label>
 		<graphicData>
-			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<texPath>Weapons/Gun_Rife2_proj</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
@@ -1068,7 +1068,7 @@
 		<defName>Bullet_MunoHMG</defName>
 		<label>奶牛娘重机枪弹</label>
 		<graphicData>
-			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<texPath>Weapons/Gun_Rife_proj</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
@@ -1160,7 +1160,7 @@
     <defName>Bullet_MunoRAMR</defName>
     <label>钨芯电磁弹</label>
     <graphicData>
-        <texPath>Things/Projectile/Bullet_Small</texPath>
+        <texPath>Weapons/Gun_Rail_H_proj</texPath>
         <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
