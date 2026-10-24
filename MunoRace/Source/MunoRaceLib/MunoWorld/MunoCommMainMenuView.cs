@@ -11,6 +11,7 @@ namespace MunoRaceLib.MunoWorld
         OpenPopulationExchange,
         OpenExchange,
         OpenLogistics,
+        RequestIntegration,
         ForceRefreshMarriage,
         Close
     }
@@ -36,18 +37,20 @@ namespace MunoRaceLib.MunoWorld
             Color oldGuiColor = GUI.color;
             float alpha = MunoCommUIStyle.EntryAlpha(openTime);
             GUI.color = new Color(oldGuiColor.r, oldGuiColor.g, oldGuiColor.b, oldGuiColor.a * alpha);
+            //菜单点击区域固定，立绘与问候面板仍保留入场位移动画。
+            Rect menuRect = inRect;
             inRect = MunoCommUIStyle.ApplyEntryAnimation(inRect, openTime);
 
             DrawPortrait(inRect, portraitTexPath);
             DrawGreetingPanel(GetGreetingPanelRect(inRect), typewriter);
-            MunoCommMainMenuAction action = DrawHelpPanel(GetHelpPanelRect(inRect, managerButtonLabel), managerButtonLabel);
+            MunoCommMainMenuAction action = DrawHelpPanel(GetHelpPanelRect(menuRect, managerButtonLabel), managerButtonLabel);
             if (action != MunoCommMainMenuAction.None)
             {
                 GUI.color = oldGuiColor;
                 return action;
             }
 
-            action = DrawDisconnectButton(inRect);
+            action = DrawDisconnectButton(menuRect);
             GUI.color = oldGuiColor;
             return action;
         }
@@ -63,12 +66,11 @@ namespace MunoRaceLib.MunoWorld
         private static Rect GetHelpPanelRect(Rect inRect, string managerButtonLabel)
         {
             Rect greetingRect = GetGreetingPanelRect(inRect);
-            float height = DebugSettings.godMode ? 224f : 170f;
-            if (!managerButtonLabel.NullOrEmpty())
-            {
-                height += 54f;
-            }
-
+            int count = 2 + (managerButtonLabel.NullOrEmpty() ? 0 : 1)
+                + (ShowIntegration(managerButtonLabel) ? 1 : 0) + (DebugSettings.godMode ? 1 : 0);
+            float buttonHeight = Mathf.Max(38f, Text.LineHeightOf(GameFont.Medium) + 8f);
+            float height = 36f + Text.LineHeightOf(GameFont.Medium) + 18f
+                + ((count + 1) / 2) * (buttonHeight + 12f);
             return new Rect(greetingRect.x, greetingRect.yMax + 18f, greetingRect.width, height);
         }
         //绘制首页左侧联络员立绘与身份标签。
@@ -151,33 +153,38 @@ namespace MunoRaceLib.MunoWorld
             Text.Anchor = oldAnchor;
             GUI.color = oldColor;
 
-            float buttonY = inner.y + Text.LineHeight + 18f;
-            float buttonWidth = Mathf.Min(330f, inner.width);
+            float buttonY = inner.y + Text.LineHeightOf(GameFont.Medium) + 18f;
+            float buttonWidth = (inner.width - 12f) * 0.5f;
             float buttonHeight = Mathf.Max(38f, Text.LineHeightOf(GameFont.Medium) + 8f);
             if (MunoCommUIStyle.DrawButton(new Rect(inner.x, buttonY, buttonWidth, buttonHeight), "军事管理员"))
             {
                 return MunoCommMainMenuAction.OpenPopulationExchange;
             }
 
-            if (MunoCommUIStyle.DrawButton(new Rect(inner.x, buttonY + 54f, buttonWidth, buttonHeight), "后勤管理员"))
+            if (MunoCommUIStyle.DrawButton(new Rect(inner.x + buttonWidth + 12f, buttonY, buttonWidth, buttonHeight), "后勤管理员"))
             {
                 return MunoCommMainMenuAction.OpenLogistics;
             }
 
-            float debugY = buttonY + 108f;
+            float nextRowY = buttonY + buttonHeight + 12f;
             if (!managerButtonLabel.NullOrEmpty())
             {
-                if (MunoCommUIStyle.DrawButton(new Rect(inner.x, debugY, buttonWidth, buttonHeight), managerButtonLabel))
+                if (MunoCommUIStyle.DrawButton(new Rect(inner.x, nextRowY, buttonWidth, buttonHeight), managerButtonLabel))
                 {
                     return MunoCommMainMenuAction.OpenExchange;
                 }
 
-                debugY += 54f;
             }
+
+            if (ShowIntegration(managerButtonLabel)
+                && MunoCommUIStyle.DrawButton(new Rect(inner.x + buttonWidth + 12f, nextRowY, buttonWidth, buttonHeight), "申请融入缪诺聚落"))
+                return MunoCommMainMenuAction.RequestIntegration;
 
             if (DebugSettings.godMode)
             {
-                Rect refreshRect = new Rect(inner.x, debugY, buttonWidth, buttonHeight);
+                int index = 2 + (managerButtonLabel.NullOrEmpty() ? 0 : 1) + (ShowIntegration(managerButtonLabel) ? 1 : 0);
+                Rect refreshRect = new Rect(inner.x + (index % 2) * (buttonWidth + 12f),
+                    buttonY + (index / 2) * (buttonHeight + 12f), buttonWidth, buttonHeight);
                 if (MunoCommUIStyle.DrawButton(refreshRect, "立刻刷新和亲"))
                 {
                     return MunoCommMainMenuAction.ForceRefreshMarriage;
@@ -185,6 +192,13 @@ namespace MunoRaceLib.MunoWorld
             }
 
             return MunoCommMainMenuAction.None;
+        }
+
+        //仅在聚落管理员首页显示剧情开局的融入申请。
+        private static bool ShowIntegration(string managerButtonLabel)
+        {
+            return !managerButtonLabel.NullOrEmpty()
+                && Current.Game.GetComponent<MunoScenarios.MunoStoryComponent>().mode != MunoScenarios.MunoStartMode.None;
         }
         //绘制首页底部断开通讯文字按钮并返回关闭动作。
         private static MunoCommMainMenuAction DrawDisconnectButton(Rect inRect)

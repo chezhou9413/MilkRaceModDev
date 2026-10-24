@@ -147,6 +147,10 @@
 		<royalTitleTags MayRequire="Ludeon.RimWorld.Royalty" Inherit="False">
             <li>Muno_Title</li>
         </royalTitleTags>
+        <royalFavorLabel>荣誉</royalFavorLabel>
+        <royalFavorIconPath>UI/Icons/RoyalFavor</royalFavorIconPath>
+        <canRequestTraders>true</canRequestTraders>
+        <canRequestMilitaryAid>true</canRequestMilitaryAid>
 		<royalTitleInheritanceWorkerClass>RoyalTitleInheritanceWorker</royalTitleInheritanceWorkerClass>
         <royalTitleInheritanceRelations>
             <li>Child</li>

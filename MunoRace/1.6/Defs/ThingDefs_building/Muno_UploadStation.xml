@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>Muno_UploadStation</defName>
+    <label>录像上传站</label>
+    <description>向缪诺节目组上传生存录像并领取随机补给。选中殖民者后右键上传站，选择本次上传的录像带数量。无需电力，可在生存挑战初期使用。</description>
+    <thingClass>MunoRaceLib.MunoRecording.Building_MunoUploadStation</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Production/CraftingSpot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <statBases>
+      <WorkToBuild>0</WorkToBuild>
+    </statBases>
+    <useHitPoints>false</useHitPoints>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <size>(1,1)</size>
+    <designationCategory>Misc</designationCategory>
+    <uiOrder>2010</uiOrder>
+    <passability>Standable</passability>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+      <wakeDormantPawnsOnConstruction>false</wakeDormantPawnsOnConstruction>
+    </building>
+  </ThingDef>
+</Defs>

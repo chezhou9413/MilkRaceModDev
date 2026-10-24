@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--一个网格承载炮口、束带、命中闪灼和余波，各层使用独立时序。-->
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_MunoRadiationConeEffect</defName>
+    <label>缪诺辐射爆发</label>
+    <thingClass>MunoRaceLib.MunoComp.Mote_MunoRadiationConeEffect</thingClass>
+    <altitudeLayer>MoteOverheadLow</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>UI/Misc/BadTexture</texPath>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <shaderType>MunoRace_TriangleRadiation_ShaderPro</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <mote>
+      <realTime>true</realTime>
+      <fadeInTime>0</fadeInTime>
+      <solidTime>1.1</solidTime>
+      <fadeOutTime>0</fadeOutTime>
+    </mote>
+  </ThingDef>
+</Defs>

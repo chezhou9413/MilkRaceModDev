@@ -11,9 +11,7 @@ namespace MunoRaceLib.MunoComp
         public int storageCost = 1;
         public DamageDef damageDef;
         public FleckDef coneFleckDef;
-        public float coneFleckChancePerCell = 0.28f;
-        public FloatRange coneFleckScale = new FloatRange(4f, 7f);
-        public FleckDef targetFleckDef;
-        public float targetFleckScale = 0.45f;
+        public float coneFleckChancePerCell = 0.55f;
+        public FloatRange coneFleckScale = new FloatRange(1.2f, 1.8f);
     }
 }

@@ -3,7 +3,7 @@
   <ScenarioDef ParentName="ScenarioBase">
     <defName>Muno_SurvivalShow</defName>
     <label>一牛四男：生存挑战</label>
-    <description>一名缪诺和四名男性被送往边缘世界，参加一场生存挑战。他们只有少量物资和一台摄像机。让一人穿戴摄像机，拍摄殖民者的日常，向节目组上交录像带获取随机补给。摄像机终端无需通讯台。</description>
+    <description>一名缪诺和四名男性被送往边缘世界，参加一场生存挑战。他们只有少量物资和一台摄像机。让一人穿戴摄像机，拍摄殖民者的日常。放置录像上传站并让殖民者操作，向节目组上传录像带获取随机补给，无需通讯台。</description>
     <scenario>
       <summary>一名成年缪诺、四名成年男性人类，少量物资和一台摄像机。</summary>
       <parts>

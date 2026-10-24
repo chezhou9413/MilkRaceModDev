@@ -6,7 +6,7 @@ using Verse;
 
 namespace MunoRaceLib.Patch
 {
-    //负责将原版缪诺通讯台接入聚落事务、录像兑换和结局菜单。
+    //将原版缪诺通讯直接接入聚落管理员终端。
     [HarmonyPatch(typeof(Faction), nameof(Faction.TryOpenComms))]
     public static class Patch_Faction_TryOpenComms_MunoExchange
     {

@@ -18,71 +18,71 @@
     <shaderParameters>
       <li>
         <parameterName>_Progress</parameterName>
-        <parameterValue>0.765</parameterValue>
+        <parameterValue>0</parameterValue>
       </li>
       <li>
         <parameterName>_EdgeSoftness</parameterName>
-        <parameterValue>21.2</parameterValue>
+        <parameterValue>12</parameterValue>
       </li>
       <li>
         <parameterName>_OutlineWidth</parameterName>
-        <parameterValue>0.5</parameterValue>
+        <parameterValue>2</parameterValue>
       </li>
       <li>
         <parameterName>_OutlineSoftness</parameterName>
-        <parameterValue>20</parameterValue>
+        <parameterValue>12</parameterValue>
       </li>
       <li>
         <parameterName>_OutlineStrength</parameterName>
-        <parameterValue>0.218</parameterValue>
+        <parameterValue>0.18</parameterValue>
       </li>
       <li>
         <parameterName>_CoreBlend</parameterName>
-        <parameterValue>0.127</parameterValue>
+        <parameterValue>0.28</parameterValue>
       </li>
       <li>
         <parameterName>_EmissionStrength</parameterName>
-        <parameterValue>1.81</parameterValue>
+        <parameterValue>1.1</parameterValue>
       </li>
       <li>
         <parameterName>_PulseStrength</parameterName>
-        <parameterValue>0.108</parameterValue>
+        <parameterValue>0.07</parameterValue>
       </li>
       <li>
         <parameterName>_PulseSpeed</parameterName>
-        <parameterValue>6.76</parameterValue>
+        <parameterValue>7</parameterValue>
       </li>
       <li>
         <parameterName>_NoiseScale</parameterName>
-        <parameterValue>18</parameterValue>
+        <parameterValue>24</parameterValue>
       </li>
       <li>
         <parameterName>_NoiseSpeed</parameterName>
-        <parameterValue>0.35</parameterValue>
-      </li>
-      <li>
-        <parameterName>_DissolveSoftness</parameterName>
-        <parameterValue>0.06</parameterValue>
-      </li>
-      <li>
-        <parameterName>_DissolveEdgeStrength</parameterName>
         <parameterValue>1.2</parameterValue>
       </li>
       <li>
+        <parameterName>_DissolveSoftness</parameterName>
+        <parameterValue>0.12</parameterValue>
+      </li>
+      <li>
+        <parameterName>_DissolveEdgeStrength</parameterName>
+        <parameterValue>0.32</parameterValue>
+      </li>
+      <li>
         <parameterName>_BlackColor</parameterName>
-        <parameterValue>(0.000, 0.000, 0.000, 1.000)</parameterValue>
+        <parameterValue>(0.720, 0.800, 0.480, 0.000)</parameterValue>
       </li>
       <li>
         <parameterName>_DarkColor</parameterName>
-        <parameterValue>(0.015, 0.000, 0.000, 0.463)</parameterValue>
+        <parameterValue>(0.180, 0.270, 0.130, 0.090)</parameterValue>
       </li>
       <li>
         <parameterName>_InnerColor</parameterName>
-        <parameterValue>(3.338, 0.026, 0.000, 1.000)</parameterValue>
+        <parameterValue>(1.150, 1.080, 0.720, 0.780)</parameterValue>
       </li>
       <li>
         <parameterName>_OuterColor</parameterName>
-        <parameterValue>(0.050, 2.200, 0.200, 1.000)</parameterValue>
+        <parameterValue>(0.400, 0.580, 0.360, 0.300)</parameterValue>
       </li>
       <li>
         <parameterName>_PointA</parameterName>

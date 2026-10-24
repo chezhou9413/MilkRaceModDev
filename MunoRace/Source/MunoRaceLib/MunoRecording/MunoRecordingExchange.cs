@@ -7,40 +7,23 @@ using Verse;
 
 namespace MunoRaceLib.MunoRecording
 {
-    //通过聚落通讯消费实体录像带，并按独立奖励池投放随机物资。
+    //通过上传站消费实体录像带，并按独立奖励池投放随机物资。
     public static class MunoRecordingExchange
     {
-        //显示可提交的录像数量，并在操作时重新检查地图和库存。
-        public static void Open(Pawn negotiator)
-        {
-            if (!CanContact(negotiator)) return;
-            int total = Tapes(negotiator.Map).Sum(t => t.stackCount);
-            if (total == 0)
-            {
-                Messages.Message("当前地图没有可上交的录像带，请先拍摄并解除物品禁用。", MessageTypeDefOf.RejectInput, false);
-                return;
-            }
-            var options = new List<FloatMenuOption>();
-            foreach (int amount in new[] { 1, 5, 20, System.Math.Min(total, 50) }.Where(n => n <= total).Distinct().OrderBy(n => n))
-            {
-                int count = amount;
-                options.Add(new FloatMenuOption("上交 " + count + " 份录像带，领取 " + count + " 份随机奖励", () => Exchange(negotiator, count)));
-            }
-            Find.WindowStack.Add(new FloatMenu(options));
-        }
-
-        //检查操作者是否能够与仍存在的非敌对聚落进行通讯。
-        private static bool CanContact(Pawn pawn)
+        //说明当前操作者无法上传的实际原因。
+        public static string UnavailableReason(Pawn pawn)
         {
             Faction faction = MunoStoryUtility.Faction;
             if (pawn?.Map == null || !pawn.IsColonistPlayerControlled || pawn.Downed
                 || faction == null || faction.defeated || faction.deactivated || faction.HostileTo(Faction.OfPlayer))
             {
-                Messages.Message("需要可行动的殖民者，以及仍存在且不敌对的缪诺聚落。", MessageTypeDefOf.RejectInput, false);
-                return false;
+                return "需要可行动的殖民者，以及仍存在且不敌对的缪诺聚落。";
             }
-            return true;
+            return null;
         }
+
+        //统计当前地图可以上传的录像带数量。
+        public static int AvailableTapeCount(Map map) => Tapes(map).Sum(t => t.stackCount);
 
         //收集地图中已显露且未禁用的实体录像带。
         private static List<Thing> Tapes(Map map)
@@ -50,9 +33,20 @@ namespace MunoRaceLib.MunoRecording
         }
 
         //重新核对库存，成功投放奖励后精确扣除本次数量，避免重复领取。
-        private static void Exchange(Pawn negotiator, int count)
+        public static void Upload(Pawn negotiator, Building_MunoUploadStation station, int count)
         {
-            if (!CanContact(negotiator)) return;
+            string unavailable = UnavailableReason(negotiator);
+            if (unavailable != null)
+            {
+                Messages.Message(unavailable, MessageTypeDefOf.RejectInput, false);
+                return;
+            }
+            if (!station.Spawned || station.Map != negotiator.Map || station.Faction != Faction.OfPlayer
+                || negotiator.Position != station.InteractionCell || station.IsForbidden(negotiator) || count <= 0)
+            {
+                Messages.Message("需要在可用的录像上传站旁完成上传。", MessageTypeDefOf.RejectInput, false);
+                return;
+            }
             List<Thing> tapes = Tapes(negotiator.Map);
             if (tapes.Sum(t => t.stackCount) < count)
             {

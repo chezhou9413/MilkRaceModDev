@@ -99,7 +99,7 @@ namespace MunoRaceLib.MunoWorld
         }
 
         //绘制缪诺风格按钮，并在启用时返回点击结果。
-        public static bool DrawButton(Rect rect, string label, bool active = true)
+        public static bool DrawButton(Rect rect, string label, bool active = true, bool wordWrap = false)
         {
             Color oldColor = GUI.color;
             GameFont oldFont = Text.Font;
@@ -121,14 +121,15 @@ namespace MunoRaceLib.MunoWorld
 
             Text.Anchor = TextAnchor.MiddleCenter;
             Text.Font = GameFont.Small;
-            Text.WordWrap = false;
+            Text.WordWrap = wordWrap;
             GUI.color = textColor;
-            Widgets.Label(drawRect, label);
+            Widgets.Label(wordWrap ? rect.ContractedBy(8f) : drawRect, label);
             Text.Anchor = oldAnchor;
             Text.Font = oldFont;
             Text.WordWrap = oldWordWrap;
             GUI.color = oldColor;
-            return active && Widgets.ButtonInvisible(drawRect);
+            //按下与松开使用同一个点击区域，缩放只影响外观。
+            return active && Widgets.ButtonInvisible(rect);
         }
 
     }

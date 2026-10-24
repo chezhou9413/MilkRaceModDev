@@ -3,7 +3,7 @@ using Verse;
 
 namespace MunoRaceLib.MunoComp
 {
-    //集中保存辐射锥的方向、射程和三个世界顶点，供伤害筛选与 Shader 绘制共同使用。
+    //保存辐射锥的方向、射程和边界，供伤害筛选与视觉定位使用。
     public struct MunoRadiationConeGeometry
     {
         public readonly bool IsValid;

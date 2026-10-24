@@ -7,7 +7,8 @@ foreach ($folder in @('Defs','Textures','Sounds','Languages','Patches')) {
     foreach ($source in @((Join-Path $modRoot $folder), (Join-Path $modRoot "1.6\$folder"))) {
         if (!(Test-Path -LiteralPath $source)) { continue }
         [IO.Directory]::CreateDirectory($target) | Out-Null
-        robocopy $source $target /E /R:0 /W:0 /NFL /NDL /NJH /NJS /NP | Out-Null
+        #辐射的网格材质与播放定义由各版本独立维护。
+        robocopy $source $target /E /XF MunoRace_TriangleRadiation.xml Muno_RadiationEffects.xml Muno_LaserCannonRadiation.xml /R:0 /W:0 /NFL /NDL /NJH /NJS /NP | Out-Null
         if ($LASTEXITCODE -gt 7) { throw "同步运行资源失败：$source" }
     }
 }

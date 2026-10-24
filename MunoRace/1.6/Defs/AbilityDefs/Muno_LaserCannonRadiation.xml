@@ -28,11 +28,9 @@
       <armorPenetration>0.8</armorPenetration>
       <storageCost>1</storageCost>
       <damageDef>Muno_LaserCannonRadiationHeat</damageDef>
-      <coneFleckDef>Fleck_BeamSpark</coneFleckDef>
-      <coneFleckChancePerCell>0.28</coneFleckChancePerCell>
-      <coneFleckScale>4~7</coneFleckScale>
-      <targetFleckDef>Fleck_RadialSparks</targetFleckDef>
-      <targetFleckScale>0.45</targetFleckScale>
+      <coneFleckDef>Muno_Fleck_RadiationGround</coneFleckDef>
+      <coneFleckChancePerCell>0.22</coneFleckChancePerCell>
+      <coneFleckScale>0.8~1.35</coneFleckScale>
     </verbProperties>
     <comps>
       <li Class="MunoRaceLib.MunoComp.CompProperties_AbilityMunoRadiationCone" />

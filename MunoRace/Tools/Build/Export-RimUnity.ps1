@@ -7,6 +7,7 @@ if (Get-CimInstance Win32_Process -Filter "Name = 'Unity.exe'" | Where-Object { 
 & dotnet build 'E:\RimModDev\RimUnity\Source\RimUnity.ShaderTool\RimUnity.ShaderTool.csproj' -c Release --nologo
 if ($LASTEXITCODE -ne 0) { throw 'ShaderTool 编译失败' }
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'ModRimUnityExport.cs') -Destination (Join-Path $project 'Assets\Editor\ModRimUnityExport.cs') -Force
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot '..\Shaders\MunoTriangleRadiation.shader') -Destination (Join-Path $project 'Assets\Shader\MunoTriangleRadiation.shader') -Force
 $logDirectory = 'E:\ModdevMics\Temp\MunoRace'
 New-Item -ItemType Directory -Path $logDirectory -Force | Out-Null
 $logFile = Join-Path $logDirectory 'rimunity-export.log'

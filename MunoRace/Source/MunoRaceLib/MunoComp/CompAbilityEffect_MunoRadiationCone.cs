@@ -83,12 +83,9 @@ namespace MunoRaceLib.MunoComp
             affectedThings.Clear();
             MunoRadiationConeGeometry geometry;
             List<IntVec3> cells = CalculateAffectedCells(target, out geometry);
-            if (geometry.IsValid)
-            {
-                Mote_MunoRadiationConeEffect.Spawn(pawn.Map, geometry);
-            }
-
-            SpawnConfiguredEffects(cells, target, props);
+#if !RW_1_7
+            SpawnGroundEffects(cells, props);
+#endif
             for (int i = 0; i < cells.Count; i++)
             {
                 List<Thing> things = cells[i].GetThingList(pawn.Map);
@@ -102,6 +99,11 @@ namespace MunoRaceLib.MunoComp
                 }
             }
 
+            if (geometry.IsValid)
+            {
+                Mote_MunoRadiationConeEffect.Spawn(pawn.Map, geometry, affectedThings);
+            }
+
             foreach (Thing thing in affectedThings)
             {
                 float angle = (thing.Position - pawn.Position).AngleFlat;
@@ -109,8 +111,9 @@ namespace MunoRaceLib.MunoComp
             }
         }
 
-        //按 XML 配置在锥形区域散布光点，并在瞄准点生成一次集中闪光。
-        private void SpawnConfiguredEffects(List<IntVec3> cells, LocalTargetInfo target, VerbProperties_MunoRadiationCone props)
+#if !RW_1_7
+        //只在有效锥形格内散布贴地薄雾，以不同角度和停留时间自然消散。
+        private void SpawnGroundEffects(List<IntVec3> cells, VerbProperties_MunoRadiationCone props)
         {
             Map map = parent.pawn.Map;
             if (props.coneFleckDef != null && props.coneFleckChancePerCell > 0f)
@@ -122,17 +125,16 @@ namespace MunoRaceLib.MunoComp
                     if (Rand.Chance(chance) && cell.ShouldSpawnMotesAt(map))
                     {
                         Vector3 position = cell.ToVector3Shifted() + Gen.RandomHorizontalVector(0.32f);
-                        FleckMaker.Static(position, map, props.coneFleckDef, props.coneFleckScale.RandomInRange);
+                        FleckCreationData data = FleckMaker.GetDataStatic(position, map, props.coneFleckDef, props.coneFleckScale.RandomInRange);
+                        data.rotation = Rand.Range(0f, 360f);
+                        data.solidTimeOverride = props.coneFleckDef.solidTime * Rand.Range(0.7f, 1.3f);
+                        map.flecks.CreateFleck(data);
                     }
                 }
             }
-
-            if (props.targetFleckDef != null && target.Cell.InBounds(map) && target.Cell.ShouldSpawnMotesAt(map))
-            {
-                FleckMaker.Static(target.Cell, map, props.targetFleckDef, Mathf.Max(0.01f, props.targetFleckScale));
-            }
         }
 
+#endif
         //根据共享锥形几何筛选格子，并使用原版射线判定阻止伤害穿墙。
         private List<IntVec3> CalculateAffectedCells(
             LocalTargetInfo target,

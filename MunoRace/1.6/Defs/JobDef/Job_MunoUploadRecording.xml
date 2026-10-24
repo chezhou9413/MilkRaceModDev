@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>Muno_UploadRecording</defName>
+    <driverClass>MunoRaceLib.MunoRecording.JobDriver_MunoUploadRecording</driverClass>
+    <reportString>正在上传生存录像。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <playerInterruptible>true</playerInterruptible>
+    <suspendable>false</suspendable>
+  </JobDef>
+</Defs>

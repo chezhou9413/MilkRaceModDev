@@ -26,7 +26,7 @@ namespace MunoRaceLib.MunoEndings
             }
             if (ending.Ready)
             {
-                Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("已完成全部非缪诺成员的交付。确认融入聚落并达成结局？结局后可以继续游戏。", ending.Complete));
+                Find.WindowStack.Add(Dialog_MunoCommNodeTree.CreateConfirmation("已完成全部非缪诺成员的交付。确认融入聚落并达成结局？结局后可以继续游戏。", ending.Complete));
                 return;
             }
             if (negotiator?.Map == null || !negotiator.IsColonistPlayerControlled || negotiator.Downed)
@@ -51,7 +51,7 @@ namespace MunoRaceLib.MunoEndings
             string text = "将向缪诺聚落交付：" + names + "。\n\n统计范围为所有地图、远行队及运输中的非缪诺正式殖民者和奴隶，包含儿童，排除囚犯和临时访客。"
                 + "\n本次交付 " + local.Count + " 人，其余位置还有 " + (members.Count - local.Count) + " 人。"
                 + "\n本次是融入申请，不发人口交换奖励；最后一批成功离场后达成结局。结局后缪诺留在当前地图，可以继续游戏。";
-            Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(text, () => Start(negotiator, local)));
+            Find.WindowStack.Add(Dialog_MunoCommNodeTree.CreateConfirmation(text, () => Start(negotiator, local)));
         }
 
         //以无物资奖励的专用接收模式启动申请，并重新验证目标资格。

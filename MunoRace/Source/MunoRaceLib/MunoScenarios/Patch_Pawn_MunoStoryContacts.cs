@@ -19,7 +19,7 @@ namespace MunoRaceLib.MunoScenarios
             yield return new Command_Action
             {
                 defaultLabel = "联络缪诺聚落",
-                defaultDesc = "使用剧情联络终端办理聚落事务、上交录像或申请融入聚落。",
+                defaultDesc = "使用剧情联络终端办理聚落事务，或向聚落管理员申请融入聚落。",
                 icon = ContentFinder<UnityEngine.Texture2D>.Get("UI/MunoLogo"),
                 action = () => MunoStoryContacts.Open(__instance)
             };

@@ -85,7 +85,7 @@ namespace MunoRaceLib.MunoWorld
             if (currentPage == CommPage.MainMenu)
             {
                 MunoCommUIStyle.DrawBackground(inRect);
-                if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺人口交换", MunoLogo))
+                if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺通讯终端", MunoLogo))
                 {
                     CloseWithDraftCleanup();
                     return;
@@ -96,7 +96,7 @@ namespace MunoRaceLib.MunoWorld
             }
 
             MunoCommUIStyle.DrawBackground(inRect);
-            if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺人口交换", MunoLogo))
+            if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺通讯终端", MunoLogo))
             {
                 CloseWithDraftCleanup();
                 return;

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MunoRaceLib.MunoPursuit;
 using MunoRaceLib.MunoScenarios;
+using MunoRaceLib.MunoWorld;
 using RimWorld;
 using Verse;
 
@@ -64,7 +65,7 @@ namespace MunoRaceLib.MunoEndings
             DiaNode node = new DiaNode(text);
             node.options.Add(new DiaOption("继续游戏") { resolveTree = true });
             node.options.Add(new DiaOption("返回主菜单") { action = () => GenScene.GoToMainMenu(), resolveTree = true });
-            Find.WindowStack.Add(new Dialog_NodeTree(node, delayInteractivity: true));
+            Find.WindowStack.Add(new Dialog_MunoCommNodeTree(node, title, delayInteractivity: true));
             Find.Archive.Add(new ArchivedDialog(text));
         }
 

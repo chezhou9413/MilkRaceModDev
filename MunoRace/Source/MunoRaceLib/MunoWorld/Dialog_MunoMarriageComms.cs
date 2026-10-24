@@ -59,7 +59,7 @@ namespace MunoRaceLib.MunoWorld
             if (currentPage == CommPage.Greeting)
             {
                 MunoCommUIStyle.DrawBackground(inRect);
-                if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺和亲链路", MunoLogo))
+                if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺通讯终端", MunoLogo))
                 {
                     Close();
                     return;
@@ -70,7 +70,7 @@ namespace MunoRaceLib.MunoWorld
             }
 
             MunoCommUIStyle.DrawBackground(inRect);
-            if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺和亲链路", MunoLogo))
+            if (MunoCommUIStyle.DrawTerminalHeader(inRect, "缪诺通讯终端", MunoLogo))
             {
                 Close();
                 return;
@@ -125,37 +125,27 @@ namespace MunoRaceLib.MunoWorld
             GUI.color = oldColor;
         }
 
-        /// <summary>
-        /// 绘制缪诺招待链路和联系人分支页面。
-        /// </summary>
+        //首页按钮直接办理对应事务，问候文字不拦截第一次点击。
         private void DrawGreetingPage(Rect rect)
         {
             MunoCommMainMenuAction action = MunoCommMainMenuView.Draw(rect, "和亲事项管理人", pageOpenTime, typewriter);
+            if (action == MunoCommMainMenuAction.None) return;
+            typewriter.Complete();
             if (action == MunoCommMainMenuAction.OpenPopulationExchange)
             {
-                Find.WindowStack.Add(new Dialog_MunoHostageExchange(negotiator, true));
-                Close();
+                MunoCommServiceMenu.OpenMilitary(negotiator);
                 return;
             }
 
             if (action == MunoCommMainMenuAction.OpenExchange)
             {
-                if (CompleteTextIfNeeded())
-                {
-                    return;
-                }
-
+                if (!MunoCommServiceMenu.CanUsePeacefulServices()) return;
                 SetPage(CommPage.MarriageManager, MunoCommDialogueUtility.RandomManagerPromptLine());
                 return;
             }
 
             if (action == MunoCommMainMenuAction.ForceRefreshMarriage)
             {
-                if (CompleteTextIfNeeded())
-                {
-                    return;
-                }
-
                 MunoMarriageRequestUtility.DebugForceRefreshRequest(MunoMarriageDiplomacyService.Component());
                 replyText = null;
                 SetPage(CommPage.MarriageManager, MunoCommDialogueUtility.RandomManagerPromptLine());
@@ -164,24 +154,23 @@ namespace MunoRaceLib.MunoWorld
 
             if (action == MunoCommMainMenuAction.OpenLogistics)
             {
-                if (CompleteTextIfNeeded())
+                MunoCommServiceMenu.OpenLogistics(negotiator, () =>
                 {
-                    return;
-                }
+                    logisticsCuisineReplied = false;
+                    logisticsCuisineState = MunoLogisticsCuisineComponent.Current()?.State ?? MunoLogisticsCuisineState.Available;
+                    SetPage(CommPage.LogisticsCuisine, MunoLogisticsCuisinePageView.DialogueForState(logisticsCuisineState));
+                });
+                return;
+            }
 
-                logisticsCuisineReplied = false;
-                logisticsCuisineState = MunoLogisticsCuisineComponent.Current()?.State ?? MunoLogisticsCuisineState.Available;
-                SetPage(CommPage.LogisticsCuisine, MunoLogisticsCuisinePageView.DialogueForState(logisticsCuisineState));
+            if (action == MunoCommMainMenuAction.RequestIntegration)
+            {
+                MunoEndings.MunoEndingService.Open(negotiator);
                 return;
             }
 
             if (action == MunoCommMainMenuAction.Close)
             {
-                if (CompleteTextIfNeeded())
-                {
-                    return;
-                }
-
                 Close();
             }
         }

@@ -44,20 +44,6 @@ namespace MunoRaceLib.MunoRecording
             Messages.Message(wearer.LabelShortCap + " 完成了一份生存录像。", tape, MessageTypeDefOf.PositiveEvent, false);
         }
 
-        //为穿戴者提供上传录像带的唯一摄像机操作入口。
-        public override IEnumerable<Gizmo> CompGetWornGizmosExtra()
-        {
-            Pawn wearer = (parent as Apparel)?.Wearer;
-            if (wearer == null || !wearer.IsColonistPlayerControlled) yield break;
-            yield return new Command_Action
-            {
-                defaultLabel = "上传录像带",
-                defaultDesc = "向节目组上传地图上未禁用的录像带，换取随机物资。",
-                icon = parent.def.uiIcon,
-                action = () => MunoRecordingExchange.Open(wearer)
-            };
-        }
-
         //展示自动拍摄状态、当前片段进度和拍摄间隔。
         public override string CompInspectStringExtra()
         {

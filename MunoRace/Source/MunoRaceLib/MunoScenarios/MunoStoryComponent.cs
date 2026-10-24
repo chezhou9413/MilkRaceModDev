@@ -33,7 +33,7 @@ namespace MunoRaceLib.MunoScenarios
             string text = mode == MunoStartMode.Expedition
                 ? "聚落已为三名开拓者准备物资。选中殖民者可以通过联络终端联系聚落。"
                 : mode == MunoStartMode.SurvivalShow
-                    ? "生存挑战开始。让一名殖民者穿戴摄像机，定期自动拍摄附近殖民者。完整拍完才能积累片段。通过摄像机上传录像带可获得物资，无需通讯台。"
+                    ? "生存挑战开始。让一名殖民者穿戴摄像机，定期自动拍摄附近殖民者。完整拍完才能积累片段。在杂项菜单放置录像上传站，再让殖民者右键操作上传录像带，即可获得物资，无需通讯台。"
                     : "你们暂时逃离了聚落。追击队将在宽限期后到来；达成和平、原始逃亡者全部离开玩家队伍或完成融入结局，可以解除追击。";
             Find.LetterStack.ReceiveLetter("缪诺开局", text, LetterDefOf.NeutralEvent);
         }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--贴地能流快速推进，随后逐段消散为轻薄余辉。-->
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_MunoRadiationConeEffect</defName>
+    <label>缪诺地面辐射</label>
+    <thingClass>MunoRaceLib.MunoComp.Mote_MunoRadiationConeEffect</thingClass>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>UI/Misc/BadTexture</texPath>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <shaderType>MunoRace_TriangleRadiation_ShaderPro</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <mote>
+      <realTime>true</realTime>
+      <fadeInTime>0</fadeInTime>
+      <solidTime>1.35</solidTime>
+      <fadeOutTime>0</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <!--在人物和建筑下方绘制不发光的绿色薄雾，随时间轻微扩散并淡出。-->
+  <FleckDef>
+    <defName>Muno_Fleck_RadiationGround</defName>
+    <fleckSystemClass>FleckSystemStatic</fleckSystemClass>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <fadeInTime>0.18</fadeInTime>
+    <solidTime>0.12</solidTime>
+    <fadeOutTime>0.65</fadeOutTime>
+    <growthRate>0.06</growthRate>
+    <graphicData>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <texPath>Things/Mote/Smoke</texPath>
+      <shaderType>Mote</shaderType>
+      <color>(0.38,0.52,0.30,0.08)</color>
+      <drawSize>(1,1)</drawSize>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+  </FleckDef>
+</Defs>

@@ -185,6 +185,8 @@
     <Compile Include="MunoWorld\MunoLogisticsCuisineComponent.cs" />
     <Compile Include="MunoWorld\MunoLogisticsCuisineEffectUtility.cs" />
     <Compile Include="MunoWorld\MunoCommMainMenuView.cs" />
+    <Compile Include="MunoWorld\MunoCommServiceMenu.cs" />
+    <Compile Include="MunoWorld\Dialog_MunoCommNodeTree.cs" />
     <Compile Include="MunoWorld\MunoLogisticsCuisinePageView.cs" />
     <Compile Include="MunoWorld\MunoLogisticsCuisineState.cs" />
     <Compile Include="MunoWorld\MunoLogisticsCuisineText.cs" />
