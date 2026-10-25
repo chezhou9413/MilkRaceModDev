@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================
+       缪诺机械工作台（MunoRace_MachineTool）
+
+       尺寸：1x2 格（size (2,1)，可旋转，旋转后占据 1x2）
+       定位：参考原版机械工作台 FabricationBench / BenchBase 的写法，
+             主要用于制作缪诺的武器装备。
+       贴图：Textures/Building/MunoRace_MachineTool_{north,south,east,west}.png
+             - north/south 为横向（181x121），用于默认朝向
+             - east/west  为纵向（121x181），用于旋转 90° 后
+             drawSize 按原版长凳惯例取 size + 0.5：(2.5,1.5)
+       配方：由 Defs/ThingDefs_misc/Weapons 下各 ThingDef 的
+             <recipeMaker>/<recipeUsers> 提供，本工作台已加入这些列表。
+       ============================================================ -->
+
+  <ThingDef ParentName="BenchBase">
+    <defName>MunoRace_MachineTool</defName>
+    <label>缪诺机械工作台</label>
+    <description>一台缪诺制造的精密机械工作台，配备多轴加工臂、光学校准仪与激光测距装置。可以加工缪诺制式的各类枪械、近战武器与战术装备。接通电力后才能正常运转。</description>
+    <thingClass>Building_WorkTable</thingClass>
+
+    <altitudeLayer>Building</altitudeLayer>
+    <size>(2,1)</size>
+    <graphicData>
+      <texPath>Building/MunoRace_MachineTool</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2.5,1.5)</drawSize>
+      <shaderType>CutoutComplex</shaderType>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <drawerType>MapMeshOnly</drawerType>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <surfaceType>Item</surfaceType>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+
+    <costList>
+      <Steel>120</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <WorkToBuild>3500</WorkToBuild>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <SellPriceFactor>0.7</SellPriceFactor>
+      <Mass>20</Mass>
+    </statBases>
+
+    <designationCategory>Production</designationCategory>
+    <uiOrder>2531</uiOrder>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <paintable>true</paintable>
+      <workTableRoomRole>Workshop</workTableRoomRole>
+      <workTableNotInRoomRoleFactor>0.8</workTableNotInRoomRoleFactor>
+    </building>
+
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>150</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+
+    <placeWorkers>
+      <li>PlaceWorker_ReportWorkSpeedPenalties</li>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+
+    <researchPrerequisites>
+      <li>Machining</li>
+      <li>Electricity</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+</Defs>

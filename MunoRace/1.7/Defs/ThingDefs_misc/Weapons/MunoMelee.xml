@@ -55,7 +55,7 @@
 		<recipeMaker>
 			<researchPrerequisite>Muno_BasicMelee</researchPrerequisite>
 			<recipeUsers Inherit="False">
-				<li>MunoRace_WorkBench</li>
+			  <li>MunoRace_MachineTool</li>
 			</recipeUsers>
 			<skillRequirements>
 				<Crafting>4</Crafting>
@@ -115,7 +115,7 @@
 		<recipeMaker>
 			<researchPrerequisite>Muno_BasicMelee</researchPrerequisite>
 			<recipeUsers Inherit="False">
-				<li>MunoRace_WorkBench</li>
+			  <li>MunoRace_MachineTool</li>
 			</recipeUsers>
 			<skillRequirements>
 				<Crafting>5</Crafting>
@@ -171,7 +171,7 @@
 		<recipeMaker>
 			<researchPrerequisite>Muno_BasicMelee</researchPrerequisite>
 			<recipeUsers Inherit="False">
-				<li>MunoRace_WorkBench</li>
+			  <li>MunoRace_MachineTool</li>
 			</recipeUsers>
 			<skillRequirements>
 				<Crafting>3</Crafting>

@@ -11,6 +11,9 @@
     <recipeMaker>
       <researchPrerequisite>Muno_MaidTacticalArmor</researchPrerequisite>
       <displayPriority>215</displayPriority>
+      <recipeUsers Inherit="False">
+        <li>MunoRace_MachineTool</li>
+      </recipeUsers>
     </recipeMaker>
     <graphicData>
    	<texPath>Apparel/HeadApparel/Maidhelmet/MunoRace_Apparel_Maidhelmet</texPath> <!--物件的贴图路径-->

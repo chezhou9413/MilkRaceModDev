@@ -76,6 +76,7 @@
     <researchPrerequisites>
       <li>ComplexClothing</li>
       <li>Electricity</li>
+      <li>Muno_ApparelBasic</li>
     </researchPrerequisites>
   </ThingDef>
 </Defs>

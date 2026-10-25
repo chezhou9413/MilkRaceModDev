@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================
+       缪诺便携太阳能板（MunoRace_PortableSolarPanel）
+
+       尺寸：1x2 格（size (1,2)，可旋转，旋转后占据 2x1）
+       定位：小型发电设备，参照原版太阳能板 SolarGenerator 的写法。
+             注意：本建筑不可搬迁，原因见下方 minifiedDef 处的注释。
+             compClass = CompPowerPlantSolar：
+               - 输出随天光（skyGlow）线性变化，夜晚为 0
+               - 被屋顶遮挡的格子按比例降低输出
+       发电：500 W（basePowerConsumption = -500）
+       前置：原版研究项目 SolarPanels（太阳能板）
+       材料：钢 75 + 工业零部件 2（至少一个零部件）
+       贴图：Textures/Building/MunoRace_PortableSolarPanel_{north,south,east,west}.png
+             - north/south 为纵向 89x181，对应 size (1,2) 的默认朝向
+             - east/west  为横向 181x89，对应旋转 90° 后的 2x1 朝向
+             drawSize 取 (1,2)，与 size 一致；贴图按 ~1.4 倍等比放大，无形变
+       ============================================================ -->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>MunoRace_PortableSolarPanel</defName>
+    <label>缪诺便携太阳能板</label>
+    <description>一块轻巧的缪诺太阳能板，采用薄膜光伏与轻质支架，占地面积小，非常适合临时营地与野外作业。展开后即可从阳光中汲取电力；被屋顶遮挡或处于黑暗中时不再发电。拆除后材料可回收，便于转移位置。</description>
+    <thingClass>Building</thingClass>
+
+    <altitudeLayer>Building</altitudeLayer>
+    <size>(1,2)</size>
+    <rotatable>true</rotatable>
+
+    <graphicData>
+      <texPath>Building/MunoRace_PortableSolarPanel</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,2)</drawSize>
+      <shaderType>CutoutComplex</shaderType>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <!-- 用 MapMeshOnly 而不是 MapMeshAndRealTime：CompPowerPlantSolar.PostDraw() 里那条
+         日照功率条只有建筑被注册进动态绘制时才会被调用，改成只进地图网格绘制即可去掉。 -->
+    <drawerType>MapMeshOnly</drawerType>
+    <tickerType>Normal</tickerType>
+
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>true</useHitPoints>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <surfaceType>Item</surfaceType>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+
+    <costList>
+      <Steel>75</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>180</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <Flammability>0.7</Flammability>
+      <Mass>25</Mass>
+      <SellPriceFactor>0.7</SellPriceFactor>
+    </statBases>
+
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlantSolar</compClass>
+        <basePowerConsumption>-500</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Stunnable">
+        <useLargeEMPEffecter>true</useLargeEMPEffecter>
+        <empChancePerTick>0.03</empChancePerTick>
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+
+    <designationCategory>Power</designationCategory>
+    <uiOrder>2101</uiOrder>
+
+    <!-- 【1.6 分支暂不可搬迁，原因与恢复方法】
+         原版 CompPowerPlantSolar.DesiredPowerOutput 里直接读 parent.Map.skyManager，
+         没有做 Map == null 的保护。而 MinifiedThing 只是 IThingHolder、不是
+         IThingHolderTickable，所以 Thing.DoTick() 会继续 tick 它内部那个未生成的建筑
+         （小人搬运折叠后的太阳能板时就是 Pawn -> MinifiedThing -> Building 三层），
+         此时 parent.Map 为 null，就会抛 NullReferenceException 并打断搬运小人的 tick。
+         同理也不设置 thingCategories（不可搬迁的建筑带分类会在 ConfigErrors 里报错）。
+
+         1.7 分支已用 MunoRaceLib.MunoComp.CompPowerPlantSolarSafe 解决并恢复搬迁。
+         1.6 分支因为开发机没有 1.6 的编译环境，本分支 DLL 还没重编，所以这里先保持不可搬迁。
+         等用 1.6 工具链重编过 MunoRaceLib 之后（CompPowerPlantSolarSafe.cs 已加入
+         Source\MunoRaceLib\MunoRaceLib.csproj 的编译列表），做两步即可让 1.6 也支持搬迁：
+           1) <compClass>CompPowerPlantSolar</compClass>
+              -> <compClass>MunoRaceLib.MunoComp.CompPowerPlantSolarSafe</compClass>
+           2) 在此处补上：
+              <minifiedDef>MinifiedThing</minifiedDef>
+              <thingCategories><li>BuildingsPower</li></thingCategories> -->
+
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <constructEffect>ConstructMetal</constructEffect>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+    </building>
+
+    <researchPrerequisites>
+      <li>SolarPanels</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+</Defs>

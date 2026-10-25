@@ -12,6 +12,9 @@
     <recipeMaker>
       <researchPrerequisite>Muno_TentacleBiotech</researchPrerequisite>  <!--研发项目-->
       <displayPriority>215</displayPriority>   <!--显示等级-->
+      <recipeUsers Inherit="False">
+        <li>MunoRace_MachineTool</li>
+      </recipeUsers>
     </recipeMaker>
     <graphicData>
    	<texPath>Apparel/Tentaclearmor/MunoRace_Apparel_Tentaclearmor</texPath> <!--物件的贴图路径-->

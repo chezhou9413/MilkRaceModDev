@@ -4,9 +4,11 @@
     
   	<!--以下为服装-->
 
-	<ThingDef ParentName="MunoRace_Apparel">
+	<!-- 狂乱触手甲是触手动力甲的变异产物，不能通过任何工作台制造，因此不继承 MunoRace_Apparel（该父类带 recipeMaker），直接继承 MunoRace_ApparelBase。 -->
+	<ThingDef ParentName="MunoRace_ApparelBase">
   	<defName>MunoRace_Apparel_Tentaclefrenzyarmor</defName>
     <label>狂乱触手甲</label>
+
     <description>触手甲等活体材料被意外刺激进而狂乱的产物，活性材料会逐渐控制穿戴者的身体、思维，若没有及时脱下，穿戴者就会逐渐失去心智.</description>
 	<possessionCount>0</possessionCount>
     <tickerType>Normal</tickerType>

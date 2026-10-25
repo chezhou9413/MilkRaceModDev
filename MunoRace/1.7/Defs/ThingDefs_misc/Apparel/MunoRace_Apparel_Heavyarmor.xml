@@ -12,6 +12,9 @@
 		<recipeMaker>
 			<researchPrerequisite>Muno_TacticalArmor</researchPrerequisite>			<!--研发项目-->
 			<displayPriority>215</displayPriority>			<!--显示等级-->
+		  <recipeUsers Inherit="False">
+		    <li>MunoRace_MachineTool</li>
+		  </recipeUsers>
 		</recipeMaker>
 		<graphicData>
 			<texPath>Apparel/Heavyarmor/MunoRace_Apparel_Heavyarmor</texPath>			<!--物件的贴图路径-->

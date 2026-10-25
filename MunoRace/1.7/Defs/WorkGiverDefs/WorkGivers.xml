@@ -9,6 +9,7 @@
     <priorityInType>110</priorityInType>
     <fixedBillGiverDefs>
       <li>MunoRace_WorkBench</li>
+      <li>MunoRace_MachineTool</li>
     </fixedBillGiverDefs>
     <verb>tailor at</verb>
     <gerund>tailoring at</gerund>
@@ -26,6 +27,7 @@
     <priorityInType>115</priorityInType>
     <fixedBillGiverDefs>
       <li>MunoRace_WorkBench</li>
+      <li>MunoRace_MachineTool</li>
     </fixedBillGiverDefs>
     <verb>smith at</verb>
     <gerund>smithing at</gerund>

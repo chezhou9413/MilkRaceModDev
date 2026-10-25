@@ -8,6 +8,9 @@
     <recipeMaker>
       <researchPrerequisite>Muno_MilkCollectEquipment</researchPrerequisite>
       <displayPriority>217</displayPriority>
+      <recipeUsers Inherit="False">
+        <li>MunoRace_MachineTool</li>
+      </recipeUsers>
     </recipeMaker>
     <costList>
       <Steel>20</Steel>

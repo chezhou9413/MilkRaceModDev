@@ -34,8 +34,8 @@
       <workSkill>Crafting</workSkill>
       <effectWorking>Tailor</effectWorking>
       <soundWorking>Recipe_Tailor</soundWorking>
-      <recipeUsers>
-        <li>MunoRace_WorkBench</li>
+      <recipeUsers Inherit="False">
+        <li>MunoRace_MachineTool</li>
       </recipeUsers>
       <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
       <displayPriority>218</displayPriority>

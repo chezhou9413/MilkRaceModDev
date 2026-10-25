@@ -37,9 +37,9 @@
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
-			<recipeUsers>
-        		<li>MunoRace_WorkBench</li>
-      		</recipeUsers>
+			<recipeUsers Inherit="False">
+			  <li>MunoRace_MachineTool</li>
+			</recipeUsers>
 		</recipeMaker>
 		<verbs>
 			<li>
@@ -126,8 +126,8 @@
         <skillRequirements>
             <Crafting>3</Crafting>
         </skillRequirements>
-        <recipeUsers>
-            <li>MunoRace_WorkBench</li>
+        <recipeUsers Inherit="False">
+          <li>MunoRace_MachineTool</li>
         </recipeUsers>
     </recipeMaker>
     <verbs>
@@ -215,8 +215,8 @@
         <skillRequirements>
             <Crafting>5</Crafting>
         </skillRequirements>
-        <recipeUsers>
-            <li>MunoRace_WorkBench</li>
+        <recipeUsers Inherit="False">
+          <li>MunoRace_MachineTool</li>
         </recipeUsers>
     </recipeMaker>
     <verbs>
@@ -304,8 +304,8 @@
         <skillRequirements>
             <Crafting>6</Crafting>
         </skillRequirements>
-        <recipeUsers>
-            <li>MunoRace_WorkBench</li>
+        <recipeUsers Inherit="False">
+          <li>MunoRace_MachineTool</li>
         </recipeUsers>
     </recipeMaker>
     <verbs>
@@ -398,9 +398,9 @@
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
-			<recipeUsers>
-        		<li>MunoRace_WorkBench</li>
-      		</recipeUsers>
+			<recipeUsers Inherit="False">
+			  <li>MunoRace_MachineTool</li>
+			</recipeUsers>
 		</recipeMaker>
 		<verbs>
 			<li>
@@ -493,9 +493,9 @@
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
-			<recipeUsers>
-        		<li>MunoRace_WorkBench</li>
-      		</recipeUsers>
+			<recipeUsers Inherit="False">
+			  <li>MunoRace_MachineTool</li>
+			</recipeUsers>
 		</recipeMaker>
 		<verbs>
 			<li>
@@ -636,9 +636,9 @@
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
-			<recipeUsers>
-        		<li>MunoRace_WorkBench</li>
-      		</recipeUsers>
+			<recipeUsers Inherit="False">
+			  <li>MunoRace_MachineTool</li>
+			</recipeUsers>
 		</recipeMaker>
 		<verbs>
 			<li>
@@ -731,9 +731,9 @@
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
-			<recipeUsers>
-        		<li>MunoRace_WorkBench</li>
-      		</recipeUsers>
+			<recipeUsers Inherit="False">
+			  <li>MunoRace_MachineTool</li>
+			</recipeUsers>
 		</recipeMaker>
 		<verbs>
 			<li>
@@ -826,9 +826,9 @@
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
-			<recipeUsers>
-        		<li>MunoRace_WorkBench</li>
-      		</recipeUsers>
+			<recipeUsers Inherit="False">
+			  <li>MunoRace_MachineTool</li>
+			</recipeUsers>
 		</recipeMaker>
 		<verbs>
 			<li>
@@ -921,9 +921,9 @@
 			<skillRequirements>
 			<Crafting>7</Crafting>
 			</skillRequirements>
-			<recipeUsers>
-        		<li>MunoRace_WorkBench</li>
-      		</recipeUsers>
+			<recipeUsers Inherit="False">
+			  <li>MunoRace_MachineTool</li>
+			</recipeUsers>
 		</recipeMaker>
 		<verbs>
 			<li>
@@ -1020,9 +1020,9 @@
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
-			<recipeUsers>
-        		<li>MunoRace_WorkBench</li>
-      		</recipeUsers>
+			<recipeUsers Inherit="False">
+			  <li>MunoRace_MachineTool</li>
+			</recipeUsers>
 		</recipeMaker>
 		<verbs>
 			<li>
@@ -1112,8 +1112,8 @@
         <skillRequirements>
             <Crafting>8</Crafting>
         </skillRequirements>
-        <recipeUsers>
-            <li>MunoRace_WorkBench</li>
+        <recipeUsers Inherit="False">
+          <li>MunoRace_MachineTool</li>
         </recipeUsers>
     </recipeMaker>
     <verbs>
@@ -1207,9 +1207,9 @@
 			<skillRequirements>
 			<Crafting>6</Crafting>
 			</skillRequirements>
-			<recipeUsers>
-        		<li>MunoRace_WorkBench</li>
-      		</recipeUsers>
+			<recipeUsers Inherit="False">
+			  <li>MunoRace_MachineTool</li>
+			</recipeUsers>
 		</recipeMaker>
 		<verbs>
 			<li>
@@ -1332,9 +1332,9 @@
 			<skillRequirements>
 			<Crafting>7</Crafting>
 			</skillRequirements>
-			<recipeUsers>
-        		<li>MunoRace_WorkBench</li>
-      		</recipeUsers>
+			<recipeUsers Inherit="False">
+			  <li>MunoRace_MachineTool</li>
+			</recipeUsers>
 		</recipeMaker>
 		<verbs>
 			<li>
@@ -1435,8 +1435,8 @@
       <skillRequirements>
         <Crafting>8</Crafting>
       </skillRequirements>
-      <recipeUsers>
-        <li>MunoRace_WorkBench</li>
+      <recipeUsers Inherit="False">
+        <li>MunoRace_MachineTool</li>
       </recipeUsers>
       <displayPriority>220</displayPriority>
     </recipeMaker>
@@ -1595,8 +1595,8 @@
       <skillRequirements>
         <Crafting>8</Crafting>
       </skillRequirements>
-      <recipeUsers>
-        	<li>MunoRace_WorkBench</li>
+      <recipeUsers Inherit="False">
+        <li>MunoRace_MachineTool</li>
       </recipeUsers>
       <displayPriority>220</displayPriority>
     </recipeMaker>
@@ -1755,8 +1755,8 @@
       <skillRequirements>
         <Crafting>8</Crafting>
       </skillRequirements>
-      <recipeUsers>
-        <li>MunoRace_WorkBench</li>
+      <recipeUsers Inherit="False">
+        <li>MunoRace_MachineTool</li>
       </recipeUsers>
       <displayPriority>220</displayPriority>
     </recipeMaker>
@@ -1859,8 +1859,8 @@
       <skillRequirements>
         <Crafting>8</Crafting>
       </skillRequirements>
-      <recipeUsers>
-        <li>MunoRace_WorkBench</li>
+      <recipeUsers Inherit="False">
+        <li>MunoRace_MachineTool</li>
       </recipeUsers>
       <displayPriority>220</displayPriority>
     </recipeMaker>

@@ -4,9 +4,11 @@
     
   	<!--以下为服装-->
 
-    <ThingDef ParentName="MunoRace_Apparel">
+    <!-- 狂乱触手甲是触手动力甲的变异产物，不能通过任何工作台制造，因此不继承 MunoRace_Apparel（该父类带 recipeMaker），直接继承 MunoRace_ApparelBase。 -->
+    <ThingDef ParentName="MunoRace_ApparelBase">
   	<defName>MunoRace_Apparel_TentaclefrenzyarmorHead</defName>
     <label>狂乱触手甲头部</label>
+
     <description>包裹了使用者头部的狂乱触手甲的一部分，通过某种神经链接，能让被覆盖五官的使用者仍然能感知周围，前提是使用者还有意识的话</description>
     <possessionCount>0</possessionCount>
     <graphicData>

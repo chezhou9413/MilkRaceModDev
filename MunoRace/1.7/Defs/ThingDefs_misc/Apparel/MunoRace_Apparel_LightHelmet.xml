@@ -11,6 +11,9 @@
     <recipeMaker>
       <researchPrerequisite>Muno_TacticalArmor</researchPrerequisite>
       <displayPriority>215</displayPriority>
+      <recipeUsers Inherit="False">
+        <li>MunoRace_MachineTool</li>
+      </recipeUsers>
     </recipeMaker>
     <graphicData>
    	<texPath>Apparel/HeadApparel/LightHelmet/MunoRace_Apparel_LightHelmet</texPath> <!--物件的贴图路径-->

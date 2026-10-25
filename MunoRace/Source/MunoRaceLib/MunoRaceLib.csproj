@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MunoComp\CompTargetEffect_MunoHealGun.cs" />
+    <Compile Include="MunoComp\CompPowerPlantSolarSafe.cs" />
     <Compile Include="MunoComp\Verb_CastTargetEffect_MunoHealProjectile.cs" />
     <Compile Include="MunoComp\Ability_GalactogenGelShot.cs" />
     <Compile Include="MunoComp\Ability_MunoLaserCannonRadiation.cs" />

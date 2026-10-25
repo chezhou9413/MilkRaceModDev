@@ -15,6 +15,26 @@
   
 
     <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_Machining</defName>
+    <label>缪诺机械加工</label>
+    <description>缪诺的基础机械加工工艺，涵盖精密车铣、夹治具设计与标准件互换。掌握这套工艺之后，缪诺聚落才能稳定地批量生产制式枪械。</description>
+    <baseCost>300</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Machining</li>
+    </prerequisites>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>2.50</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->缪诺制式的机械加工工艺</li>
+        <li>subject_story->缪诺工匠把原本零散的手工技艺整理成标准工序，从此枪械的零件可以互换</li>
+        <li>subject_gerund->掌握缪诺机械加工</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+    <ResearchProjectDef ParentName="Muno_BaseTech">
     <defName>Muno_Basicfirearms</defName>
     <label>缪诺初级枪械</label>
     <description>在缪诺民间广泛使用的初级枪械，结构简单可靠，适合射击运动、狩猎与个人防卫</description>
@@ -22,9 +42,9 @@
     <requiredResearchBuilding Inherit="False"/>
     <techLevel>Industrial</techLevel>
     <prerequisites>
-      <li>Machining</li>
+      <li>Muno_Machining</li>
     </prerequisites>
-    <researchViewX>0.00</researchViewX>
+    <researchViewX>1.00</researchViewX>
     <researchViewY>2.50</researchViewY>
     <generalRules>
       <rulesStrings>
@@ -49,7 +69,7 @@
     <prerequisites>
       <li>Machining</li>
     </prerequisites>
-    <researchViewX>0.00</researchViewX>
+    <researchViewX>1.00</researchViewX>
     <researchViewY>3.50</researchViewY>
     <generalRules>
       <rulesStrings>
@@ -74,7 +94,7 @@
     <prerequisites>
       <li>Muno_Basicfirearms</li>
     </prerequisites>
-    <researchViewX>1.00</researchViewX>
+    <researchViewX>2.00</researchViewX>
     <researchViewY>2.50</researchViewY>
     <generalRules>
       <rulesStrings>
@@ -95,7 +115,7 @@
     <prerequisites>
       <li>Muno_Basicfirearms</li>
     </prerequisites>
-    <researchViewX>1.00</researchViewX>
+    <researchViewX>2.00</researchViewX>
     <researchViewY>3.50</researchViewY>
     <generalRules>
       <rulesStrings>
@@ -117,7 +137,7 @@
     <prerequisites>
       <li>Muno_Advancedfirearms</li>
     </prerequisites>
-    <researchViewX>2.00</researchViewX>
+    <researchViewX>3.00</researchViewX>
     <researchViewY>2.50</researchViewY>
     <generalRules>
       <rulesStrings>
@@ -139,7 +159,7 @@
     <prerequisites>
       <li>Muno_Militaryfirearms</li>
     </prerequisites>
-    <researchViewX>3.00</researchViewX>
+    <researchViewX>4.00</researchViewX>
     <researchViewY>2.50</researchViewY>
     <generalRules>
       <rulesStrings>
