@@ -3,18 +3,36 @@
   <ThingDef ParentName="BuildingBase">
     <defName>Muno_UploadStation</defName>
     <label>录像上传站</label>
-    <description>向缪诺节目组上传生存录像并领取随机补给。选中殖民者后右键上传站，选择本次上传的录像带数量。无需电力，可在生存挑战初期使用。</description>
+    <description>一个自带核电池的上传站，能向缪诺节目组上传生存录像并领取随机补给。</description>
     <thingClass>MunoRaceLib.MunoRecording.Building_MunoUploadStation</thingClass>
     <graphicData>
-      <texPath>Things/Building/Production/CraftingSpot</texPath>
+      <texPath>Building/MunoRace_UploadStation</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1,1)</drawSize>
     </graphicData>
     <altitudeLayer>FloorEmplacement</altitudeLayer>
+
+    <!-- 建造需求：原本是没有材料、工作量 0 的手工工作点式建筑，改成需要小人施工并消耗材料。 -->
+    <costList>
+      <Steel>75</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
     <statBases>
-      <WorkToBuild>0</WorkToBuild>
+      <WorkToBuild>1500</WorkToBuild>
+      <MaxHitPoints>140</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <Mass>15</Mass>
     </statBases>
-    <useHitPoints>false</useHitPoints>
+    <constructEffect>ConstructMetal</constructEffect>
+    <useHitPoints>true</useHitPoints>
+
+    <!-- 可卸载：拆下后变成可搬运的折叠件，搬到别处重新安装即可。
+         Minifiable 建筑必须同时给出 Mass（否则 ConfigErrors 报"可搬运但没有质量"）
+         和 thingCategories（否则报"可搬运但不属于任何物品分类"）。 -->
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <size>(1,1)</size>
     <designationCategory>Misc</designationCategory>
