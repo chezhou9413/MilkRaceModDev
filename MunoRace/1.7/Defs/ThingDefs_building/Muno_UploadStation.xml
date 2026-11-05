@@ -7,7 +7,7 @@
     <thingClass>MunoRaceLib.MunoRecording.Building_MunoUploadStation</thingClass>
     <graphicData>
       <texPath>Building/MunoRace_UploadStation</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(1,1)</drawSize>
     </graphicData>
     <altitudeLayer>FloorEmplacement</altitudeLayer>

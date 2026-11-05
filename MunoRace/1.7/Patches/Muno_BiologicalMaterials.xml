@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="MunoRace_Apparel_Tentaclearmor"]/costList</xpath>
+        <value><MunoRace_BiologicalMaterials>60</MunoRace_BiologicalMaterials></value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="MunoRace_Apparel_Heavyarmor"]/costList</xpath>
+        <value><MunoRace_BiologicalMaterials>40</MunoRace_BiologicalMaterials></value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="MunoRace_Apparel_MaidArmours"]/costList</xpath>
+        <value><MunoRace_BiologicalMaterials>30</MunoRace_BiologicalMaterials></value>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

@@ -70,7 +70,6 @@
 			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3819570122</steamWorkshopUrl>
 		</li>
 	
-      <li><packageId>chezhou.rimunity</packageId><displayName>RimUnity</displayName></li>
     </v1.7>
   </modDependenciesByVersion>
 <loadAfter>

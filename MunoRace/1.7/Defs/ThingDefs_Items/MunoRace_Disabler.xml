@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!-- 强化药水 -->
+<!--限制解除器-->
   <ThingDef ParentName="ResourceBase">
     <defName>MunoRace_Disabler</defName>
     <label>限制解除器</label>
-    <description>可以解除活性材料的限制，引起一些出乎意料的效果.</description>
+    <description>一块小小的芯片，能够插入缪诺通用接口，释放特殊电信号，使生物质材料细胞内部的安全机关失控，并进一步引导材料变异为某种形态的生物。据信是边缘世界的黑客制作的。穿着触手动力甲时使用，可将其转化为狂乱触手甲。</description>
     <possessionCount>1</possessionCount>
     <graphicData>
       <texPath>Item/Resource/MunoRace_Disabler</texPath>

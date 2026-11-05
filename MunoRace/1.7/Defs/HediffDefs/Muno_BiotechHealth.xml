@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <HediffDef Name="MunoCoatingBase" Abstract="True">
+    <hediffClass>MunoRaceLib.MunoBiotech.Health.Hediff_MunoCoating</hediffClass>
+    <isBad>true</isBad>
+    <tendable>true</tendable>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>7500</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef ParentName="MunoCoatingBase">
+    <defName>Muno_StrongGelCoating</defName>
+    <label>强力黏胶附着</label>
+    <description>被具有强力粘性的黏胶附着，难以挣脱，视觉也受到影响。移动能力乘以 50%，操作能力乘以 60%，视觉能力最高 50%。持续 3 小时，可通过医疗护理清除。</description>
+    <defaultLabelColor>(0.55,0.85,1)</defaultLabelColor>
+    <stages>
+      <li>
+        <capMods>
+          <li><capacity>Moving</capacity><postFactor>0.5</postFactor></li>
+          <li><capacity>Manipulation</capacity><postFactor>0.6</postFactor></li>
+          <li><capacity>Sight</capacity><setMax>0.5</setMax></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="MunoCoatingBase">
+    <defName>Muno_AcidGelCoating</defName>
+    <label>酸液黏胶附着</label>
+    <description>被强酸性黏胶附着，移动能力乘以 80%，操作能力乘以 90%。每隔一小段时间腐蚀随机外部部位，部位酸蚀损伤上限在 1 小时内逐渐增至最大生命值的 90%。酸液不会继续腐蚀生命值不足一成的部位。持续 3 小时；医疗护理可以清除黏胶，但已形成的酸蚀伤口仍需治疗。</description>
+    <hediffClass>MunoRaceLib.MunoBiotech.Health.Hediff_MunoAcidGel</hediffClass>
+    <defaultLabelColor>(0.65,1,0.3)</defaultLabelColor>
+    <stages>
+      <li>
+        <capMods>
+          <li><capacity>Moving</capacity><postFactor>0.8</postFactor></li>
+          <li><capacity>Manipulation</capacity><postFactor>0.9</postFactor></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="MunoCoatingBase">
+    <defName>Muno_MedicalFoamCoating</defName>
+    <label>医疗泡沫附着</label>
+    <description>被具有止血镇痛效果的泡沫覆盖，流血降至原来的 25%，疼痛乘以 60%，移动能力乘以 95%。持续 3 小时；泡沫不替代正式包扎，也不会直接修复伤口。</description>
+    <isBad>false</isBad>
+    <tendable>false</tendable>
+    <defaultLabelColor>(0.5,1,0.8)</defaultLabelColor>
+    <stages>
+      <li>
+        <painFactor>0.6</painFactor>
+        <totalBleedFactor>0.25</totalBleedFactor>
+        <capMods><li><capacity>Moving</capacity><postFactor>0.95</postFactor></li></capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="InjuryBase">
+    <defName>Muno_AcidBurn</defName>
+    <label>酸蚀伤</label>
+    <labelNoun>酸蚀伤</labelNoun>
+    <description>强酸性黏胶造成的组织损伤。清除黏胶可以阻止进一步腐蚀，已有伤口可通过护理和自然愈合恢复。</description>
+    <injuryProps><painPerSeverity>0.01875</painPerSeverity><bleedRate>0</bleedRate><canMerge>true</canMerge></injuryProps>
+    <comps><li Class="HediffCompProperties_TendDuration" /></comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Muno_MilkMedicine</defName>
+    <label>缪诺乳药液调理</label>
+    <description>免疫增长速度提高 50%，免疫型疾病恢复速度提高 50%。机械感染的自然消退速度加倍，肠道蠕虫和肌肉寄生虫的每次治疗进度加倍。重复服用只刷新持续时间。</description>
+    <hediffClass>MunoRaceLib.MunoBiotech.Health.Hediff_MunoMilkMedicine</hediffClass>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <defaultLabelColor>(0.5,1,0.8)</defaultLabelColor>
+    <stages><li><statFactors><ImmunityGainSpeed>1.5</ImmunityGainSpeed></statFactors></li></stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+  </HediffDef>
+</Defs>

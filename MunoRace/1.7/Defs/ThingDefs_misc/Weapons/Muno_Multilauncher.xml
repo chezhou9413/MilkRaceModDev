@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>Gun_MunoMultilauncher</defName>
+    <label>缪诺多功能发射器</label>
+    <description>利用纳米机械，将装填的乳源质浓浆即时转换为强力黏胶、酸液黏胶或医疗泡沫。依靠手动压缩空气进行短程弧形喷射，最大射程约 9 格。可储存 3 份浓浆，每轮消耗 1 份。装备后通过模式按钮切换，征召后手动选择喷射目标。涂层会影响范围内的所有人，包括友军。</description>
+    <graphicData><texPath>Weapons/Gun_MunoHG</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>1.1</drawSize></graphicData>
+    <techLevel>Spacer</techLevel>
+    <statBases>
+      <WorkToMake>12000</WorkToMake>
+      <Mass>3</Mass>
+      <MaxHitPoints>180</MaxHitPoints>
+      <AccuracyTouch>1</AccuracyTouch><AccuracyShort>1</AccuracyShort><AccuracyMedium>1</AccuracyMedium><AccuracyLong>1</AccuracyLong>
+      <RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+    </statBases>
+    <costList><Steel>35</Steel><ComponentIndustrial>4</ComponentIndustrial><MunoRace_BiologicalMaterials>20</MunoRace_BiologicalMaterials></costList>
+    <recipeMaker>
+      <researchPrerequisite>Muno_MilkApplication</researchPrerequisite>
+      <recipeUsers><li>MunoRace_MachineTool</li></recipeUsers>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    </recipeMaker>
+    <comps>
+      <li Class="MunoRaceLib.MunoComp.CompProperties_GalactogenStorageWeapon">
+        <slotCapacity>3</slotCapacity><showGelShot>false</showGelShot><slotLabel>发射器浓浆槽</slotLabel>
+      </li>
+      <li><compClass>MunoRaceLib.MunoBiotech.Weapons.Comp_MunoMultilauncher</compClass></li>
+    </comps>
+    <verbs>
+      <li>
+        <verbClass>MunoRaceLib.MunoBiotech.Weapons.Verb_MunoFoamSpray</verbClass>
+        <label>喷射涂层</label>
+        <hasStandardCommand>true</hasStandardCommand>
+        <onlyManualCast>true</onlyManualCast>
+        <targetable>true</targetable>
+        <defaultProjectile>Bullet_MunoStrongGel</defaultProjectile>
+        <range>8.9</range>
+        <warmupTime>0.7</warmupTime>
+        <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+        <burstShotCount>15</burstShotCount>
+        <sprayWidth>2</sprayWidth>
+        <sprayArching>1</sprayArching>
+        <sprayThicknessCells>2</sprayThicknessCells>
+        <sprayNumExtraCells>14</sprayNumExtraCells>
+        <sprayEffecterDef>FoamSpray_Directional</sprayEffecterDef>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+          <canTargetPawns>true</canTargetPawns>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetSelf>true</canTargetSelf>
+        </targetParams>
+      </li>
+    </verbs>
+    <tools><li><label>握柄</label><capacities><li>Blunt</li></capacities><power>5</power><cooldownTime>2</cooldownTime></li></tools>
+  </ThingDef>
+
+  <ThingDef Name="MunoCoatingProjectileBase" ParentName="BaseBullet" Abstract="True">
+    <thingClass>MunoRaceLib.MunoBiotech.Weapons.Projectile_MunoCoating</thingClass>
+    <graphicData><texPath>Weapons/Gun_MunoHG_proj</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <projectile>
+      <damageDef>Smoke</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <speed>27</speed>
+      <arcHeightFactor>0.4</arcHeightFactor>
+      <shadowSize>0</shadowSize>
+      <filth>Muno_Filth_Galactogen</filth>
+      <filthCount>1</filthCount>
+      <landedEffecter>ExtinguisherPuffSmall</landedEffecter>
+      <soundImpact>Foam_Impact</soundImpact>
+    </projectile>
+  </ThingDef>
+  <ThingDef ParentName="MunoCoatingProjectileBase">
+    <defName>Bullet_MunoStrongGel</defName><label>强力黏胶液滴</label>
+    <graphicData><color>(0.65,0.85,1)</color></graphicData>
+  </ThingDef>
+  <ThingDef ParentName="MunoCoatingProjectileBase">
+    <defName>Bullet_MunoAcidGel</defName><label>酸液黏胶液滴</label>
+    <graphicData><color>(0.65,1,0.3)</color></graphicData>
+  </ThingDef>
+  <ThingDef ParentName="MunoCoatingProjectileBase">
+    <defName>Bullet_MunoMedicalFoam</defName><label>医疗泡沫液滴</label>
+    <graphicData><color>(0.5,1,0.8)</color></graphicData>
+  </ThingDef>
+</Defs>

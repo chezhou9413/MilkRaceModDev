@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>MunoRace_MunoWhey</defName>
+    <label>缪诺乳清</label>
+    <description>缪诺乳分离了乳源质后的产物，损失了大部分营养物质，但仍可食用，也能用于培育缪诺生物质材料。</description>
+    <graphicData>
+      <texPath>Item/Resource/MunoRace_MunoWhey</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <stackLimit>150</stackLimit>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <statBases>
+      <MarketValue>0.4</MarketValue>
+      <Mass>0.04</Mass>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Flammability>0.2</Flammability>
+      <Nutrition>0.02</Nutrition>
+      <FoodPoisonChanceFixedHuman>0</FoodPoisonChanceFixedHuman>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>14</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <ingestible>
+      <preferability>RawTasty</preferability>
+      <foodType>AnimalProduct, Fluid</foodType>
+      <babiesCanIngest>true</babiesCanIngest>
+    </ingestible>
+    <thingCategories><li>AnimalProductRaw</li></thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>MunoRace_BiologicalMaterials</defName>
+    <label>缪诺生物质材料</label>
+    <description>使用特殊干细胞培育得来的生物质材料，主要用于制作人工肌肉、防护服基料和生化机械等。细胞层面植入了安全机关，基本不用担心失控风险。可在缪诺多功能工作台培育，用于缪诺动力甲与女仆装甲的制造。</description>
+    <graphicData>
+      <texPath>Item/Resource/MunoRace_BiologicalMaterials</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <stackLimit>150</stackLimit>
+    <statBases>
+      <MarketValue>5</MarketValue>
+      <Mass>0.05</Mass>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+      <DeteriorationRate>1</DeteriorationRate>
+    </statBases>
+    <thingCategories><li>Manufactured</li></thingCategories>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="MakeableDrugPillBase">
+    <defName>MunoRace_MilkMedicine</defName>
+    <label>缪诺乳药液</label>
+    <description>以缪诺乳为基料制成的药液，能够提高免疫力、帮助抵抗感染，并促进部分顽固疾病的治疗。服用后持续 24 小时：免疫增长速度提高 50%，免疫型疾病的恢复速度提高 50%；肌纤维和感觉机械感染的自然消退加快，肠道蠕虫和肌肉寄生虫的治疗进度加倍。重复服用只刷新持续时间。</description>
+    <graphicData><texPath>Item/Resource/MunoRace_Potion</texPath><graphicClass>Graphic_Single</graphicClass><color>(0.7,1,0.85)</color></graphicData>
+    <statBases><WorkToMake>900</WorkToMake><MarketValue>25</MarketValue><Mass>0.03</Mass><Flammability>0.5</Flammability></statBases>
+    <techLevel>Spacer</techLevel>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff"><hediffDef>Muno_MilkMedicine</hediffDef><severity>1</severity></li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <researchPrerequisite>Muno_MilkApplication</researchPrerequisite>
+      <recipeUsers><li>DrugLab</li><li>MunoRace_WorkBench</li></recipeUsers>
+      <displayPriority>2201</displayPriority>
+    </recipeMaker>
+    <costList><MunoRace_MunoMilk>10</MunoRace_MunoMilk><Neutroamine>2</Neutroamine></costList>
+    <comps><li Class="CompProperties_Drug"><listOrder>1010</listOrder></li></comps>
+  </ThingDef>
+</Defs>

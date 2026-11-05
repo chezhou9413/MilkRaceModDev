@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RecipeDef>
+    <defName>Muno_CultivateBiologicalMaterials</defName>
+    <label>培育缪诺生物质材料</label>
+    <description>以乳清作为培养基，加入浓浆和中性胺培育带有安全机关的生物质材料。每批消耗 20 份乳清、1 份乳源质浓浆和 1 份中性胺，产出 10 份材料。</description>
+    <jobString>正在培育缪诺生物质材料。</jobString>
+    <workAmount>2400</workAmount>
+    <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>Muno_MilkApplication</researchPrerequisite>
+    <recipeUsers><li>MunoRace_WorkBench</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>MunoRace_MunoWhey</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>MunoRace_ConcentratedMulacte</li></thingDefs></filter><count>1</count></li>
+      <li><filter><thingDefs><li>Neutroamine</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs><li>MunoRace_MunoWhey</li><li>MunoRace_ConcentratedMulacte</li><li>Neutroamine</li></thingDefs>
+    </fixedIngredientFilter>
+    <products><MunoRace_BiologicalMaterials>10</MunoRace_BiologicalMaterials></products>
+    <skillRequirements><Crafting>6</Crafting></skillRequirements>
+  </RecipeDef>
+</Defs>
