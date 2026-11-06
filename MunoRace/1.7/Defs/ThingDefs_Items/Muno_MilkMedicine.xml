@@ -3,8 +3,8 @@
   <ThingDef ParentName="MakeableDrugPillBase">
     <defName>MunoRace_MilkMedicine</defName>
     <label>缪诺乳药液</label>
-    <description>以缪诺乳为基料制成的药液，能够提高免疫力、帮助抵抗感染，并促进部分顽固疾病的治疗。服用后持续 24 小时：免疫增长速度提高 50%，免疫型疾病的恢复速度提高 50%；肌纤维和感觉机械感染的自然消退加快，肠道蠕虫和肌肉寄生虫的治疗进度加倍。重复服用只刷新持续时间。</description>
-    <graphicData><texPath>Item/Resource/MunoRace_Potion</texPath><graphicClass>Graphic_Single</graphicClass><color>(0.7,1,0.85)</color></graphicData>
+    <description>以缪诺乳做基料制作而成的药液，能够有效的提高免疫力抵抗感染，对一些疑难杂症也有效果。</description>
+    <graphicData><texPath>Item/Resource/MunoRace_MilkMedicine</texPath><graphicClass>Graphic_StackCount</graphicClass></graphicData>
     <statBases><WorkToMake>900</WorkToMake><MarketValue>25</MarketValue><Mass>0.03</Mass><Flammability>0.5</Flammability></statBases>
     <techLevel>Spacer</techLevel>
     <ingestible>

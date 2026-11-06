@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>MunoRace_MilkTablets</defName>
+    <label>缪诺乳奶片</label>
+    <description>按照缪诺中流传的配方制作的缓释压缩奶片，能量异常充足，能够人食用者较长时间内无需进食</description>
+    <thingClass>ThingWithComps</thingClass>
+    <category>Item</category>
+    <graphicData>
+      <texPath>Item/Resource/MunoRace_MilkTablets</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <drawSize>0.8</drawSize>
+    </graphicData>
+    <stackLimit>25</stackLimit>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <MarketValue>50</MarketValue>
+      <Mass>0.05</Mass>
+      <Flammability>0.4</Flammability>
+      <DeteriorationRate>8</DeteriorationRate>
+      <Nutrition>0.1</Nutrition>
+      <FoodPoisonChanceFixedHuman>0</FoodPoisonChanceFixedHuman>
+      <WorkToMake>1200</WorkToMake>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+    <ingestible>
+      <preferability>DesperateOnly</preferability>
+      <foodType>Processed</foodType>
+      <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+      <ingestSound>Meal_Eat</ingestSound>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>Muno_MilkTabletSatiety</hediffDef>
+          <severity>1</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <thingCategories>
+      <li>Foods</li>
+    </thingCategories>
+    <costList>
+      <MunoRace_ConcentratedMulacte>20</MunoRace_ConcentratedMulacte>
+      <Neutroamine>10</Neutroamine>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>Muno_MilkFood</researchPrerequisite>
+      <workSkill>Cooking</workSkill>
+      <recipeUsers>
+        <li>ElectricStove</li>
+        <li>FueledStove</li>
+      </recipeUsers>
+      <displayPriority>310</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+</Defs>

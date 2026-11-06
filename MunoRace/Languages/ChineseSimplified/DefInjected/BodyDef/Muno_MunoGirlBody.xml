@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: left lung -->
+  <MunoGirlBody.corePart.parts.left_lung.customLabel>左肺</MunoGirlBody.corePart.parts.left_lung.customLabel>
+  <!-- EN: right lung -->
+  <MunoGirlBody.corePart.parts.right_lung.customLabel>右肺</MunoGirlBody.corePart.parts.right_lung.customLabel>
+  <!-- EN: left kidney -->
+  <MunoGirlBody.corePart.parts.left_kidney.customLabel>左肾</MunoGirlBody.corePart.parts.left_kidney.customLabel>
+  <!-- EN: right kidney -->
+  <MunoGirlBody.corePart.parts.right_kidney.customLabel>右肾</MunoGirlBody.corePart.parts.right_kidney.customLabel>
+  <!-- EN: left eye -->
+  <MunoGirlBody.corePart.parts.Neck.parts.Head.parts.left_eye.customLabel>左眼</MunoGirlBody.corePart.parts.Neck.parts.Head.parts.left_eye.customLabel>
+  <!-- EN: right eye -->
+  <MunoGirlBody.corePart.parts.Neck.parts.Head.parts.right_eye.customLabel>右眼</MunoGirlBody.corePart.parts.Neck.parts.Head.parts.right_eye.customLabel>
+  <!-- EN: left ear -->
+  <MunoGirlBody.corePart.parts.Neck.parts.Head.parts.left_ear.customLabel>左耳</MunoGirlBody.corePart.parts.Neck.parts.Head.parts.left_ear.customLabel>
+  <!-- EN: right ear -->
+  <MunoGirlBody.corePart.parts.Neck.parts.Head.parts.right_ear.customLabel>右耳</MunoGirlBody.corePart.parts.Neck.parts.Head.parts.right_ear.customLabel>
+  <!-- EN: left shoulder -->
+  <MunoGirlBody.corePart.parts.left_shoulder.customLabel>左肩</MunoGirlBody.corePart.parts.left_shoulder.customLabel>
+  <!-- EN: left clavicle -->
+  <MunoGirlBody.corePart.parts.left_shoulder.parts.left_clavicle.customLabel>左锁骨</MunoGirlBody.corePart.parts.left_shoulder.parts.left_clavicle.customLabel>
+  <!-- EN: left arm -->
+  <MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.customLabel>左臂</MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.customLabel>
+  <!-- EN: left humerus -->
+  <MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_humerus.customLabel>左肱骨</MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_humerus.customLabel>
+  <!-- EN: left radius -->
+  <MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_radius.customLabel>左桡骨</MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_radius.customLabel>
+  <!-- EN: left hand -->
+  <MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.customLabel>左手</MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.customLabel>
+  <!-- EN: left pinky -->
+  <MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_pinky.customLabel>左小指</MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_pinky.customLabel>
+  <!-- EN: left ring finger -->
+  <MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_ring_finger.customLabel>左无名指</MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_ring_finger.customLabel>
+  <!-- EN: left middle finger -->
+  <MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_middle_finger.customLabel>左中指</MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_middle_finger.customLabel>
+  <!-- EN: left index finger -->
+  <MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_index_finger.customLabel>左食指</MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_index_finger.customLabel>
+  <!-- EN: left thumb -->
+  <MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_thumb.customLabel>左拇指</MunoGirlBody.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_thumb.customLabel>
+  <!-- EN: right shoulder -->
+  <MunoGirlBody.corePart.parts.right_shoulder.customLabel>右肩</MunoGirlBody.corePart.parts.right_shoulder.customLabel>
+  <!-- EN: right clavicle -->
+  <MunoGirlBody.corePart.parts.right_shoulder.parts.right_clavicle.customLabel>右锁骨</MunoGirlBody.corePart.parts.right_shoulder.parts.right_clavicle.customLabel>
+  <!-- EN: right arm -->
+  <MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.customLabel>右臂</MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.customLabel>
+  <!-- EN: right humerus -->
+  <MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_humerus.customLabel>右肱骨</MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_humerus.customLabel>
+  <!-- EN: right radius -->
+  <MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_radius.customLabel>右桡骨</MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_radius.customLabel>
+  <!-- EN: right hand -->
+  <MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.customLabel>右手</MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.customLabel>
+  <!-- EN: right pinky -->
+  <MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_pinky.customLabel>右小指</MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_pinky.customLabel>
+  <!-- EN: right ring finger -->
+  <MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_ring_finger.customLabel>右无名指</MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_ring_finger.customLabel>
+  <!-- EN: right middle finger -->
+  <MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_middle_finger.customLabel>右中指</MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_middle_finger.customLabel>
+  <!-- EN: right index finger -->
+  <MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_index_finger.customLabel>右食指</MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_index_finger.customLabel>
+  <!-- EN: right thumb -->
+  <MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_thumb.customLabel>右拇指</MunoGirlBody.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_thumb.customLabel>
+  <!-- EN: left leg -->
+  <MunoGirlBody.corePart.parts.left_leg.customLabel>左腿</MunoGirlBody.corePart.parts.left_leg.customLabel>
+  <!-- EN: left femur -->
+  <MunoGirlBody.corePart.parts.left_leg.parts.left_femur.customLabel>左股骨</MunoGirlBody.corePart.parts.left_leg.parts.left_femur.customLabel>
+  <!-- EN: left tibia -->
+  <MunoGirlBody.corePart.parts.left_leg.parts.left_tibia.customLabel>左胫骨</MunoGirlBody.corePart.parts.left_leg.parts.left_tibia.customLabel>
+  <!-- EN: left foot -->
+  <MunoGirlBody.corePart.parts.left_leg.parts.left_foot.customLabel>左脚</MunoGirlBody.corePart.parts.left_leg.parts.left_foot.customLabel>
+  <!-- EN: left little toe -->
+  <MunoGirlBody.corePart.parts.left_leg.parts.left_foot.parts.left_little_toe.customLabel>左小趾</MunoGirlBody.corePart.parts.left_leg.parts.left_foot.parts.left_little_toe.customLabel>
+  <!-- EN: left fourth toe -->
+  <MunoGirlBody.corePart.parts.left_leg.parts.left_foot.parts.left_fourth_toe.customLabel>左第四趾</MunoGirlBody.corePart.parts.left_leg.parts.left_foot.parts.left_fourth_toe.customLabel>
+  <!-- EN: left middle toe -->
+  <MunoGirlBody.corePart.parts.left_leg.parts.left_foot.parts.left_middle_toe.customLabel>左中趾</MunoGirlBody.corePart.parts.left_leg.parts.left_foot.parts.left_middle_toe.customLabel>
+  <!-- EN: left second toe -->
+  <MunoGirlBody.corePart.parts.left_leg.parts.left_foot.parts.left_second_toe.customLabel>左第二趾</MunoGirlBody.corePart.parts.left_leg.parts.left_foot.parts.left_second_toe.customLabel>
+  <!-- EN: left big toe -->
+  <MunoGirlBody.corePart.parts.left_leg.parts.left_foot.parts.left_big_toe.customLabel>左大趾</MunoGirlBody.corePart.parts.left_leg.parts.left_foot.parts.left_big_toe.customLabel>
+  <!-- EN: right leg -->
+  <MunoGirlBody.corePart.parts.right_leg.customLabel>右腿</MunoGirlBody.corePart.parts.right_leg.customLabel>
+  <!-- EN: right femur -->
+  <MunoGirlBody.corePart.parts.right_leg.parts.right_femur.customLabel>右股骨</MunoGirlBody.corePart.parts.right_leg.parts.right_femur.customLabel>
+  <!-- EN: right tibia -->
+  <MunoGirlBody.corePart.parts.right_leg.parts.right_tibia.customLabel>右胫骨</MunoGirlBody.corePart.parts.right_leg.parts.right_tibia.customLabel>
+  <!-- EN: right foot -->
+  <MunoGirlBody.corePart.parts.right_leg.parts.right_foot.customLabel>右脚</MunoGirlBody.corePart.parts.right_leg.parts.right_foot.customLabel>
+  <!-- EN: right little toe -->
+  <MunoGirlBody.corePart.parts.right_leg.parts.right_foot.parts.right_little_toe.customLabel>右小趾</MunoGirlBody.corePart.parts.right_leg.parts.right_foot.parts.right_little_toe.customLabel>
+  <!-- EN: right fourth toe -->
+  <MunoGirlBody.corePart.parts.right_leg.parts.right_foot.parts.right_fourth_toe.customLabel>右第四趾</MunoGirlBody.corePart.parts.right_leg.parts.right_foot.parts.right_fourth_toe.customLabel>
+  <!-- EN: right middle toe -->
+  <MunoGirlBody.corePart.parts.right_leg.parts.right_foot.parts.right_middle_toe.customLabel>右中趾</MunoGirlBody.corePart.parts.right_leg.parts.right_foot.parts.right_middle_toe.customLabel>
+  <!-- EN: right second toe -->
+  <MunoGirlBody.corePart.parts.right_leg.parts.right_foot.parts.right_second_toe.customLabel>右第二趾</MunoGirlBody.corePart.parts.right_leg.parts.right_foot.parts.right_second_toe.customLabel>
+  <!-- EN: right big toe -->
+  <MunoGirlBody.corePart.parts.right_leg.parts.right_foot.parts.right_big_toe.customLabel>右大趾</MunoGirlBody.corePart.parts.right_leg.parts.right_foot.parts.right_big_toe.customLabel>
+
+</LanguageData>

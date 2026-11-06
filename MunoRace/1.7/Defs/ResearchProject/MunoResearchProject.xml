@@ -308,4 +308,24 @@
     </generalRules>
   </ResearchProjectDef>
 
+  <!-- 缪诺乳食物 -->
+  <ResearchProjectDef ParentName="Muno_BaseTech">
+    <defName>Muno_MilkFood</defName>
+    <label>缪诺乳食物</label>
+    <description>把缪诺乳加工成可以直接食用的乳制品，在保留口感的同时充分利用它的营养</description>
+    <baseCost>400</baseCost>
+    <requiredResearchBuilding Inherit="False"/>
+    <techLevel>Industrial</techLevel>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>1.80</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->缪诺乳食物制作工艺</li>
+        <li>subject->用缪诺乳制成的各类食品与甜点</li>
+        <li>subject_story->缪诺乳本身就是极好的食材，可以做成了各种乳制品</li>
+        <li>subject_gerund->制作缪诺乳食物</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
 </Defs>

@@ -39,7 +39,9 @@
     <uiOrder>2010</uiOrder>
     <passability>Standable</passability>
     <hasInteractionCell>true</hasInteractionCell>
-    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <!-- 操作点放在建筑另一侧：-1 是南侧，+1 是北侧。
+         offset 会跟着建筑旋转，所以改符号等于南北、东西同时翻到相反方向。 -->
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
     <placeWorkers>
       <li>PlaceWorker_PreventInteractionSpotOverlap</li>
     </placeWorkers>

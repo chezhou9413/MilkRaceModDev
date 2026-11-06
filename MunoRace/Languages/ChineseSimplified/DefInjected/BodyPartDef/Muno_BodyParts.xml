@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: central cord bundle -->
+  <MechanicalSpine.label>中枢线束</MechanicalSpine.label>
+  <!-- EN: Tentacles Bodies -->
+  <MechanoidTentaclesBodies.label>触手机械躯壳</MechanoidTentaclesBodies.label>
+  <!-- EN: horns -->
+  <MunoGirl_Horn.label>角</MunoGirl_Horn.label>
+  <!-- EN: Tentacle Blade -->
+  <TentacleBlade.label>触手刀刃</TentacleBlade.label>
+
+</LanguageData>

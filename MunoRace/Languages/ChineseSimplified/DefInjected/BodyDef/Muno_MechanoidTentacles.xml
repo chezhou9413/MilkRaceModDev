@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: mechanoid turtle -->
+  <MechanoidTentacles.label>触手机械体</MechanoidTentacles.label>
+
+  <!-- EN: left sight sensor -->
+  <MechanoidTentacles.corePart.parts.MechanicalHead.parts.left_sight_sensor.customLabel>左视觉传感器</MechanoidTentacles.corePart.parts.MechanicalHead.parts.left_sight_sensor.customLabel>
+  <!-- EN: right sight sensor -->
+  <MechanoidTentacles.corePart.parts.MechanicalHead.parts.right_sight_sensor.customLabel>右视觉传感器</MechanoidTentacles.corePart.parts.MechanicalHead.parts.right_sight_sensor.customLabel>
+  <!-- EN: front left leg -->
+  <MechanoidTentacles.corePart.parts.front_left_leg.customLabel>左前腿</MechanoidTentacles.corePart.parts.front_left_leg.customLabel>
+  <!-- EN: front right leg -->
+  <MechanoidTentacles.corePart.parts.front_right_leg.customLabel>右前腿</MechanoidTentacles.corePart.parts.front_right_leg.customLabel>
+  <!-- EN: rear left leg -->
+  <MechanoidTentacles.corePart.parts.rear_left_leg.customLabel>左后腿</MechanoidTentacles.corePart.parts.rear_left_leg.customLabel>
+  <!-- EN: rear right leg -->
+  <MechanoidTentacles.corePart.parts.rear_right_leg.customLabel>右后腿</MechanoidTentacles.corePart.parts.rear_right_leg.customLabel>
+
+</LanguageData>

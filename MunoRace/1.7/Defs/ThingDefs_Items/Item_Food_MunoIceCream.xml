@@ -35,7 +35,7 @@
       </li>
     </comps>
     <ingestible>
-      <preferability>DesperateOnly</preferability>
+      <preferability>MealSimple</preferability>
       <foodType>Processed</foodType>
       <joy>0.1</joy>
       <joyKind>Gluttonous</joyKind>
@@ -56,7 +56,7 @@
       <MunoRace_MunoMilk>10</MunoRace_MunoMilk>
     </costList>
     <recipeMaker>
-      <researchPrerequisite>Muno_MilkApplication</researchPrerequisite>
+      <researchPrerequisite>Muno_MilkFood</researchPrerequisite>
       <workSkill>Cooking</workSkill>
       <recipeUsers>
         <li>ElectricStove</li>

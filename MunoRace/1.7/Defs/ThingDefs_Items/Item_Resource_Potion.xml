@@ -27,6 +27,7 @@
       <MunoRace_ConcentratedMulacte>5</MunoRace_ConcentratedMulacte>
     </costList>
     <recipeMaker>
+      <researchPrerequisite>Muno_MilkApplication</researchPrerequisite>
       <recipeUsers>
         <li>DrugLab</li>
       </recipeUsers>

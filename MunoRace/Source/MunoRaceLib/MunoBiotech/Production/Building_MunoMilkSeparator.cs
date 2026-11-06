@@ -16,6 +16,11 @@ namespace MunoRaceLib.MunoBiotech.Production
         private CompRefuelable milkStorage;
         private CompPowerTrader power;
 
+        //组件可能还没被 SpawnSetup 缓存（例如折叠状态下从存档载入），统一走惰性获取。
+        private CompPowerTrader PowerComp => power ?? (power = GetComp<CompPowerTrader>());
+
+        private CompRefuelable MilkStorageComp => milkStorage ?? (milkStorage = GetComp<CompRefuelable>());
+
         //建立随建筑保存的成品容器。
         public Building_MunoMilkSeparator()
         {
@@ -34,6 +39,10 @@ namespace MunoRaceLib.MunoBiotech.Production
         protected override void TickInterval(int delta)
         {
             base.TickInterval(delta);
+            //可卸载建筑折叠成 MinifiedThing 后仍会被 tick，此时 Spawned 为 false、
+            //Map 为 null，碰到 InteractionCell / Map 会抛空引用。搬运期间一律不生产。
+            if (!Spawned)
+                return;
             if (products.Count > 0)
             {
                 outputCheckTicks += delta;
@@ -44,7 +53,11 @@ namespace MunoRaceLib.MunoBiotech.Production
                 }
                 return;
             }
-            if (!power.PowerOn || milkStorage.Fuel < MilkPerBatch)
+            CompPowerTrader powerComp = PowerComp;
+            CompRefuelable storageComp = MilkStorageComp;
+            if (powerComp == null || storageComp == null)
+                return;
+            if (!powerComp.PowerOn || storageComp.Fuel < MilkPerBatch)
                 return;
 
             processingTicks += delta;
@@ -53,7 +66,7 @@ namespace MunoRaceLib.MunoBiotech.Production
 
             StoreProduct(MunoBiotechDefOf.MunoRace_MunoWhey, MilkPerBatch);
             StoreProduct(MunoDefDataRef.MunoRace_ConcentratedMulacte, 1);
-            milkStorage.ConsumeFuel(MilkPerBatch);
+            storageComp.ConsumeFuel(MilkPerBatch);
             processingTicks = 0;
             products.TryDropAll(InteractionCell, Map, ThingPlaceMode.Near);
         }
@@ -78,9 +91,14 @@ namespace MunoRaceLib.MunoBiotech.Production
         //在建筑信息中说明当前阻塞原因与加工进度。
         public override string GetInspectString()
         {
+            //折叠状态（MinifiedThing）或被搬运时也可能会调用这里，组件可能还没缓存。
+            CompPowerTrader powerComp = PowerComp;
+            CompRefuelable storageComp = MilkStorageComp;
+            if (!Spawned || powerComp == null || storageComp == null)
+                return base.GetInspectString();
             string status = products.Count > 0 ? "等待排出成品，请清理周围空间。"
-                : !power.PowerOn ? "等待供电。"
-                : milkStorage.Fuel < MilkPerBatch ? "每批需要 25 份缪诺乳。"
+                : !powerComp.PowerOn ? "等待供电。"
+                : storageComp.Fuel < MilkPerBatch ? "每批需要 25 份缪诺乳。"
                 : "分离进度：" + ((float)processingTicks / TicksPerBatch).ToStringPercent();
             return base.GetInspectString() + "\n" + status;
         }

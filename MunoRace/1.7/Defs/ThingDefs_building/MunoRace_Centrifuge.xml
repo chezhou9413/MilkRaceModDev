@@ -9,9 +9,9 @@
     <graphicData>
       <texPath>Building/MunoRace_Centrifuge</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1.4,2.2)</drawSize>
+      <drawSize>(1, 1.63)</drawSize>
     </graphicData>
-    <size>(1,2)</size>
+    <size>(1,1)</size>
     <rotatable>false</rotatable>
     <altitudeLayer>Building</altitudeLayer>
     <fillPercent>1</fillPercent>
@@ -29,6 +29,13 @@
       <Mass>25</Mass>
     </statBases>
     <costList><Steel>100</Steel><ComponentIndustrial>5</ComponentIndustrial></costList>
+    <!-- 可卸载：拆下后变成可搬运的折叠件，搬到别处重新安装即可。
+         Minifiable 建筑必须同时给出 Mass（上面 statBases 里已有 25）
+         和 thingCategories，否则 ConfigErrors 会报错。 -->
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
     <comps>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
